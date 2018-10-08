@@ -12,6 +12,9 @@ class ViewLogin {
     
     let viewLoginFbButton = UIView()
     
+    //Setting Objects
+    //viewGlobal
+    let nome = UILabel()
     
     func setLayoutInView(view: UIView) {
         setViews(view: view)
@@ -31,6 +34,19 @@ class ViewLogin {
         viewLoginFbButton.backgroundColor = .black
         
         
+        viewLoginFbButton.addSubview(nome)
         
+        
+        nome.translatesAutoresizingMaskIntoConstraints = false
+        nome.topAnchor.constraint(equalTo: viewLoginFbButton.topAnchor, constant: 0).isActive = true
+        nome.bottomAnchor.constraint(equalTo: viewLoginFbButton.bottomAnchor, constant: 0).isActive = true
+        nome.leftAnchor.constraint(equalTo: viewLoginFbButton.leftAnchor, constant: 0).isActive = true
+        nome.rightAnchor.constraint(equalTo: viewLoginFbButton.rightAnchor, constant: 0)
+        
+        nome.setLabelWhithConstraints(fontSize: 14,
+                                      lblText: "teste",
+                                      textColor: .white,
+                                      alingnment: .center,
+                                      alpha: 1)
     }
 }
