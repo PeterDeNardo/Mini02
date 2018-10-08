@@ -1,29 +1,25 @@
 //
-//  NewProjectViewController.swift
+//  LoginViewController.swift
 //  Mini02
 //
-//  Created by Peter De Nardo on 07/10/18.
+//  Created by Peter De Nardo on 08/10/18.
 //  Copyright © 2018 Peter De Nardo. All rights reserved.
 //
 
 import UIKit
 
-class NewProjectViewController: UIViewController {
-    
-    private let viewProject = ViewProject()
-    let myNavigationBar = MyNavigationBarController()
+class LoginViewController: UIViewController {
 
+    private let viewLogin = ViewLogin()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewLogin.setLayoutInView(view: self.view)
         
-        viewProject.setLayoutInView(view: self.view)
-       // myNavigationBar.creatNavigationBar(view: self.view)
+        // Do any additional setup after loading the view.
     }
     
-    @objc func teste () {
-        print("done")
-    }
 
     /*
     // MARK: - Navigation

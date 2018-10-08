@@ -22,13 +22,14 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //Setting Tab bar
         let tabOne = NewProjectViewController()
         tabOne.title = "Novo Projeto"
         let tabOneBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
         
         tabOne.tabBarItem = tabOneBarItem
         
-        let tabTwo = MaterialViewController()
+        let tabTwo = LoginViewController()
         let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
         
         tabTwo.tabBarItem = tabTwoBarItem
@@ -36,6 +37,10 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let controllers = [tabOne, tabTwo]
         
         self.viewControllers = controllers
+        
+        //Set Nav Controller
+        let nav1 = UINavigationController()
+        
         
     }
     
