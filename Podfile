@@ -6,8 +6,11 @@ target 'Mini02' do
   use_frameworks!
 
   # Pods for Mini02
+pod 'FirebaseUI'
 pod 'Firebase/Core'
+pod 'FBSDKLoginKit'
 pod 'Firebase/Auth'
+pod 'GoogleSignIn'
 pod 'Firebase/Database'
 pod 'Crashlytics'
 
