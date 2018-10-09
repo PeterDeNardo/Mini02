@@ -30,17 +30,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         
         viewLogin.setLayoutInView(view: self.view)
         
+        //saber se está logado
         verificarDadosPerfilFacebook()
-        
-        if profile == nil{
-            
-        }
-        
-        if profile == nil{
-            viewLogin.nome.text = "Anônimo"
-        }else{
-            viewLogin.nome.text = profile!["name"]
-        }
         
         fazerBotaoFacebook()
         
@@ -50,12 +41,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     }
     
 
-    
+    // fazendo os botoes de login
     func fazerBotaoFacebook(){
         //botao de login facebook
-        let loginButton = FBSDKLoginButton()
-        view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width - 32, height: 50)
+        var loginButton = FBSDKLoginButton()
+        loginButton = viewLogin.set(button: loginButton, view: self.view)
         loginButton.readPermissions = ["email","public_profile"]
         loginButton.delegate = self
     }
@@ -69,14 +59,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     }
     
     
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        let defaults = UserDefaults.standard
-        let dictionary = defaults.dictionaryRepresentation()
-        dictionary.keys.forEach { key in
-            defaults.removeObject(forKey: key)
-        }
-        viewLogin.nome.text = "Ninguém"
-    }
+    
     
     
     
@@ -88,14 +71,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         }
         // other URL handling goes here.
         return false
-    }
-    
-    @IBAction func login(_ sender: Any) {
-        
-        let loginButton = FBSDKLoginButton()
-        view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width - 32, height: 50)
-        
     }
     
     @IBAction func loginEmail(_ sender: Any) {
@@ -121,6 +96,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         
         
     }
+    
     @IBAction func cadastrar(_ sender: Any) {
         
         
@@ -167,31 +143,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         
     }
     
-    func verificarDadosPerfilFacebook(){
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "name, email"]).start {
-            (connection, result, err) in
-            if(err == nil){
-                
-                self.profile = (result as! [String:String])
-                self.viewLogin.nome.text = self.profile!["name"]
-                self.setUserDefaults()
-                
-            }
-            else
-            {
-                self.profile = nil
-            }
-        }
-        
-        
-    }
-    
-//    func irParaTelaChat(){
-//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        let novoViewController = storyBoard.instantiateViewController(withIdentifier: "ChatViewController")
-//        self.present(novoViewController, animated: true, completion: nil)
-//
-//    }
+   
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
@@ -213,10 +165,34 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         
     }
     
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+        viewLogin.nome.text = "Ninguém"
+    }
+    
+    
+    
+    func verificarDadosPerfilFacebook(){
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "name, email"]).start {
+            (connection, result, err) in
+            if(err == nil){
+                self.profile = (result as! [String:String])
+                self.setUserDefaults()
+            }
+            else
+            {
+                self.profile = nil
+            }
+        }
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
