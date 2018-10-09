@@ -11,15 +11,8 @@ import UIKit
 class MyNavigationBarController: UINavigationController {
     
     func creatNavigationController(view: UIView) {
-       // let navController : UINavigationController = UINavigationController(rootViewController: view)
+       
         
-        let navBar : UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 64))
-        navBar.backgroundColor = .black
-        let navTitleItem = UINavigationItem(title: "test")
-        let navResetButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: nil, action: #selector(teste))
-        navTitleItem.leftBarButtonItem = navResetButtonItem
-        navBar.setItems([navTitleItem], animated: true)
-        view.addSubview(navBar);
     }
     
     @objc func teste () {

@@ -4,11 +4,11 @@ import UIKit
 
 class ViewLogin {
     
-    //Setting View
+    //Setting Global View
     
     var viewGlobal : UIView!
     
-    //Setting SubViews
+    //Setting views
     
     let viewLoginFbButton = UIView()
     

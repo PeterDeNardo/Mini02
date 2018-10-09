@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		961678CD2169D7E200433E22 /* MaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678CC2169D7E200433E22 /* MaterialViewController.swift */; };
 		961678D12169DB3600433E22 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D02169DB3600433E22 /* TabBarController.swift */; };
-		961678D32169DD1D00433E22 /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D22169DD1D00433E22 /* NewProjectViewController.swift */; };
+		961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D22169DD1D00433E22 /* CalculatorViewController.swift */; };
 		961678D52169DDED00433E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D42169DDED00433E22 /* AppDelegate.swift */; };
 		961678D72169E32000433E22 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D62169E32000433E22 /* MyNavigationController.swift */; };
 		961678DA2169EAB500433E22 /* help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D92169EAB500433E22 /* help.swift */; };
 		961678DC216BEC6200433E22 /* ViewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678DB216BEC6200433E22 /* ViewLogin.swift */; };
 		961678DE216BEC8700433E22 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678DD216BEC8700433E22 /* LoginViewController.swift */; };
-		96750C9921654A9B00D7A168 /* ViewProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96750C9821654A9B00D7A168 /* ViewProject.swift */; };
+		961678E2216BF59200433E22 /* CalculatorPlussViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */; };
+		961678E4216BF5B700433E22 /* ViewCalculatorPluss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678E3216BF5B700433E22 /* ViewCalculatorPluss.swift */; };
+		96750C9921654A9B00D7A168 /* ViewCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96750C9821654A9B00D7A168 /* ViewCalculator.swift */; };
 		96B02809216546650093396A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96B02807216546650093396A /* Main.storyboard */; };
 		96B0280B216546660093396A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96B0280A216546660093396A /* Assets.xcassets */; };
 		96B0280E216546660093396A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96B0280C216546660093396A /* LaunchScreen.storyboard */; };
@@ -28,13 +30,15 @@
 		8592BF9331E17B7B56B9CDA9 /* Pods_Mini02.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mini02.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		961678CC2169D7E200433E22 /* MaterialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
 		961678D02169DB3600433E22 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		961678D22169DD1D00433E22 /* NewProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
+		961678D22169DD1D00433E22 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		961678D42169DDED00433E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		961678D62169E32000433E22 /* MyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		961678D92169EAB500433E22 /* help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = help.swift; sourceTree = "<group>"; };
 		961678DB216BEC6200433E22 /* ViewLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLogin.swift; sourceTree = "<group>"; };
 		961678DD216BEC8700433E22 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		96750C9821654A9B00D7A168 /* ViewProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProject.swift; sourceTree = "<group>"; };
+		961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorPlussViewController.swift; sourceTree = "<group>"; };
+		961678E3216BF5B700433E22 /* ViewCalculatorPluss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCalculatorPluss.swift; sourceTree = "<group>"; };
+		96750C9821654A9B00D7A168 /* ViewCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCalculator.swift; sourceTree = "<group>"; };
 		96B02800216546650093396A /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B02808216546650093396A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96B0280A216546660093396A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,8 +119,9 @@
 		96B02815216546750093396A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				96750C9821654A9B00D7A168 /* ViewProject.swift */,
+				96750C9821654A9B00D7A168 /* ViewCalculator.swift */,
 				961678DB216BEC6200433E22 /* ViewLogin.swift */,
+				961678E3216BF5B700433E22 /* ViewCalculatorPluss.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,11 +129,12 @@
 		96B028162165467B0093396A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				961678D22169DD1D00433E22 /* NewProjectViewController.swift */,
+				961678D22169DD1D00433E22 /* CalculatorViewController.swift */,
 				961678CC2169D7E200433E22 /* MaterialViewController.swift */,
 				961678D02169DB3600433E22 /* TabBarController.swift */,
 				961678D62169E32000433E22 /* MyNavigationController.swift */,
 				961678DD216BEC8700433E22 /* LoginViewController.swift */,
+				961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -261,8 +267,10 @@
 			files = (
 				961678DE216BEC8700433E22 /* LoginViewController.swift in Sources */,
 				961678DA2169EAB500433E22 /* help.swift in Sources */,
-				96750C9921654A9B00D7A168 /* ViewProject.swift in Sources */,
-				961678D32169DD1D00433E22 /* NewProjectViewController.swift in Sources */,
+				96750C9921654A9B00D7A168 /* ViewCalculator.swift in Sources */,
+				961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */,
+				961678E4216BF5B700433E22 /* ViewCalculatorPluss.swift in Sources */,
+				961678E2216BF59200433E22 /* CalculatorPlussViewController.swift in Sources */,
 				961678CD2169D7E200433E22 /* MaterialViewController.swift in Sources */,
 				961678D72169E32000433E22 /* MyNavigationController.swift in Sources */,
 				961678D52169DDED00433E22 /* AppDelegate.swift in Sources */,

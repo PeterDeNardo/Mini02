@@ -2,13 +2,13 @@
 import Foundation
 import UIKit
 
-class ViewProject {
+class ViewCalculator {
     
-    //Seting Views
+    // Seting Global View
     
     var viewGlobal : UIView!
     
-    // setting SubViews
+    // setting Views
     
     let viewItem = UIView()
     let viewCost = UIView()
@@ -16,14 +16,19 @@ class ViewProject {
     let viewProfit = UIView()
     let viewButton = UIView()
     
+    // setting sub views
+    
+    let viewCostButton = UIView()
+    
     // set viewItem objects
     
+    let btnVIMaterials = UIButton()
     let lblVIQuantity = UILabel()
     let lblVIQuantityTitle = UILabel()
     let lblVIQUantityTotalMoney = UILabel()
     
     // set viewCost objects
-    
+    let btnCostsButton = UIButton()
     let lblVCWorkedHoursTitle = UILabel()
     let lblVCExternalCostsTitle = UILabel()
     let txtVCWorkedHours = UITextField()
@@ -64,7 +69,7 @@ class ViewProject {
         viewItem.widthAnchor.constraint(equalToConstant: 300).isActive = true
         viewItem.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        viewItem.layer.cornerRadius = 5
+        viewItem.layer.cornerRadius = 7
         viewItem.dropShadow()
         viewItem.backgroundColor = .white
         
@@ -75,9 +80,9 @@ class ViewProject {
         viewCost.topAnchor.constraint(equalTo: viewItem.bottomAnchor, constant: 10).isActive = true
         viewCost.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
         viewCost.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        viewCost.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        viewCost.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        viewCost.layer.cornerRadius = 5
+        viewCost.layer.cornerRadius = 7
         viewCost.backgroundColor = .white
         
         setViewCostLayout(view: viewCost)
@@ -89,7 +94,7 @@ class ViewProject {
         viewResult.widthAnchor.constraint(equalToConstant: 300).isActive = true
         viewResult.heightAnchor.constraint(equalToConstant: 130).isActive = true
         
-        viewResult.layer.cornerRadius = 5
+        viewResult.layer.cornerRadius = 7
         viewResult.backgroundColor = .white
         
         setViewResultLayout(view: viewResult)
@@ -101,7 +106,7 @@ class ViewProject {
         viewProfit.widthAnchor.constraint(equalToConstant: 300).isActive = true
         viewProfit.heightAnchor.constraint(equalToConstant: 110).isActive = true
         
-        viewProfit.layer.cornerRadius = 5
+        viewProfit.layer.cornerRadius = 7
         viewProfit.backgroundColor = .white
         
         setViewProfitLayout(view: viewProfit)
@@ -121,9 +126,16 @@ class ViewProject {
     }
     
     func setViewItemLayout(view : UIView) {
+        view.addSubview(btnVIMaterials)
         view.addSubview(lblVIQuantityTitle)
         view.addSubview(lblVIQuantity)
         view.addSubview(lblVIQUantityTotalMoney)
+        
+        btnVIMaterials.translatesAutoresizingMaskIntoConstraints = false
+        btnVIMaterials.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        btnVIMaterials.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        btnVIMaterials.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        btnVIMaterials.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         
         lblVIQuantity.translatesAutoresizingMaskIntoConstraints = false
         lblVIQuantity.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -159,14 +171,33 @@ class ViewProject {
     }
     
     func setViewCostLayout(view : UIView) {
+        view.addSubview(viewCostButton)
+        view.addSubview(btnCostsButton)
         view.addSubview(lblVCWorkedHoursTitle)
         view.addSubview(lblVCExternalCostsTitle)
         view.addSubview(txtVCWorkedHours)
         view.addSubview(txtVCExternalCosts)
         
+        viewCostButton.translatesAutoresizingMaskIntoConstraints = false
+        viewCostButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        viewCostButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        viewCostButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        viewCostButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        viewCostButton.layer.cornerRadius = 7
+        viewCostButton.dropShadow()
+        viewCostButton.backgroundColor = .white
+        
+        btnCostsButton.translatesAutoresizingMaskIntoConstraints = false
+        btnCostsButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        btnCostsButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        btnCostsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        btnCostsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        
+        
         lblVCWorkedHoursTitle.translatesAutoresizingMaskIntoConstraints = false
         lblVCWorkedHoursTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        lblVCWorkedHoursTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
+        lblVCWorkedHoursTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
         
         lblVCWorkedHoursTitle.setLabelWhithConstraints(fontSize: 13,
                                                        lblText: "Horas Trabalhadas",
@@ -176,7 +207,7 @@ class ViewProject {
         
         lblVCExternalCostsTitle.translatesAutoresizingMaskIntoConstraints = false
         lblVCExternalCostsTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        lblVCExternalCostsTitle.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
+        lblVCExternalCostsTitle.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15).isActive = true
         
         lblVCExternalCostsTitle.setLabelWhithConstraints(fontSize: 13,
                                                          lblText: "Custos Externos",
@@ -186,7 +217,7 @@ class ViewProject {
         
         txtVCWorkedHours.translatesAutoresizingMaskIntoConstraints = false
         txtVCWorkedHours.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12).isActive = true
-        txtVCWorkedHours.topAnchor.constraint(equalTo: view.topAnchor, constant: 28).isActive = true
+        txtVCWorkedHours.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
         
         txtVCWorkedHours.setTextField(fontSize: 15,
                                       lblText: "X h",
@@ -196,7 +227,7 @@ class ViewProject {
         
         txtVCExternalCosts.translatesAutoresizingMaskIntoConstraints = false
         txtVCExternalCosts.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12 ).isActive = true
-        txtVCExternalCosts.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
+        txtVCExternalCosts.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15).isActive = true
         
         txtVCExternalCosts.setTextField(fontSize: 15,
                                         lblText: "Y h",
@@ -312,7 +343,7 @@ class ViewProject {
         btnVBAddProjects.widthAnchor.constraint(equalToConstant: 270).isActive = true
         
         
-        btnVBAddProjects.layer.cornerRadius = 5
+        btnVBAddProjects.layer.cornerRadius = 7
         btnVBAddProjects.backgroundColor = .blue
         btnVBAddProjects.setTitle("Add to my projects", for: .normal)
     }

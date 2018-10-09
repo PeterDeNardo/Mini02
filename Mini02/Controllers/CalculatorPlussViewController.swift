@@ -1,29 +1,25 @@
 //
-//  NewProjectViewController.swift
+//  ProjectCreatePlussViewController.swift
 //  Mini02
 //
-//  Created by Peter De Nardo on 07/10/18.
+//  Created by Peter De Nardo on 08/10/18.
 //  Copyright © 2018 Peter De Nardo. All rights reserved.
 //
 
 import UIKit
 
-class NewProjectViewController: UIViewController {
-    
-    private let viewProject = ViewProject()
-    let myNavigationBar = MyNavigationBarController()
+class CalculatorPlussViewController: UIViewController {
 
+    private let viewCalculatorPluss = ViewCalculatorPluss()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        viewProject.setLayoutInView(view: self.view)
-       // myNavigationBar.creatNavigationBar(view: self.view)
+        viewCalculatorPluss.setLayoutInView(view: self.view)
+
+        // Do any additional setup after loading the view.
     }
     
-    @objc func teste () {
-        print("done")
-    }
 
     /*
     // MARK: - Navigation

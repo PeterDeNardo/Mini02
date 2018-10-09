@@ -13,16 +13,28 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    private var myTabBarController : UITabBarController!
+    //private var myTabBarController : UITabBarController!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        let myTabBarController = UITabBarController()
+            
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        myTabBarController = TabBarController()
-        self.window!.rootViewController = myTabBarController
+        let v1 = CalculatorViewController()
+        let v2 = CalculatorPlussViewController()
+        
+        let nav = UINavigationController(rootViewController: v1)
+        
+        let controllers = [v1, v2]
+        
+        myTabBarController.viewControllers = controllers
+        
+        
+        //myTabBarController = TabBarController()
+        self.window!.rootViewController = UINavigationController(rootViewController: myTabBarController)
         self.window!.makeKeyAndVisible()
         
         return true
