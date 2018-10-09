@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
         -> Bool {
             
+            
+            
             FirebaseApp.configure()
             
             GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
@@ -43,11 +45,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
             
+            
+            let myTabBarController = UITabBarController()
+            
             window = UIWindow(frame: UIScreen.main.bounds)
             
-            myTabBarController = TabBarController()
-            self.window!.rootViewController = myTabBarController
+            let v1 = CalculatorViewController()
+            let v2 = CalculatorPlussViewController()
+            let v3 = LoginViewController()
+            
+            let nav = UINavigationController(rootViewController: v1)
+            
+            let controllers = [v1, v2, v3]
+            
+            myTabBarController.viewControllers = controllers
+            
+            
+            //myTabBarController = TabBarController()
+            self.window!.rootViewController = UINavigationController(rootViewController: myTabBarController)
             self.window!.makeKeyAndVisible()
+            
             return true
     }
     
