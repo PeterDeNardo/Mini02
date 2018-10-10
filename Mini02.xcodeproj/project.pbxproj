@@ -20,7 +20,6 @@
 		961678E2216BF59200433E22 /* CalculatorPlussViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */; };
 		961678E4216BF5B700433E22 /* ViewCalculatorPluss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678E3216BF5B700433E22 /* ViewCalculatorPluss.swift */; };
 		961678EA216E810500433E22 /* ViewMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678E9216E810500433E22 /* ViewMaterial.swift */; };
-		961678EC216E813D00433E22 /* MaterialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678EB216E813D00433E22 /* MaterialsViewController.swift */; };
 		96750C9921654A9B00D7A168 /* ViewCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96750C9821654A9B00D7A168 /* ViewCalculator.swift */; };
 		96B02809216546650093396A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96B02807216546650093396A /* Main.storyboard */; };
 		96B0280B216546660093396A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96B0280A216546660093396A /* Assets.xcassets */; };
@@ -45,7 +44,6 @@
 		961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorPlussViewController.swift; sourceTree = "<group>"; };
 		961678E3216BF5B700433E22 /* ViewCalculatorPluss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCalculatorPluss.swift; sourceTree = "<group>"; };
 		961678E9216E810500433E22 /* ViewMaterial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMaterial.swift; sourceTree = "<group>"; };
-		961678EB216E813D00433E22 /* MaterialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialsViewController.swift; sourceTree = "<group>"; };
 		96750C9821654A9B00D7A168 /* ViewCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCalculator.swift; sourceTree = "<group>"; };
 		96B02800216546650093396A /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B02808216546650093396A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				961678D62169E32000433E22 /* MyNavigationController.swift */,
 				961678DD216BEC8700433E22 /* LoginViewController.swift */,
 				961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */,
-				961678EB216E813D00433E22 /* MaterialsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -345,7 +342,6 @@
 				96750C9921654A9B00D7A168 /* ViewCalculator.swift in Sources */,
 				944761CE216D380300019117 /* Projeto.swift in Sources */,
 				961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */,
-				961678EC216E813D00433E22 /* MaterialsViewController.swift in Sources */,
 				961678E4216BF5B700433E22 /* ViewCalculatorPluss.swift in Sources */,
 				961678E2216BF59200433E22 /* CalculatorPlussViewController.swift in Sources */,
 				961678D72169E32000433E22 /* MyNavigationController.swift in Sources */,
