@@ -35,7 +35,7 @@ class CalculatorViewController: UIViewController{
         
         viewCalculator.setLayoutInView(view: self.view)
         
-        viewCalculator.btnCostsButton.addTarget(self, action: #selector(CalculatorViewController.goToCalculatorPluss), for: .touchUpInside)
+//        viewCalculator.btnCostsButton.addTarget(self, action: #selector(CalculatorViewController.goToCalculatorPluss), for: .touchUpInside)
         
         viewCalculator.btnVIMaterials.addTarget(self, action: #selector(CalculatorViewController.goToMaterialsViewController), for: .touchDown)
         
@@ -98,10 +98,10 @@ class CalculatorViewController: UIViewController{
         
     }
     
-    @objc func goToCalculatorPluss () {
-        let materialsView = MaterialsViewController()
-        navigationController?.pushViewController(materialsView, animated: true)
-    }
+//    @objc func goToCalculatorPluss () {
+//        let materialsView = MaterialsViewController()
+//        navigationController?.pushViewController(materialsView, animated: true)
+//    }
     
     @objc func goToMaterialsViewController () {
         let calculatorPluss = CalculatorPlussViewController()

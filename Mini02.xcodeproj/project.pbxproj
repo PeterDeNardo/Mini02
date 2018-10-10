@@ -11,6 +11,7 @@
 		944761CE216D380300019117 /* Projeto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CD216D380300019117 /* Projeto.swift */; };
 		944761D0216D3A7300019117 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CF216D3A7300019117 /* Material.swift */; };
 		94E67A27216E96780098024E /* MaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E67A26216E96780098024E /* MaterialViewController.swift */; };
+		94E67A29216EA0220098024E /* MaterialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E67A28216EA0220098024E /* MaterialTableViewCell.swift */; };
 		961678D12169DB3600433E22 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D02169DB3600433E22 /* TabBarController.swift */; };
 		961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D22169DD1D00433E22 /* CalculatorViewController.swift */; };
 		961678D52169DDED00433E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D42169DDED00433E22 /* AppDelegate.swift */; };
@@ -35,8 +36,8 @@
 		944761C8216BF4A300019117 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		944761CD216D380300019117 /* Projeto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projeto.swift; sourceTree = "<group>"; };
 		944761CF216D3A7300019117 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
-		944761D4216E818B00019117 /* MaterialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTableViewCell.swift; sourceTree = "<group>"; };
 		94E67A26216E96780098024E /* MaterialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
+		94E67A28216EA0220098024E /* MaterialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTableViewCell.swift; sourceTree = "<group>"; };
 		961678D02169DB3600433E22 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		961678D22169DD1D00433E22 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		961678D42169DDED00433E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +97,7 @@
 		944761D3216E816D00019117 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				944761D4216E818B00019117 /* MaterialTableViewCell.swift */,
+				94E67A28216EA0220098024E /* MaterialTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -350,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				944761D0216D3A7300019117 /* Material.swift in Sources */,
+				94E67A29216EA0220098024E /* MaterialTableViewCell.swift in Sources */,
 				961678DE216BEC8700433E22 /* LoginViewController.swift in Sources */,
 				961678DA2169EAB500433E22 /* help.swift in Sources */,
 				94E67A27216E96780098024E /* MaterialViewController.swift in Sources */,
