@@ -171,7 +171,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         dictionary.keys.forEach { key in
             defaults.removeObject(forKey: key)
         }
-        viewLogin.nome.text = "Ninguém"
     }
     
     
