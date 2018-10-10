@@ -1,18 +1,21 @@
 //
-//  materialViewController.swift
+//  MaterialsViewController.swift
 //  Mini02
 //
-//  Created by Peter De Nardo on 07/10/18.
+//  Created by Peter De Nardo on 10/10/18.
 //  Copyright © 2018 Peter De Nardo. All rights reserved.
 //
 
 import UIKit
 
-class MaterialViewController: UIViewController {
+class MaterialsViewController: UIViewController {
 
+    private let viewMaterial = ViewMaterials()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        viewMaterial.setLayoutInView(view: self.view)
         // Do any additional setup after loading the view.
     }
     
