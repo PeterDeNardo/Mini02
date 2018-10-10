@@ -75,7 +75,7 @@ class CalculatorViewController: UIViewController{
             
             
         }else{
-            let nome = "Madeira"
+            
             let teste = Material(nome : "Madeira", tipo : "Duraça", preco : 10, marca :  "Tramontina", chave : "")
             
              materiais.append(teste.toAnyObject())

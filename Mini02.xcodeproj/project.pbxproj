@@ -10,6 +10,7 @@
 		944761C9216BF4A300019117 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 944761C8216BF4A300019117 /* GoogleService-Info.plist */; };
 		944761CE216D380300019117 /* Projeto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CD216D380300019117 /* Projeto.swift */; };
 		944761D0216D3A7300019117 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CF216D3A7300019117 /* Material.swift */; };
+		944761D5216E818B00019117 /* MaterialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761D4216E818B00019117 /* MaterialTableViewCell.swift */; };
 		961678CD2169D7E200433E22 /* MaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678CC2169D7E200433E22 /* MaterialViewController.swift */; };
 		961678D12169DB3600433E22 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D02169DB3600433E22 /* TabBarController.swift */; };
 		961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D22169DD1D00433E22 /* CalculatorViewController.swift */; };
@@ -34,6 +35,7 @@
 		944761C8216BF4A300019117 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		944761CD216D380300019117 /* Projeto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projeto.swift; sourceTree = "<group>"; };
 		944761CF216D3A7300019117 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		944761D4216E818B00019117 /* MaterialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTableViewCell.swift; sourceTree = "<group>"; };
 		961678CC2169D7E200433E22 /* MaterialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
 		961678D02169DB3600433E22 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		961678D22169DD1D00433E22 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		944761D3216E816D00019117 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				944761D4216E818B00019117 /* MaterialTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		961678D82169EA8700433E22 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +129,7 @@
 		96B02802216546650093396A /* Mini02 */ = {
 			isa = PBXGroup;
 			children = (
+				944761D3216E816D00019117 /* TableViewCells */,
 				944761CC216D37EB00019117 /* Model */,
 				96B02815216546750093396A /* Views */,
 				96B028162165467B0093396A /* Controllers */,
@@ -342,6 +353,7 @@
 				96750C9921654A9B00D7A168 /* ViewCalculator.swift in Sources */,
 				944761CE216D380300019117 /* Projeto.swift in Sources */,
 				961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */,
+				944761D5216E818B00019117 /* MaterialTableViewCell.swift in Sources */,
 				961678E4216BF5B700433E22 /* ViewCalculatorPluss.swift in Sources */,
 				961678E2216BF59200433E22 /* CalculatorPlussViewController.swift in Sources */,
 				961678CD2169D7E200433E22 /* MaterialViewController.swift in Sources */,
