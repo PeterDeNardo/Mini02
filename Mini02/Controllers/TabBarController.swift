@@ -37,7 +37,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         //Set Nav Controller
         let nav1 = UINavigationController(rootViewController: tabOne)
         
-        let controllers = [tabOne, tabTwo, nav1]
+        let controllers = [nav1, tabTwo]
         
         self.viewControllers = controllers
         

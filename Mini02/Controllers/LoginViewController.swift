@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     var profileNome: String?
     var profileId: String?
     var profileEmail: String?
-    private let viewLogin = ViewLogin()
+    private let viewLogin = LoginView()
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var senhaTextField: UITextField!
     

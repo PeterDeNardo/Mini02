@@ -1,21 +1,22 @@
 //
-//  ProjectCreatePlussViewController.swift
+//  StartButtonViewController.swift
 //  Mini02
 //
-//  Created by Peter De Nardo on 08/10/18.
+//  Created by Matheus Fracaroli on 09/10/18.
 //  Copyright © 2018 Peter De Nardo. All rights reserved.
 //
 
 import UIKit
 
-class CalculatorPlussViewController: UIViewController {
+class StartButtonViewController: UIViewController {
 
-    private let viewCalculatorPluss = CalculatorPlussView()
+   
+    @IBAction func startButton(_ sender: UIButton) {
+        present(TabBarController(), animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewCalculatorPluss.setLayoutInView(view: self.view)
 
         // Do any additional setup after loading the view.
     }

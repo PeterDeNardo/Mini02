@@ -11,9 +11,7 @@ import FirebaseDatabase
 
 class CalculatorViewController: UIViewController{
     
-    private let viewCalculator = ViewCalculator()
-    
-    let myNavigationBar = MyNavigationBarController()
+    private let viewCalculator = CalculatorView()
     
     var materiais: [Any] = []
     
