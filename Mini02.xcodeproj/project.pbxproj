@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9165628D216FD0F300AC71DE /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9165628A216FD0F300AC71DE /* OnboardViewController.swift */; };
+		9165628E216FD0F300AC71DE /* StartButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9165628B216FD0F300AC71DE /* StartButtonViewController.swift */; };
+		9165628F216FD0F300AC71DE /* OnboardStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9165628C216FD0F300AC71DE /* OnboardStoryboard.storyboard */; };
+		9165629D216FD4E000AC71DE /* CalculatorPlussView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91656299216FD4E000AC71DE /* CalculatorPlussView.swift */; };
+		9165629E216FD4E000AC71DE /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9165629A216FD4E000AC71DE /* CalculatorView.swift */; };
+		9165629F216FD4E000AC71DE /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9165629B216FD4E000AC71DE /* MaterialView.swift */; };
+		916562A0216FD4E000AC71DE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9165629C216FD4E000AC71DE /* LoginView.swift */; };
 		944761C9216BF4A300019117 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 944761C8216BF4A300019117 /* GoogleService-Info.plist */; };
 		944761CE216D380300019117 /* Projeto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CD216D380300019117 /* Projeto.swift */; };
 		944761D0216D3A7300019117 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CF216D3A7300019117 /* Material.swift */; };
-		94CF0ABA216FCB6900ADC5F4 /* OnboardStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94CF0AB7216FCB6900ADC5F4 /* OnboardStoryboard.storyboard */; };
-		94CF0ABB216FCB6900ADC5F4 /* StartButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CF0AB8216FCB6900ADC5F4 /* StartButtonViewController.swift */; };
-		94CF0ABC216FCB6900ADC5F4 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CF0AB9216FCB6900ADC5F4 /* OnboardViewController.swift */; };
 		94E67A27216E96780098024E /* MaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E67A26216E96780098024E /* MaterialViewController.swift */; };
 		94E67A29216EA0220098024E /* MaterialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E67A28216EA0220098024E /* MaterialTableViewCell.swift */; };
-		94E67A37216FC3800098024E /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E67A33216FC3800098024E /* MaterialView.swift */; };
-		94E67A38216FC3800098024E /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E67A34216FC3800098024E /* CalculatorView.swift */; };
-		94E67A39216FC3800098024E /* CalculatorPlussView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E67A35216FC3800098024E /* CalculatorPlussView.swift */; };
-		94E67A3A216FC3800098024E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E67A36216FC3800098024E /* LoginView.swift */; };
 		961678D12169DB3600433E22 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D02169DB3600433E22 /* TabBarController.swift */; };
 		961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D22169DD1D00433E22 /* CalculatorViewController.swift */; };
 		961678D52169DDED00433E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961678D42169DDED00433E22 /* AppDelegate.swift */; };
@@ -35,18 +35,18 @@
 		3A64131D7FDE7E394C67F8BA /* Pods-Mini02.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mini02.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mini02/Pods-Mini02.debug.xcconfig"; sourceTree = "<group>"; };
 		5D3460C56B3655FAA31DCED1 /* Pods-Mini02.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mini02.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mini02/Pods-Mini02.release.xcconfig"; sourceTree = "<group>"; };
 		8592BF9331E17B7B56B9CDA9 /* Pods_Mini02.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mini02.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9165628A216FD0F300AC71DE /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardViewController.swift; path = "New Group/OnboardViewController.swift"; sourceTree = SOURCE_ROOT; };
+		9165628B216FD0F300AC71DE /* StartButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartButtonViewController.swift; path = "New Group/StartButtonViewController.swift"; sourceTree = SOURCE_ROOT; };
+		9165628C216FD0F300AC71DE /* OnboardStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OnboardStoryboard.storyboard; path = "New Group/OnboardStoryboard.storyboard"; sourceTree = SOURCE_ROOT; };
+		91656299216FD4E000AC71DE /* CalculatorPlussView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorPlussView.swift; path = ../../../../Downloads/Views/CalculatorPlussView.swift; sourceTree = "<group>"; };
+		9165629A216FD4E000AC71DE /* CalculatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorView.swift; path = ../../../../Downloads/Views/CalculatorView.swift; sourceTree = "<group>"; };
+		9165629B216FD4E000AC71DE /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaterialView.swift; path = ../../../../Downloads/Views/MaterialView.swift; sourceTree = "<group>"; };
+		9165629C216FD4E000AC71DE /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ../../../../Downloads/Views/LoginView.swift; sourceTree = "<group>"; };
 		944761C8216BF4A300019117 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		944761CD216D380300019117 /* Projeto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projeto.swift; sourceTree = "<group>"; };
 		944761CF216D3A7300019117 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
-		94CF0AB7216FCB6900ADC5F4 /* OnboardStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OnboardStoryboard.storyboard; path = Onboard/OnboardStoryboard.storyboard; sourceTree = SOURCE_ROOT; };
-		94CF0AB8216FCB6900ADC5F4 /* StartButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartButtonViewController.swift; path = Onboard/StartButtonViewController.swift; sourceTree = SOURCE_ROOT; };
-		94CF0AB9216FCB6900ADC5F4 /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardViewController.swift; path = Onboard/OnboardViewController.swift; sourceTree = SOURCE_ROOT; };
 		94E67A26216E96780098024E /* MaterialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
 		94E67A28216EA0220098024E /* MaterialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTableViewCell.swift; sourceTree = "<group>"; };
-		94E67A33216FC3800098024E /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
-		94E67A34216FC3800098024E /* CalculatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
-		94E67A35216FC3800098024E /* CalculatorPlussView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorPlussView.swift; sourceTree = "<group>"; };
-		94E67A36216FC3800098024E /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		961678D02169DB3600433E22 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		961678D22169DD1D00433E22 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		961678D42169DDED00433E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +89,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		91656290216FD1B200AC71DE /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				9165628C216FD0F300AC71DE /* OnboardStoryboard.storyboard */,
+				9165628A216FD0F300AC71DE /* OnboardViewController.swift */,
+				9165628B216FD0F300AC71DE /* StartButtonViewController.swift */,
+			);
+			name = Onboard;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		944761CC216D37EB00019117 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,17 +117,6 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
-		94E67A2C216FBE840098024E /* Onboard */ = {
-			isa = PBXGroup;
-			children = (
-				94CF0AB7216FCB6900ADC5F4 /* OnboardStoryboard.storyboard */,
-				94CF0AB9216FCB6900ADC5F4 /* OnboardViewController.swift */,
-				94CF0AB8216FCB6900ADC5F4 /* StartButtonViewController.swift */,
-			);
-			name = Onboard;
-			path = ../Onboardaaa;
-			sourceTree = "<group>";
-		};
 		961678D82169EA8700433E22 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +128,7 @@
 		96B027F7216546650093396A = {
 			isa = PBXGroup;
 			children = (
+				91656290216FD1B200AC71DE /* Onboard */,
 				96B02802216546650093396A /* Mini02 */,
 				96B02801216546650093396A /* Products */,
 				35E52E1C779DF98FEAD60311 /* Pods */,
@@ -146,7 +147,6 @@
 		96B02802216546650093396A /* Mini02 */ = {
 			isa = PBXGroup;
 			children = (
-				94E67A2C216FBE840098024E /* Onboard */,
 				944761D3216E816D00019117 /* TableViewCells */,
 				944761CC216D37EB00019117 /* Model */,
 				96B02815216546750093396A /* Views */,
@@ -165,10 +165,10 @@
 		96B02815216546750093396A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				94E67A35216FC3800098024E /* CalculatorPlussView.swift */,
-				94E67A34216FC3800098024E /* CalculatorView.swift */,
-				94E67A36216FC3800098024E /* LoginView.swift */,
-				94E67A33216FC3800098024E /* MaterialView.swift */,
+				91656299216FD4E000AC71DE /* CalculatorPlussView.swift */,
+				9165629A216FD4E000AC71DE /* CalculatorView.swift */,
+				9165629C216FD4E000AC71DE /* LoginView.swift */,
+				9165629B216FD4E000AC71DE /* MaterialView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,7 +250,7 @@
 				944761C9216BF4A300019117 /* GoogleService-Info.plist in Resources */,
 				96B0280B216546660093396A /* Assets.xcassets in Resources */,
 				96B02809216546650093396A /* Main.storyboard in Resources */,
-				94CF0ABA216FCB6900ADC5F4 /* OnboardStoryboard.storyboard in Resources */,
+				9165628F216FD0F300AC71DE /* OnboardStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,21 +366,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9165629D216FD4E000AC71DE /* CalculatorPlussView.swift in Sources */,
 				944761D0216D3A7300019117 /* Material.swift in Sources */,
 				94E67A29216EA0220098024E /* MaterialTableViewCell.swift in Sources */,
 				961678DE216BEC8700433E22 /* LoginViewController.swift in Sources */,
-				94E67A37216FC3800098024E /* MaterialView.swift in Sources */,
+				9165628E216FD0F300AC71DE /* StartButtonViewController.swift in Sources */,
 				961678DA2169EAB500433E22 /* help.swift in Sources */,
+				9165628D216FD0F300AC71DE /* OnboardViewController.swift in Sources */,
 				94E67A27216E96780098024E /* MaterialViewController.swift in Sources */,
+				9165629E216FD4E000AC71DE /* CalculatorView.swift in Sources */,
 				944761CE216D380300019117 /* Projeto.swift in Sources */,
-				94E67A39216FC3800098024E /* CalculatorPlussView.swift in Sources */,
-				94E67A38216FC3800098024E /* CalculatorView.swift in Sources */,
 				961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */,
-				94CF0ABC216FCB6900ADC5F4 /* OnboardViewController.swift in Sources */,
-				94CF0ABB216FCB6900ADC5F4 /* StartButtonViewController.swift in Sources */,
 				961678E2216BF59200433E22 /* CalculatorPlussViewController.swift in Sources */,
+				9165629F216FD4E000AC71DE /* MaterialView.swift in Sources */,
 				961678D52169DDED00433E22 /* AppDelegate.swift in Sources */,
-				94E67A3A216FC3800098024E /* LoginView.swift in Sources */,
+				916562A0216FD4E000AC71DE /* LoginView.swift in Sources */,
 				961678D12169DB3600433E22 /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,7 +529,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 67ALGZ83W8;
+				DEVELOPMENT_TEAM = 8X57T9RUUY;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -548,7 +548,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 67ALGZ83W8;
+				DEVELOPMENT_TEAM = 8X57T9RUUY;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
