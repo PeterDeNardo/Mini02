@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let v3 = CalculatorPlussViewController()
             let v4 = LoginViewController()
             
+            
             let nav = UINavigationController(rootViewController: v2)
             
             let controllers = [v2, v3, v4]

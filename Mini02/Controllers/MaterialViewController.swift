@@ -27,9 +27,14 @@ class MaterialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let materialView = MaterialView()
+        materialView.setViews(view: self.view)
+        
         //        viewMaterial.btnSearch.addTarget(self, action: #selector(MaterialViewController.pesquisar), for: .touchUpInside)
         
         pegarUserDefaults()
+        
+        tableView = materialView.tableView
         
         tableView.delegate = self
         tableView.dataSource = self

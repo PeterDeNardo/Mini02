@@ -10,7 +10,7 @@ import UIKit
 
 class CalculatorPlussViewController: UIViewController {
 
-    private let viewCalculatorPluss = CalculatorPlussView()
+    private let viewCalculatorPluss = CalculatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -34,10 +34,15 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         tabTwo.tabBarItem = tabTwoBarItem
         
+        let tabThree = MaterialViewController()
+        let tabThreeBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        
+        tabThree.tabBarItem = tabThreeBarItem
+        
         //Set Nav Controller
         let nav1 = UINavigationController(rootViewController: tabOne)
         
-        let controllers = [nav1, tabTwo]
+        let controllers = [nav1, tabTwo, tabThree]
         
         self.viewControllers = controllers
         
