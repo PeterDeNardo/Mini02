@@ -30,9 +30,12 @@ class MaterialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Adicionar Itens"
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
         criarTableView()
         criarSearchBar()
+        materialView.btnFour.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
         self.view.addGestureRecognizer(tap)
         fetchData()
         pegarUserDefaults()
@@ -43,7 +46,11 @@ class MaterialViewController: UIViewController {
         self.materialView.viewGlobal.endEditing(true)
     }
     
-    
+    @objc func goToNewMaterialView() {
+        let newMaterialsView = NewMaterialViewController()
+        navigationController?.pushViewController(newMaterialsView, animated: true)
+    }
+  
     func criarSearchBar(){
         let searchBar:UISearchBar = UISearchBar()
         searchBar.searchBarStyle = UISearchBar.Style.prominent
@@ -53,11 +60,11 @@ class MaterialViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
         
-        self.materialView.viewFolderButtons.addSubview(searchBar)
+        self.materialView.viewSearchBar.addSubview(searchBar)
     }
     
     func criarTableView(){
-        self.view = self.materialView.createViews()
+        self.view = self.materialView.setViews()
         self.materialView.tableView.delegate = self
         self.materialView.tableView.dataSource = self
         
