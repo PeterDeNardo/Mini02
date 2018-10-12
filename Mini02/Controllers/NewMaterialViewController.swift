@@ -11,13 +11,21 @@ import UIKit
 class NewMaterialViewController: UIViewController {
     
     let newMaterial = NewMaterialView()
+    var categoriaEscolhida: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view = newMaterial.setLayoutInView()
         self.title = "Novo objeto"
+        addButtonsTargets()
         
+        
+
+        // Do any additional setup after loading the view.
+    }
+    
+    func addButtonsTargets(){
         newMaterial.btnPapelaria.addTarget(self, action: #selector(NewMaterialViewController.btnPapelaria), for: .touchDown)
         newMaterial.btnSeam.addTarget(self, action: #selector(NewMaterialViewController.btnSeam), for:  .touchDown)
         newMaterial.btnOrganization.addTarget(self, action: #selector(NewMaterialViewController.btnOrganization), for:  .touchDown)
@@ -26,68 +34,91 @@ class NewMaterialViewController: UIViewController {
         newMaterial.btnWoodwork.addTarget(self, action: #selector(NewMaterialViewController.btnWoodwork), for:  .touchDown)
         newMaterial.btnDecoration.addTarget(self, action: #selector(NewMaterialViewController.btnDecoration), for:  .touchDown)
         newMaterial.btnOthers.addTarget(self, action: #selector(NewMaterialViewController.btnOthers), for:  .touchDown)
-
-        // Do any additional setup after loading the view.
     }
     
     // MARK: Buttons actions
     
+    func desmarcarTodosOsBotoes(){
+        categoriaEscolhida = nil
+        desmarcarBotao(btn: newMaterial.btnPapelaria)
+        desmarcarBotao(btn: newMaterial.btnSeam)
+        desmarcarBotao(btn: newMaterial.btnOrganization)
+        desmarcarBotao(btn: newMaterial.btnPainting)
+        desmarcarBotao(btn: newMaterial.btnCraftwork)
+        desmarcarBotao(btn: newMaterial.btnWoodwork)
+        desmarcarBotao(btn: newMaterial.btnDecoration)
+        desmarcarBotao(btn: newMaterial.btnOthers)
+    }
+    
+    func marcarBotao(btn:UIButton){
+        desmarcarTodosOsBotoes()
+        btn.isSelected = true
+        btn.backgroundColor = .white
+        btn.setTitleColor(.black , for: .normal)
+        categoriaEscolhida = btn.titleLabel?.text!
+    }
+    
+    func desmarcarBotao(btn: UIButton){
+        btn.isSelected = false
+        btn.backgroundColor = .black
+        btn.setTitleColor(.white , for: .normal)
+    }
+    
     @objc func btnPapelaria() {
+        
         if newMaterial.btnPapelaria.isSelected == true {
-            newMaterial.btnPapelaria.isSelected = false
-            newMaterial.btnPapelaria.backgroundColor = .black
+           desmarcarBotao(btn: newMaterial.btnPapelaria)
         }else {
-            newMaterial.btnPapelaria.isSelected = true
-            newMaterial.btnPapelaria.backgroundColor = .white
+            marcarBotao(btn: newMaterial.btnPapelaria)
         }
     }
     @objc func btnSeam() {
         if newMaterial.btnSeam.isSelected == true {
-            newMaterial.btnSeam.isSelected = false
+            desmarcarBotao(btn: newMaterial.btnSeam)
         }else {
-            newMaterial.btnSeam.isSelected = true
+            marcarBotao(btn: newMaterial.btnSeam)
         }
     }
     @objc func btnOrganization() {
         if newMaterial.btnOrganization.isSelected == true {
-            newMaterial.btnOrganization.isSelected = false
+            desmarcarBotao(btn: newMaterial.btnOrganization)
         }else {
-            newMaterial.btnOrganization.isSelected = true
+          marcarBotao(btn: newMaterial.btnOrganization)
         }
     }
     @objc func btnPainting() {
         if newMaterial.btnPainting.isSelected == true {
-            newMaterial.btnPainting.isSelected = false
+            desmarcarBotao(btn: newMaterial.btnPainting)
         }else {
-            newMaterial.btnPainting.isSelected = true
+            marcarBotao(btn: newMaterial.btnPainting)
         }
     }
     @objc func btnCraftwork() {
         if newMaterial.btnCraftwork.isSelected == true {
-            newMaterial.btnCraftwork.isSelected = false
+            desmarcarBotao(btn: newMaterial.btnCraftwork)
         }else {
-            newMaterial.btnCraftwork.isSelected = true
+           marcarBotao(btn: newMaterial.btnCraftwork)
         }
     }
     @objc func btnWoodwork() {
         if newMaterial.btnWoodwork.isSelected == true {
-            newMaterial.btnWoodwork.isSelected = false
+            desmarcarBotao(btn: newMaterial.btnWoodwork)
         }else {
-            newMaterial.btnWoodwork.isSelected = true
+            marcarBotao(btn: newMaterial.btnWoodwork)
         }
     }
     @objc func btnDecoration() {
         if newMaterial.btnDecoration.isSelected == true {
-            newMaterial.btnDecoration.isSelected = false
+            desmarcarBotao(btn: newMaterial.btnDecoration)
         }else {
-            newMaterial.btnDecoration.isSelected = true
+            marcarBotao(btn: newMaterial.btnDecoration)
         }
     }
     @objc func btnOthers() {
         if newMaterial.btnOthers.isSelected == true {
-            newMaterial.btnOthers.isSelected = false
+            desmarcarBotao(btn: newMaterial.btnOthers)
         }else {
-            newMaterial.btnOthers.isSelected = true
+            marcarBotao(btn: newMaterial.btnOthers)
         }
     }
     
