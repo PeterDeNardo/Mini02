@@ -20,6 +20,7 @@ class MaterialViewController: UIViewController {
     var usuario: [String:String]?
     var materiais: [Material] = []
     var materiaisPesquisados: [Material] = []
+    var timer: Timer?
     
     
     
@@ -29,9 +30,34 @@ class MaterialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        criarTableView()
+        criarSearchBar()
         fetchData()
         pegarUserDefaults()
         //        viewMaterial.btnSearch.addTarget(self, action: #selector(MaterialViewController.pesquisar), for: .touchUpInside)
+    }
+    
+    func criarSearchBar(){
+        let searchBar:UISearchBar = UISearchBar()
+        searchBar.searchBarStyle = UISearchBar.Style.prominent
+        searchBar.placeholder = " Pesquisar..."
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
+        
+        self.materialView.viewFolderButtons.addSubview(searchBar)
+    }
+    
+    func criarTableView(){
+        
+        
+        
+        self.view = self.materialView.createViews()
+        
+        self.materialView.tableView.delegate = self
+        self.materialView.tableView.dataSource = self
+        
     }
     
     
@@ -54,6 +80,10 @@ class MaterialViewController: UIViewController {
             }
         }
         
+        if materiaisPesquisados.count == 0 {
+            materiaisPesquisados = materiais
+        }
+        
     }
     
     func pegarUserDefaults(){
@@ -68,7 +98,7 @@ class MaterialViewController: UIViewController {
         
     }
     
-    private func fetchData(){
+    @objc private func fetchData(){
         
         guard let ref = self.ref else {
             print(">>")
@@ -89,19 +119,9 @@ class MaterialViewController: UIViewController {
             
             self.pesquisar()
             
+     
             
-            let searchBar:UISearchBar = UISearchBar()
-            searchBar.searchBarStyle = UISearchBar.Style.prominent
-            searchBar.placeholder = " Search..."
-            searchBar.sizeToFit()
-            searchBar.isTranslucent = false
-            searchBar.backgroundImage = UIImage()
-            searchBar.delegate = self
-            
-            self.view = self.materialView.createViews()
-            self.materialView.viewFolderButtons.addSubview(searchBar)
-            self.materialView.tableView.delegate = self
-            self.materialView.tableView.dataSource = self
+            self.materialView.tableView.reloadData()
             
         }
         
@@ -112,16 +132,16 @@ class MaterialViewController: UIViewController {
 extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print(materiaisPesquisados.count)
         return materiaisPesquisados.count
         
     }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange textSearched: String) {
-        pesquisaTxt = textSearched
-         fetchData()
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        timer?.invalidate() //cancels out previous Timers
+        pesquisaTxt =  searchBar.text ?? " "
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fetchData), userInfo: nil, repeats: false)
     }
+  
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
