@@ -31,13 +31,13 @@ class MaterialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
-        
         criarTableView()
         criarSearchBar()
+        self.view.addGestureRecognizer(tap)
         fetchData()
         pegarUserDefaults()
         
-        self.view.addGestureRecognizer(tap)
+        
     }
     
     
