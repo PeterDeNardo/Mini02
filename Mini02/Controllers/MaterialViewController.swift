@@ -20,6 +20,7 @@ class MaterialViewController: UIViewController {
     var materiais: [Material] = []
     var materiaisPesquisados: [Material] = []
     var timer: Timer?
+    var tap: UITapGestureRecognizer?
   
     
     
@@ -32,17 +33,17 @@ class MaterialViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Adicionar Itens"
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
         criarTableView()
         criarSearchBar()
         materialView.btnFour.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
-        self.view.addGestureRecognizer(tap)
+        materialView.btnTwo.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
         fetchData()
         pegarUserDefaults()
     }
     
     
     @objc func abaixarTeclado() {
+        self.view.removeGestureRecognizer(tap!)
         self.materialView.viewGlobal.endEditing(true)
     }
     
@@ -148,14 +149,13 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
+        self.view.addGestureRecognizer(tap!)
+    }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.view.endEditing(true)
-        view.endEditing(true)
-        self.materialView.viewFolderButtons.endEditing(true)
-         self.materialView.tableView.endEditing(true)
-        self.materialView.viewFolder.endEditing(true)
-        self.materialView.viewGlobal.endEditing(true)
-        
+       abaixarTeclado()
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
