@@ -36,10 +36,18 @@ class MaterialViewController: UIViewController {
         self.title = "Adicionar Itens"
         criarTableView()
         criarSearchBar()
-        materialView.btnFour.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
-        materialView.btnTwo.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
+        addButtonsTargets()
         fetchData()
         pegarUserDefaults()
+    }
+    
+    func addButtonsTargets (){
+        materialView.btnFour.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
+        
+        materialView.btnThree.addTarget(self, action: #selector(addMaterial), for: .touchDown
+        )
+        
+        materialView.btnTwo.addTarget(self, action: #selector(done), for: .touchDown)
     }
     
     
@@ -71,7 +79,6 @@ class MaterialViewController: UIViewController {
         self.materialView.tableView.dataSource = self
         
     }
-    
     
     func pesquisar(){
 
@@ -112,7 +119,24 @@ class MaterialViewController: UIViewController {
         
     }
     
-    func addMaterial(){
+    func calcularTotal () -> Float {
+        var total:Float = 0
+        for material in materiaisSelecionados {
+            total = material.preco! + total
+        }
+        return total
+    }
+    
+    @objc func done (){
+        let calculatorVC = CalculatorViewController()
+        for material in materiaisSelecionados {
+            calculatorVC.materiaisSelecionados.append(material)
+        }
+        calculatorVC.total = calcularTotal()
+        navigationController?.pushViewController(calculatorVC, animated: true)
+    }
+    
+    @objc func addMaterial(){
         guard let index = materialView.tableView.indexPathForSelectedRow?.row else {return}
        materiaisSelecionados.append(materiaisPesquisados[index])
     }

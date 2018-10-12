@@ -96,6 +96,7 @@ class NewMaterialViewController: UIViewController {
             marcarBotao(btn: newMaterial.btnPapelaria)
         }
     }
+    
     @objc func btnSeam() {
         if newMaterial.btnSeam.isSelected == true {
             desmarcarBotao(btn: newMaterial.btnSeam)
@@ -103,6 +104,7 @@ class NewMaterialViewController: UIViewController {
             marcarBotao(btn: newMaterial.btnSeam)
         }
     }
+    
     @objc func btnOrganization() {
         if newMaterial.btnOrganization.isSelected == true {
             desmarcarBotao(btn: newMaterial.btnOrganization)
@@ -110,6 +112,7 @@ class NewMaterialViewController: UIViewController {
           marcarBotao(btn: newMaterial.btnOrganization)
         }
     }
+    
     @objc func btnPainting() {
         if newMaterial.btnPainting.isSelected == true {
             desmarcarBotao(btn: newMaterial.btnPainting)
@@ -117,6 +120,7 @@ class NewMaterialViewController: UIViewController {
             marcarBotao(btn: newMaterial.btnPainting)
         }
     }
+    
     @objc func btnCraftwork() {
         if newMaterial.btnCraftwork.isSelected == true {
             desmarcarBotao(btn: newMaterial.btnCraftwork)
@@ -124,6 +128,7 @@ class NewMaterialViewController: UIViewController {
            marcarBotao(btn: newMaterial.btnCraftwork)
         }
     }
+    
     @objc func btnWoodwork() {
         if newMaterial.btnWoodwork.isSelected == true {
             desmarcarBotao(btn: newMaterial.btnWoodwork)
@@ -131,6 +136,7 @@ class NewMaterialViewController: UIViewController {
             marcarBotao(btn: newMaterial.btnWoodwork)
         }
     }
+    
     @objc func btnDecoration() {
         if newMaterial.btnDecoration.isSelected == true {
             desmarcarBotao(btn: newMaterial.btnDecoration)
@@ -138,6 +144,7 @@ class NewMaterialViewController: UIViewController {
             marcarBotao(btn: newMaterial.btnDecoration)
         }
     }
+    
     @objc func btnOthers() {
         
         cadastrarMaterial()

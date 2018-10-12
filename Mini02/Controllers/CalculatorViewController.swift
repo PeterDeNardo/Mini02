@@ -13,14 +13,28 @@ class CalculatorViewController: UIViewController{
     
     private let viewCalculator = CalculatorView()
     
+    var tap: UITapGestureRecognizer?
+    
+    var materiaisSelecionados: [Material] = []
+    
     var materiais: [Any] = []
     
     var usuario: [String:String]?
     
     var ref: DatabaseReference?
     
+    var valorItens: Float = 0.00
+    
+    var total: Float = 0.00
+    
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
+        var mat = materiais.count
+        print(mat)
+        print(materiais)
+        viewCalculator.lblVIQuantity.text = "\(materiaisSelecionados.count)"
+        viewCalculator.lblVRTotal.text = "R$ \(valorItens)"
+        viewCalculator.lblVIQUantityTotalMoney.text = "R$ \(total)"
     }
     
     override func viewDidLoad() {
@@ -35,10 +49,18 @@ class CalculatorViewController: UIViewController{
         
         viewCalculator.setLayoutInView(view: self.view)
         
+        addButtonsTargets()
+        
+        
+    }
+    
+    func addButtonsTargets() {
         viewCalculator.btnCostsButton.addTarget(self, action: #selector(CalculatorViewController.goToCalculatorPluss), for: .touchDown)
         viewCalculator.btnVIMaterials.addTarget(self, action: #selector(CalculatorViewController.goToMaterialViewController), for: .touchDown)
         viewCalculator.btnVBAddProjects.addTarget(self, action: #selector(CalculatorViewController.addProject), for: .touchDown)
         
+        tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
+        self.view.addGestureRecognizer(tap!)
     }
     
     func pegarUserDefaults(){
@@ -62,28 +84,25 @@ class CalculatorViewController: UIViewController{
         guard let lucroPretendidoString = viewCalculator.txtVPProfit.text, lucroPretendidoString.count > 0 else { return }
         
         guard let lucroPretendidoFloat = Float(lucroPretendidoString), lucroPretendidoFloat > 0 else { return }
-        
-//        if materiais == nil {
-//            return
-//        }
+   
+        if materiaisSelecionados.count == 0 {
+            return
+        }
         
         var projeto: Projeto?
         
-        if usuario == nil{
-            
-            projeto = Projeto(materiais: materiais, lucroPretendido: lucroPretendidoFloat, horasTrabalhadas: horasTrabalhadasFloat, categoria: "categoriaTeste", nome: "nomeTeste")
-            
-            
+            for material in materiaisSelecionados {
+                materiais.append(material.toAnyObject())
+            }
+        
+        if usuario == nil {
+             projeto = Projeto(materiais: materiais, lucroPretendido: lucroPretendidoFloat, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
         }else{
-            
-            let teste = Material(nome : "Madeira", tipo : "Duraça", preco : 10, marca :  "Tramontina", chave : "")
-            
-             materiais.append(teste.toAnyObject())
-            
-     
-         projeto = Projeto(usuario: usuario!, materiais: materiais, lucroPretendido: lucroPretendidoFloat, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
-            
+            projeto = Projeto(usuario: usuario!, materiais: materiais, lucroPretendido: lucroPretendidoFloat, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
         }
+        
+        
+        
         
         //AQUI DEVE PASSAR O PROJETO PARA A PROXIMA TELA, ONDE ELE VAI ESCOLHER O NOME DO PROJETO E A CATEGORIA PARA ENTÃO JOGAR NO BANCO COM AS LINHAS ABAIXO!!!
         
@@ -96,8 +115,13 @@ class CalculatorViewController: UIViewController{
         
     }
     
+    @objc func abaixarTeclado() {
+        viewCalculator.viewGlobal.endEditing(true)
+    }
+    
     @objc func goToMaterialViewController () {
         let materialsView = MaterialViewController()
+        materialsView.materiaisSelecionados = self.materiaisSelecionados
         navigationController?.pushViewController(materialsView, animated: true)
     }
     
