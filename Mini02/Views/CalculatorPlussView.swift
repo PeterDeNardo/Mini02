@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-class ViewCalculatorPluss {
+class CalculatorPlussView {
     
     //MARK: Setting objects in screen
     //Setting Global View
