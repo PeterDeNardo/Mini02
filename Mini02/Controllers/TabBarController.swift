@@ -29,7 +29,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         tabOne.tabBarItem = tabOneBarItem
         
-        let tabTwo = LoginViewController()
+        let tabTwo = SearchViewController()
         let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
         
         tabTwo.tabBarItem = tabTwoBarItem

@@ -30,6 +30,8 @@
 		96C867BB216FD5CF00451161 /* StartButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867B8216FD5CF00451161 /* StartButtonViewController.swift */; };
 		96C867C02170745100451161 /* NewMaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867BF2170745100451161 /* NewMaterialView.swift */; };
 		96C867C321707E7000451161 /* NewMaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867C221707E7000451161 /* NewMaterialViewController.swift */; };
+		96C867C52170A69E00451161 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867C42170A69E00451161 /* SearchView.swift */; };
+		96C867C72170A71F00451161 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867C62170A71F00451161 /* SearchViewController.swift */; };
 		D98D03754DD55F2B15CACB3B /* Pods_Mini02.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8592BF9331E17B7B56B9CDA9 /* Pods_Mini02.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		96C867B8216FD5CF00451161 /* StartButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartButtonViewController.swift; sourceTree = "<group>"; };
 		96C867BF2170745100451161 /* NewMaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMaterialView.swift; sourceTree = "<group>"; };
 		96C867C221707E7000451161 /* NewMaterialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMaterialViewController.swift; sourceTree = "<group>"; };
+		96C867C42170A69E00451161 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		96C867C62170A71F00451161 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,7 @@
 				96C867AF216FD4D400451161 /* LoginView.swift */,
 				96C867B1216FD4D600451161 /* MaterialView.swift */,
 				96C867BF2170745100451161 /* NewMaterialView.swift */,
+				96C867C42170A69E00451161 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */,
 				94E67A26216E96780098024E /* MaterialViewController.swift */,
 				96C867C221707E7000451161 /* NewMaterialViewController.swift */,
+				96C867C62170A71F00451161 /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				944761D0216D3A7300019117 /* Material.swift in Sources */,
+				96C867C52170A69E00451161 /* SearchView.swift in Sources */,
 				94E67A29216EA0220098024E /* MaterialTableViewCell.swift in Sources */,
 				961678DE216BEC8700433E22 /* LoginViewController.swift in Sources */,
 				96C867BB216FD5CF00451161 /* StartButtonViewController.swift in Sources */,
@@ -381,6 +388,7 @@
 				94E67A27216E96780098024E /* MaterialViewController.swift in Sources */,
 				96C867BA216FD5CF00451161 /* OnboardViewController.swift in Sources */,
 				96C867C321707E7000451161 /* NewMaterialViewController.swift in Sources */,
+				96C867C72170A71F00451161 /* SearchViewController.swift in Sources */,
 				944761CE216D380300019117 /* Projeto.swift in Sources */,
 				961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */,
 				96C867B5216FD4D600451161 /* MaterialView.swift in Sources */,
