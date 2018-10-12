@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class NewMaterialViewController: UIViewController {
     
     let newMaterial = NewMaterialView()
     var categoriaEscolhida: String?
     var tap: UITapGestureRecognizer?
+    var ref: DatabaseReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        ref = Database.database().reference(withPath: "Material")
         self.view = newMaterial.setLayoutInView()
         self.title = "Novo objeto"
         addButtonsTargets()
@@ -66,6 +69,23 @@ class NewMaterialViewController: UIViewController {
         btn.isSelected = false
         btn.backgroundColor = .black
         btn.setTitleColor(.white , for: .normal)
+    }
+    
+    
+    func cadastrarMaterial(){
+        guard let nomeMaterial = newMaterial.txtMaterialName.text else {return}
+        guard let precoMaterialString = newMaterial.txtPrice.text else {return}
+        guard let precoMaterial =  Float(precoMaterialString) else {return}
+        guard let marcaMaterial = newMaterial.txtMaterialOrigin.text else {return}
+        guard let categoria = categoriaEscolhida else {return}
+        
+        let material = Material(nome: nomeMaterial, tipo: marcaMaterial, preco: precoMaterial, marca: categoria)
+        
+        guard let ref = self.ref else{return}
+        
+        let materialRef = ref.childByAutoId()
+        
+        materialRef.setValue(material.toAnyObject())
     }
     
     @objc func btnPapelaria() {
@@ -119,11 +139,13 @@ class NewMaterialViewController: UIViewController {
         }
     }
     @objc func btnOthers() {
-        if newMaterial.btnOthers.isSelected == true {
-            desmarcarBotao(btn: newMaterial.btnOthers)
-        }else {
-            marcarBotao(btn: newMaterial.btnOthers)
-        }
+        
+        cadastrarMaterial()
+//        if newMaterial.btnOthers.isSelected == true {
+//            desmarcarBotao(btn: newMaterial.btnOthers)
+//        }else {
+//            marcarBotao(btn: newMaterial.btnOthers)
+//        }
     }
     
     

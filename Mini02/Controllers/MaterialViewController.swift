@@ -19,6 +19,7 @@ class MaterialViewController: UIViewController {
     var usuario: [String:String]?
     var materiais: [Material] = []
     var materiaisPesquisados: [Material] = []
+    var materiaisSelecionados: [Material] = []
     var timer: Timer?
     var tap: UITapGestureRecognizer?
   
@@ -109,6 +110,11 @@ class MaterialViewController: UIViewController {
             "id" : defaults.string(forKey: "id")
             ] as? [String : String]
         
+    }
+    
+    func addMaterial(){
+        guard let index = materialView.tableView.indexPathForSelectedRow?.row else {return}
+       materiaisSelecionados.append(materiaisPesquisados[index])
     }
     
     @objc private func fetchData(){
