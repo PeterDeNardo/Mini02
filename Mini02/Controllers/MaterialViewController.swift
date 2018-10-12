@@ -13,6 +13,7 @@ import FirebaseDatabase
 class MaterialViewController: UIViewController {
     
     // var viewMaterial = ViewMaterial()
+    var pesquisaTxt = ""
     var materialView = MaterialView()
     var ref: DatabaseReference? = Database.database().reference(withPath: "Material")
     var tableView: UITableView!
@@ -35,21 +36,20 @@ class MaterialViewController: UIViewController {
     
     
     func pesquisar(){
+
+        materiaisPesquisados.removeAll()
         
-        // let pesquisa = viewMaterial.txtPesquisar.txt
-        let pesquisa = "M"
-    
         for material in materiais {
             
-            if (material.nome?.contains(pesquisa))!{
+            if (material.nome?.contains(pesquisaTxt))!{
                 materiaisPesquisados.append(material)
             }
                 
-            else if (material.marca?.contains(pesquisa))!{
+            else if (material.marca?.contains(pesquisaTxt))!{
                 materiaisPesquisados.append(material)
             }
                 
-            else if (material.tipo?.contains(pesquisa))!{
+            else if (material.tipo?.contains(pesquisaTxt))!{
                 materiaisPesquisados.append(material)
             }
         }
@@ -89,7 +89,17 @@ class MaterialViewController: UIViewController {
             
             self.pesquisar()
             
+            
+            let searchBar:UISearchBar = UISearchBar()
+            searchBar.searchBarStyle = UISearchBar.Style.prominent
+            searchBar.placeholder = " Search..."
+            searchBar.sizeToFit()
+            searchBar.isTranslucent = false
+            searchBar.backgroundImage = UIImage()
+            searchBar.delegate = self
+            
             self.view = self.materialView.createViews()
+            self.materialView.viewFolderButtons.addSubview(searchBar)
             self.materialView.tableView.delegate = self
             self.materialView.tableView.dataSource = self
             
@@ -99,13 +109,18 @@ class MaterialViewController: UIViewController {
     
 }
 
-extension MaterialViewController: UITableViewDelegate, UITableViewDataSource{
+extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         print(materiaisPesquisados.count)
         return materiaisPesquisados.count
         
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange textSearched: String) {
+        pesquisaTxt = textSearched
+         fetchData()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
