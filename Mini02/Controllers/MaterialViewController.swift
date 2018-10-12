@@ -36,8 +36,6 @@ class MaterialViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         fetchData()
         pegarUserDefaults()
-        
-        
     }
     
     
@@ -70,17 +68,19 @@ class MaterialViewController: UIViewController {
 
         materiaisPesquisados.removeAll()
         
+        pesquisaTxt = pesquisaTxt.uppercased()
+        
         for material in materiais {
             
-            if (material.nome?.contains(pesquisaTxt))!{
+            if (material.nome?.uppercased().contains(pesquisaTxt))!{
                 materiaisPesquisados.append(material)
             }
                 
-            else if (material.marca?.contains(pesquisaTxt))!{
+            else if (material.marca?.uppercased().contains(pesquisaTxt))!{
                 materiaisPesquisados.append(material)
             }
                 
-            else if (material.tipo?.contains(pesquisaTxt))!{
+            else if (material.tipo?.uppercased().contains(pesquisaTxt))!{
                 materiaisPesquisados.append(material)
             }
         }
