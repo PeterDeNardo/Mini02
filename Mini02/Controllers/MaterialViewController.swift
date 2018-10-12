@@ -14,7 +14,7 @@ class MaterialViewController: UIViewController {
     
     // var viewMaterial = ViewMaterial()
     var materialView = MaterialView()
-    var ref: DatabaseReference?
+    var ref: DatabaseReference? = Database.database().reference(withPath: "Material")
     var tableView: UITableView!
     var usuario: [String:String]?
     var materiais: [Material] = []
@@ -23,29 +23,16 @@ class MaterialViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        pegarUserDefaults()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference(withPath: "Material")
         fetchData()
-        iniciar()
-        
-
+        pegarUserDefaults()
+        //        viewMaterial.btnSearch.addTarget(self, action: #selector(MaterialViewController.pesquisar), for: .touchUpInside)
     }
     
-    func iniciar(){
-        
-        //        viewMaterial.btnSearch.addTarget(self, action: #selector(MaterialViewController.pesquisar), for: .touchUpInside)
-        
-
-        
-        
-        pegarUserDefaults()
-        
-        
-        
-    }
     
     func pesquisar(){
         
@@ -90,6 +77,7 @@ class MaterialViewController: UIViewController {
         ref.observe(.value) { (DataSnapshot) in
             
             var materiais: [Material] = []
+            
             for child in DataSnapshot.children {
                 if let snapshot = child as? DataSnapshot,
                     let material = Material(snapshot: snapshot){
@@ -104,33 +92,30 @@ class MaterialViewController: UIViewController {
             self.view = self.materialView.createViews()
             self.materialView.tableView.delegate = self
             self.materialView.tableView.dataSource = self
-           
-           
-            self.materialView.tableView.reloadData()
             
-
         }
         
     }
-    
     
 }
 
 extension MaterialViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         print(materiaisPesquisados.count)
         return materiaisPesquisados.count
+        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cellReuseIdendifier = "cell"
-        //let cell = MaterialTableViewCell()
+
         self.materialView.tableView.register(MaterialTableViewCell.self, forCellReuseIdentifier: cellReuseIdendifier)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! MaterialTableViewCell
-        
-        
+  
         let material = materiaisPesquisados[indexPath.row]
         
         cell.nome.text = material.nome
@@ -143,7 +128,9 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return 1
+        
     }
     
 }
