@@ -20,6 +20,7 @@ class MaterialViewController: UIViewController {
     var materiais: [Material] = []
     var materiaisPesquisados: [Material] = []
     var timer: Timer?
+  
     
     
     
@@ -29,11 +30,21 @@ class MaterialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
+        
         criarTableView()
         criarSearchBar()
         fetchData()
         pegarUserDefaults()
+        
+        self.view.addGestureRecognizer(tap)
     }
+    
+    
+    @objc func abaixarTeclado() {
+        self.materialView.viewGlobal.endEditing(true)
+    }
+    
     
     func criarSearchBar(){
         let searchBar:UISearchBar = UISearchBar()
@@ -48,11 +59,7 @@ class MaterialViewController: UIViewController {
     }
     
     func criarTableView(){
-        
-        
-        
         self.view = self.materialView.createViews()
-        
         self.materialView.tableView.delegate = self
         self.materialView.tableView.dataSource = self
         
@@ -133,11 +140,25 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         return materiaisPesquisados.count
         
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        view.endEditing(true)
+        self.materialView.viewFolderButtons.endEditing(true)
+         self.materialView.tableView.endEditing(true)
+        self.materialView.viewFolder.endEditing(true)
+        self.materialView.viewGlobal.endEditing(true)
+        
+    }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate() //cancels out previous Timers
         pesquisaTxt =  searchBar.text ?? " "
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fetchData), userInfo: nil, repeats: false)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        abaixarTeclado()
     }
   
 
