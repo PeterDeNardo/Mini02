@@ -13,6 +13,9 @@ class NewMaterialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let newMaterial = NewMaterialView()
+        self.view = newMaterial.setLayoutInView()
+        self.title = "Novo objeto"
         // Do any additional setup after loading the view.
     }
     

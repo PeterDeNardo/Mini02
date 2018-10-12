@@ -13,7 +13,10 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let tabBar = TabBarController()
+        
+        self.navigationController?.pushViewController(tabBar, animated: true)
+        
     }
     
 

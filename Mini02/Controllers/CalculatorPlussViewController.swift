@@ -10,12 +10,14 @@ import UIKit
 
 class CalculatorPlussViewController: UIViewController {
 
-    private let viewCalculatorPluss = CalculatorView()
+    private let viewCalculatorPluss = CalculatorPlussView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewCalculatorPluss.setLayoutInView(view: self.view)
+        self.title = "Custos extras"
+        
+        self.view = viewCalculatorPluss.setViews()
 
         // Do any additional setup after loading the view.
     }

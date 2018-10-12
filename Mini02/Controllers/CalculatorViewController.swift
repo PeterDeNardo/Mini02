@@ -27,17 +27,17 @@ class CalculatorViewController: UIViewController{
         
         super.viewDidLoad()
  
+        self.title = "Novo Projetro"
+        
         pegarUserDefaults()
         
         ref = Database.database().reference(withPath: "Projeto")
         
         viewCalculator.setLayoutInView(view: self.view)
         
-//        viewCalculator.btnCostsButton.addTarget(self, action: #selector(CalculatorViewController.goToCalculatorPluss), for: .touchUpInside)
-        
-        viewCalculator.btnVIMaterials.addTarget(self, action: #selector(CalculatorViewController.goToMaterialsViewController), for: .touchDown)
-        
-        viewCalculator.btnVBAddProjects.addTarget(self, action: #selector(CalculatorViewController.addProject), for: .touchUpInside)
+        viewCalculator.btnCostsButton.addTarget(self, action: #selector(CalculatorViewController.goToCalculatorPluss), for: .touchDown)
+        viewCalculator.btnVIMaterials.addTarget(self, action: #selector(CalculatorViewController.goToMaterialViewController), for: .touchDown)
+        viewCalculator.btnVBAddProjects.addTarget(self, action: #selector(CalculatorViewController.addProject), for: .touchDown)
         
     }
     
@@ -96,12 +96,12 @@ class CalculatorViewController: UIViewController{
         
     }
     
-//    @objc func goToCalculatorPluss () {
-//        let materialsView = MaterialsViewController()
-//        navigationController?.pushViewController(materialsView, animated: true)
-//    }
+    @objc func goToMaterialViewController () {
+        let materialsView = MaterialViewController()
+        navigationController?.pushViewController(materialsView, animated: true)
+    }
     
-    @objc func goToMaterialsViewController () {
+    @objc func goToCalculatorPluss() {
         let calculatorPluss = CalculatorPlussViewController()
         navigationController?.pushViewController(calculatorPluss, animated: true)
     }
