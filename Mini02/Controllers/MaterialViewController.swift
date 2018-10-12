@@ -12,7 +12,6 @@ import FirebaseDatabase
 
 class MaterialViewController: UIViewController {
     
-    // var viewMaterial = ViewMaterial()
     var pesquisaTxt = ""
     var materialView = MaterialView()
     var ref: DatabaseReference? = Database.database().reference(withPath: "Material")
@@ -34,7 +33,6 @@ class MaterialViewController: UIViewController {
         criarSearchBar()
         fetchData()
         pegarUserDefaults()
-        //        viewMaterial.btnSearch.addTarget(self, action: #selector(MaterialViewController.pesquisar), for: .touchUpInside)
     }
     
     func criarSearchBar(){
@@ -80,7 +78,7 @@ class MaterialViewController: UIViewController {
             }
         }
         
-        if materiaisPesquisados.count == 0 {
+        if pesquisaTxt == "" {
             materiaisPesquisados = materiais
         }
         
