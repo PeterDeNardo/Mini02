@@ -13,6 +13,7 @@ import FirebaseDatabase
 class MaterialViewController: UIViewController {
     
     // var viewMaterial = ViewMaterial()
+    var materialView = MaterialView()
     var ref: DatabaseReference?
     var tableView: UITableView!
     var usuario: [String:String]?
@@ -20,37 +21,37 @@ class MaterialViewController: UIViewController {
     var materiaisPesquisados: [Material] = []
     
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        pegarUserDefaults()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference(withPath: "Material")
+        fetchData()
+        iniciar()
         
-        let materialView = MaterialView()
-        materialView.setViews(view: self.view)
+
+    }
+    
+    func iniciar(){
         
         //        viewMaterial.btnSearch.addTarget(self, action: #selector(MaterialViewController.pesquisar), for: .touchUpInside)
         
+
+        
+        
         pegarUserDefaults()
         
-        tableView = materialView.tableView
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 80.0
-        pesquisar()
+        
     }
     
     func pesquisar(){
         
         // let pesquisa = viewMaterial.txtPesquisar.txt
-        let pesquisa = ""
-        
-        //fetchData()
-        
-        
+        let pesquisa = "M"
+    
         for material in materiais {
             
             if (material.nome?.contains(pesquisa))!{
@@ -82,42 +83,61 @@ class MaterialViewController: UIViewController {
     
     private func fetchData(){
         
-        guard let ref = self.ref else {return}
+        guard let ref = self.ref else {
+            print(">>")
+            return}
         
-        ref.observe(.value) { (snapshot) in
+        ref.observe(.value) { (DataSnapshot) in
+            
             var materiais: [Material] = []
-            for child in snapshot.children {
+            for child in DataSnapshot.children {
                 if let snapshot = child as? DataSnapshot,
                     let material = Material(snapshot: snapshot){
                     materiais.append(material)
                 }
             }
+            
             self.materiais = materiais
             
-            self.tableView.reloadData()
+            self.pesquisar()
             
+            self.view = self.materialView.createViews()
+            self.materialView.tableView.delegate = self
+            self.materialView.tableView.dataSource = self
+           
+           
+            self.materialView.tableView.reloadData()
+            
+
         }
+        
     }
+    
     
 }
 
 extension MaterialViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return materiais.count
+        print(materiaisPesquisados.count)
+        return materiaisPesquisados.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellReuseIdendifier = "cell"
+        //let cell = MaterialTableViewCell()
+        self.materialView.tableView.register(MaterialTableViewCell.self, forCellReuseIdentifier: cellReuseIdendifier)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MaterialCell", for: indexPath) as! MaterialTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! MaterialTableViewCell
         
-        let material = materiais[indexPath.row]
+        
+        let material = materiaisPesquisados[indexPath.row]
         
         cell.nome.text = material.nome
         cell.preco.text = "R$\(material.preco)"
         cell.tipo.text = material.tipo
         cell.marca.text = material.marca
-        
+
         return cell
         
     }
