@@ -76,4 +76,14 @@ extension UIView {
     }
 }
 
+//MARK: UIButton Extension
+
+extension UIButton {
+    
+    func setButton(titleText : String, backgroundColor : UIColor){
+        self.setTitle(titleText, for: .normal)
+        self.backgroundColor = backgroundColor
+    }
+}
+
 

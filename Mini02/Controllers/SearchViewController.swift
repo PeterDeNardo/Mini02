@@ -1,25 +1,21 @@
 //
-//  ProjectCreatePlussViewController.swift
+//  SearchViewController.swift
 //  Mini02
 //
-//  Created by Peter De Nardo on 08/10/18.
+//  Created by Peter De Nardo on 12/10/18.
 //  Copyright © 2018 Peter De Nardo. All rights reserved.
 //
 
 import UIKit
 
-class CalculatorPlussViewController: UIViewController {
+class SearchViewController: UIViewController {
 
-    private let viewCalculatorPluss = CalculatorPlussView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Custos extras"
-        
-        self.view = viewCalculatorPluss.setViews()
 
-        // Do any additional setup after loading the view.
+        let searchView = SearchView()
+        self.view = searchView.setViews()
+        
     }
     
 

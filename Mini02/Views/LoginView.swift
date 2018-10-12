@@ -8,7 +8,7 @@ import GoogleSignIn
 import FirebaseAuth
 
 
-class ViewLogin {
+class LoginView {
 
     
     

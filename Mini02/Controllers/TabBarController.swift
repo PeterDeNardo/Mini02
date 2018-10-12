@@ -29,18 +29,19 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         tabOne.tabBarItem = tabOneBarItem
         
-        let tabTwo = LoginViewController()
+        let tabTwo = SearchViewController()
         let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
         
         tabTwo.tabBarItem = tabTwoBarItem
         
-        let tabThree = MaterialViewController()
+        let tabThree = NewMaterialViewController()
         let tabThreeBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
         
         tabThree.tabBarItem = tabThreeBarItem
         
         //Set Nav Controller
         let nav1 = UINavigationController(rootViewController: tabOne)
+        
         
         let controllers = [nav1, tabTwo, tabThree]
         

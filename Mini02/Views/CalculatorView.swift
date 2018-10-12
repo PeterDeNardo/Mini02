@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-class ViewCalculator {
+class CalculatorView {
     
     // Seting Global View
     
@@ -59,7 +59,7 @@ class ViewCalculator {
     
     func setViews(view : UIView) {
         viewGlobal = UIView(frame: (CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)))
-        viewGlobal.backgroundColor = .yellow
+        viewGlobal.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
         view.addSubview(viewGlobal)
         
         viewGlobal.addSubview(viewItem)
@@ -71,7 +71,7 @@ class ViewCalculator {
         
         viewItem.layer.cornerRadius = 7
         viewItem.dropShadow()
-        viewItem.backgroundColor = .white
+        viewItem.backgroundColor = UIColor(red:0.90, green:0.88, blue:0.77, alpha:1.0)
         
         setViewItemLayout(view: viewItem)
         
@@ -186,13 +186,13 @@ class ViewCalculator {
         
         viewCostButton.layer.cornerRadius = 7
         viewCostButton.dropShadow()
-        viewCostButton.backgroundColor = .white
+        viewCostButton.backgroundColor = UIColor(red:0.90, green:0.88, blue:0.77, alpha:1.0)
         
         btnCostsButton.translatesAutoresizingMaskIntoConstraints = false
-        btnCostsButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        btnCostsButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        btnCostsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        btnCostsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        btnCostsButton.leftAnchor.constraint(equalTo: viewCostButton.leftAnchor, constant: 0).isActive = true
+        btnCostsButton.rightAnchor.constraint(equalTo: viewCostButton.rightAnchor, constant: 0).isActive = true
+        btnCostsButton.bottomAnchor.constraint(equalTo: viewCostButton.bottomAnchor, constant: 0).isActive = true
+        btnCostsButton.topAnchor.constraint(equalTo: viewCostButton.topAnchor, constant: 0).isActive = true
         
         
         lblVCWorkedHoursTitle.translatesAutoresizingMaskIntoConstraints = false
