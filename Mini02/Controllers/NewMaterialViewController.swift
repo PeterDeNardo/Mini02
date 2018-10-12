@@ -12,6 +12,7 @@ class NewMaterialViewController: UIViewController {
     
     let newMaterial = NewMaterialView()
     var categoriaEscolhida: String?
+    var tap: UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +20,13 @@ class NewMaterialViewController: UIViewController {
         self.view = newMaterial.setLayoutInView()
         self.title = "Novo objeto"
         addButtonsTargets()
-        
-        
-
+        tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
+        self.view.addGestureRecognizer(tap!)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func abaixarTeclado() {
+       newMaterial.viewGlobal.endEditing(true)
     }
     
     func addButtonsTargets(){
@@ -121,6 +125,9 @@ class NewMaterialViewController: UIViewController {
             marcarBotao(btn: newMaterial.btnOthers)
         }
     }
+    
+    
+    
     
     
     /*
