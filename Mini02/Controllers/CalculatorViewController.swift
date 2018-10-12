@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class CalculatorViewController: UIViewController{
+class CalculatorViewController: UIViewController, UITextFieldDelegate{
     
     private let viewCalculator = CalculatorView()
     
@@ -27,14 +27,15 @@ class CalculatorViewController: UIViewController{
     
     var total: Float = 0.00
     
+    var custosExtras: Float = 0.00
+    
+    var lucroPretendido: Float = 0.00
+    
+    var horasTrabalhadas: Float = 0.00
+    
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
-        var mat = materiais.count
-        print(mat)
-        print(materiais)
-        viewCalculator.lblVIQuantity.text = "\(materiaisSelecionados.count)"
-        viewCalculator.lblVRTotal.text = "R$ \(valorItens)"
-        viewCalculator.lblVIQUantityTotalMoney.text = "R$ \(total)"
+        setLabels()
     }
     
     override func viewDidLoad() {
@@ -51,7 +52,22 @@ class CalculatorViewController: UIViewController{
         
         addButtonsTargets()
         
-        
+        addDelegateToTxtFields()
+  
+    }
+    
+    func addDelegateToTxtFields(){
+        viewCalculator.txtVCWorkedHours.delegate = self
+        viewCalculator.txtVPProfit.delegate = self
+    }
+    
+    func setLabels(){
+        viewCalculator.lblVIQuantity.text = "\(materiaisSelecionados.count)"
+        viewCalculator.lblVRTotal.text = "R$ \(valorItens)"
+        viewCalculator.lblVIQUantityTotalMoney.text = "R$ \(total)"
+        viewCalculator.lblVRTotal.text = "R$ \(total + custosExtras) "
+        viewCalculator.lblVPProfitByHour.text = "R$ \(lucroPretendido/horasTrabalhadas)"
+        viewCalculator.lblVRTotalByHour.text = "R$ \(total/horasTrabalhadas)"
     }
     
     func addButtonsTargets() {
@@ -74,6 +90,33 @@ class CalculatorViewController: UIViewController{
         ] as? [String : String]
         
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text?.removeAll()
+        textField.keyboardType = .numberPad
+    }
+    
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        if textField == viewCalculator.txtVCWorkedHours{
+            guard let horasTrabalhadasFloat = Float(string), horasTrabalhadasFloat > 0 else { return true }
+            horasTrabalhadas = horasTrabalhadasFloat
+            setLabels()
+            return true
+        }
+        
+        if textField == viewCalculator.txtVPProfit{
+            guard let lucroPretendidoFloat = Float(string), lucroPretendidoFloat > 0 else { return true }
+            lucroPretendido = lucroPretendidoFloat
+            setLabels()
+            return true
+        }
+        return false
+    }
+    
     
     @objc func addProject(){
 
