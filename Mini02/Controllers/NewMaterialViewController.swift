@@ -79,7 +79,7 @@ class NewMaterialViewController: UIViewController {
         guard let marcaMaterial = newMaterial.txtMaterialOrigin.text else {return}
         guard let categoria = categoriaEscolhida else {return}
         
-        let material = Material(nome: nomeMaterial, tipo: marcaMaterial, preco: precoMaterial, marca: categoria)
+        let material = Material(nome: nomeMaterial, tipo: categoria, preco: precoMaterial, marca: marcaMaterial )
         
         guard let ref = self.ref else{return}
         
