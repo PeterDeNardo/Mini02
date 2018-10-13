@@ -37,6 +37,7 @@ class MaterialViewController: UIViewController {
         criarTableView()
         criarSearchBar()
         addButtonsTargets()
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done) ), animated: true)
         fetchData()
         pegarUserDefaults()
     }
@@ -47,7 +48,7 @@ class MaterialViewController: UIViewController {
         materialView.btnThree.addTarget(self, action: #selector(addMaterial), for: .touchDown
         )
         
-        materialView.btnTwo.addTarget(self, action: #selector(done), for: .touchDown)
+        //materialView.btnTwo.addTarget(self, action: #selector(), for: .touchDown)
     }
     
     

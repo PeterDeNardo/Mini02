@@ -22,6 +22,7 @@ class Projeto{
     var nome: String?
     var categoria: String?
     
+    
     //init com usario
     init(usuario: [String:String], materiais: [Any], lucroPretendido: Float, horasTrabalhadas: Float, chave: String = "", categoria: String, nome: String){
         self.ref = nil

@@ -8,9 +8,17 @@
 
 import UIKit
 
-class CalculatorPlussViewController: UIViewController {
+class CalculatorPlussViewController: UIViewController, UITextFieldDelegate {
 
     private let viewCalculatorPluss = CalculatorPlussView()
+    
+    var total: Float = 0.0
+    
+    var diasTrabalhados: Float = 0.0
+    
+    var frequencia: Float = 0.0
+    
+    var tap: UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,19 +26,63 @@ class CalculatorPlussViewController: UIViewController {
         self.title = "Custos extras"
         
         self.view = viewCalculatorPluss.setViews()
-
+        
+        addDelegateTxtFields()
+        
+       
         // Do any additional setup after loading the view.
     }
     
+    func addDelegateTxtFields(){
+        tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
+        self.view.addGestureRecognizer(tap!)
+        
+        viewCalculatorPluss.txtCFFrequency.delegate = self
+        viewCalculatorPluss.txtCFDaysWork.delegate = self
+        viewCalculatorPluss.txtCPBTotal.delegate = self
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
+    
+    @objc func abaixarTeclado() {
+        viewCalculatorPluss.viewGlobal.endEditing(true)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text?.removeAll()
+        textField.keyboardType = .numberPad
+    }
+    
+    func setLabels(){
+        viewCalculatorPluss.lblEFTotalResult.text = "R$ \(total)"
+        viewCalculatorPluss.lblEFTotalByHourResult.text = "R$ \(total/diasTrabalhados)"
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        if textField == viewCalculatorPluss.txtCPBTotal{
+            guard let total = Float(string), total > 0 else { return true }
+            self.total = total
+            setLabels()
+            return true
+        }
+        
+        if textField == viewCalculatorPluss.txtCFDaysWork{
+            guard let diasTrabalhados = Float(string), diasTrabalhados > 0 else { return true }
+            self.diasTrabalhados = diasTrabalhados
+            setLabels()
+            return true
+        }
+        
+        if textField == viewCalculatorPluss.txtCFFrequency{
+            guard let frequencia = Float(string), frequencia > 0 else { return true }
+            self.frequencia = frequencia
+            setLabels()
+            return true
+        }
+        return false
+    }
+    
 
+  
 }

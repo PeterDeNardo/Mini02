@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class NewMaterialViewController: UIViewController {
+class NewMaterialViewController: UIViewController, UITextFieldDelegate {
     
     let newMaterial = NewMaterialView()
     var categoriaEscolhida: String?
@@ -21,11 +21,23 @@ class NewMaterialViewController: UIViewController {
         
         ref = Database.database().reference(withPath: "Material")
         self.view = newMaterial.setLayoutInView()
-        self.title = "Novo objeto"
+        self.title = "Novo material"
+        
         addButtonsTargets()
+        addDelegateToTxtFields()
+        
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(cadastrarMaterial) ), animated: true)
+        
         tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
         self.view.addGestureRecognizer(tap!)
-        // Do any additional setup after loading the view.
+      
+    }
+    
+    func addDelegateToTxtFields(){
+        newMaterial.txtPrice.delegate = self
+        newMaterial.txtMaterialName.delegate = self
+        newMaterial.txtMaterialOrigin.delegate = self
+        newMaterial.txtMaterialQuantity.delegate = self
     }
     
     @objc func abaixarTeclado() {
@@ -71,8 +83,11 @@ class NewMaterialViewController: UIViewController {
         btn.setTitleColor(.white , for: .normal)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text?.removeAll()
+    }
     
-    func cadastrarMaterial(){
+    @objc func cadastrarMaterial(){
         guard let nomeMaterial = newMaterial.txtMaterialName.text else {return}
         guard let precoMaterialString = newMaterial.txtPrice.text else {return}
         guard let precoMaterial =  Float(precoMaterialString) else {return}
@@ -86,6 +101,13 @@ class NewMaterialViewController: UIViewController {
         let materialRef = ref.childByAutoId()
         
         materialRef.setValue(material.toAnyObject())
+        
+        goToMaterialViewController()
+    }
+    
+    func goToMaterialViewController(){
+        let materialView = MaterialViewController()
+        navigationController?.pushViewController(materialView, animated: true)
     }
     
     @objc func btnPapelaria() {
@@ -146,13 +168,12 @@ class NewMaterialViewController: UIViewController {
     }
     
     @objc func btnOthers() {
-        
-        cadastrarMaterial()
-//        if newMaterial.btnOthers.isSelected == true {
-//            desmarcarBotao(btn: newMaterial.btnOthers)
-//        }else {
-//            marcarBotao(btn: newMaterial.btnOthers)
-//        }
+
+        if newMaterial.btnOthers.isSelected == true {
+            desmarcarBotao(btn: newMaterial.btnOthers)
+        }else {
+            marcarBotao(btn: newMaterial.btnOthers)
+        }
     }
     
     
