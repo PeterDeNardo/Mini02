@@ -12,8 +12,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         self.delegate = self
     }
     
@@ -29,7 +27,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         tabOne.tabBarItem = tabOneBarItem
         
-        let tabTwo = SearchViewController()
+        let tabTwo = LoginViewController()
         let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
         
         tabTwo.tabBarItem = tabTwoBarItem
@@ -43,7 +41,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let nav1 = UINavigationController(rootViewController: tabOne)
         
         
-        let controllers = [nav1, tabTwo, tabThree]
+        let controllers = [nav1, tabTwo]
         
         self.viewControllers = controllers
         

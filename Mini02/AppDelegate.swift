@@ -53,13 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             let v1 = OnboardViewController()
             let v2 = CalculatorViewController()
-            let v3 = CalculatorPlussViewController()
-            let v4 = LoginViewController()
+            let v3 = LoginViewController()
+           
             
             
             //let nav = UINavigationController(rootViewController: v2)
             
-            let controllers = [v2, v3, v4]
+            let controllers = [v2, v3]
             
             myTabBarController.viewControllers = controllers
             

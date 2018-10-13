@@ -92,25 +92,82 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text?.removeAll()
-        textField.keyboardType = .numberPad
+        guard let text = Int(textField.text!) else{
+             textField.text?.removeAll()
+            textField.keyboardType = .numberPad
+            return
+        }
+       
+        
     }
     
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    
+        if textField.text == "" {
+            textField.text = "0"
+            
+            if textField == viewCalculator.txtVCWorkedHours{
+                
+                horasTrabalhadas = 0
+                setLabels()
+                
+            }
+            
+            if textField == viewCalculator.txtVPProfit{
+                
+                lucroPretendido = 0
+                setLabels()
+                
+            }
+            
+            return
+        }
+        
+        if textField == viewCalculator.txtVCWorkedHours{
+
+            horasTrabalhadas = Float(textField.text!)!
+            setLabels()
+            
+        }
+        
+        if textField == viewCalculator.txtVPProfit{
+            lucroPretendido = Float(textField.text!)!
+            setLabels()
+        }
+        
+        
+        
+    }
+    
+
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         
         if textField == viewCalculator.txtVCWorkedHours{
-            guard let horasTrabalhadasFloat = Float(string), horasTrabalhadasFloat > 0 else { return true }
-            horasTrabalhadas = horasTrabalhadasFloat
+            guard let horasTrabalhadasFloat = Float(string), horasTrabalhadasFloat >= 0 else { return true }
+            
+            var a = "\(Int(horasTrabalhadas))"
+            var b = "\(a)\(string)"
+            
+            if horasTrabalhadas <= 0{
+                b = string
+            }
+           
+            horasTrabalhadas = Float(Int(b)!)
             setLabels()
             return true
         }
         
         if textField == viewCalculator.txtVPProfit{
-            guard let lucroPretendidoFloat = Float(string), lucroPretendidoFloat > 0 else { return true }
-            lucroPretendido = lucroPretendidoFloat
+            guard let lucroPretendidoFloat = Float(string), lucroPretendidoFloat >= 0 else { return true }
+            var a = "\(Int(lucroPretendidoFloat))"
+            var b = "\(a)\(string)"
+            if horasTrabalhadas <= 0{
+                b = string
+            }
+            lucroPretendido = Float(Int(b)!)
             setLabels()
             return true
         }

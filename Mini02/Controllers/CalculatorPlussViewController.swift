@@ -57,26 +57,103 @@ class CalculatorPlussViewController: UIViewController, UITextFieldDelegate {
         viewCalculatorPluss.lblEFTotalByHourResult.text = "R$ \(total/diasTrabalhados)"
     }
     
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField.text == "" {
+            textField.text = "0"
+            
+            if textField == viewCalculatorPluss.txtCPBTotal{
+                
+                total = 0
+                setLabels()
+                
+            }
+            
+            if textField == viewCalculatorPluss.txtCFDaysWork{
+                
+                diasTrabalhados = 0
+                setLabels()
+                
+            }
+            
+            if textField == viewCalculatorPluss.txtCFFrequency{
+                
+                frequencia = 0
+                setLabels()
+                
+            }
+            
+            return
+        }
+        
+        if textField == viewCalculatorPluss.txtCFFrequency{
+            
+            frequencia = Float(textField.text!)!
+            setLabels()
+            
+        }
+        
+        if textField == viewCalculatorPluss.txtCFDaysWork{
+            diasTrabalhados = Float(textField.text!)!
+            setLabels()
+        }
+        
+        if textField == viewCalculatorPluss.txtCPBTotal{
+            total = Float(textField.text!)!
+            setLabels()
+        }
+        
+        
+        
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         
         if textField == viewCalculatorPluss.txtCPBTotal{
             guard let total = Float(string), total > 0 else { return true }
-            self.total = total
+            
+            var a = "\(Int(total))"
+            var b = "\(a)\(string)"
+            
+            if total <= 0{
+                b = string
+            }
+            
+            self.total = Float(Int(b)!)
             setLabels()
+        
             return true
         }
         
         if textField == viewCalculatorPluss.txtCFDaysWork{
             guard let diasTrabalhados = Float(string), diasTrabalhados > 0 else { return true }
-            self.diasTrabalhados = diasTrabalhados
+            
+            var a = "\(Int(diasTrabalhados))"
+            var b = "\(a)\(string)"
+            
+            if diasTrabalhados <= 0{
+                b = string
+            }
+            
+            self.diasTrabalhados = Float(Int(b)!)
             setLabels()
+
             return true
         }
         
         if textField == viewCalculatorPluss.txtCFFrequency{
             guard let frequencia = Float(string), frequencia > 0 else { return true }
-            self.frequencia = frequencia
+            
+            var a = "\(Int(frequencia))"
+            var b = "\(a)\(string)"
+            
+            if frequencia <= 0{
+                b = string
+            }
+            
+            self.frequencia = Float(Int(b)!)
             setLabels()
             return true
         }
