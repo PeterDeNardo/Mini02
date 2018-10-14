@@ -216,10 +216,10 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         
         cell.dropShadow()
         
-        return cell
         
         cell.nome.text = material.nome
-        cell.preco.text = "R$\(material.preco)"
+        cell.preco.text = "R$\(material.preco!)"
+        print("R$\(material.preco)")
         cell.tipo.text = material.tipo
         cell.marca.text = material.marca
 
