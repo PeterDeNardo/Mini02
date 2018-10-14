@@ -71,7 +71,7 @@ class CalculatorView {
         
         viewItem.layer.cornerRadius = 7
         viewItem.dropShadow()
-        viewItem.backgroundColor = UIColor(red:0.90, green:0.88, blue:0.77, alpha:1.0)
+        viewItem.backgroundColor = .workSand
         
         setViewItemLayout(view: viewItem)
         
@@ -186,7 +186,7 @@ class CalculatorView {
         
         viewCostButton.layer.cornerRadius = 7
         viewCostButton.dropShadow()
-        viewCostButton.backgroundColor = UIColor(red:0.90, green:0.88, blue:0.77, alpha:1.0)
+        viewCostButton.backgroundColor = .workSand
         
         btnCostsButton.translatesAutoresizingMaskIntoConstraints = false
         btnCostsButton.leftAnchor.constraint(equalTo: viewCostButton.leftAnchor, constant: 0).isActive = true
@@ -221,7 +221,7 @@ class CalculatorView {
         
         txtVCWorkedHours.setTextField(fontSize: 15,
                                       lblText: "X h",
-                                      textColor: .blue,
+                                      textColor: .workBlue,
                                       alingnment: .center,
                                       alpha: 1)
         
@@ -231,7 +231,7 @@ class CalculatorView {
         
         txtVCExternalCosts.setTextField(fontSize: 15,
                                         lblText: "Y h",
-                                        textColor: .blue,
+                                        textColor: .workBlue,
                                         alingnment: .center,
                                         alpha: 1)
     }
@@ -317,7 +317,7 @@ class CalculatorView {
         
         txtVPProfit.setTextField(fontSize: 15,
                                 lblText: "$Y",
-                                textColor: .blue,
+                                textColor: .workBlue,
                                 alingnment: .center,
                                 alpha: 1)
         
@@ -344,7 +344,7 @@ class CalculatorView {
         
         
         btnVBAddProjects.layer.cornerRadius = 7
-        btnVBAddProjects.backgroundColor = .blue
+        btnVBAddProjects.backgroundColor = .workBlue
         btnVBAddProjects.setTitle("Add to my projects", for: .normal)
     }
     

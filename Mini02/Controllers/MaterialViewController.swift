@@ -78,6 +78,11 @@ class MaterialViewController: UIViewController {
         self.view = self.materialView.setViews()
         self.materialView.tableView.delegate = self
         self.materialView.tableView.dataSource = self
+        self.materialView.tableView.rowHeight = 79
+        self.materialView.tableView.allowsMultipleSelection = true
+        self.materialView.tableView.allowsSelectionDuringEditing = true
+        self.materialView.tableView.backgroundColor = .clear
+        
         
     }
     
@@ -174,6 +179,7 @@ class MaterialViewController: UIViewController {
 }
 
 extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return materiaisPesquisados.count
@@ -200,15 +206,17 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
     }
   
 
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellReuseIdendifier = "cell"
-
         self.materialView.tableView.register(MaterialTableViewCell.self, forCellReuseIdentifier: cellReuseIdendifier)
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! MaterialTableViewCell
-  
         let material = materiaisPesquisados[indexPath.row]
+        
+        cell.dropShadow()
+        
+        return cell
         
         cell.nome.text = material.nome
         cell.preco.text = "R$\(material.preco)"

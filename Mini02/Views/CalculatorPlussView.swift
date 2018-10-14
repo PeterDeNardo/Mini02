@@ -201,7 +201,7 @@ class CalculatorPlussView {
         txtCFFrequency.frame = CGRect(x: 235, y: 12, width: 61, height: 21)
         txtCFFrequency.setTextField(fontSize: 18,
                                     lblText: "Mensal",
-                                    textColor: .blue,
+                                    textColor: .workBlue,
                                     alingnment: .rigth,
                                     alpha: 1)
         viewCFFrequency.addSubview(txtCFFrequency)
@@ -220,7 +220,7 @@ class CalculatorPlussView {
         txtCFDaysWork.frame = CGRect(x: 235, y: 12, width: 61, height: 21)
         txtCFDaysWork.setTextField(fontSize: 16,
                                    lblText: "4",
-                                   textColor: .blue,
+                                   textColor: .workBlue,
                                    alingnment: .rigth,
                                    alpha: 1)
         viewCFDaysWorked.addSubview(txtCFDaysWork)

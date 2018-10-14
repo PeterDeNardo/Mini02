@@ -66,11 +66,10 @@ class MaterialView {
         viewFolder.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewFolder.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
         viewFolder.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 0).isActive = true
-        viewFolder.backgroundColor = .blue
+        viewFolder.backgroundColor = .clear
         
         //MARK: SubViews
         //viewSearch
-        
         
         
         //ViewFolder
@@ -91,7 +90,7 @@ class MaterialView {
         viewFolderTableView.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
         viewFolderTableView.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
         viewFolderTableView.bottomAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
-        viewFolderTableView.backgroundColor = .red
+        viewFolderTableView.backgroundColor = .workSand
         
         setObjectsInViewFoldarTableView()
    

@@ -10,23 +10,42 @@ import UIKit
 
 class MaterialTableViewCell: UITableViewCell {
 
-    var nome: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-    
-    var preco: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-    
-    var tipo: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-    
-    var marca: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+    var nome: UILabel = UILabel(frame: CGRect(x: 76, y: 8, width: 80, height: 21))
+    var preco: UILabel = UILabel(frame: CGRect(x: 308, y: 19, width: 24, height: 21))
+    var tipo: UILabel = UILabel(frame: CGRect(x: 225, y: 19, width: 39, height: 21))
+    var marca: UILabel = UILabel(frame: CGRect(x: 76, y: 36, width: 100, height: 16))
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        nome.backgroundColor = UIColor.yellow
+        nome.setLabelWhithConstraints(fontSize: 18,
+                                      lblText: "Material",
+                                      textColor: .workGrey,
+                                      alingnment: .left,
+                                      alpha: 1)
+        
+        preco.setLabelWhithConstraints(fontSize: 18,
+                                       lblText: "$Y",
+                                       textColor: .workBlue,
+                                       alingnment: .left,
+                                       alpha: 1)
+        
+        tipo.setLabelWhithConstraints(fontSize: 18,
+                                      lblText: "X un",
+                                      textColor: .workBlue,
+                                      alingnment: .left,
+                                      alpha: 1)
+        
+        marca.setLabelWhithConstraints(fontSize: 14,
+                                       lblText: "Marca/Local",
+                                       textColor: .workGrey,
+                                       alingnment: .left,
+                                       alpha: 1)
         
         self.contentView.addSubview(nome)
-         self.contentView.addSubview(preco)
-         self.contentView.addSubview(marca)
-         self.contentView.addSubview(tipo)
+        self.contentView.addSubview(preco)
+        self.contentView.addSubview(marca)
+        self.contentView.addSubview(tipo)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,8 +54,18 @@ class MaterialTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.selectionStyle = .none
+        self.contentView.backgroundColor = .clear
         
-        nome.frame = CGRect(x: 20, y: 0, width: 70, height: 30)
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        if selected == true {
+            self.backgroundColor = UIColor.white
+        } else {
+            self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        }
     }
 
     
@@ -45,10 +74,10 @@ class MaterialTableViewCell: UITableViewCell {
         super.awakeFromNib()
     
         
-        nome.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        preco.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        tipo.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        marca.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//        nome.frame = CGRect(x: 76, y: 8, width: 75, height: 21)
+//        preco.frame = CGRect(x: 308, y: 25, width: 24, height: 21)
+//        tipo.frame = CGRect(x: 225, y: 19, width: 39, height: 21)
+//        marca.frame = CGRect(x: 76, y: 36, width: 77, height: 16)
 
         
         contentView.addSubview(nome)

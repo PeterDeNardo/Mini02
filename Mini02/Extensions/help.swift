@@ -86,4 +86,35 @@ extension UIButton {
     }
 }
 
+//MARK: UITableViewCell Extension
+
+extension UITableViewCell {
+    override open var frame: CGRect {
+        get {
+            return super.frame
+        }
+        set (newFrame) {
+            var frame =  newFrame
+            frame.origin.y += 10
+            frame.origin.x += 10
+            frame.size.height -= 15
+            frame.size.width -= 2 * 10
+            super.frame = frame
+        }
+    }
+    
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+        layer.cornerRadius = 2
+        layer.masksToBounds = false
+    }
+}
+
+//MARK: UIColor Extension
+
+extension UIColor {
+    static let workBlue = UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.0)
+    static let workGrey = UIColor(red:0.40, green:0.40, blue:0.40, alpha:1.0)
+    static let workSand = UIColor(red:0.90, green:0.88, blue:0.77, alpha:1.0)
+}
 

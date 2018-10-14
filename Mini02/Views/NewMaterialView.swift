@@ -154,7 +154,7 @@ class NewMaterialView {
         txtMaterialQuantity.frame = CGRect(x: 19, y: 211, width: 39, height: 21)
         txtMaterialQuantity.setTextField(fontSize: 18,
                                          lblText: "X un",
-                                         textColor: .blue,
+                                         textColor: .workBlue,
                                          alingnment: .left,
                                          alpha: 1)
         viewMRInfos.addSubview(txtMaterialQuantity)
@@ -162,7 +162,7 @@ class NewMaterialView {
         txtPrice.frame = CGRect(x: 205, y: 211, width: 24, height: 21)
         txtPrice.setTextField(fontSize: 18,
                               lblText: "$Y",
-                              textColor: .blue,
+                              textColor: .workBlue,
                               alingnment: .left,
                               alpha: 1)
         viewMRInfos.addSubview(txtPrice)
