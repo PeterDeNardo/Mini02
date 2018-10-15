@@ -23,6 +23,7 @@ class MaterialView {
     
     let viewFolderButtons = UIView()
     let viewFolderTableView = UIView()
+    let viewFolderTabkeViewButton = UIView()
     
     //Creating Objects inside of views
     
@@ -39,8 +40,9 @@ class MaterialView {
     
     var buttons = [UIButton]()
     
-    var tableView : UITableView!
+    var btnAddMaterial = UIButton()
     
+    var tableView : UITableView!
     
     func setViews() -> UIView {
         //MARK: Setting Views
@@ -51,6 +53,7 @@ class MaterialView {
         viewGlobal.addSubview(viewFolder)
         viewFolder.addSubview(viewFolderButtons)
         viewFolder.addSubview(viewFolderTableView)
+        viewFolder.addSubview(viewFolderTabkeViewButton)
         
         
         viewSearchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -90,9 +93,17 @@ class MaterialView {
         viewFolderTableView.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
         viewFolderTableView.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
         viewFolderTableView.bottomAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
-        viewFolderTableView.backgroundColor = .workSand
+        viewFolderTableView.backgroundColor = UIColor.init(patternImage: UIImage(named: "backGroundTableView")!)
         
         setObjectsInViewFoldarTableView()
+        
+        viewFolderTabkeViewButton.translatesAutoresizingMaskIntoConstraints = false
+        viewFolderTabkeViewButton.bottomAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
+        viewFolderTabkeViewButton.widthAnchor.constraint(equalToConstant: 218).isActive = true
+        viewFolderTabkeViewButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        viewFolderTabkeViewButton.centerXAnchor.constraint(equalTo: viewFolder.centerXAnchor).isActive = true
+        
+        setObjectsInViewFolderTableViewButton()
    
         return viewGlobal
     }
@@ -107,25 +118,25 @@ class MaterialView {
         
         btnSearch = UIButton(frame: CGRect(x: posX, y: 0, width: UIScreen.main.bounds.width / 4, height: 70))
         btnSearch.setButton(titleText: "Selected",
-                            backgroundColor: .black)
+                            backgroundColor:    UIColor.init(patternImage: UIImage(named: "backGroundButtonBlueTableView")!))
         
         posX += btnSearch.bounds.width
         
         btnTwo = UIButton(frame: CGRect(x: posX, y: 0, width: UIScreen.main.bounds.width / 4, height: 70))
         btnTwo.setButton(titleText: "Frequent",
-                         backgroundColor: .black)
+                         backgroundColor: UIColor.init(patternImage: UIImage(named: "backGroundButtonTableView")!))
         
         posX += btnTwo.bounds.width
         
         btnThree = UIButton(frame: CGRect(x: posX, y: 0, width: UIScreen.main.bounds.width / 4, height: 70))
         btnThree.setButton(titleText: "Mine",
-                           backgroundColor: .black)
+                           backgroundColor: UIColor.init(patternImage: UIImage(named: "backGroundButtonTableView")!))
         
         posX += btnThree.bounds.width
         
         btnFour = UIButton(frame: CGRect(x: posX, y: 0, width: UIScreen.main.bounds.width / 4, height: 70))
         btnFour.setButton(titleText: "Search",
-                          backgroundColor: .black)
+                          backgroundColor: UIColor.init(patternImage: UIImage(named: "backGroundButtonTableView")!))
         
         viewFolderButtons.addSubview(btnSearch)
         viewFolderButtons.addSubview(btnTwo)
@@ -140,6 +151,14 @@ class MaterialView {
     func setObjectsInViewFoldarTableView() {
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         viewFolderTableView.addSubview(tableView)
+        
+    }
+    
+    func setObjectsInViewFolderTableViewButton() {
+        btnAddMaterial = UIButton(frame: CGRect(x: 0, y: 0, width: 218, height: 52))
+        btnAddMaterial.setButton(titleText: "1 item selecionado",
+                                 backgroundColor: .green)
+        viewFolderTabkeViewButton.addSubview(btnAddMaterial)
     }
     
     

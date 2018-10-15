@@ -40,6 +40,7 @@ class MaterialViewController: UIViewController {
         self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done) ), animated: true)
         fetchData()
         pegarUserDefaults()
+        //self.tabBarController?.view.removeFromSuperview()
     }
     
     func addButtonsTargets (){
