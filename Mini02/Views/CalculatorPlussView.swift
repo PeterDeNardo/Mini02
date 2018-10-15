@@ -12,18 +12,24 @@ class CalculatorPlussView {
     
     //Setting Views
     
+    let viewTimeExpend = UIView()
     let viewCostsFixed = UIView()
     let viewCostsPunctual = UIView()
-    let viewExpensesFixed = UIView()
+    let viewCostExpenses = UIView()
     
     
     //Setting SubViews
     
     //Setting viewCostsFixed SubViews
     
-    let viewCFTitle = UIView()
-    let viewCFFrequency = UIView()
-    let viewCFDaysWorked = UIView()
+    let viewTETitle = UIView()
+    let ViewTEInfo = UIView()
+    
+    //Setting ViewCFInfo SubViews
+    
+    let viewTEIDuration = UIView()
+    let viewTEIDaysWorked = UIView()
+    let viewTEIHourByDay = UIView()
     
     //Setting viewCostsPunctual SubViews
     
@@ -39,12 +45,14 @@ class CalculatorPlussView {
     //Setting Objects inside of views
     
     //viewCFTitle
-    let lblCFTTitle = UILabel()
+    let lblTETitle = UILabel()
     //viewCFBody
-    let lblCFFrequency = UILabel()
-    let lblCFDaysWOrk = UILabel()
-    let txtCFFrequency = UITextField()
-    let txtCFDaysWork = UITextField()
+    let lblTEDuration = UILabel()
+    let lblTEDaysWork = UILabel()
+    let lblTETimeWork = UILabel()
+    let txtTEDuration = UITextField()
+    let txtTEDaysWork = UITextField()
+    let txtTETimeWork = UITextField()
     
     //viewCPTitle
     let lblCPBTitle = UILabel()
@@ -65,14 +73,22 @@ class CalculatorPlussView {
         viewGlobal = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         viewGlobal.backgroundColor = UIColor(red:0.90, green:0.88, blue:0.77, alpha:1.0)
         
+        viewGlobal.addSubview(viewTimeExpend)
+        viewTimeExpend.translatesAutoresizingMaskIntoConstraints = false
+        viewTimeExpend.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 70).isActive = true
+        viewTimeExpend.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
+        viewTimeExpend.widthAnchor.constraint(equalToConstant: 338).isActive = true
+        viewTimeExpend.heightAnchor.constraint(equalToConstant: 186).isActive = true
+        
+        viewTimeExpend.layer.cornerRadius = 7
+        viewTimeExpend.backgroundColor = .clear
+        
         viewGlobal.addSubview(viewCostsFixed)
         viewCostsFixed.translatesAutoresizingMaskIntoConstraints = false
-        viewCostsFixed.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 70).isActive = true
+        viewCostsFixed.topAnchor.constraint(equalTo: viewCostsFixed.bottomAnchor, constant: 10).isActive = true
         viewCostsFixed.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
         viewCostsFixed.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        viewCostsFixed.heightAnchor.constraint(equalToConstant: 140).isActive = true
-        
-        viewCostsFixed.layer.cornerRadius = 7
+        viewCostsFixed.heightAnchor.constraint(equalToConstant: 86).isActive = true
         viewCostsFixed.backgroundColor = .clear
         
         viewGlobal.addSubview(viewCostsPunctual)
@@ -80,94 +96,101 @@ class CalculatorPlussView {
         viewCostsPunctual.topAnchor.constraint(equalTo: viewCostsFixed.bottomAnchor, constant: 10).isActive = true
         viewCostsPunctual.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
         viewCostsPunctual.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        viewCostsPunctual.heightAnchor.constraint(equalToConstant: 86).isActive = true
+        viewCostsPunctual.heightAnchor.constraint(equalToConstant: 146).isActive = true
         viewCostsPunctual.backgroundColor = .clear
-        
-        viewGlobal.addSubview(viewExpensesFixed)
-        viewExpensesFixed.translatesAutoresizingMaskIntoConstraints = false
-        viewExpensesFixed.topAnchor.constraint(equalTo: viewCostsPunctual.bottomAnchor, constant: 10).isActive = true
-        viewExpensesFixed.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
-        viewExpensesFixed.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        viewExpensesFixed.heightAnchor.constraint(equalToConstant: 146).isActive = true
-        viewExpensesFixed.backgroundColor = .clear
+    
         
         
         //SubViews
         //CFView
         
-        viewCostsFixed.addSubview(viewCFTitle)
-        viewCFTitle.translatesAutoresizingMaskIntoConstraints = false
-        viewCFTitle.topAnchor.constraint(equalTo: viewCostsFixed.topAnchor, constant: 0).isActive = true
-        viewCFTitle.leftAnchor.constraint(equalTo: viewCostsFixed.leftAnchor, constant: 0).isActive = true
-        viewCFTitle.rightAnchor.constraint(equalTo: viewCostsFixed.rightAnchor, constant: 0).isActive = true
-        viewCFTitle.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        viewCFTitle.backgroundColor = .clear
+        viewTimeExpend.addSubview(viewTETitle)
+        viewTETitle.translatesAutoresizingMaskIntoConstraints = false
+        viewTETitle.topAnchor.constraint(equalTo: viewTimeExpend.topAnchor, constant: 0).isActive = true
+        viewTETitle.leftAnchor.constraint(equalTo: viewTimeExpend.leftAnchor, constant: 0).isActive = true
+        viewTETitle.rightAnchor.constraint(equalTo: viewTimeExpend.rightAnchor, constant: 0).isActive = true
+        viewTETitle.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        viewCostsFixed.addSubview(viewCFFrequency)
-        viewCFFrequency.translatesAutoresizingMaskIntoConstraints = false
-        viewCFFrequency.topAnchor.constraint(equalTo: viewCFTitle.bottomAnchor, constant: 0).isActive = true
-        viewCFFrequency.leftAnchor.constraint(equalTo: viewCostsFixed.leftAnchor, constant: 0).isActive = true
-        viewCFFrequency.rightAnchor.constraint(equalTo: viewCostsFixed.rightAnchor, constant: 0).isActive = true
-        viewCFFrequency.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        viewTimeExpend.addSubview(ViewTEInfo)
+        ViewTEInfo.translatesAutoresizingMaskIntoConstraints = false
+        ViewTEInfo.topAnchor.constraint(equalTo: viewTETitle.bottomAnchor, constant: 0).isActive = true
+        ViewTEInfo.leftAnchor.constraint(equalTo: viewTimeExpend.leftAnchor, constant: 0).isActive = true
+        ViewTEInfo.rightAnchor.constraint(equalTo: viewTimeExpend.rightAnchor, constant: 0).isActive = true
+        ViewTEInfo.bottomAnchor.constraint(equalTo: viewTimeExpend.bottomAnchor, constant: 0).isActive = true
+        ViewTEInfo.layer.cornerRadius = 7
+        ViewTEInfo.backgroundColor = .white
         
-        viewCFFrequency.layer.cornerRadius = 7
-        viewCFFrequency.backgroundColor = .white
+        ViewTEInfo.addSubview(viewTEIDuration)
+        viewTEIDuration.translatesAutoresizingMaskIntoConstraints = false
+        viewTEIDuration.topAnchor.constraint(equalTo: ViewTEInfo.topAnchor, constant: 0).isActive = true
+        viewTEIDuration.leftAnchor.constraint(equalTo: ViewTEInfo.leftAnchor, constant: 0).isActive = true
+        viewTEIDuration.rightAnchor.constraint(equalTo: ViewTEInfo.rightAnchor, constant: 0).isActive = true
+        viewTEIDuration.heightAnchor.constraint(equalToConstant: 46).isActive = true
         
-        viewCostsFixed.addSubview(viewCFDaysWorked)
-        viewCFDaysWorked.translatesAutoresizingMaskIntoConstraints = false
-        viewCFDaysWorked.topAnchor.constraint(equalTo: viewCFFrequency.bottomAnchor, constant: 6).isActive = true
-        viewCFDaysWorked.leftAnchor.constraint(equalTo: viewCostsFixed.leftAnchor, constant: 0).isActive = true
-        viewCFDaysWorked.rightAnchor.constraint(equalTo: viewCostsFixed.rightAnchor, constant: 0).isActive = true
-        viewCFDaysWorked.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        ViewTEInfo.addSubview(viewTEIDaysWorked)
+        viewTEIDaysWorked.translatesAutoresizingMaskIntoConstraints = false
+        viewTEIDaysWorked.topAnchor.constraint(equalTo: viewTEIDuration.bottomAnchor, constant: 0).isActive = true
+        viewTEIDaysWorked.leftAnchor.constraint(equalTo: ViewTEInfo.leftAnchor, constant: 0).isActive = true
+        viewTEIDaysWorked.rightAnchor.constraint(equalTo: ViewTEInfo.rightAnchor, constant: 0).isActive = true
+        viewTEIDaysWorked.heightAnchor.constraint(equalToConstant: 46).isActive = true
         
-        viewCFDaysWorked.layer.cornerRadius = 7
-        viewCFDaysWorked.backgroundColor = .white
+        ViewTEInfo.addSubview(viewTEIHourByDay)
+        viewTEIHourByDay.translatesAutoresizingMaskIntoConstraints = false
+        viewTEIHourByDay.topAnchor.constraint(equalTo: viewTEIDaysWorked.bottomAnchor, constant: 0).isActive = true
+        viewTEIHourByDay.leftAnchor.constraint(equalTo: ViewTEInfo.leftAnchor, constant: 0).isActive = true
+        viewTEIHourByDay.rightAnchor.constraint(equalTo: ViewTEInfo.rightAnchor, constant: 0).isActive = true
+        viewTEIHourByDay.heightAnchor.constraint(equalToConstant: 46).isActive = true
         
-        setViewCostFixed()
+        
+        setViewTimeExpend()
+        
+        //CFView
+        
+        viewCostsFixed.addSubview(viewCF)
         
         //CPView
-        
-        viewCostsPunctual.addSubview(viewCPTitle)
-        viewCPTitle.translatesAutoresizingMaskIntoConstraints = false
-        viewCPTitle.topAnchor.constraint(equalTo: viewCostsPunctual.topAnchor, constant: 0).isActive = true
-        viewCPTitle.leftAnchor.constraint(equalTo: viewCostsPunctual.leftAnchor, constant: 0).isActive = true
-        viewCPTitle.rightAnchor.constraint(equalTo: viewCostsPunctual.rightAnchor, constant: 0).isActive = true
-        viewCPTitle.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        viewCPTitle.backgroundColor = .clear
-        
-        viewCostsPunctual.addSubview(viewCPBody)
-        viewCPBody.translatesAutoresizingMaskIntoConstraints = false
-        viewCPBody.topAnchor.constraint(equalTo: viewCPTitle.bottomAnchor, constant: 0).isActive = true
-        viewCPBody.leftAnchor.constraint(equalTo: viewCostsPunctual.leftAnchor, constant: 0).isActive = true
-        viewCPBody.rightAnchor.constraint(equalTo: viewCostsPunctual.rightAnchor, constant: 0).isActive = true
-        viewCPBody.bottomAnchor.constraint(equalTo: viewCostsPunctual.bottomAnchor, constant: 0).isActive = true
-        
-        viewCPBody.layer.cornerRadius = 7
-        viewCPBody.backgroundColor = .white
-        
-        setViewCustPunctual()
+//
+//        viewCostsPunctual.addSubview(viewCPTitle)
+//        viewCPTitle.translatesAutoresizingMaskIntoConstraints = false
+//        viewCPTitle.topAnchor.constraint(equalTo: viewCostsPunctual.topAnchor, constant: 0).isActive = true
+//        viewCPTitle.leftAnchor.constraint(equalTo: viewCostsPunctual.leftAnchor, constant: 0).isActive = true
+//        viewCPTitle.rightAnchor.constraint(equalTo: viewCostsPunctual.rightAnchor, constant: 0).isActive = true
+//        viewCPTitle.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//        viewCPTitle.backgroundColor = .clear
+//
+//        viewCostsPunctual.addSubview(viewCPBody)
+//        viewCPBody.translatesAutoresizingMaskIntoConstraints = false
+//        viewCPBody.topAnchor.constraint(equalTo: viewCPTitle.bottomAnchor, constant: 0).isActive = true
+//        viewCPBody.leftAnchor.constraint(equalTo: viewCostsPunctual.leftAnchor, constant: 0).isActive = true
+//        viewCPBody.rightAnchor.constraint(equalTo: viewCostsPunctual.rightAnchor, constant: 0).isActive = true
+//        viewCPBody.bottomAnchor.constraint(equalTo: viewCostsPunctual.bottomAnchor, constant: 0).isActive = true
+//
+//        viewCPBody.layer.cornerRadius = 7
+//        viewCPBody.backgroundColor = .white
+//
+//        setViewCustPunctual()
         
         //EFView
         
-        viewExpensesFixed.addSubview(viewEFTitle)
-        viewEFTitle.translatesAutoresizingMaskIntoConstraints = false
-        viewEFTitle.topAnchor.constraint(equalTo: viewExpensesFixed.topAnchor, constant: 0).isActive = true
-        viewEFTitle.leftAnchor.constraint(equalTo: viewExpensesFixed.leftAnchor, constant: 0).isActive = true
-        viewEFTitle.rightAnchor.constraint(equalTo: viewExpensesFixed.rightAnchor, constant: 0).isActive = true
-        viewEFTitle.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        viewEFTitle.backgroundColor = .clear
+//        viewExpensesFixed.addSubview(viewEFTitle)
+//        viewEFTitle.translatesAutoresizingMaskIntoConstraints = false
+//        viewEFTitle.topAnchor.constraint(equalTo: viewExpensesFixed.topAnchor, constant: 0).isActive = true
+//        viewEFTitle.leftAnchor.constraint(equalTo: viewExpensesFixed.leftAnchor, constant: 0).isActive = true
+//        viewEFTitle.rightAnchor.constraint(equalTo: viewExpensesFixed.rightAnchor, constant: 0).isActive = true
+//        viewEFTitle.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//        viewEFTitle.backgroundColor = .clear
+//
+//        viewExpensesFixed.addSubview(viewEFBody)
+//        viewEFBody.translatesAutoresizingMaskIntoConstraints = false
+//        viewEFBody.topAnchor.constraint(equalTo: viewEFTitle.bottomAnchor, constant: 0).isActive = true
+//        viewEFBody.leftAnchor.constraint(equalTo: viewExpensesFixed.leftAnchor, constant: 0).isActive = true
+//        viewEFBody.rightAnchor.constraint(equalTo: viewExpensesFixed.rightAnchor, constant: 0).isActive = true
+//        viewEFBody.bottomAnchor.constraint(equalTo: viewExpensesFixed.bottomAnchor, constant: 0).isActive = true
         
-        viewExpensesFixed.addSubview(viewEFBody)
-        viewEFBody.translatesAutoresizingMaskIntoConstraints = false
-        viewEFBody.topAnchor.constraint(equalTo: viewEFTitle.bottomAnchor, constant: 0).isActive = true
-        viewEFBody.leftAnchor.constraint(equalTo: viewExpensesFixed.leftAnchor, constant: 0).isActive = true
-        viewEFBody.rightAnchor.constraint(equalTo: viewExpensesFixed.rightAnchor, constant: 0).isActive = true
-        viewEFBody.bottomAnchor.constraint(equalTo: viewExpensesFixed.bottomAnchor, constant: 0).isActive = true
+//        viewEFBody.layer.cornerRadius = 7
+//        viewEFBody.backgroundColor = .white
         
-        viewEFBody.layer.cornerRadius = 7
-        viewEFBody.backgroundColor = .white
-        
-        setViewExpensesFixed()
+//        setViewExpensesFixed()
         
         return viewGlobal
     }
@@ -175,55 +198,75 @@ class CalculatorPlussView {
     
     //MARK: Adding objects in respective Views
     
-    func setViewCostFixed() {
+    func setViewTimeExpend() {
         
         //Setting CFTitle
         
-        lblCFTTitle.frame = CGRect(x: 35, y: 15, width: 169, height: 26)
-        lblCFTTitle.setLabelWhithConstraints(fontSize: 14,
-                                             lblText: "Custos Fixos",
+        lblTETitle.frame = CGRect(x: 35, y: 15, width: 169, height: 26)
+        lblTETitle.setLabelWhithConstraints(fontSize: 14,
+                                             lblText: "Tempo Gasto",
                                              textColor: .black,
                                              alingnment: .left,
                                              alpha: 0.8)
-        viewCFTitle.addSubview(lblCFTTitle)
+        viewTETitle.addSubview(lblTETitle)
         
         
         //Set CFFrequency
         
-        lblCFFrequency.frame = CGRect(x: 15, y: 13, width: 74, height: 16)
-        lblCFFrequency.setLabelWhithConstraints(fontSize: 14,
-                                                lblText: "Frequência",
+        lblTEDuration.frame = CGRect(x: 15, y: 13, width: 74, height: 16)
+        lblTEDuration.setLabelWhithConstraints(fontSize: 14,
+                                                lblText: "Duração",
                                                 textColor: .black,
                                                 alingnment: .left,
                                                 alpha: 0.6)
-        viewCFFrequency.addSubview(lblCFFrequency)
+        viewTEIDuration.addSubview(lblTEDuration)
         
-        txtCFFrequency.frame = CGRect(x: 235, y: 12, width: 61, height: 21)
-        txtCFFrequency.setTextField(fontSize: 18,
-                                    lblText: "Mensal",
+        txtTEDuration.frame = CGRect(x: 235, y: 12, width: 95, height: 21)
+        txtTEDuration.setTextField(fontSize: 18,
+                                    lblText: "1 Semana",
                                     textColor: .workBlue,
                                     alingnment: .rigth,
                                     alpha: 1)
-        viewCFFrequency.addSubview(txtCFFrequency)
+        viewTEIDuration.addSubview(txtTEDuration)
         
         
         //Set CFDaysWorked
         
-        lblCFDaysWOrk.frame = CGRect(x: 15, y: 13, width: 175, height: 15)
-        lblCFDaysWOrk.setLabelWhithConstraints(fontSize: 12,
+        lblTEDaysWork.frame = CGRect(x: 15, y: 13, width: 175, height: 15)
+        lblTEDaysWork.setLabelWhithConstraints(fontSize: 12,
                                                lblText: "Dias trabalhados na semana",
                                                textColor: .black,
                                                alingnment: .left,
                                                alpha: 0.6)
-        viewCFDaysWorked.addSubview(lblCFDaysWOrk)
+        viewTEIDaysWorked.addSubview(lblTEDaysWork)
         
-        txtCFDaysWork.frame = CGRect(x: 235, y: 12, width: 61, height: 21)
-        txtCFDaysWork.setTextField(fontSize: 16,
+        txtTEDaysWork.frame = CGRect(x: 235, y: 12, width: 61, height: 21)
+        txtTEDaysWork.setTextField(fontSize: 18,
                                    lblText: "4",
                                    textColor: .workBlue,
                                    alingnment: .rigth,
                                    alpha: 1)
-        viewCFDaysWorked.addSubview(txtCFDaysWork)
+        viewTEIDaysWorked.addSubview(txtTEDaysWork)
+        
+        lblTETimeWork.frame = CGRect(x: 15, y: 13, width: 175, height: 15)
+        lblTETimeWork.setLabelWhithConstraints(fontSize: 14,
+                                               lblText: "Horas Ttrabalhadas/dia",
+                                               textColor: .black,
+                                               alingnment: .left,
+                                               alpha: 0.6)
+        viewTEIHourByDay.addSubview(lblTETimeWork)
+
+        txtTETimeWork.frame = CGRect(x: 235, y: 13, width: 175, height: 15)
+        txtTETimeWork.setTextField(fontSize: 18,
+                                   lblText: "4 h",
+                                   textColor: .workBlue,
+                                   alingnment: .rigth,
+                                   alpha: 1)
+        viewTEIHourByDay.addSubview(txtTETimeWork)
+
+        
+        
+        
         
     }
     
