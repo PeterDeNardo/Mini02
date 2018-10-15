@@ -16,6 +16,8 @@ class Material{
     var preco: Float?
     var marca: String?
     var usuario: [String:String]?
+    var quantidade: Int?
+    var total: Float?
     
     init(nome: String, tipo: String, preco: Float, marca: String, chave: String = "", usuario: [String:String]){
         ref = nil
@@ -25,6 +27,13 @@ class Material{
         self.marca = marca
         self.chave = chave
         self.usuario = usuario
+        self.quantidade = 1
+        self.total = preco
+    }
+    
+    func incrementar(){
+        self.quantidade = self.quantidade! + 1
+        self.total = self.total! + self.preco!
     }
     
     init?(snapshot: DataSnapshot){
@@ -35,7 +44,9 @@ class Material{
             let preco = valor["preco"] as? Float,
             let tipo = valor["tipo"] as? String,
             let marca = valor["marca"] as? String,
-            let usuario = valor["usuario"] as? [String:String]
+            let usuario = valor["usuario"] as? [String:String],
+            let quantidade = valor["quantidade"] as? Int,
+            let total = valor["total"] as? Float
         
             else {return nil}
         
@@ -47,7 +58,8 @@ class Material{
         self.nome = nome
         self.marca = marca
         self.usuario = usuario
-        
+        self.quantidade = quantidade
+        self.total = total
         
         
     }
@@ -59,6 +71,8 @@ class Material{
             "marca" : marca!,
             "nome": nome!,
             "usuario": usuario!,
+            "quantidade": quantidade!,
+            "total": total!,
         ]
     }
 

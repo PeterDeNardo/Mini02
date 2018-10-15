@@ -44,10 +44,17 @@ class MaterialViewController: UIViewController {
     func addButtonsTargets (){
         materialView.btnFour.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
         
+        materialView.btnSearch.addTarget(self, action: #selector(listarSelecionados), for: .touchDown)
+        
         materialView.btnThree.addTarget(self, action: #selector(addMaterial), for: .touchDown
         )
         
         //materialView.btnTwo.addTarget(self, action: #selector(), for: .touchDown)
+    }
+    
+    @objc func listarSelecionados(){
+        materiaisPesquisados = materiaisSelecionados
+        materialView.tableView.reloadData()
     }
     
     @objc func abaixarTeclado() {
