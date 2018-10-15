@@ -11,8 +11,8 @@ import UIKit
 class MaterialTableViewCell: UITableViewCell {
 
     var nome: UILabel = UILabel(frame: CGRect(x: 76, y: 8, width: 80, height: 21))
-    var preco: UILabel = UILabel(frame: CGRect(x: 308, y: 19, width: 24, height: 21))
-    var tipo: UILabel = UILabel(frame: CGRect(x: 225, y: 19, width: 39, height: 21))
+    var preco: UILabel = UILabel(frame: CGRect(x: 290, y: 19, width: 60, height: 21))
+    var tipo: UILabel = UILabel(frame: CGRect(x: 225, y: 19, width: 40, height: 21))
     var marca: UILabel = UILabel(frame: CGRect(x: 76, y: 36, width: 100, height: 16))
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -25,9 +25,9 @@ class MaterialTableViewCell: UITableViewCell {
                                       alpha: 1)
         
         preco.setLabelWhithConstraints(fontSize: 18,
-                                       lblText: "$Y",
+                                       lblText: "R$000.0",
                                        textColor: .workBlue,
-                                       alingnment: .left,
+                                       alingnment: .right,
                                        alpha: 1)
         
         tipo.setLabelWhithConstraints(fontSize: 18,

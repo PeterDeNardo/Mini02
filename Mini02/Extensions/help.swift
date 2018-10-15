@@ -7,7 +7,7 @@ import UIKit
 extension UILabel {
     
     enum AlignmentText {
-        case center, rigth, left
+        case center, right, left
     }
     //MARK: set Label
     //Set all label states without affect the constraints
@@ -25,7 +25,7 @@ extension UILabel {
         case .center:
             self.textAlignment = .center
             break
-        case .rigth:
+        case .right:
             break
         case .left:
             self.textAlignment = .left

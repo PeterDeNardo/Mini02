@@ -22,10 +22,7 @@ class MaterialViewController: UIViewController {
     var materiaisSelecionados: [Material] = []
     var timer: Timer?
     var tap: UITapGestureRecognizer?
-  
-    
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
     }
@@ -38,8 +35,10 @@ class MaterialViewController: UIViewController {
         criarSearchBar()
         addButtonsTargets()
         self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done) ), animated: true)
+        self.navigationItem.leftBarButtonItem?.action = #selector(done)
         fetchData()
         pegarUserDefaults()
+        
     }
     
     func addButtonsTargets (){
@@ -50,7 +49,6 @@ class MaterialViewController: UIViewController {
         
         //materialView.btnTwo.addTarget(self, action: #selector(), for: .touchDown)
     }
-    
     
     @objc func abaixarTeclado() {
         self.view.removeGestureRecognizer(tap!)
@@ -143,8 +141,15 @@ class MaterialViewController: UIViewController {
     }
     
     @objc func addMaterial(){
-        guard let index = materialView.tableView.indexPathForSelectedRow?.row else {return}
-       materiaisSelecionados.append(materiaisPesquisados[index])
+        guard let linhas = materialView.tableView.indexPathsForSelectedRows else {return}
+       
+        for linha in linhas {
+             materiaisSelecionados.append(materiaisPesquisados[linha.row])
+            materialView.tableView.deselectRow(at: linha, animated: true)
+        }
+        
+        
+      
     }
     
     @objc private func fetchData(){
@@ -218,8 +223,7 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         
         
         cell.nome.text = material.nome
-        cell.preco.text = "R$\(material.preco!)"
-        print("R$\(material.preco)")
+        cell.preco.text = "$\(material.preco!)"
         cell.tipo.text = material.tipo
         cell.marca.text = material.marca
 
