@@ -46,10 +46,23 @@ class MaterialViewController: UIViewController {
         
         materialView.btnSearch.addTarget(self, action: #selector(listarSelecionados), for: .touchDown)
         
-        materialView.btnThree.addTarget(self, action: #selector(addMaterial), for: .touchDown
+        materialView.btnTwo.addTarget(self, action: #selector(addMaterial), for: .touchDown
+        )
+        
+        materialView.btnThree.addTarget(self, action: #selector(listarMeus), for: .touchDown
         )
         
         //materialView.btnTwo.addTarget(self, action: #selector(), for: .touchDown)
+    }
+    
+    @objc func listarMeus(){
+        materiaisPesquisados.removeAll()
+        for material in materiais {
+            if material.usuario!["id"] == usuario!["id"] {
+                materiaisPesquisados.append(material)
+            }
+        }
+        materialView.tableView.reloadData()
     }
     
     @objc func listarSelecionados(){
