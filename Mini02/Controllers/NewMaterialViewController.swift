@@ -15,9 +15,12 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
     var categoriaEscolhida: String?
     var tap: UITapGestureRecognizer?
     var ref: DatabaseReference?
+    var usuario: [String:String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pegarUserDefaults()
         
         ref = Database.database().reference(withPath: "Material")
         self.view = newMaterial.setLayoutInView()
@@ -38,6 +41,18 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
         newMaterial.txtMaterialName.delegate = self
         newMaterial.txtMaterialOrigin.delegate = self
         newMaterial.txtMaterialQuantity.delegate = self
+    }
+    
+    func pegarUserDefaults(){
+        
+        let defaults = UserDefaults.standard
+        
+        usuario = [
+            "nome" : defaults.string(forKey: "nome"),
+            "email" : defaults.string(forKey: "email"),
+            "id" : defaults.string(forKey: "id")
+            ] as? [String : String]
+        
     }
     
     @objc func abaixarTeclado() {
@@ -93,8 +108,10 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
         guard let precoMaterial =  Float(precoMaterialString) else {return}
         guard let marcaMaterial = newMaterial.txtMaterialOrigin.text else {return}
         guard let categoria = categoriaEscolhida else {return}
-        
-        let material = Material(nome: nomeMaterial, tipo: categoria, preco: precoMaterial, marca: marcaMaterial )
+        if usuario == nil {
+            self.usuario = ["nome": "anônimo"]
+        }
+        let material = Material(nome: nomeMaterial, tipo: categoria, preco: precoMaterial, marca: marcaMaterial, usuario: usuario! )
         
         guard let ref = self.ref else{return}
         

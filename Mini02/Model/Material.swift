@@ -15,14 +15,16 @@ class Material{
     var tipo: String?
     var preco: Float?
     var marca: String?
+    var usuario: [String:String]?
     
-    init(nome: String, tipo: String, preco: Float, marca: String, chave: String = ""){
+    init(nome: String, tipo: String, preco: Float, marca: String, chave: String = "", usuario: [String:String]){
         ref = nil
         self.nome = nome
         self.tipo = tipo
         self.preco = preco
         self.marca = marca
         self.chave = chave
+        self.usuario = usuario
     }
     
     init?(snapshot: DataSnapshot){
@@ -32,8 +34,9 @@ class Material{
             let nome = valor["nome"] as? String,
             let preco = valor["preco"] as? Float,
             let tipo = valor["tipo"] as? String,
-            let marca = valor["marca"] as? String
-            
+            let marca = valor["marca"] as? String,
+            let usuario = valor["usuario"] as? [String:String]
+        
             else {return nil}
         
         self.chave = snapshot.key
@@ -43,6 +46,8 @@ class Material{
         self.tipo = tipo
         self.nome = nome
         self.marca = marca
+        self.usuario = usuario
+        
         
         
     }
@@ -53,6 +58,7 @@ class Material{
             "tipo" : tipo!,
             "marca" : marca!,
             "nome": nome!,
+            "usuario": usuario!,
         ]
     }
 
