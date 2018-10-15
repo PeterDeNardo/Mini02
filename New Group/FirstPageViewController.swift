@@ -1,25 +1,14 @@
 //
-//  StartButtonViewController.swift
+//  FirstPageViewController.swift
 //  Mini02
 //
-//  Created by Matheus Fracaroli on 09/10/18.
+//  Created by Matheus Fracaroli on 15/10/18.
 //  Copyright © 2018 Peter De Nardo. All rights reserved.
 //
 
 import UIKit
 
-class StartButtonViewController: UIViewController {
-
-   
-    @IBAction func startButton(_ sender: UIButton) {
-        UserDefaults.standard.set(true, forKey: "isLogged")
-        
-        present(TabBarController(), animated: true, completion: nil)
-    }
-    
-    func finishOnboard() -> Bool{
-        return UserDefaults.standard.bool(forKey: "isLogged")
-    }
+class FirstPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -14,6 +14,11 @@
 		9165629E216FD4E000AC71DE /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9165629A216FD4E000AC71DE /* CalculatorView.swift */; };
 		9165629F216FD4E000AC71DE /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9165629B216FD4E000AC71DE /* MaterialView.swift */; };
 		916562A0216FD4E000AC71DE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9165629C216FD4E000AC71DE /* LoginView.swift */; };
+		91972446217529B500E12DE5 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91972445217529B500E12DE5 /* FirstPageViewController.swift */; };
+		91972448217529D400E12DE5 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91972447217529D400E12DE5 /* SecondPageViewController.swift */; };
+		9197244A217529E300E12DE5 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91972449217529E300E12DE5 /* ThirdPageViewController.swift */; };
+		9197244C217529EF00E12DE5 /* FourthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9197244B217529EF00E12DE5 /* FourthPageViewController.swift */; };
+		9197244E217529FF00E12DE5 /* FifthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9197244D217529FF00E12DE5 /* FifthPageViewController.swift */; };
 		944761C9216BF4A300019117 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 944761C8216BF4A300019117 /* GoogleService-Info.plist */; };
 		944761CE216D380300019117 /* Projeto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CD216D380300019117 /* Projeto.swift */; };
 		944761D0216D3A7300019117 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CF216D3A7300019117 /* Material.swift */; };
@@ -42,6 +47,11 @@
 		9165629A216FD4E000AC71DE /* CalculatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorView.swift; path = ../../../../Downloads/Views/CalculatorView.swift; sourceTree = "<group>"; };
 		9165629B216FD4E000AC71DE /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaterialView.swift; path = ../../../../Downloads/Views/MaterialView.swift; sourceTree = "<group>"; };
 		9165629C216FD4E000AC71DE /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ../../../../Downloads/Views/LoginView.swift; sourceTree = "<group>"; };
+		91972445217529B500E12DE5 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
+		91972447217529D400E12DE5 /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
+		91972449217529E300E12DE5 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
+		9197244B217529EF00E12DE5 /* FourthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthPageViewController.swift; sourceTree = "<group>"; };
+		9197244D217529FF00E12DE5 /* FifthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthPageViewController.swift; sourceTree = "<group>"; };
 		944761C8216BF4A300019117 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		944761CD216D380300019117 /* Projeto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projeto.swift; sourceTree = "<group>"; };
 		944761CF216D3A7300019117 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
@@ -94,6 +104,11 @@
 			children = (
 				9165628C216FD0F300AC71DE /* OnboardStoryboard.storyboard */,
 				9165628A216FD0F300AC71DE /* OnboardViewController.swift */,
+				91972445217529B500E12DE5 /* FirstPageViewController.swift */,
+				91972447217529D400E12DE5 /* SecondPageViewController.swift */,
+				91972449217529E300E12DE5 /* ThirdPageViewController.swift */,
+				9197244B217529EF00E12DE5 /* FourthPageViewController.swift */,
+				9197244D217529FF00E12DE5 /* FifthPageViewController.swift */,
 				9165628B216FD0F300AC71DE /* StartButtonViewController.swift */,
 			);
 			name = Onboard;
@@ -369,11 +384,13 @@
 				9165629D216FD4E000AC71DE /* CalculatorPlussView.swift in Sources */,
 				944761D0216D3A7300019117 /* Material.swift in Sources */,
 				94E67A29216EA0220098024E /* MaterialTableViewCell.swift in Sources */,
+				91972448217529D400E12DE5 /* SecondPageViewController.swift in Sources */,
 				961678DE216BEC8700433E22 /* LoginViewController.swift in Sources */,
 				9165628E216FD0F300AC71DE /* StartButtonViewController.swift in Sources */,
 				961678DA2169EAB500433E22 /* help.swift in Sources */,
 				9165628D216FD0F300AC71DE /* OnboardViewController.swift in Sources */,
 				94E67A27216E96780098024E /* MaterialViewController.swift in Sources */,
+				9197244A217529E300E12DE5 /* ThirdPageViewController.swift in Sources */,
 				9165629E216FD4E000AC71DE /* CalculatorView.swift in Sources */,
 				944761CE216D380300019117 /* Projeto.swift in Sources */,
 				961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */,
@@ -381,6 +398,9 @@
 				9165629F216FD4E000AC71DE /* MaterialView.swift in Sources */,
 				961678D52169DDED00433E22 /* AppDelegate.swift in Sources */,
 				916562A0216FD4E000AC71DE /* LoginView.swift in Sources */,
+				9197244C217529EF00E12DE5 /* FourthPageViewController.swift in Sources */,
+				91972446217529B500E12DE5 /* FirstPageViewController.swift in Sources */,
+				9197244E217529FF00E12DE5 /* FifthPageViewController.swift in Sources */,
 				961678D12169DB3600433E22 /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

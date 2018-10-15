@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cXX-9y-haB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Onboard View Controller-->
+        <scene sceneID="rVb-VR-iMy">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="crossDissolve" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="cXX-9y-haB" customClass="OnboardViewController" customModule="Mini02" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oIG-Fa-bGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7066" y="-1827"/>
+        </scene>
+        <!--First Page View Controller-->
+        <scene sceneID="6j4-rn-taj">
+            <objects>
+                <viewController storyboardIdentifier="FirstPageViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Mv-cA-xgL" customClass="FirstPageViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dxa-0N-jw4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="22h-oI-jrk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="steps1" translatesAutoresizingMaskIntoConstraints="NO" id="icN-H2-J0o">
+                                <rect key="frame" x="111" y="534" width="156" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6g-g2-6PI">
+                                <rect key="frame" x="44" y="355" width="286" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">
+Add items to be able to calculate the expenses of your projects!</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="22h-oI-jrk" firstAttribute="leading" secondItem="FGW-N7-NKa" secondAttribute="leading" id="74t-Hx-vEZ"/>
+                            <constraint firstItem="22h-oI-jrk" firstAttribute="trailing" secondItem="FGW-N7-NKa" secondAttribute="trailing" id="UDK-bH-zEG"/>
+                            <constraint firstItem="22h-oI-jrk" firstAttribute="bottom" secondItem="FGW-N7-NKa" secondAttribute="bottom" id="wTL-pC-Yjy"/>
+                            <constraint firstItem="22h-oI-jrk" firstAttribute="top" secondItem="dxa-0N-jw4" secondAttribute="top" id="zZB-hB-DdI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FGW-N7-NKa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QrR-s3-VNr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6274.3999999999996" y="-1826.5367316341831"/>
+        </scene>
+        <!--Second Page View Controller-->
+        <scene sceneID="ciX-Wp-WYe">
+            <objects>
+                <viewController storyboardIdentifier="SecondPageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYY-s0-N6T" customClass="SecondPageViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ASE-W3-fa0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="v2X-DD-48I">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="steps2" translatesAutoresizingMaskIntoConstraints="NO" id="7fl-Kx-oca">
+                                <rect key="frame" x="111" y="534" width="156" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqw-Ec-DgU">
+                                <rect key="frame" x="51" y="207" width="308" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">
+Add, select and customize items and materials needed to complete your projects</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="v2X-DD-48I" firstAttribute="top" secondItem="ASE-W3-fa0" secondAttribute="top" id="Hcl-fY-sJu"/>
+                            <constraint firstItem="v2X-DD-48I" firstAttribute="trailing" secondItem="ZVF-wm-pgY" secondAttribute="trailing" id="QTs-yw-39Y"/>
+                            <constraint firstItem="v2X-DD-48I" firstAttribute="bottom" secondItem="ZVF-wm-pgY" secondAttribute="bottom" id="shy-jK-MiQ"/>
+                            <constraint firstItem="v2X-DD-48I" firstAttribute="leading" secondItem="ZVF-wm-pgY" secondAttribute="leading" id="wIM-7g-VIM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZVF-wm-pgY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dNb-ML-0LV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5519.1999999999998" y="-1826.5367316341831"/>
+        </scene>
+        <!--Third Page View Controller-->
+        <scene sceneID="sSX-UX-Grq">
+            <objects>
+                <viewController storyboardIdentifier="ThirdPageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aMC-gp-6Tl" customClass="ThirdPageViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rys-sV-x7X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="YSJ-oc-wR5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="steps3" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-mU-zRN">
+                                <rect key="frame" x="111" y="534" width="156" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xN-6W-CjH">
+                                <rect key="frame" x="30" y="309" width="319" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">
+View information about the materials you want and manage them</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21176470589999999" green="0.79607843140000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="YSJ-oc-wR5" firstAttribute="top" secondItem="rys-sV-x7X" secondAttribute="top" id="3e2-Rr-Ogm"/>
+                            <constraint firstItem="YSJ-oc-wR5" firstAttribute="bottom" secondItem="hgn-n1-1Z0" secondAttribute="bottom" id="8tH-BP-XZk"/>
+                            <constraint firstItem="YSJ-oc-wR5" firstAttribute="trailing" secondItem="hgn-n1-1Z0" secondAttribute="trailing" id="YUd-CB-fbv"/>
+                            <constraint firstItem="YSJ-oc-wR5" firstAttribute="leading" secondItem="hgn-n1-1Z0" secondAttribute="leading" id="eVe-nt-vhz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hgn-n1-1Z0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bFe-KW-tO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4671.1999999999998" y="-1827.4362818590705"/>
+        </scene>
+        <!--Start Button View Controller-->
+        <scene sceneID="vXf-55-Cnm">
+            <objects>
+                <viewController storyboardIdentifier="SixthPageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q4r-ag-07s" customClass="StartButtonViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DYn-RX-Hu1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="06 onboarding copy" translatesAutoresizingMaskIntoConstraints="NO" id="BOU-33-J3O">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1H-7d-NCm">
+                                <rect key="frame" x="98" y="483" width="179" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Continuar sem login!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButton:" destination="q4r-ag-07s" eventType="touchUpInside" id="A6p-xm-eAE"/>
+                                    <action selector="startButton:" destination="c91-MG-tFn" eventType="touchUpInside" id="ng7-BN-4of"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BOU-33-J3O" firstAttribute="top" secondItem="DYn-RX-Hu1" secondAttribute="top" id="91D-NA-JOu"/>
+                            <constraint firstItem="BOU-33-J3O" firstAttribute="bottom" secondItem="8KD-aw-HEa" secondAttribute="bottom" id="HsZ-cj-cUX"/>
+                            <constraint firstItem="BOU-33-J3O" firstAttribute="leading" secondItem="8KD-aw-HEa" secondAttribute="leading" id="OfY-D9-fPi"/>
+                            <constraint firstItem="BOU-33-J3O" firstAttribute="trailing" secondItem="8KD-aw-HEa" secondAttribute="trailing" id="S5t-bJ-gLC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8KD-aw-HEa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ph7-71-nCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="c91-MG-tFn" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-2047.2" y="-1826.5367316341831"/>
+        </scene>
+        <!--Fourth Page View Controller-->
+        <scene sceneID="BfQ-f5-zAv">
+            <objects>
+                <viewController storyboardIdentifier="FourthPageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bvc-R9-iCI" customClass="FourthPageViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N3U-aD-JWV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="04 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="yre-o6-MdN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="steps4" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-VY-qyT">
+                                <rect key="frame" x="111" y="534" width="156" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrq-eF-2Tg">
+                                <rect key="frame" x="33" y="174" width="312" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">
+In addition, add extra costs that interfere with your project, such as: light bill and hours worked</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.023826093580641583" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yre-o6-MdN" firstAttribute="top" secondItem="N3U-aD-JWV" secondAttribute="top" id="FCV-md-kX2"/>
+                            <constraint firstItem="yre-o6-MdN" firstAttribute="leading" secondItem="eBX-ca-cqC" secondAttribute="leading" id="NLB-SD-bnm"/>
+                            <constraint firstItem="yre-o6-MdN" firstAttribute="trailing" secondItem="eBX-ca-cqC" secondAttribute="trailing" id="Yvc-RY-Szi"/>
+                            <constraint firstItem="yre-o6-MdN" firstAttribute="bottom" secondItem="eBX-ca-cqC" secondAttribute="bottom" id="jkY-Eq-rOr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eBX-ca-cqC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="haw-HT-GrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3826.4000000000001" y="-1827.4362818590705"/>
+        </scene>
+        <!--Fifth Page View Controller-->
+        <scene sceneID="Wy5-9f-Azc">
+            <objects>
+                <viewController storyboardIdentifier="FifthPageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lMy-om-97j" customClass="FifthPageViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lti-tT-Isg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="05 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="Glo-4d-qKm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="steps5" translatesAutoresizingMaskIntoConstraints="NO" id="lyY-WE-7Hk">
+                                <rect key="frame" x="111" y="534" width="156" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAd-jF-bPb">
+                                <rect key="frame" x="35" y="318" width="308" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">
+Finalize and forever have the cost and profit gained through your creations!</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.79009950861075495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Glo-4d-qKm" firstAttribute="trailing" secondItem="pkf-lR-9MG" secondAttribute="trailing" id="GwV-Ei-hsS"/>
+                            <constraint firstItem="Glo-4d-qKm" firstAttribute="leading" secondItem="pkf-lR-9MG" secondAttribute="leading" id="YRY-OC-Vf7"/>
+                            <constraint firstItem="Glo-4d-qKm" firstAttribute="bottom" secondItem="pkf-lR-9MG" secondAttribute="bottom" id="b7y-Mp-5d1"/>
+                            <constraint firstItem="Glo-4d-qKm" firstAttribute="top" secondItem="Lti-tT-Isg" secondAttribute="top" id="fsH-Vy-UE1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pkf-lR-9MG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kc7-aj-cfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2930.4000000000001" y="-1827.4362818590705"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="01 Onboarding Copy" width="562.5" height="1000.5"/>
+        <image name="02 Onboarding Copy" width="562.5" height="1000.5"/>
+        <image name="03 Onboarding Copy" width="562.5" height="1000.5"/>
+        <image name="04 Onboarding Copy" width="562.5" height="1000.5"/>
+        <image name="05 Onboarding Copy" width="562.5" height="1000.5"/>
+        <image name="06 onboarding copy" width="562.5" height="1000.5"/>
+        <image name="steps1" width="114" height="25.5"/>
+        <image name="steps2" width="114" height="25.5"/>
+        <image name="steps3" width="114" height="25.5"/>
+        <image name="steps4" width="114" height="25.5"/>
+        <image name="steps5" width="114" height="25.5"/>
+    </resources>
+</document>

@@ -21,6 +21,20 @@ class CalculatorViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
+        //isLogged()
+        nonLogged()
+    }
+    
+    func isLogged(){
+        
+        UserDefaults.standard.set(false, forKey: "isLogged")
+        
+    }
+    
+    func nonLogged(){
+        if !(UserDefaults.standard.bool(forKey: "isLogged")) {
+            present(OnboardViewController(), animated: true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {

@@ -9,7 +9,7 @@
 import UIKit
 
 class OnboardViewController: UIPageViewController, UIPageViewControllerDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,21 +18,23 @@ class OnboardViewController: UIPageViewController, UIPageViewControllerDelegate 
             setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
         }
         
+
+        
         dataSource = self
         delegate = self
     }
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newColoredViewController(color: "FirstPageViewController"),
-                self.newColoredViewController(color: "SecondPageViewController"),
-                self.newColoredViewController(color: "ThirdPageViewController"),
-                self.newColoredViewController(color: "FourthPageViewController"),
-                self.newColoredViewController(color: "FifthPageViewController"),
-                self.newColoredViewController(color: "SixthPageViewController")]
+        return [self.newIdVIewController(id: "FirstPageViewController"),
+                self.newIdVIewController(id: "SecondPageViewController"),
+                self.newIdVIewController(id: "ThirdPageViewController"),
+                self.newIdVIewController(id: "FourthPageViewController"),
+                self.newIdVIewController(id: "FifthPageViewController"),
+                self.newIdVIewController(id: "SixthPageViewController")]
     }()
 
-    private func newColoredViewController(color: String) -> UIViewController{
-        return UIStoryboard(name: "OnboardStoryboard", bundle: nil) .instantiateViewController(withIdentifier: "\(color)")
+    private func newIdVIewController(id: String) -> UIViewController{
+        return UIStoryboard(name: "OnboardStoryboard", bundle: nil) .instantiateViewController(withIdentifier: "\(id)")
     }
 }
 
@@ -73,7 +75,7 @@ extension OnboardViewController: UIPageViewControllerDataSource {
     }
     
     func presentationCountForPageViewController(pageViewController: OnboardViewController) -> Int {
-        return 6
+        return orderedViewControllers.count
     }
     
     func presentationIndexForPageViewController(pageViewController: OnboardViewController) -> Int {
