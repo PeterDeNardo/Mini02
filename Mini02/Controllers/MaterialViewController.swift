@@ -43,7 +43,7 @@ class MaterialViewController: UIViewController {
     
     func addButtonsTargets (){
         materialView.btnFour.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
-        
+    
         materialView.btnSearch.addTarget(self, action: #selector(listarSelecionados), for: .touchDown)
         
         materialView.btnTwo.addTarget(self, action: #selector(addMaterial), for: .touchDown
@@ -55,7 +55,18 @@ class MaterialViewController: UIViewController {
         //materialView.btnTwo.addTarget(self, action: #selector(), for: .touchDown)
     }
     
+    func desativarTodosOsFiltros(){
+        materialView.btnTwo.isSelected = false
+        materialView.btnFour.isSelected = false
+        materialView.btnThree.isSelected = false
+        materialView.btnSearch.isSelected = false
+    }
+    
     @objc func listarMeus(){
+        
+        desativarTodosOsFiltros()
+        materialView.btnThree.isSelected = true
+        
         materiaisPesquisados.removeAll()
         for material in materiais {
             if material.usuario!["id"] == usuario!["id"] {
@@ -66,6 +77,9 @@ class MaterialViewController: UIViewController {
     }
     
     @objc func listarSelecionados(){
+        desativarTodosOsFiltros()
+        materialView.btnSearch.isSelected = true
+        
         materiaisPesquisados = materiaisSelecionados
         materialView.tableView.reloadData()
     }
@@ -104,19 +118,54 @@ class MaterialViewController: UIViewController {
         
     }
     
+    func pesquisarMeus(){
+        
+        for material in materiais {
+            
+            if (material.nome?.uppercased().contains(pesquisaTxt))! && usuario!["id"] == material.usuario!["id"]{
+                materiaisPesquisados.append(material)
+            }
+                
+            else if (material.marca?.uppercased().contains(pesquisaTxt))! && usuario!["id"] == material.usuario!["id"]{
+                materiaisPesquisados.append(material)
+            }
+                
+            else if (material.tipo?.uppercased().contains(pesquisaTxt))! && usuario!["id"] == material.usuario!["id"]{
+                materiaisPesquisados.append(material)
+            }
+        }
+    }
+    
+    func pesquisarSelecionados(){
+        
+    }
+    
     func pesquisar(){
 
         materiaisPesquisados.removeAll()
         
         pesquisaTxt = pesquisaTxt.uppercased()
         
+        if materialView.btnThree.isSelected {
+            
+            pesquisarMeus()
+            
+        }
+            
+        if materialView.btnSearch.isSelected{
+            
+            pesquisarSelecionados()
+            
+        }
+        
+        else{
+        
         for material in materiais {
             
             if (material.nome?.uppercased().contains(pesquisaTxt))!{
                 materiaisPesquisados.append(material)
             }
-                
-            else if (material.marca?.uppercased().contains(pesquisaTxt))!{
+                else if (material.marca?.uppercased().contains(pesquisaTxt))!{
                 materiaisPesquisados.append(material)
             }
                 
@@ -127,6 +176,7 @@ class MaterialViewController: UIViewController {
         
         if pesquisaTxt == "" {
             materiaisPesquisados = materiais
+        }
         }
         
     }

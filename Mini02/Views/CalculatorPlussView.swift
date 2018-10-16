@@ -146,7 +146,7 @@ class CalculatorPlussView {
         
         //CFView
         
-        viewCostsFixed.addSubview(viewCF)
+        //viewCostsFixed.addSubview(viewCF)
         
         //CPView
 //
