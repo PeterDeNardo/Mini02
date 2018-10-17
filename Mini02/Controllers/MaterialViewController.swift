@@ -32,6 +32,7 @@ class MaterialViewController: UIViewController {
         if materiaisSelecionados.count > 0 {
             desativarTodosOsFiltros()
             materialView.btnSearch.isSelected = true
+            esconderBotaoAdd()
         }
         
         if materiaisSelecionados.count == 0 {
@@ -39,6 +40,7 @@ class MaterialViewController: UIViewController {
         }else{
            mostrarBotaoAdd()
         }
+        
         
     }
     
@@ -69,9 +71,10 @@ class MaterialViewController: UIViewController {
     }
     
     func mostrarBotaoAdd(){
+        if !materialView.btnSearch.isSelected {
         materialView.btnAddMaterial.isHidden = false
         materialView.btnAddMaterial.isEnabled = true
-        materialView.btnAddMaterial.setTitle("\((materialView.tableView.indexPathsForSelectedRows?.count)!) itens selecionados", for: .normal)
+        }
     }
     
     func esconderBotaoAdd(){
@@ -103,6 +106,8 @@ class MaterialViewController: UIViewController {
     
     @objc func listarMeus(){
         
+        esconderBotaoAdd()
+        
         desativarTodosOsFiltros()
         
         materialView.btnThree.isSelected = true
@@ -119,7 +124,7 @@ class MaterialViewController: UIViewController {
     @objc func listarSelecionados(){
         desativarTodosOsFiltros()
         materialView.btnSearch.isSelected = true
-        
+        esconderBotaoAdd()
         materiaisPesquisados = materiaisSelecionados
         materialView.tableView.reloadData()
         selecionarTodasAsRows()
@@ -145,6 +150,8 @@ class MaterialViewController: UIViewController {
     }
     
     @objc func listarTodos(){
+        
+        esconderBotaoAdd()
         
         desativarTodosOsFiltros()
         
@@ -315,6 +322,7 @@ class MaterialViewController: UIViewController {
     }
     
     @objc func addMaterial(){
+        if !materialView.btnSearch.isSelected{
         guard let linhas = materialView.tableView.indexPathsForSelectedRows else {return}
        
         for linha in linhas {
@@ -325,6 +333,7 @@ class MaterialViewController: UIViewController {
         esconderBotaoAdd()
 
        }
+    }
     
     @objc private func fetchData(){
         
@@ -363,6 +372,7 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        mostrarBotaoAdd()
+        materialView.btnAddMaterial.setTitle("\((materialView.tableView.indexPathsForSelectedRows?.count)!) itens selecionados", for: .normal)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
