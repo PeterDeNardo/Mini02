@@ -26,6 +26,14 @@ class MaterialViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
+        desativarTodosOsFiltros()
+        materialView.btnFour.isSelected = true
+        
+        if materiaisSelecionados.count > 0 {
+            desativarTodosOsFiltros()
+            materialView.btnSearch.isSelected = true
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -55,7 +63,7 @@ class MaterialViewController: UIViewController {
     }
     
     func addButtonsTargets (){
-        materialView.btnFour.addTarget(self, action: #selector(pesquisar), for: .touchDown)
+        materialView.btnFour.addTarget(self, action: #selector(listarTodos), for: .touchDown)
     
         materialView.btnSearch.addTarget(self, action: #selector(listarSelecionados), for: .touchDown)
         
@@ -79,6 +87,7 @@ class MaterialViewController: UIViewController {
     @objc func listarMeus(){
         
         desativarTodosOsFiltros()
+        
         materialView.btnThree.isSelected = true
         
         materiaisPesquisados.removeAll()
@@ -96,6 +105,16 @@ class MaterialViewController: UIViewController {
         
         materiaisPesquisados = materiaisSelecionados
         materialView.tableView.reloadData()
+        selecionarTodasAsRows()
+        
+    }
+    
+    func selecionarTodasAsRows(){
+        var i = 0
+        while i < materiaisPesquisados.count {
+            materialView.tableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: UITableView.ScrollPosition.middle)
+            i = i + 1
+        }
     }
     
     @objc func abaixarTeclado() {
@@ -106,6 +125,18 @@ class MaterialViewController: UIViewController {
     @objc func goToNewMaterialView() {
         let newMaterialsView = NewMaterialViewController()
         navigationController?.pushViewController(newMaterialsView, animated: true)
+    }
+    
+    @objc func listarTodos(){
+        
+        desativarTodosOsFiltros()
+        
+        materialView.btnFour.isSelected = true
+        
+        materiaisPesquisados = materiais
+        
+        materialView.tableView.reloadData()
+        
     }
   
     func criarSearchBar(){
@@ -121,13 +152,18 @@ class MaterialViewController: UIViewController {
     }
     
     func criarTableView(){
+        
+        let tableVC = MaterialTableViewController()
+        
         self.view = self.materialView.setViews()
+       // self.materialView.tableView = tableVC.tableView
         self.materialView.tableView.delegate = self
         self.materialView.tableView.dataSource = self
         self.materialView.tableView.rowHeight = 79
         self.materialView.tableView.allowsMultipleSelection = true
         self.materialView.tableView.allowsSelectionDuringEditing = true
         self.materialView.tableView.backgroundColor = .clear
+        
         
         
     }
@@ -150,6 +186,26 @@ class MaterialViewController: UIViewController {
         }
     }
     
+    func pesquisarTodos(){
+
+        for material in materiais {
+            
+            if (material.nome?.uppercased().contains(pesquisaTxt))!{
+                materiaisPesquisados.append(material)
+            }
+            else if (material.marca?.uppercased().contains(pesquisaTxt))!{
+                materiaisPesquisados.append(material)
+            }
+                
+            else if (material.tipo?.uppercased().contains(pesquisaTxt))!{
+                materiaisPesquisados.append(material)
+            }
+        }
+        
+        materialView.tableView.reloadData()
+        
+    }
+
     func pesquisarSelecionados(){
         
         materiaisPesquisados.removeAll()
@@ -167,6 +223,8 @@ class MaterialViewController: UIViewController {
                 materiaisPesquisados.append(material)
             }
             
+            selecionarTodasAsRows()
+            
         }
         
     }
@@ -181,35 +239,33 @@ class MaterialViewController: UIViewController {
             
             pesquisarMeus()
             
+            if pesquisaTxt == "" {
+                listarMeus()
+            }
+            
         }
             
         if materialView.btnSearch.isSelected {
             
             pesquisarSelecionados()
             
+            if pesquisaTxt == "" {
+               listarSelecionados()
+            }
+            
         }
         
         if materialView.btnFour.isSelected {
-        
-        for material in materiais {
+        //pesquisar sem filtros
+        pesquisarTodos()
             
-            if (material.nome?.uppercased().contains(pesquisaTxt))!{
-                materiaisPesquisados.append(material)
+            if pesquisaTxt == "" {
+                listarTodos()
             }
-                else if (material.marca?.uppercased().contains(pesquisaTxt))!{
-                materiaisPesquisados.append(material)
-            }
-                
-            else if (material.tipo?.uppercased().contains(pesquisaTxt))!{
-                materiaisPesquisados.append(material)
-            }
-        }
         
         }
         
-        if pesquisaTxt == "" {
-            materiaisPesquisados = materiais
-        }
+       
         
     }
     
@@ -273,10 +329,12 @@ class MaterialViewController: UIViewController {
             self.materiais = materiais
             
             self.pesquisar()
-            
-     
-            
+
             self.materialView.tableView.reloadData()
+            
+            if self.materialView.btnSearch.isSelected {
+                self.selecionarTodasAsRows()
+            }
             
         }
         
@@ -287,9 +345,9 @@ class MaterialViewController: UIViewController {
 extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
 
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return materiaisPesquisados.count
-        
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -310,9 +368,29 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         abaixarTeclado()
     }
-  
 
-    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        if materialView.btnSearch.isSelected {
+            var i = 0
+            
+            while i < materiaisSelecionados.count {
+                
+                if materiaisSelecionados[i].chave == materiaisPesquisados[indexPath.row].chave{
+                    materiaisSelecionados.remove(at: i)
+                    materiaisPesquisados.remove(at: indexPath.row)
+                    break
+                }
+                i = i + 1
+                
+            }
+            
+            self.materialView.tableView.reloadData()
+            self.selecionarTodasAsRows()
+        }
+        
+    }
+  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellReuseIdendifier = "cell"
@@ -327,6 +405,7 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         cell.preco.text = "$\(material.preco!)"
         cell.tipo.text = material.tipo
         cell.marca.text = material.marca
+        
 
         return cell
         

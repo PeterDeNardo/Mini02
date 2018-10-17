@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94119FC22177B8D500771432 /* MaterialTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94119FC12177B8D500771432 /* MaterialTableViewController.swift */; };
 		944761C9216BF4A300019117 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 944761C8216BF4A300019117 /* GoogleService-Info.plist */; };
 		944761CE216D380300019117 /* Projeto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CD216D380300019117 /* Projeto.swift */; };
 		944761D0216D3A7300019117 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CF216D3A7300019117 /* Material.swift */; };
@@ -39,6 +40,7 @@
 		3A64131D7FDE7E394C67F8BA /* Pods-Mini02.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mini02.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mini02/Pods-Mini02.debug.xcconfig"; sourceTree = "<group>"; };
 		5D3460C56B3655FAA31DCED1 /* Pods-Mini02.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mini02.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mini02/Pods-Mini02.release.xcconfig"; sourceTree = "<group>"; };
 		8592BF9331E17B7B56B9CDA9 /* Pods_Mini02.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mini02.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94119FC12177B8D500771432 /* MaterialTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTableViewController.swift; sourceTree = "<group>"; };
 		944761C8216BF4A300019117 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		944761CD216D380300019117 /* Projeto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projeto.swift; sourceTree = "<group>"; };
 		944761CF216D3A7300019117 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				94E67A26216E96780098024E /* MaterialViewController.swift */,
 				96C867C221707E7000451161 /* NewMaterialViewController.swift */,
 				96C867C62170A71F00451161 /* SearchViewController.swift */,
+				94119FC12177B8D500771432 /* MaterialTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				961678DE216BEC8700433E22 /* LoginViewController.swift in Sources */,
 				96C867BB216FD5CF00451161 /* StartButtonViewController.swift in Sources */,
 				96C867C02170745100451161 /* NewMaterialView.swift in Sources */,
+				94119FC22177B8D500771432 /* MaterialTableViewController.swift in Sources */,
 				961678DA2169EAB500433E22 /* help.swift in Sources */,
 				94E67A27216E96780098024E /* MaterialViewController.swift in Sources */,
 				96C867BA216FD5CF00451161 /* OnboardViewController.swift in Sources */,
