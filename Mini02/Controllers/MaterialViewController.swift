@@ -13,6 +13,7 @@ import FirebaseDatabase
 class MaterialViewController: UIViewController {
     
     var pesquisaTxt = ""
+    let calculatorVC = CalculatorViewController()
     var materialView = MaterialView()
     var ref: DatabaseReference? = Database.database().reference(withPath: "Material")
     var tableView: UITableView!
@@ -27,6 +28,18 @@ class MaterialViewController: UIViewController {
         pegarUserDefaults()
     }
     
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        if self.isMovingFromParent{
+        
+            done()
+            self.tabBarController?.tabBar.isHidden = false
+            navigationController?.pushViewController(calculatorVC, animated: false)
+            
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,25 +47,26 @@ class MaterialViewController: UIViewController {
         criarTableView()
         criarSearchBar()
         addButtonsTargets()
-        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done) ), animated: true)
-        self.navigationItem.leftBarButtonItem?.action = #selector(done)
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(goToNewMaterialView) ), animated: true)
         fetchData()
         pegarUserDefaults()
+        self.tabBarController?.tabBar.isHidden = true
         
     }
     
     func addButtonsTargets (){
-        materialView.btnFour.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
+        materialView.btnFour.addTarget(self, action: #selector(pesquisar), for: .touchDown)
     
         materialView.btnSearch.addTarget(self, action: #selector(listarSelecionados), for: .touchDown)
         
-        materialView.btnTwo.addTarget(self, action: #selector(addMaterial), for: .touchDown
-        )
+        materialView.btnAddMaterial.addTarget(self, action: #selector(addMaterial), for: .touchDown)
+        
+        //materialView.btnTwo.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
         
         materialView.btnThree.addTarget(self, action: #selector(listarMeus), for: .touchDown
         )
         
-        //materialView.btnTwo.addTarget(self, action: #selector(), for: .touchDown)
+
     }
     
     func desativarTodosOsFiltros(){
@@ -138,9 +152,26 @@ class MaterialViewController: UIViewController {
     
     func pesquisarSelecionados(){
         
+        materiaisPesquisados.removeAll()
+        
+        for material in materiaisSelecionados {
+            
+            if (material.nome?.uppercased().contains(pesquisaTxt))!{
+                materiaisPesquisados.append(material)
+            }
+            else if (material.marca?.uppercased().contains(pesquisaTxt))!{
+                materiaisPesquisados.append(material)
+            }
+                
+            else if (material.tipo?.uppercased().contains(pesquisaTxt))!{
+                materiaisPesquisados.append(material)
+            }
+            
+        }
+        
     }
     
-    func pesquisar(){
+    @objc func pesquisar(){
 
         materiaisPesquisados.removeAll()
         
@@ -152,13 +183,13 @@ class MaterialViewController: UIViewController {
             
         }
             
-        if materialView.btnSearch.isSelected{
+        if materialView.btnSearch.isSelected {
             
             pesquisarSelecionados()
             
         }
         
-        else{
+        if materialView.btnFour.isSelected {
         
         for material in materiais {
             
@@ -174,9 +205,10 @@ class MaterialViewController: UIViewController {
             }
         }
         
+        }
+        
         if pesquisaTxt == "" {
             materiaisPesquisados = materiais
-        }
         }
         
     }
@@ -202,12 +234,11 @@ class MaterialViewController: UIViewController {
     }
     
     @objc func done (){
-        let calculatorVC = CalculatorViewController()
+        
         for material in materiaisSelecionados {
             calculatorVC.materiaisSelecionados.append(material)
         }
-        calculatorVC.total = calcularTotal()
-        navigationController?.pushViewController(calculatorVC, animated: true)
+         calculatorVC.total = calcularTotal()
     }
     
     @objc func addMaterial(){
@@ -218,9 +249,9 @@ class MaterialViewController: UIViewController {
             materialView.tableView.deselectRow(at: linha, animated: true)
         }
         
-        
-      
-    }
+        materialView.btnAddMaterial.setTitle("\(materiaisSelecionados.count) itens selecionados", for: .normal)
+       
+       }
     
     @objc private func fetchData(){
         

@@ -51,8 +51,10 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         viewCalculator.setLayoutInView(view: self.view)
         
         addButtonsTargets()
-        
+
         addDelegateToTxtFields()
+        
+        self.navigationItem.hidesBackButton = true
   
     }
     
@@ -101,7 +103,6 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
     }
     
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
     
         if textField.text == "" {
@@ -140,8 +141,6 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
     }
     
-
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         
@@ -173,7 +172,6 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         }
         return false
     }
-    
     
     @objc func addProject(){
 
