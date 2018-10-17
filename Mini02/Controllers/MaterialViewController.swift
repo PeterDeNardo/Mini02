@@ -34,6 +34,12 @@ class MaterialViewController: UIViewController {
             materialView.btnSearch.isSelected = true
         }
         
+        if materiaisSelecionados.count == 0 {
+            esconderBotaoAdd()
+        }else{
+           mostrarBotaoAdd()
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -60,6 +66,17 @@ class MaterialViewController: UIViewController {
         pegarUserDefaults()
         self.tabBarController?.tabBar.isHidden = true
         
+    }
+    
+    func mostrarBotaoAdd(){
+        materialView.btnAddMaterial.isHidden = false
+        materialView.btnAddMaterial.isEnabled = true
+        materialView.btnAddMaterial.setTitle("\((materialView.tableView.indexPathsForSelectedRows?.count)!) itens selecionados", for: .normal)
+    }
+    
+    func esconderBotaoAdd(){
+        materialView.btnAddMaterial.isHidden = true
+        materialView.btnAddMaterial.isEnabled = false
     }
     
     func addButtonsTargets (){
@@ -304,9 +321,9 @@ class MaterialViewController: UIViewController {
              materiaisSelecionados.append(materiaisPesquisados[linha.row])
             materialView.tableView.deselectRow(at: linha, animated: true)
         }
-        
-        materialView.btnAddMaterial.setTitle("\(materiaisSelecionados.count) itens selecionados", for: .normal)
-       
+
+        esconderBotaoAdd()
+
        }
     
     @objc private func fetchData(){
@@ -344,7 +361,9 @@ class MaterialViewController: UIViewController {
 
 extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
 
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       mostrarBotaoAdd()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return materiaisPesquisados.count
@@ -370,6 +389,14 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        if tableView.indexPathsForSelectedRows == nil {
+            esconderBotaoAdd()
+        }
+        else {
+         materialView.btnAddMaterial.setTitle("\((tableView.indexPathsForSelectedRows?.count)!) itens selecionados", for: .normal)
+        }
+        
         
         if materialView.btnSearch.isSelected {
             var i = 0
