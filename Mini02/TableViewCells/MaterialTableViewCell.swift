@@ -72,19 +72,12 @@ class MaterialTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
-        
-//        nome.frame = CGRect(x: 76, y: 8, width: 75, height: 21)
-//        preco.frame = CGRect(x: 308, y: 25, width: 24, height: 21)
-//        tipo.frame = CGRect(x: 225, y: 19, width: 39, height: 21)
-//        marca.frame = CGRect(x: 76, y: 36, width: 77, height: 16)
 
-        
-        contentView.addSubview(nome)
-        contentView.addSubview(preco)
-        contentView.addSubview(tipo)
-        contentView.addSubview(marca)
-        
+//        contentView.addSubview(nome)
+//        contentView.addSubview(preco)
+//        contentView.addSubview(tipo)
+//        contentView.addSubview(marca)
+//        
         let viewsDict = [
             "Nome" : nome,
             "Preço" : preco,
