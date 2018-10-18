@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/peterdenardo/Documents/Repositorios/Mini_02/Mini02/Controllers/ProjectsViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:Mini02.xcodeproj">
    </FileRef>
    <FileRef

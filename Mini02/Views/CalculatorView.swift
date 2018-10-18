@@ -13,10 +13,24 @@ class CalculatorView {
     let viewItem = UIView()
     let viewCost = UIView()
     let viewResult = UIView()
-    let viewProfit = UIView()
     let viewButton = UIView()
     
-    // setting sub views
+    // setting SubViews
+    
+    // viewItem SubViews
+    let viewITitle = UIView()
+    let viewIBody = UIView()
+    
+    // viewCost SubViews
+    let viewCTitle = UIView()
+    let ViewCBody = UIView()
+    
+    // viewResult SubViews
+    let viewRTitle = UIView()
+    let viewRBody = UIView()
+    
+    // viewResult SubViews
+    
     
     let viewCostButton = UIView()
     

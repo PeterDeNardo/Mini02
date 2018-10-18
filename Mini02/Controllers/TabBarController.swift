@@ -27,12 +27,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         tabOne.tabBarItem = tabOneBarItem
         
-        let tabTwo = LoginViewController()
+        let tabTwo = SearchViewController()
         let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
         
         tabTwo.tabBarItem = tabTwoBarItem
         
-        let tabThree = NewMaterialViewController()
+        let tabThree = ProjectsViewController()
         let tabThreeBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
         
         tabThree.tabBarItem = tabThreeBarItem
@@ -41,7 +41,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let nav1 = UINavigationController(rootViewController: tabOne)
         
         
-        let controllers = [nav1, tabTwo]
+        let controllers = [nav1, tabTwo, tabThree]
         
         self.viewControllers = controllers
         

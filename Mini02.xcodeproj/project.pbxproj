@@ -32,6 +32,10 @@
 		96C867C321707E7000451161 /* NewMaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867C221707E7000451161 /* NewMaterialViewController.swift */; };
 		96C867C52170A69E00451161 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867C42170A69E00451161 /* SearchView.swift */; };
 		96C867C72170A71F00451161 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867C62170A71F00451161 /* SearchViewController.swift */; };
+		96C867CA2177B1FD00451161 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867C92177B1FD00451161 /* ProjectsView.swift */; };
+		96C867CE2177B51600451161 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867CD2177B51600451161 /* ProjectsViewController.swift */; };
+		96C867D22177C1A700451161 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867D12177C1A700451161 /* ProjectTableViewController.swift */; };
+		96C867D42177C1FB00451161 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867D32177C1FB00451161 /* ProjectTableViewCell.swift */; };
 		D98D03754DD55F2B15CACB3B /* Pods_Mini02.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8592BF9331E17B7B56B9CDA9 /* Pods_Mini02.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +70,10 @@
 		96C867C221707E7000451161 /* NewMaterialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMaterialViewController.swift; sourceTree = "<group>"; };
 		96C867C42170A69E00451161 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		96C867C62170A71F00451161 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		96C867C92177B1FD00451161 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
+		96C867CD2177B51600451161 /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectsViewController.swift; path = /Users/peterdenardo/Documents/Repositorios/Mini_02/Mini02/Controllers/ProjectsViewController.swift; sourceTree = "<absolute>"; };
+		96C867D12177C1A700451161 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
+		96C867D32177C1FB00451161 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,12 +181,13 @@
 		96B02815216546750093396A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				96C867B0216FD4D500451161 /* CalculatorPlussView.swift */,
+				96C867C82177B0F500451161 /* DiscardViews */,
 				96C867AE216FD4D300451161 /* CalculatorView.swift */,
+				96C867C42170A69E00451161 /* SearchView.swift */,
+				96C867C92177B1FD00451161 /* ProjectsView.swift */,
 				96C867AF216FD4D400451161 /* LoginView.swift */,
 				96C867B1216FD4D600451161 /* MaterialView.swift */,
 				96C867BF2170745100451161 /* NewMaterialView.swift */,
-				96C867C42170A69E00451161 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,15 +195,42 @@
 		96B028162165467B0093396A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				961678D02169DB3600433E22 /* TabBarController.swift */,
 				961678D22169DD1D00433E22 /* CalculatorViewController.swift */,
 				961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */,
-				961678D02169DB3600433E22 /* TabBarController.swift */,
+				96C867D02177C17D00451161 /* ProjectViewController */,
 				961678DD216BEC8700433E22 /* LoginViewController.swift */,
-				94E67A26216E96780098024E /* MaterialViewController.swift */,
 				96C867C221707E7000451161 /* NewMaterialViewController.swift */,
+				96C867CF2177C16500451161 /* MaterialViewController */,
 				96C867C62170A71F00451161 /* SearchViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		96C867C82177B0F500451161 /* DiscardViews */ = {
+			isa = PBXGroup;
+			children = (
+				96C867B0216FD4D500451161 /* CalculatorPlussView.swift */,
+			);
+			path = DiscardViews;
+			sourceTree = "<group>";
+		};
+		96C867CF2177C16500451161 /* MaterialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				94E67A26216E96780098024E /* MaterialViewController.swift */,
+			);
+			path = MaterialViewController;
+			sourceTree = "<group>";
+		};
+		96C867D02177C17D00451161 /* ProjectViewController */ = {
+			isa = PBXGroup;
+			children = (
+				96C867CD2177B51600451161 /* ProjectsViewController.swift */,
+				96C867D12177C1A700451161 /* ProjectTableViewController.swift */,
+				96C867D32177C1FB00451161 /* ProjectTableViewCell.swift */,
+			);
+			path = ProjectViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,22 +416,26 @@
 			files = (
 				944761D0216D3A7300019117 /* Material.swift in Sources */,
 				96C867C52170A69E00451161 /* SearchView.swift in Sources */,
+				96C867CE2177B51600451161 /* ProjectsViewController.swift in Sources */,
 				94E67A29216EA0220098024E /* MaterialTableViewCell.swift in Sources */,
 				961678DE216BEC8700433E22 /* LoginViewController.swift in Sources */,
 				96C867BB216FD5CF00451161 /* StartButtonViewController.swift in Sources */,
 				96C867C02170745100451161 /* NewMaterialView.swift in Sources */,
+				96C867D42177C1FB00451161 /* ProjectTableViewCell.swift in Sources */,
 				961678DA2169EAB500433E22 /* help.swift in Sources */,
 				94E67A27216E96780098024E /* MaterialViewController.swift in Sources */,
 				96C867BA216FD5CF00451161 /* OnboardViewController.swift in Sources */,
 				96C867C321707E7000451161 /* NewMaterialViewController.swift in Sources */,
 				96C867C72170A71F00451161 /* SearchViewController.swift in Sources */,
 				944761CE216D380300019117 /* Projeto.swift in Sources */,
+				96C867D22177C1A700451161 /* ProjectTableViewController.swift in Sources */,
 				961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */,
 				96C867B5216FD4D600451161 /* MaterialView.swift in Sources */,
 				96C867B4216FD4D600451161 /* CalculatorPlussView.swift in Sources */,
 				96C867B3216FD4D600451161 /* LoginView.swift in Sources */,
 				961678E2216BF59200433E22 /* CalculatorPlussViewController.swift in Sources */,
 				96C867B2216FD4D600451161 /* CalculatorView.swift in Sources */,
+				96C867CA2177B1FD00451161 /* ProjectsView.swift in Sources */,
 				961678D52169DDED00433E22 /* AppDelegate.swift in Sources */,
 				961678D12169DB3600433E22 /* TabBarController.swift in Sources */,
 			);
@@ -545,7 +585,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 67ALGZ83W8;
+				DEVELOPMENT_TEAM = F86Y9T6AF3;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -564,7 +604,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 67ALGZ83W8;
+				DEVELOPMENT_TEAM = F86Y9T6AF3;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
