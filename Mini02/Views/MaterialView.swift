@@ -47,7 +47,7 @@ class MaterialView {
     func setViews() -> UIView {
         //MARK: Setting Views
         viewGlobal = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
-        viewGlobal.backgroundColor = .yellow
+        viewGlobal.backgroundColor = .clear
         
         viewGlobal.addSubview(viewSearchBar)
         viewGlobal.addSubview(viewFolder)
@@ -55,29 +55,17 @@ class MaterialView {
         viewFolder.addSubview(viewFolderTableView)
         viewFolder.addSubview(viewFolderTabkeViewButton)
         
-        
-        viewSearchBar.translatesAutoresizingMaskIntoConstraints = false
-        viewSearchBar.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 70).isActive = true
-        viewSearchBar.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
-        viewSearchBar.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
-        viewSearchBar.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        viewSearchBar.backgroundColor = .green
-        
-        
         viewFolder.translatesAutoresizingMaskIntoConstraints = false
-        viewFolder.topAnchor.constraint(equalTo: viewSearchBar.bottomAnchor, constant: 0).isActive = true
+        viewFolder.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 70).isActive = true
         viewFolder.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewFolder.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
         viewFolder.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 0).isActive = true
         viewFolder.backgroundColor = .clear
         
         //MARK: SubViews
-        //viewSearch
-        
-        
         //ViewFolder
-        
 
+        viewFolder.addSubview(viewFolderButtons)
         viewFolderButtons.translatesAutoresizingMaskIntoConstraints = false
         viewFolderButtons.topAnchor.constraint(equalTo: viewFolder.topAnchor, constant: 0).isActive = true
         viewFolderButtons.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
@@ -85,11 +73,21 @@ class MaterialView {
         viewFolderButtons.heightAnchor.constraint(equalToConstant: 60).isActive = true
         viewFolderButtons.backgroundColor = .black
         
-        setObjectsInViewFolderButtons()
+        //setObjectsInViewFolderButtons()
+        
+        viewFolder.addSubview(viewSearchBar)
+        viewSearchBar.translatesAutoresizingMaskIntoConstraints = false
+        viewSearchBar.topAnchor.constraint(equalTo: viewFolderButtons.bottomAnchor, constant: 0).isActive = true
+        viewSearchBar.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
+        viewSearchBar.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
+        viewSearchBar.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        viewSearchBar.backgroundColor = .green
+        
+        //SetObjectsInViewSearchBar()
         
  
         viewFolderTableView.translatesAutoresizingMaskIntoConstraints = false
-        viewFolderTableView.topAnchor.constraint(equalTo: viewFolderButtons.bottomAnchor, constant: 0).isActive = true
+        viewFolderTableView.topAnchor.constraint(equalTo: viewSearchBar.bottomAnchor, constant: 0).isActive = true
         viewFolderTableView.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
         viewFolderTableView.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
         viewFolderTableView.bottomAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
@@ -104,15 +102,12 @@ class MaterialView {
         viewFolderTabkeViewButton.centerXAnchor.constraint(equalTo: viewFolder.centerXAnchor).isActive = true
         
         setObjectsInViewFolderTableViewButton()
+        setObjectsInViewItem()
    
         return viewGlobal
     }
-    
-    func setObjectsInViewSearchBar() {
-        
-    }
-    
-    func setObjectsInViewFolderButtons() {
+
+    func setObjectsInViewItem() {
         
         var posX : CGFloat = 0
         

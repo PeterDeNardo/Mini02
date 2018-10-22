@@ -25,8 +25,6 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     
     var valorItens: Float = 0.00
     
-    var total: Float = 0.00
-    
     var custosExtras: Float = 0.00
     
     var lucroPretendido: Float = 0.00
@@ -36,6 +34,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
         setLabels()
+        
     }
     
     override func viewDidLoad() {
@@ -48,33 +47,32 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
         ref = Database.database().reference(withPath: "Projeto")
         
-        viewCalculator.setLayoutInView(view: self.view)
+        self.view = viewCalculator.setLayoutInView()
         
         addButtonsTargets()
 
         addDelegateToTxtFields()
         
         self.navigationItem.hidesBackButton = true
+        
   
     }
     
     func addDelegateToTxtFields(){
-        viewCalculator.txtVCWorkedHours.delegate = self
-        viewCalculator.txtVPProfit.delegate = self
+        viewCalculator.txtInfBWorkedHours.delegate = self
+        viewCalculator.txtInfBExternalCosts.delegate = self
     }
     
     func setLabels(){
-        viewCalculator.lblVIQuantity.text = "\(materiaisSelecionados.count)"
-        viewCalculator.lblVRTotal.text = "R$ \(valorItens)"
-        viewCalculator.lblVIQUantityTotalMoney.text = "R$ \(total)"
-        viewCalculator.lblVRTotal.text = "R$ \(total + custosExtras) "
-        viewCalculator.lblVPProfitByHour.text = "R$ \(lucroPretendido/horasTrabalhadas)"
-        viewCalculator.lblVRTotalByHour.text = "R$ \(total/horasTrabalhadas)"
+        viewCalculator.lblIBItemsQuantity.text = "\(materiaisSelecionados.count)"
+        viewCalculator.lblIBItemsPrice.text = "R$ \(valorItens)"
+        viewCalculator.lblRBTotalResult.text = "R$ \(valorItens + custosExtras)"
+        viewCalculator.lblRBPriceByHourResult.text = "R$ \((valorItens + custosExtras)/horasTrabalhadas)"
     }
     
     func addButtonsTargets() {
-        viewCalculator.btnCostsButton.addTarget(self, action: #selector(CalculatorViewController.goToCalculatorPluss), for: .touchDown)
-        viewCalculator.btnVIMaterials.addTarget(self, action: #selector(CalculatorViewController.goToMaterialViewController), for: .touchDown)
+//        viewCalculator.btnCostsButton.addTarget(self, action: #selector(CalculatorViewController.goToCalculatorPluss), for: .touchDown)
+        viewCalculator.btnIBMaterials.addTarget(self, action: #selector(CalculatorViewController.goToMaterialViewController), for: .touchDown)
         viewCalculator.btnVBAddProjects.addTarget(self, action: #selector(CalculatorViewController.addProject), for: .touchDown)
         
         tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
@@ -108,33 +106,22 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         if textField.text == "" {
             textField.text = "0"
             
-            if textField == viewCalculator.txtVCWorkedHours{
+            if textField == viewCalculator.txtInfBWorkedHours{
                 
                 horasTrabalhadas = 0
                 setLabels()
                 
             }
             
-            if textField == viewCalculator.txtVPProfit{
-                
-                lucroPretendido = 0
-                setLabels()
-                
-            }
             
             return
         }
         
-        if textField == viewCalculator.txtVCWorkedHours{
+        if textField == viewCalculator.txtInfBWorkedHours{
 
             horasTrabalhadas = Float(textField.text!)!
             setLabels()
             
-        }
-        
-        if textField == viewCalculator.txtVPProfit{
-            lucroPretendido = Float(textField.text!)!
-            setLabels()
         }
         
         
@@ -144,7 +131,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         
-        if textField == viewCalculator.txtVCWorkedHours{
+        if textField == viewCalculator.txtInfBWorkedHours{
             guard let horasTrabalhadasFloat = Float(string), horasTrabalhadasFloat >= 0 else { return true }
             
             var a = "\(Int(horasTrabalhadas))"
@@ -159,30 +146,31 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
             return true
         }
         
-        if textField == viewCalculator.txtVPProfit{
-            guard let lucroPretendidoFloat = Float(string), lucroPretendidoFloat >= 0 else { return true }
-            var a = "\(Int(lucroPretendidoFloat))"
+        if textField == viewCalculator.txtInfBExternalCosts{
+            guard let horasTrabalhadasFloat = Float(string), horasTrabalhadasFloat >= 0 else { return true }
+            
+            var a = "\(Int(custosExtras))"
             var b = "\(a)\(string)"
-            if horasTrabalhadas <= 0{
+            
+            if custosExtras <= 0{
                 b = string
             }
-            lucroPretendido = Float(Int(b)!)
+            
+            custosExtras = Float(Int(b)!)
             setLabels()
             return true
         }
+        
         return false
     }
     
     @objc func addProject(){
 
-        guard let horasTrabalhadasString = viewCalculator.txtVCWorkedHours.text, horasTrabalhadasString.count > 0 else { return }
+        guard let horasTrabalhadasString = viewCalculator.txtInfBWorkedHours.text, horasTrabalhadasString.count > 0 else { return }
         
         guard let horasTrabalhadasFloat = Float(horasTrabalhadasString), horasTrabalhadasFloat > 0 else { return }
         
-        guard let lucroPretendidoString = viewCalculator.txtVPProfit.text, lucroPretendidoString.count > 0 else { return }
-        
-        guard let lucroPretendidoFloat = Float(lucroPretendidoString), lucroPretendidoFloat > 0 else { return }
-   
+       
         if materiaisSelecionados.count == 0 {
             return
         }
@@ -194,9 +182,9 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
             }
         
         if usuario == nil {
-             projeto = Projeto(materiais: materiais, lucroPretendido: lucroPretendidoFloat, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
+             projeto = Projeto(materiais: materiais, lucroPretendido: 0, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
         }else{
-            projeto = Projeto(usuario: usuario!, materiais: materiais, lucroPretendido: lucroPretendidoFloat, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
+            projeto = Projeto(usuario: usuario!, materiais: materiais, lucroPretendido: 0, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
         }
         
         

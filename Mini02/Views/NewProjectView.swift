@@ -1,8 +1,7 @@
-
 import Foundation
 import UIKit
 
-class NewMaterialView {
+class NewProjectView {
     //MARK: Setting objects in screen
     //Creating Global View
     
@@ -25,15 +24,9 @@ class NewMaterialView {
     
     //viewMRInfos Objects
     
-    let lblMaterialName = UILabel()
-    let lblMaterialOrigin = UILabel()
-    let lblQuantity = UILabel()
-    let lblPrice = UILabel()
+    let lblProjectName = UILabel()
     
-    let txtMaterialName = UITextField()
-    let txtMaterialOrigin = UITextField()
-    let txtMaterialQuantity = UITextField()
-    let txtPrice = UITextField()
+    let txtProjectName = UITextField()
     
     //viewMRCategories Objects
     
@@ -57,8 +50,8 @@ class NewMaterialView {
         viewNavigationSafeArea.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 0).isActive = true
         viewNavigationSafeArea.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewNavigationSafeArea.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
-        viewNavigationSafeArea.heightAnchor.constraint(equalToConstant: UIApplication.shared.statusBarFrame.height + 24).isActive = true
-        viewNavigationSafeArea.backgroundColor = .red
+        viewNavigationSafeArea.heightAnchor.constraint(equalToConstant: 68).isActive = true
+        viewNavigationSafeArea.backgroundColor = .clear
         
         viewGlobal.addSubview(viewMaterialRegister)
         viewMaterialRegister.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +70,7 @@ class NewMaterialView {
         viewMRInfos.topAnchor.constraint(equalTo: viewMaterialRegister.topAnchor, constant: 0).isActive = true
         viewMRInfos.leftAnchor.constraint(equalTo: viewMaterialRegister.leftAnchor, constant: 0).isActive = true
         viewMRInfos.rightAnchor.constraint(equalTo: viewMaterialRegister.rightAnchor, constant: 0).isActive = true
-        viewMRInfos.heightAnchor.constraint(equalToConstant: 255).isActive = true
+        viewMRInfos.heightAnchor.constraint(equalToConstant: 87).isActive = true
         viewMRInfos.backgroundColor = .clear
         
         setObjectsInViewMRInfos()
@@ -102,79 +95,23 @@ class NewMaterialView {
         
         //Setting Objects in viewMRInfos
         
-        
-        lblMaterialName.frame = CGRect(x: 19, y: 14, width: 244, height: 21)
-        lblMaterialName.setLabelWhithConstraints(fontType: .two,
+        lblProjectName.frame = CGRect(x: 19, y: 14, width: 244, height: 21)
+        lblProjectName.setLabelWhithConstraints(fontType: .two,
                                                  fontSize: 18,
                                                  lblText: "Nome do material",
                                                  textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
                                                  alingnment: .left,
                                                  alpha: 1)
-        viewMRInfos.addSubview(lblMaterialName)
+        viewMRInfos.addSubview(lblProjectName)
         
-        lblMaterialOrigin.frame = CGRect(x: 19, y: 86, width: 244, height: 21)
-        lblMaterialOrigin.setLabelWhithConstraints(fontType: .two,
-                                                   fontSize: 18,
-                                                   lblText: "Marca ou local de compra",
-                                                   textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
-                                                   alingnment: .left,
-                                                   alpha: 1)
-        viewMRInfos.addSubview(lblMaterialOrigin)
-        
-        lblQuantity.frame = CGRect(x: 19, y: 170, width: 126, height: 21)
-        lblQuantity.setLabelWhithConstraints(fontType: .two,
-                                             fontSize: 18,
-                                             lblText: "Quantidade",
-                                             textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
-                                             alingnment: .left,
-                                             alpha: 1)
-        viewMRInfos.addSubview(lblQuantity
-        )
-        lblPrice.frame = CGRect(x: 200, y: 170, width: 126, height: 21)
-        lblPrice.setLabelWhithConstraints(fontType: .two,
-                                          fontSize: 18,
-                                          lblText: "Preço",
-                                          textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
-                                          alingnment: .left,
-                                          alpha: 1)
-        viewMRInfos.addSubview(lblPrice)
-        
-        txtMaterialName.frame = CGRect(x: 25, y: 41, width: 155, height: 24)
-        txtMaterialName.setTextField(fontType: .one,
+        txtProjectName.frame = CGRect(x: 25, y: 41, width: 155, height: 24)
+        txtProjectName.setTextField(fontType: .one,
                                      fontSize: 20,
                                      lblText: "|Digite um nome",
                                      textColor: UIColor(red:0.57, green:0.56, blue:0.56, alpha:1.0),
                                      alingnment: .left,
                                      alpha: 0.7)
-        viewMRInfos.addSubview(txtMaterialName)
-        
-        txtMaterialOrigin.frame = CGRect(x: 25, y: 117, width: 155, height: 24)
-        txtMaterialOrigin.setTextField(fontType: .one,
-                                       fontSize: 20,
-                                       lblText: "|Digite um nome",
-                                       textColor: UIColor(red:0.57, green:0.56, blue:0.56, alpha:1.0),
-                                       alingnment: .left,
-                                       alpha: 0.7)
-        viewMRInfos.addSubview(txtMaterialOrigin)
-        
-        txtMaterialQuantity.frame = CGRect(x: 19, y: 211, width: 39, height: 21)
-        txtMaterialQuantity.setTextField(fontType: .one,
-                                         fontSize: 18,
-                                         lblText: "X un",
-                                         textColor: .workBlue,
-                                         alingnment: .left,
-                                         alpha: 1)
-        viewMRInfos.addSubview(txtMaterialQuantity)
-        
-        txtPrice.frame = CGRect(x: 205, y: 211, width: 24, height: 21)
-        txtPrice.setTextField(fontType: .one,
-                              fontSize: 18,
-                              lblText: "$Y",
-                              textColor: .workBlue,
-                              alingnment: .left,
-                              alpha: 1)
-        viewMRInfos.addSubview(txtPrice)
-        
+        viewMRInfos.addSubview(txtProjectName)
         
     }
     
@@ -197,17 +134,17 @@ class NewMaterialView {
         
         btnSeam.frame = CGRect(x: 100, y: 65, width: 70, height: 70)
         btnSeam.setButton(titleText: "Costura",
-                               backgroundColor: .black)
+                          backgroundColor: .black)
         viewMRCategories.addSubview(btnSeam)
         
         btnOrganization.frame = CGRect(x: 180, y: 65, width: 70, height: 70)
         btnOrganization.setButton(titleText: "Org",
-                               backgroundColor: .black)
+                                  backgroundColor: .black)
         viewMRCategories.addSubview(btnOrganization)
         
         btnPainting.frame = CGRect(x: 260, y: 65, width: 70, height: 70)
         btnPainting.setButton(titleText: "Pintura",
-                               backgroundColor: .black)
+                              backgroundColor: .black)
         viewMRCategories.addSubview(btnPainting)
         
         btnCraftwork.frame = CGRect(x: 20, y: 140, width: 70, height: 70)
@@ -217,21 +154,23 @@ class NewMaterialView {
         
         btnWoodwork.frame = CGRect(x: 100, y: 140, width: 70, height: 70)
         btnWoodwork.setButton(titleText: "Marcenaria",
-                          backgroundColor: .black)
+                              backgroundColor: .black)
         viewMRCategories.addSubview(btnWoodwork)
         
         btnDecoration.frame = CGRect(x: 180, y: 140, width: 70, height: 70)
         btnDecoration.setButton(titleText: "Decoração",
-                                  backgroundColor: .black)
+                                backgroundColor: .black)
         viewMRCategories.addSubview(btnDecoration)
         
         btnOthers.frame = CGRect(x: 260, y: 140, width: 70, height: 70)
         btnOthers.setButton(titleText: "Outros",
-                              backgroundColor: .black)
+                            backgroundColor: .black)
         viewMRCategories.addSubview(btnOthers)
-
+        
     }
     
-
+  
+    
+    
     
 }

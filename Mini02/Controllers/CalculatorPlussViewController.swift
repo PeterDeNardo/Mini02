@@ -10,8 +10,7 @@ import UIKit
 
 class CalculatorPlussViewController: UIViewController, UITextFieldDelegate {
 
-    private let viewCalculatorPluss = CalculatorPlussView()
-    
+   
     var total: Float = 0.0
     
     var diasTrabalhados: Float = 0.0
@@ -25,7 +24,6 @@ class CalculatorPlussViewController: UIViewController, UITextFieldDelegate {
         
         self.title = "Custos extras"
         
-        self.view = viewCalculatorPluss.setViews()
         
         //addDelegateTxtFields()
         

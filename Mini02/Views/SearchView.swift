@@ -43,7 +43,7 @@ class SearchView {
     func setViews() -> UIView {
         //MARK: Setting Views
         viewGlobal = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
-        viewGlobal.backgroundColor = .yellow
+        viewGlobal.backgroundColor = .clear
         
         viewGlobal.addSubview(viewSearchBar)
         viewGlobal.addSubview(viewFolder)

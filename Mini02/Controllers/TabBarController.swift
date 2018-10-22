@@ -27,23 +27,24 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         tabOne.tabBarItem = tabOneBarItem
         
-        let tabTwo = LoginViewController()
+        let tabTwo = SearchViewController()
         let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
         
         tabTwo.tabBarItem = tabTwoBarItem
         
-        let tabThree = NewMaterialViewController()
-        let tabThreeBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        let tabThree = ProjectsViewController()
+        let tabThreeBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
         
         tabThree.tabBarItem = tabThreeBarItem
         
         //Set Nav Controller
-        let nav1 = UINavigationController(rootViewController: tabOne)
         
         
-        let controllers = [nav1, tabTwo]
+        let controllers = [tabOne, tabTwo, tabThree]
         
-        self.viewControllers = controllers
+        self.viewControllers = controllers.map{
+            UINavigationController(rootViewController: $0)
+        }
         
         
         

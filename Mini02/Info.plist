@@ -31,6 +31,12 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SF-Pro-Text-Regular.otf</string>
+		<string>SF-Pro-Text-Medium.otf</string>
+		<string>SF-Pro-Text-Bold.otf</string>
+	</array>
 	<key>FacebookAppID</key>
 	<string>337040906867384</string>
 	<key>FacebookDisplayName</key>
