@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		94119FC22177B8D500771432 /* MaterialTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94119FC12177B8D500771432 /* MaterialTableViewController.swift */; };
+		9444CB2D217E6E4200C09FD3 /* MaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */; };
 		944761C9216BF4A300019117 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 944761C8216BF4A300019117 /* GoogleService-Info.plist */; };
 		944761CE216D380300019117 /* Projeto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CD216D380300019117 /* Projeto.swift */; };
 		944761D0216D3A7300019117 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CF216D3A7300019117 /* Material.swift */; };
-		94E67A27216E96780098024E /* MaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E67A26216E96780098024E /* MaterialViewController.swift */; };
 		94EC26F9217E4AA100902139 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F0217E4AA100902139 /* CalculatorView.swift */; };
 		94EC26FC217E4AA100902139 /* NewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F3217E4AA100902139 /* NewProjectView.swift */; };
 		94EC26FD217E4AA100902139 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F4217E4AA100902139 /* LoginView.swift */; };
@@ -49,10 +49,10 @@
 		5D3460C56B3655FAA31DCED1 /* Pods-Mini02.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mini02.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mini02/Pods-Mini02.release.xcconfig"; sourceTree = "<group>"; };
 		8592BF9331E17B7B56B9CDA9 /* Pods_Mini02.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mini02.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94119FC12177B8D500771432 /* MaterialTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTableViewController.swift; sourceTree = "<group>"; };
+		9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
 		944761C8216BF4A300019117 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		944761CD216D380300019117 /* Projeto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projeto.swift; sourceTree = "<group>"; };
 		944761CF216D3A7300019117 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
-		94E67A26216E96780098024E /* MaterialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
 		94EC26F0217E4AA100902139 /* CalculatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		94EC26F3217E4AA100902139 /* NewProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectView.swift; sourceTree = "<group>"; };
 		94EC26F4217E4AA100902139 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -216,6 +216,7 @@
 		96B028162165467B0093396A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */,
 				94EC2715217E52F700902139 /* ProjectTableViewCell.swift */,
 				94EC2716217E52F800902139 /* ProjectTableViewController.swift */,
 				94EC2713217E52EF00902139 /* ProjectsViewController.swift */,
@@ -224,7 +225,6 @@
 				961678D22169DD1D00433E22 /* CalculatorViewController.swift */,
 				961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */,
 				961678DD216BEC8700433E22 /* LoginViewController.swift */,
-				94E67A26216E96780098024E /* MaterialViewController.swift */,
 				96C867C221707E7000451161 /* NewMaterialViewController.swift */,
 				96C867C62170A71F00451161 /* SearchViewController.swift */,
 				94119FC12177B8D500771432 /* MaterialTableViewController.swift */,
@@ -425,7 +425,7 @@
 				94EC26FC217E4AA100902139 /* NewProjectView.swift in Sources */,
 				94119FC22177B8D500771432 /* MaterialTableViewController.swift in Sources */,
 				94EC2700217E4AA100902139 /* ProjectsView.swift in Sources */,
-				94E67A27216E96780098024E /* MaterialViewController.swift in Sources */,
+				9444CB2D217E6E4200C09FD3 /* MaterialViewController.swift in Sources */,
 				94EC2710217E515100902139 /* TabBarController.swift in Sources */,
 				94EC26FF217E4AA100902139 /* SearchView.swift in Sources */,
 				96C867BA216FD5CF00451161 /* OnboardViewController.swift in Sources */,
