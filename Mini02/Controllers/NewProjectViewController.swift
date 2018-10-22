@@ -3,25 +3,26 @@ import FirebaseDatabase
 
 class NewProjectViewController: UIViewController, UITextFieldDelegate {
     
-    let newMaterial = NewMaterialView()
+    let newProjectView = NewProjectView()
     var categoriaEscolhida: String?
     var tap: UITapGestureRecognizer?
     var ref: DatabaseReference?
     var usuario: [String:String]?
+    var projeto: Projeto?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pegarUserDefaults()
         
-        ref = Database.database().reference(withPath: "Material")
-        self.view = newMaterial.setLayoutInView()
-        self.title = "Novo material"
+        ref = Database.database().reference(withPath: "Projeto")
+        self.view = newProjectView.setLayoutInView()
+        self.title = "Salvar projeto"
         
         addButtonsTargets()
         addDelegateToTxtFields()
         
-        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(cadastrarMaterial) ), animated: true)
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(salvarProjeto) ), animated: true)
         
         tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
         self.view.addGestureRecognizer(tap!)
@@ -29,10 +30,9 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addDelegateToTxtFields(){
-        newMaterial.txtPrice.delegate = self
-        newMaterial.txtMaterialName.delegate = self
-        newMaterial.txtMaterialOrigin.delegate = self
-        newMaterial.txtMaterialQuantity.delegate = self
+        newProjectView.txtProjectName.delegate = self
+        
+        newProjectView.txtProjectName.delegate = self
     }
     
     func pegarUserDefaults(){
@@ -48,32 +48,33 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func abaixarTeclado() {
-        newMaterial.viewGlobal.endEditing(true)
+        newProjectView.viewGlobal.endEditing(true)
     }
     
     func addButtonsTargets(){
-        newMaterial.btnPapelaria.addTarget(self, action: #selector(NewMaterialViewController.btnPapelaria), for: .touchDown)
-        newMaterial.btnSeam.addTarget(self, action: #selector(NewMaterialViewController.btnSeam), for:  .touchDown)
-        newMaterial.btnOrganization.addTarget(self, action: #selector(NewMaterialViewController.btnOrganization), for:  .touchDown)
-        newMaterial.btnPainting.addTarget(self, action: #selector(NewMaterialViewController.btnPainting), for:  .touchDown)
-        newMaterial.btnCraftwork.addTarget(self, action: #selector(NewMaterialViewController.btnCraftwork), for:  .touchDown)
-        newMaterial.btnWoodwork.addTarget(self, action: #selector(NewMaterialViewController.btnWoodwork), for:  .touchDown)
-        newMaterial.btnDecoration.addTarget(self, action: #selector(NewMaterialViewController.btnDecoration), for:  .touchDown)
-        newMaterial.btnOthers.addTarget(self, action: #selector(NewMaterialViewController.btnOthers), for:  .touchDown)
+        newProjectView.btnPapelaria.addTarget(self, action: #selector(NewMaterialViewController.btnPapelaria), for: .touchDown)
+        newProjectView.btnSeam.addTarget(self, action: #selector(NewMaterialViewController.btnSeam), for:  .touchDown)
+        newProjectView.btnOrganization.addTarget(self, action: #selector(NewMaterialViewController.btnOrganization), for:  .touchDown)
+        newProjectView.btnPainting.addTarget(self, action: #selector(NewMaterialViewController.btnPainting), for:  .touchDown)
+        newProjectView.btnCraftwork.addTarget(self, action: #selector(NewMaterialViewController.btnCraftwork), for: .touchDown)
+        newProjectView.btnWoodwork.addTarget(self, action: #selector(NewMaterialViewController.btnWoodwork), for:  .touchDown)
+        newProjectView.btnDecoration.addTarget(self, action: #selector(NewMaterialViewController.btnDecoration), for:  .touchDown)
+        newProjectView.btnOthers.addTarget(self, action: #selector(NewMaterialViewController.btnOthers), for:  .touchDown)
+        
     }
     
     // MARK: Buttons actions
     
     func desmarcarTodosOsBotoes(){
         categoriaEscolhida = nil
-        desmarcarBotao(btn: newMaterial.btnPapelaria)
-        desmarcarBotao(btn: newMaterial.btnSeam)
-        desmarcarBotao(btn: newMaterial.btnOrganization)
-        desmarcarBotao(btn: newMaterial.btnPainting)
-        desmarcarBotao(btn: newMaterial.btnCraftwork)
-        desmarcarBotao(btn: newMaterial.btnWoodwork)
-        desmarcarBotao(btn: newMaterial.btnDecoration)
-        desmarcarBotao(btn: newMaterial.btnOthers)
+        desmarcarBotao(btn: newProjectView.btnPapelaria)
+        desmarcarBotao(btn: newProjectView.btnSeam)
+        desmarcarBotao(btn: newProjectView.btnOrganization)
+        desmarcarBotao(btn: newProjectView.btnPainting)
+        desmarcarBotao(btn: newProjectView.btnCraftwork)
+        desmarcarBotao(btn: newProjectView.btnWoodwork)
+        desmarcarBotao(btn: newProjectView.btnDecoration)
+        desmarcarBotao(btn: newProjectView.btnOthers)
     }
     
     func marcarBotao(btn:UIButton){
@@ -94,95 +95,94 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
         textField.text?.removeAll()
     }
     
-    @objc func cadastrarMaterial(){
-        guard let nomeMaterial = newMaterial.txtMaterialName.text else {return}
-        guard let precoMaterialString = newMaterial.txtPrice.text else {return}
-        guard let precoMaterial =  Float(precoMaterialString) else {return}
-        guard let marcaMaterial = newMaterial.txtMaterialOrigin.text else {return}
-        guard let categoria = categoriaEscolhida else {return}
-        if usuario == nil {
-            self.usuario = ["nome": "anônimo"]
-        }
-        let material = Material(nome: nomeMaterial, tipo: categoria, preco: precoMaterial, marca: marcaMaterial, usuario: usuario! )
-        
-        guard let ref = self.ref else{return}
-        
-        let materialRef = ref.childByAutoId()
-        
-        materialRef.setValue(material.toAnyObject())
-        
-        goToMaterialViewController()
-    }
-    
-    func goToMaterialViewController(){
-        let materialView = MaterialViewController()
-        navigationController?.pushViewController(materialView, animated: true)
-    }
+   
+   
     
     @objc func btnPapelaria() {
         
-        if newMaterial.btnPapelaria.isSelected == true {
-            desmarcarBotao(btn: newMaterial.btnPapelaria)
+        if newProjectView.btnPapelaria.isSelected == true {
+            desmarcarBotao(btn: newProjectView.btnPapelaria)
         }else {
-            marcarBotao(btn: newMaterial.btnPapelaria)
+            marcarBotao(btn: newProjectView.btnPapelaria)
         }
     }
     
     @objc func btnSeam() {
-        if newMaterial.btnSeam.isSelected == true {
-            desmarcarBotao(btn: newMaterial.btnSeam)
+        if newProjectView.btnSeam.isSelected == true {
+            desmarcarBotao(btn: newProjectView.btnSeam)
         }else {
-            marcarBotao(btn: newMaterial.btnSeam)
+            marcarBotao(btn: newProjectView.btnSeam)
         }
     }
     
     @objc func btnOrganization() {
-        if newMaterial.btnOrganization.isSelected == true {
-            desmarcarBotao(btn: newMaterial.btnOrganization)
+        if newProjectView.btnOrganization.isSelected == true {
+            desmarcarBotao(btn: newProjectView.btnOrganization)
         }else {
-            marcarBotao(btn: newMaterial.btnOrganization)
+            marcarBotao(btn: newProjectView.btnOrganization)
         }
     }
     
     @objc func btnPainting() {
-        if newMaterial.btnPainting.isSelected == true {
-            desmarcarBotao(btn: newMaterial.btnPainting)
+        if newProjectView.btnPainting.isSelected == true {
+            desmarcarBotao(btn: newProjectView.btnPainting)
         }else {
-            marcarBotao(btn: newMaterial.btnPainting)
+            marcarBotao(btn: newProjectView.btnPainting)
         }
     }
     
     @objc func btnCraftwork() {
-        if newMaterial.btnCraftwork.isSelected == true {
-            desmarcarBotao(btn: newMaterial.btnCraftwork)
+        if newProjectView.btnCraftwork.isSelected == true {
+            desmarcarBotao(btn: newProjectView.btnCraftwork)
         }else {
-            marcarBotao(btn: newMaterial.btnCraftwork)
+            marcarBotao(btn: newProjectView.btnCraftwork)
         }
     }
     
     @objc func btnWoodwork() {
-        if newMaterial.btnWoodwork.isSelected == true {
-            desmarcarBotao(btn: newMaterial.btnWoodwork)
+        if newProjectView.btnWoodwork.isSelected == true {
+            desmarcarBotao(btn: newProjectView.btnWoodwork)
         }else {
-            marcarBotao(btn: newMaterial.btnWoodwork)
+            marcarBotao(btn: newProjectView.btnWoodwork)
         }
     }
     
     @objc func btnDecoration() {
-        if newMaterial.btnDecoration.isSelected == true {
-            desmarcarBotao(btn: newMaterial.btnDecoration)
+        if newProjectView.btnDecoration.isSelected == true {
+            desmarcarBotao(btn: newProjectView.btnDecoration)
         }else {
-            marcarBotao(btn: newMaterial.btnDecoration)
+            marcarBotao(btn: newProjectView.btnDecoration)
         }
     }
     
     @objc func btnOthers() {
         
-        if newMaterial.btnOthers.isSelected == true {
-            desmarcarBotao(btn: newMaterial.btnOthers)
+        if newProjectView.btnOthers.isSelected == true {
+            desmarcarBotao(btn: newProjectView.btnOthers)
         }else {
-            marcarBotao(btn: newMaterial.btnOthers)
+            marcarBotao(btn: newProjectView.btnOthers)
         }
+    }
+    
+    @objc func salvarProjeto(){
+        
+        guard let nomeProjeto = newProjectView.txtProjectName.text else {return}
+        guard let categoria = categoriaEscolhida else {return}
+        
+        projeto?.setNome(nome: nomeProjeto)
+        projeto?.setCategoria(categoria: categoria)
+        
+        guard let ref = self.ref else{return}
+        
+        let projetoRef = ref.childByAutoId()
+        
+        projetoRef.setValue(projeto?.toAnyObject())
+        
+        let projectsViewController = ProjectsViewController()
+        
+         navigationController?.pushViewController(projectsViewController, animated: true)
+        
+        
     }
     
     

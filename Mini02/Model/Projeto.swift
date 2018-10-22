@@ -96,7 +96,7 @@ class Projeto{
     }
     
     func setCategoria(categoria: String){
-        self.categoria = nome
+        self.categoria = categoria
     }
     
     

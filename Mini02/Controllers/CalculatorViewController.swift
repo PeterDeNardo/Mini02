@@ -31,6 +31,8 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     
     var horasTrabalhadas: Float = 0.00
     
+     var projeto: Projeto?
+    
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
         setLabels()
@@ -71,7 +73,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     }
     
     func addButtonsTargets() {
-//        viewCalculator.btnCostsButton.addTarget(self, action: #selector(CalculatorViewController.goToCalculatorPluss), for: .touchDown)
+
         viewCalculator.btnIBMaterials.addTarget(self, action: #selector(CalculatorViewController.goToMaterialViewController), for: .touchDown)
         viewCalculator.btnVBAddProjects.addTarget(self, action: #selector(CalculatorViewController.addProject), for: .touchDown)
         
@@ -92,6 +94,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        
         guard let text = Int(textField.text!) else{
              textField.text?.removeAll()
             textField.keyboardType = .numberPad
@@ -164,6 +167,12 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         return false
     }
     
+    func goToNewProjectViewController(){
+        let newProjectView = NewProjectViewController()
+        newProjectView.projeto = self.projeto
+        navigationController?.pushViewController(newProjectView, animated: true)
+    }
+    
     @objc func addProject(){
 
         guard let horasTrabalhadasString = viewCalculator.txtInfBWorkedHours.text, horasTrabalhadasString.count > 0 else { return }
@@ -175,7 +184,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
             return
         }
         
-        var projeto: Projeto?
+       
         
             for material in materiaisSelecionados {
                 materiais.append(material.toAnyObject())
@@ -188,15 +197,12 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         }
         
         
+        goToNewProjectViewController()
         
         
         //AQUI DEVE PASSAR O PROJETO PARA A PROXIMA TELA, ONDE ELE VAI ESCOLHER O NOME DO PROJETO E A CATEGORIA PARA ENTÃO JOGAR NO BANCO COM AS LINHAS ABAIXO!!!
         
-        guard let ref = self.ref else{return}
         
-        let projetoRef = ref.childByAutoId()
-        
-        projetoRef.setValue(projeto?.toAnyObject())
         
         
     }
