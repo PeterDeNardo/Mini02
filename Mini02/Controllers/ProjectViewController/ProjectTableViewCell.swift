@@ -18,27 +18,32 @@ class ProjectTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        projectName.setLabelWhithConstraints(fontSize: 18,
+        projectName.setLabelWhithConstraints(fontType: .two,
+                                             fontSize: 18,
                                              lblText: "Nome Projeto",
                                              textColor: .workBlack,
                                              alingnment: .left,
                                              alpha: 1)
-        projectDate.setLabelWhithConstraints(fontSize: 14,
+        projectDate.setLabelWhithConstraints(fontType: .one,
+                                             fontSize: 14,
                                              lblText: "Date",
                                              textColor: .workBlack,
                                              alingnment: .left,
                                              alpha: 0.7)
-        projectPrice.setLabelWhithConstraints(fontSize: 18,
+        projectPrice.setLabelWhithConstraints(fontType: .three,
+                                              fontSize: 18,
                                               lblText: "Y$",
                                               textColor: .workBlack,
                                               alingnment: .right,
                                               alpha: 0.7)
-        projectItens.setLabelWhithConstraints(fontSize: 18,
+        projectItens.setLabelWhithConstraints(fontType: .one,
+                                              fontSize: 18,
                                               lblText: "X Itens",
                                               textColor: .workBlack,
                                               alingnment: .left,
                                               alpha: 0.7)
-        projectHour.setLabelWhithConstraints(fontSize: 18,
+        projectHour.setLabelWhithConstraints(fontType: .one,
+                                             fontSize: 18,
                                              lblText: "X h",
                                              textColor: .workBlack,
                                              alingnment: .right,

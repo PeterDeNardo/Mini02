@@ -12,7 +12,7 @@ class StartButtonViewController: UIViewController {
 
    
     @IBAction func startButton(_ sender: UIButton) {
-        present(TabBarController(), animated: true, completion: nil)
+        present(UINavigationController(rootViewController: TabBarController()), animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

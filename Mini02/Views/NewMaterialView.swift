@@ -50,14 +50,14 @@ class NewMaterialView {
     
     func setLayoutInView() -> UIView{
         viewGlobal = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        viewGlobal.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
+        viewGlobal.backgroundColor = UIColor.init(patternImage: UIImage(named: "backGroundTableView")!)
         
         viewGlobal.addSubview(viewNavigationSafeArea)
         viewNavigationSafeArea.translatesAutoresizingMaskIntoConstraints = false
         viewNavigationSafeArea.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 0).isActive = true
         viewNavigationSafeArea.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewNavigationSafeArea.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
-        viewNavigationSafeArea.heightAnchor.constraint(equalToConstant: 68).isActive = true
+        viewNavigationSafeArea.heightAnchor.constraint(equalToConstant: UIApplication.shared.statusBarFrame.height + 24).isActive = true
         viewNavigationSafeArea.backgroundColor = .red
         
         viewGlobal.addSubview(viewMaterialRegister)
@@ -104,7 +104,8 @@ class NewMaterialView {
         
         
         lblMaterialName.frame = CGRect(x: 19, y: 14, width: 244, height: 21)
-        lblMaterialName.setLabelWhithConstraints(fontSize: 18,
+        lblMaterialName.setLabelWhithConstraints(fontType: .two,
+                                                 fontSize: 18,
                                                  lblText: "Nome do material",
                                                  textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
                                                  alingnment: .left,
@@ -112,7 +113,8 @@ class NewMaterialView {
         viewMRInfos.addSubview(lblMaterialName)
         
         lblMaterialOrigin.frame = CGRect(x: 19, y: 86, width: 244, height: 21)
-        lblMaterialOrigin.setLabelWhithConstraints(fontSize: 18,
+        lblMaterialOrigin.setLabelWhithConstraints(fontType: .two,
+                                                   fontSize: 18,
                                                    lblText: "Marca ou local de compra",
                                                    textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
                                                    alingnment: .left,
@@ -120,7 +122,8 @@ class NewMaterialView {
         viewMRInfos.addSubview(lblMaterialOrigin)
         
         lblQuantity.frame = CGRect(x: 19, y: 170, width: 126, height: 21)
-        lblQuantity.setLabelWhithConstraints(fontSize: 18,
+        lblQuantity.setLabelWhithConstraints(fontType: .two,
+                                             fontSize: 18,
                                              lblText: "Quantidade",
                                              textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
                                              alingnment: .left,
@@ -128,7 +131,8 @@ class NewMaterialView {
         viewMRInfos.addSubview(lblQuantity
         )
         lblPrice.frame = CGRect(x: 200, y: 170, width: 126, height: 21)
-        lblPrice.setLabelWhithConstraints(fontSize: 18,
+        lblPrice.setLabelWhithConstraints(fontType: .two,
+                                          fontSize: 18,
                                           lblText: "Preço",
                                           textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
                                           alingnment: .left,
@@ -136,7 +140,8 @@ class NewMaterialView {
         viewMRInfos.addSubview(lblPrice)
         
         txtMaterialName.frame = CGRect(x: 25, y: 41, width: 155, height: 24)
-        txtMaterialName.setTextField(fontSize: 20,
+        txtMaterialName.setTextField(fontType: .one,
+                                     fontSize: 20,
                                      lblText: "|Digite um nome",
                                      textColor: UIColor(red:0.57, green:0.56, blue:0.56, alpha:1.0),
                                      alingnment: .left,
@@ -144,7 +149,8 @@ class NewMaterialView {
         viewMRInfos.addSubview(txtMaterialName)
         
         txtMaterialOrigin.frame = CGRect(x: 25, y: 117, width: 155, height: 24)
-        txtMaterialOrigin.setTextField(fontSize: 20,
+        txtMaterialOrigin.setTextField(fontType: .one,
+                                       fontSize: 20,
                                        lblText: "|Digite um nome",
                                        textColor: UIColor(red:0.57, green:0.56, blue:0.56, alpha:1.0),
                                        alingnment: .left,
@@ -152,7 +158,8 @@ class NewMaterialView {
         viewMRInfos.addSubview(txtMaterialOrigin)
         
         txtMaterialQuantity.frame = CGRect(x: 19, y: 211, width: 39, height: 21)
-        txtMaterialQuantity.setTextField(fontSize: 18,
+        txtMaterialQuantity.setTextField(fontType: .one,
+                                         fontSize: 18,
                                          lblText: "X un",
                                          textColor: .workBlue,
                                          alingnment: .left,
@@ -160,7 +167,8 @@ class NewMaterialView {
         viewMRInfos.addSubview(txtMaterialQuantity)
         
         txtPrice.frame = CGRect(x: 205, y: 211, width: 24, height: 21)
-        txtPrice.setTextField(fontSize: 18,
+        txtPrice.setTextField(fontType: .one,
+                              fontSize: 18,
                               lblText: "$Y",
                               textColor: .workBlue,
                               alingnment: .left,
@@ -173,7 +181,8 @@ class NewMaterialView {
     func setObjectsInViewMRCategories() {
         
         lblMRCategoriesTitle.frame = CGRect(x: 19, y: 17, width: 126, height: 21)
-        lblMRCategoriesTitle.setLabelWhithConstraints(fontSize: 18,
+        lblMRCategoriesTitle.setLabelWhithConstraints(fontType: .two,
+                                                      fontSize: 18,
                                                       lblText: "Categoria",
                                                       textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
                                                       alingnment: .left,

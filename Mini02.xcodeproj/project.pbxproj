@@ -36,6 +36,12 @@
 		96C867CE2177B51600451161 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867CD2177B51600451161 /* ProjectsViewController.swift */; };
 		96C867D22177C1A700451161 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867D12177C1A700451161 /* ProjectTableViewController.swift */; };
 		96C867D42177C1FB00451161 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867D32177C1FB00451161 /* ProjectTableViewCell.swift */; };
+		96C867D6217C5F0500451161 /* NewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867D5217C5F0500451161 /* NewProjectView.swift */; };
+		96C867DA217C9A5A00451161 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 96C867D9217C9A5A00451161 /* SF-Pro-Text-Bold.otf */; };
+		96C867DC217C9A8800451161 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 96C867DB217C9A8800451161 /* SF-Pro-Text-Medium.otf */; };
+		96C867DE217C9AAE00451161 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 96C867DD217C9AAE00451161 /* SF-Pro-Text-Regular.otf */; };
+		96C867DF217C9C8A00451161 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96B0280F216546660093396A /* Info.plist */; };
+		96C867E2217DBCCD00451161 /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C867E1217DBCCD00451161 /* NewProjectViewController.swift */; };
 		D98D03754DD55F2B15CACB3B /* Pods_Mini02.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8592BF9331E17B7B56B9CDA9 /* Pods_Mini02.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +80,11 @@
 		96C867CD2177B51600451161 /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectsViewController.swift; path = /Users/peterdenardo/Documents/Repositorios/Mini_02/Mini02/Controllers/ProjectsViewController.swift; sourceTree = "<absolute>"; };
 		96C867D12177C1A700451161 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		96C867D32177C1FB00451161 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		96C867D5217C5F0500451161 /* NewProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectView.swift; sourceTree = "<group>"; };
+		96C867D9217C9A5A00451161 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		96C867DB217C9A8800451161 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		96C867DD217C9AAE00451161 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		96C867E1217DBCCD00451161 /* NewProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +179,7 @@
 				96B02815216546750093396A /* Views */,
 				96B028162165467B0093396A /* Controllers */,
 				961678D82169EA8700433E22 /* Extensions */,
+				96C867D7217C9A1A00451161 /* Resources */,
 				961678D42169DDED00433E22 /* AppDelegate.swift */,
 				96B02807216546650093396A /* Main.storyboard */,
 				96B0280A216546660093396A /* Assets.xcassets */,
@@ -185,6 +197,7 @@
 				96C867AE216FD4D300451161 /* CalculatorView.swift */,
 				96C867C42170A69E00451161 /* SearchView.swift */,
 				96C867C92177B1FD00451161 /* ProjectsView.swift */,
+				96C867D5217C5F0500451161 /* NewProjectView.swift */,
 				96C867AF216FD4D400451161 /* LoginView.swift */,
 				96C867B1216FD4D600451161 /* MaterialView.swift */,
 				96C867BF2170745100451161 /* NewMaterialView.swift */,
@@ -195,14 +208,15 @@
 		96B028162165467B0093396A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				96C867E0217DBC6900451161 /* DiscardControllers */,
+				96C867D02177C17D00451161 /* ProjectViewController */,
+				96C867CF2177C16500451161 /* MaterialViewController */,
 				961678D02169DB3600433E22 /* TabBarController.swift */,
 				961678D22169DD1D00433E22 /* CalculatorViewController.swift */,
-				961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */,
-				96C867D02177C17D00451161 /* ProjectViewController */,
 				961678DD216BEC8700433E22 /* LoginViewController.swift */,
 				96C867C221707E7000451161 /* NewMaterialViewController.swift */,
-				96C867CF2177C16500451161 /* MaterialViewController */,
 				96C867C62170A71F00451161 /* SearchViewController.swift */,
+				96C867E1217DBCCD00451161 /* NewProjectViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -231,6 +245,24 @@
 				96C867D32177C1FB00451161 /* ProjectTableViewCell.swift */,
 			);
 			path = ProjectViewController;
+			sourceTree = "<group>";
+		};
+		96C867D7217C9A1A00451161 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				96C867D9217C9A5A00451161 /* SF-Pro-Text-Bold.otf */,
+				96C867DD217C9AAE00451161 /* SF-Pro-Text-Regular.otf */,
+				96C867DB217C9A8800451161 /* SF-Pro-Text-Medium.otf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		96C867E0217DBC6900451161 /* DiscardControllers */ = {
+			isa = PBXGroup;
+			children = (
+				961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */,
+			);
+			path = DiscardControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,8 +328,12 @@
 			files = (
 				96B0280E216546660093396A /* LaunchScreen.storyboard in Resources */,
 				944761C9216BF4A300019117 /* GoogleService-Info.plist in Resources */,
+				96C867DF217C9C8A00451161 /* Info.plist in Resources */,
 				96B0280B216546660093396A /* Assets.xcassets in Resources */,
 				96B02809216546650093396A /* Main.storyboard in Resources */,
+				96C867DA217C9A5A00451161 /* SF-Pro-Text-Bold.otf in Resources */,
+				96C867DC217C9A8800451161 /* SF-Pro-Text-Medium.otf in Resources */,
+				96C867DE217C9AAE00451161 /* SF-Pro-Text-Regular.otf in Resources */,
 				96C867B9216FD5CF00451161 /* OnboardStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,12 +466,14 @@
 				944761CE216D380300019117 /* Projeto.swift in Sources */,
 				96C867D22177C1A700451161 /* ProjectTableViewController.swift in Sources */,
 				961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */,
+				96C867D6217C5F0500451161 /* NewProjectView.swift in Sources */,
 				96C867B5216FD4D600451161 /* MaterialView.swift in Sources */,
 				96C867B4216FD4D600451161 /* CalculatorPlussView.swift in Sources */,
 				96C867B3216FD4D600451161 /* LoginView.swift in Sources */,
 				961678E2216BF59200433E22 /* CalculatorPlussViewController.swift in Sources */,
 				96C867B2216FD4D600451161 /* CalculatorView.swift in Sources */,
 				96C867CA2177B1FD00451161 /* ProjectsView.swift in Sources */,
+				96C867E2217DBCCD00451161 /* NewProjectViewController.swift in Sources */,
 				961678D52169DDED00433E22 /* AppDelegate.swift in Sources */,
 				961678D12169DB3600433E22 /* TabBarController.swift in Sources */,
 			);

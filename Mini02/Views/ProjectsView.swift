@@ -9,7 +9,9 @@ class ProjectsView {
     // setting Views
     
     var viewNavigationSafeArea = UIView()
-    var viewTableViewProjects = UIView()
+    var viewTableViewProjects = UITableView()
+    
+    
     
     func setViewsInLayout() -> UIView{
         viewGlobal = UIView(frame: (CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)))
@@ -21,7 +23,7 @@ class ProjectsView {
         viewNavigationSafeArea.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewNavigationSafeArea.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
         viewNavigationSafeArea.heightAnchor.constraint(equalToConstant: 68).isActive = true
-        viewNavigationSafeArea.backgroundColor = .red
+        viewNavigationSafeArea.backgroundColor = .clear
         
         viewGlobal.addSubview(viewTableViewProjects)
         viewTableViewProjects.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +31,7 @@ class ProjectsView {
         viewTableViewProjects.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewTableViewProjects.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
         viewTableViewProjects.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 0).isActive = true
-        viewTableViewProjects.backgroundColor = .yellow
+        viewTableViewProjects.backgroundColor = .clear
         
         return viewGlobal
     }

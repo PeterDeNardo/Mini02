@@ -10,8 +10,10 @@ class CalculatorView {
     
     // setting Views
     
+    let viewNavigationSafeArea = UIView()
+    let viewAplication = UIView()
     let viewItem = UIView()
-    let viewCost = UIView()
+    let viewInformation = UIView()
     let viewResult = UIView()
     let viewButton = UIView()
     
@@ -22,8 +24,8 @@ class CalculatorView {
     let viewIBody = UIView()
     
     // viewCost SubViews
-    let viewCTitle = UIView()
-    let ViewCBody = UIView()
+    let viewInfTitle = UIView()
+    let ViewInfBody = UIView()
     
     // viewResult SubViews
     let viewRTitle = UIView()
@@ -36,326 +38,342 @@ class CalculatorView {
     
     // set viewItem objects
     
-    let btnVIMaterials = UIButton()
-    let lblVIQuantity = UILabel()
-    let lblVIQuantityTitle = UILabel()
-    let lblVIQUantityTotalMoney = UILabel()
+    let imgITimage = UIImageView()
+    let lblITTitle = UILabel()
+    let btnIBMaterials = UIButton()
+    let lblIBItemsQuantity = UILabel()
+    let lblIBItemsSelected = UILabel()
+    let lblIBItemsPrice = UILabel()
     
-    // set viewCost objects
-    let btnCostsButton = UIButton()
-    let lblVCWorkedHoursTitle = UILabel()
-    let lblVCExternalCostsTitle = UILabel()
-    let txtVCWorkedHours = UITextField()
-    let txtVCExternalCosts = UITextField()
+    // set viewInf objects
+    let imgInfTimage = UIImageView()
+    let lblInfTTitle = UILabel()
+    let lblInfBWorkedHoursTitle = UILabel()
+    let lblInfBExternalCostsTitle = UILabel()
+    let txtInfBWorkedHours = UITextField()
+    let txtInfBExternalCosts = UITextField()
     
     // set viewResult objects
     
-    let lblVRTotalTitle = UILabel()
-    let lblVRTotalByHourTitle = UILabel()
-    let lblVRTotal = UILabel()
-    let lblVRTotalByHour = UILabel()
-    
-    //set viewProfit objects
-    
-    let lblVPProfitTitle = UILabel()
-    let lblVPProfitByHourTitle = UILabel()
-    let txtVPProfit = UITextField()
-    let lblVPProfitByHour = UILabel()
+    let imgRTimage = UIImageView()
+    let lblRTTitle = UILabel()
+    let imgRTTitle = UIImageView()
+    let lblRBTotal = UILabel()
+    let lblRBPriceByHour = UILabel()
+    let lblRBTotalResult = UILabel()
+    let lblRBPriceByHourResult = UILabel()
     
     //set viewButton objects
     
     let btnVBAddProjects = UIButton()
     
-    
-    func setLayoutInView(view: UIView) {
-        setViews(view: view)
-    }
-    
-    func setViews(view : UIView) {
-        viewGlobal = UIView(frame: (CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)))
-        viewGlobal.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
-        view.addSubview(viewGlobal)
+    func setLayoutInView() -> UIView {
+        viewGlobal = UIView(frame: (CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)))
+        viewGlobal.backgroundColor = .clear
         
-        viewGlobal.addSubview(viewItem)
+        viewGlobal.addSubview(viewNavigationSafeArea)
+        viewNavigationSafeArea.translatesAutoresizingMaskIntoConstraints = false
+        viewNavigationSafeArea.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 0).isActive = true
+        viewNavigationSafeArea.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
+        viewNavigationSafeArea.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
+        viewNavigationSafeArea.heightAnchor.constraint(equalToConstant: UIApplication.shared.statusBarFrame.height + 24).isActive = true
+        viewNavigationSafeArea.backgroundColor = .clear
+        
+        viewGlobal.addSubview(viewAplication)
+        viewAplication.translatesAutoresizingMaskIntoConstraints = false
+        viewAplication.topAnchor.constraint(equalTo: viewNavigationSafeArea.bottomAnchor, constant: 0).isActive = true
+        viewAplication.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
+        viewAplication.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
+        viewAplication.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 0).isActive = true
+        viewAplication.backgroundColor = UIColor.init(patternImage: UIImage(named: "backGroundCalculadora")!)
+        
+        viewAplication.addSubview(viewItem)
         viewItem.translatesAutoresizingMaskIntoConstraints = false
         viewItem.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 70).isActive = true
         viewItem.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
         viewItem.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        viewItem.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        viewItem.heightAnchor.constraint(equalToConstant: 92).isActive = true
+        viewItem.backgroundColor = .clear
         
-        viewItem.layer.cornerRadius = 7
-        viewItem.dropShadow()
-        viewItem.backgroundColor = .workSand
+        viewAplication.addSubview(viewInformation)
+        viewInformation.translatesAutoresizingMaskIntoConstraints = false
+        viewInformation.topAnchor.constraint(equalTo: viewItem.bottomAnchor, constant: 10).isActive = true
+        viewInformation.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
+        viewInformation.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        viewInformation.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        viewInformation.backgroundColor = .clear
         
-        setViewItemLayout(view: viewItem)
-        
-        viewGlobal.addSubview(viewCost)
-        viewCost.translatesAutoresizingMaskIntoConstraints = false
-        viewCost.topAnchor.constraint(equalTo: viewItem.bottomAnchor, constant: 10).isActive = true
-        viewCost.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
-        viewCost.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        viewCost.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        viewCost.layer.cornerRadius = 7
-        viewCost.backgroundColor = .white
-        
-        setViewCostLayout(view: viewCost)
-        
-        viewGlobal.addSubview(viewResult)
+        viewAplication.addSubview(viewResult)
         viewResult.translatesAutoresizingMaskIntoConstraints = false
-        viewResult.topAnchor.constraint(equalTo: viewCost.bottomAnchor, constant: 10).isActive = true
+        viewResult.topAnchor.constraint(equalTo: viewInformation.bottomAnchor, constant: 10).isActive = true
         viewResult.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
         viewResult.widthAnchor.constraint(equalToConstant: 300).isActive = true
         viewResult.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        viewResult.backgroundColor = .clear
         
-        viewResult.layer.cornerRadius = 7
-        viewResult.backgroundColor = .white
-        
-        setViewResultLayout(view: viewResult)
-        
-        viewGlobal.addSubview(viewProfit)
-        viewProfit.translatesAutoresizingMaskIntoConstraints = false
-        viewProfit.topAnchor.constraint(equalTo: viewResult.bottomAnchor, constant: 10).isActive = true
-        viewProfit.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
-        viewProfit.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        viewProfit.heightAnchor.constraint(equalToConstant: 110).isActive = true
-        
-        viewProfit.layer.cornerRadius = 7
-        viewProfit.backgroundColor = .white
-        
-        setViewProfitLayout(view: viewProfit)
-        
-        viewGlobal.addSubview(viewButton)
+        viewAplication.addSubview(viewButton)
         viewButton.translatesAutoresizingMaskIntoConstraints = false
-        viewButton.topAnchor.constraint(equalTo: viewProfit.bottomAnchor, constant: 10).isActive = true
+        viewButton.topAnchor.constraint(equalTo: viewResult.bottomAnchor, constant: 10).isActive = true
         viewButton.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
-        viewButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        viewButton.widthAnchor.constraint(equalToConstant: 275).isActive = true
         viewButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        
         viewButton.backgroundColor = .clear
         
-        setViewButtonLayout(view: viewButton)
+        //Setting SubViews
+        //Setting ViewItem SubViews
         
+        viewItem.addSubview(viewITitle)
+        viewITitle.translatesAutoresizingMaskIntoConstraints = false
+        viewITitle.topAnchor.constraint(equalTo: viewItem.topAnchor, constant: 0).isActive = true
+        viewITitle.leftAnchor.constraint(equalTo: viewItem.leftAnchor, constant: 0).isActive = true
+        viewITitle.rightAnchor.constraint(equalTo: viewItem.rightAnchor, constant: 0).isActive = true
+        viewITitle.heightAnchor.constraint(equalToConstant: 46).isActive = true
+    
+        
+        viewItem.addSubview(viewIBody)
+        viewIBody.translatesAutoresizingMaskIntoConstraints = false
+        viewIBody.topAnchor.constraint(equalTo: viewITitle.bottomAnchor, constant: 0).isActive = true
+        viewIBody.leftAnchor.constraint(equalTo: viewItem.leftAnchor, constant: 0).isActive = true
+        viewIBody.rightAnchor.constraint(equalTo: viewItem.rightAnchor, constant: 0).isActive = true
+        viewIBody.bottomAnchor.constraint(equalTo: viewItem.bottomAnchor, constant: 0).isActive = true
+        viewIBody.backgroundColor = .white
+        viewIBody.layer.cornerRadius = 7
+        viewIBody.dropShadow()
+        
+        
+        //Setting ViewInformation SubViews
+        
+        viewInformation.addSubview(viewInfTitle)
+        viewInfTitle.translatesAutoresizingMaskIntoConstraints = false
+        viewInfTitle.topAnchor.constraint(equalTo: viewInformation.topAnchor, constant: 0).isActive = true
+        viewInfTitle.leftAnchor.constraint(equalTo: viewInformation.leftAnchor, constant: 0).isActive = true
+        viewInfTitle.rightAnchor.constraint(equalTo: viewInformation.rightAnchor, constant: 0).isActive = true
+        viewInfTitle.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        viewInfTitle.backgroundColor = .clear
+        
+        viewInformation.addSubview(ViewInfBody)
+        ViewInfBody.translatesAutoresizingMaskIntoConstraints = false
+        ViewInfBody.topAnchor.constraint(equalTo: viewInfTitle.bottomAnchor, constant: 0).isActive = true
+        ViewInfBody.leftAnchor.constraint(equalTo: viewInformation.leftAnchor, constant: 0).isActive = true
+        ViewInfBody.rightAnchor.constraint(equalTo: viewInformation.rightAnchor, constant: 0).isActive = true
+        ViewInfBody.bottomAnchor.constraint(equalTo: viewInformation.bottomAnchor, constant: 0).isActive = true
+        ViewInfBody.backgroundColor = .white
+        ViewInfBody.layer.cornerRadius = 7
+        
+        //Setting ViewResult SubViews
+        
+        viewResult.addSubview(viewRTitle)
+        viewRTitle.translatesAutoresizingMaskIntoConstraints = false
+        viewRTitle.topAnchor.constraint(equalTo: viewResult.topAnchor, constant: 0).isActive = true
+        viewRTitle.leftAnchor.constraint(equalTo: viewResult.leftAnchor, constant: 0).isActive = true
+        viewRTitle.rightAnchor.constraint(equalTo: viewResult.rightAnchor, constant: 0).isActive = true
+        viewRTitle.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        viewRTitle.backgroundColor = .clear
+        
+        viewResult.addSubview(viewRBody)
+        viewRBody.translatesAutoresizingMaskIntoConstraints = false
+        viewRBody.topAnchor.constraint(equalTo: viewRTitle.bottomAnchor, constant: 0).isActive = true
+        viewRBody.leftAnchor.constraint(equalTo: viewResult.leftAnchor, constant: 0).isActive = true
+        viewRBody.rightAnchor.constraint(equalTo: viewResult.rightAnchor, constant: 0).isActive = true
+        viewRBody.bottomAnchor.constraint(equalTo: viewResult.bottomAnchor, constant: 0).isActive = true
+        viewRBody.backgroundColor = .white
+        viewRBody.layer.cornerRadius = 7
+        
+        
+        //Setting Objects
+        
+        setViewItemLayout()
+        setViewInformationLayout()
+        setViewResultLayout()
+        setViewButtonLayout()
+        
+        return viewGlobal
         
     }
     
-    func setViewItemLayout(view : UIView) {
-        view.addSubview(btnVIMaterials)
-        view.addSubview(lblVIQuantityTitle)
-        view.addSubview(lblVIQuantity)
-        view.addSubview(lblVIQUantityTotalMoney)
+    func setViewItemLayout() {
         
-        btnVIMaterials.translatesAutoresizingMaskIntoConstraints = false
-        btnVIMaterials.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        btnVIMaterials.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        btnVIMaterials.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        btnVIMaterials.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        //Title View
         
-        lblVIQuantity.translatesAutoresizingMaskIntoConstraints = false
-        lblVIQuantity.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        lblVIQuantity.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        imgITimage.frame = CGRect(x: 4, y: 0, width: 34, height: 34)
+        imgITimage.setImage(image: UIImage(named: "iconProfile01")!)
+        viewRTitle.addSubview(imgITimage)
         
-        lblVIQuantity.setLabelWhithConstraints(fontSize: 20,
-                                               lblText: "0",
-                                               textColor: .black,
-                                               alingnment: .left,
-                                               alpha: 1)
+        lblITTitle.frame = CGRect(x: 50, y: 10, width: 222, height: 21)
+        lblITTitle.setLabelWhithConstraints(fontType: .three,
+                                            fontSize: 18,
+                                            lblText: "Adicionar Itens",
+                                            textColor: .workBlack,
+                                            alingnment: .left,
+                                            alpha: 0.7)
+        viewITitle.addSubview(lblITTitle)
         
-        lblVIQuantityTitle.translatesAutoresizingMaskIntoConstraints = false
-        lblVIQuantityTitle.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        lblVIQuantityTitle.leftAnchor.constraint(equalTo: lblVIQuantity.rightAnchor, constant: 10).isActive = true
+        //Body View
         
-        lblVIQuantityTitle.setLabelWhithConstraints(fontSize: 14,
-                                                    lblText: "Itens Selecionados",
-                                                    textColor: .black,
+        viewIBody.addSubview(btnIBMaterials)
+        btnIBMaterials.translatesAutoresizingMaskIntoConstraints = false
+        btnIBMaterials.topAnchor.constraint(equalTo: viewIBody.topAnchor, constant: 0).isActive = true
+        btnIBMaterials.bottomAnchor.constraint(equalTo: viewIBody.bottomAnchor, constant: 0).isActive = true
+        btnIBMaterials.leftAnchor.constraint(equalTo: viewIBody.leftAnchor, constant: 0).isActive = true
+        btnIBMaterials.rightAnchor.constraint(equalTo: viewIBody.rightAnchor, constant: 0).isActive = true
+        
+        lblIBItemsQuantity.frame = CGRect(x: 14, y: 12, width: 16, height: 21)
+        lblIBItemsQuantity.setLabelWhithConstraints(fontType: .three,
+                                                    fontSize: 18,
+                                                    lblText: "2",
+                                                    textColor: .workBlack,
                                                     alingnment: .left,
-                                                    alpha: 0.7)
+                                                    alpha: 1)
+        viewIBody.addSubview(lblIBItemsQuantity)
         
-        lblVIQUantityTotalMoney.translatesAutoresizingMaskIntoConstraints = false
-        lblVIQUantityTotalMoney.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        lblVIQUantityTotalMoney.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        lblIBItemsSelected.frame = CGRect(x: 40, y: 14, width: 155, height: 16)
+        lblIBItemsSelected.setLabelWhithConstraints(fontType: .two,
+                                                    fontSize: 14,
+                                                    lblText: "Itens Selecionados",
+                                                    textColor: .workBlack,
+                                                    alingnment: .left,
+                                                    alpha: 1)
+        viewIBody.addSubview(lblIBItemsSelected)
         
-        lblVIQUantityTotalMoney.setLabelWhithConstraints(fontSize: 20,
-                                                         lblText: "R$ xx,xx",
-                                                         textColor: .black,
-                                                         alingnment: .center,
-                                                         alpha: 0.2)
+        
+        lblIBItemsPrice.frame = CGRect(x: 205, y: 14, width: 73, height: 16)
+        lblIBItemsPrice.setLabelWhithConstraints(fontType: .one,
+                                                 fontSize: 14,
+                                                 lblText: "R$xx,xx",
+                                                 textColor: .workBlack,
+                                                 alingnment: .right,
+                                                 alpha: 0.7)
+        viewIBody.addSubview(lblIBItemsPrice)
+        
+        
+
         
         
     }
     
-    func setViewCostLayout(view : UIView) {
-        view.addSubview(viewCostButton)
-        view.addSubview(btnCostsButton)
-        view.addSubview(lblVCWorkedHoursTitle)
-        view.addSubview(lblVCExternalCostsTitle)
-        view.addSubview(txtVCWorkedHours)
-        view.addSubview(txtVCExternalCosts)
+    func setViewInformationLayout() {
         
-        viewCostButton.translatesAutoresizingMaskIntoConstraints = false
-        viewCostButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        viewCostButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        viewCostButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        viewCostButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        //Title View
         
-        viewCostButton.layer.cornerRadius = 7
-        viewCostButton.dropShadow()
-        viewCostButton.backgroundColor = .workSand
+        imgInfTimage.frame = CGRect(x: 4, y: 0, width: 34, height: 34)
+        imgInfTimage.setImage(image: UIImage(named: "iconProfile02")!)
+        viewInfTitle.addSubview(imgInfTimage)
+
+        lblInfTTitle.frame = CGRect(x: 50, y: 10, width: 222, height: 21)
+        lblInfTTitle.setLabelWhithConstraints(fontType: .three,
+                                              fontSize: 18,
+                                              lblText: "Informações do projeto",
+                                              textColor: .workBlack,
+                                              alingnment: .left,
+                                              alpha: 0.7)
+        viewInfTitle.addSubview(lblInfTTitle)
         
-        btnCostsButton.translatesAutoresizingMaskIntoConstraints = false
-        btnCostsButton.leftAnchor.constraint(equalTo: viewCostButton.leftAnchor, constant: 0).isActive = true
-        btnCostsButton.rightAnchor.constraint(equalTo: viewCostButton.rightAnchor, constant: 0).isActive = true
-        btnCostsButton.bottomAnchor.constraint(equalTo: viewCostButton.bottomAnchor, constant: 0).isActive = true
-        btnCostsButton.topAnchor.constraint(equalTo: viewCostButton.topAnchor, constant: 0).isActive = true
+        //Body View
         
-        
-        lblVCWorkedHoursTitle.translatesAutoresizingMaskIntoConstraints = false
-        lblVCWorkedHoursTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        lblVCWorkedHoursTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
-        
-        lblVCWorkedHoursTitle.setLabelWhithConstraints(fontSize: 13,
-                                                       lblText: "Horas Trabalhadas",
-                                                       textColor: .black,
-                                                       alingnment: .left,
-                                                       alpha: 0.5)
-        
-        lblVCExternalCostsTitle.translatesAutoresizingMaskIntoConstraints = false
-        lblVCExternalCostsTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        lblVCExternalCostsTitle.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15).isActive = true
-        
-        lblVCExternalCostsTitle.setLabelWhithConstraints(fontSize: 13,
-                                                         lblText: "Custos Externos",
-                                                         textColor: .black,
+        lblInfBWorkedHoursTitle.frame = CGRect(x: 10, y: 13.5, width: 142, height: 16)
+        lblInfBWorkedHoursTitle.setLabelWhithConstraints(fontType: .two,
+                                                         fontSize: 14,
+                                                         lblText: "Horas Trabalhadas",
+                                                         textColor: .workBlack,
                                                          alingnment: .left,
-                                                         alpha: 0.5)
+                                                         alpha: 1)
+        ViewInfBody.addSubview(lblInfBWorkedHoursTitle)
         
-        txtVCWorkedHours.translatesAutoresizingMaskIntoConstraints = false
-        txtVCWorkedHours.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12).isActive = true
-        txtVCWorkedHours.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
+        lblInfBExternalCostsTitle.frame = CGRect(x: 10, y: 51, width: 142, height: 16)
+        lblInfBExternalCostsTitle.setLabelWhithConstraints(fontType: .two,
+                                                           fontSize: 14,
+                                                           lblText: "Custos extras",
+                                                           textColor: .workBlack,
+                                                           alingnment: .left,
+                                                           alpha: 1)
+        ViewInfBody.addSubview(lblInfBExternalCostsTitle)
         
-        txtVCWorkedHours.setTextField(fontSize: 15,
-                                      lblText: "X h",
-                                      textColor: .workBlue,
-                                      alingnment: .center,
-                                      alpha: 1)
+        txtInfBWorkedHours.frame = CGRect(x: 200, y: 6, width: 87, height: 32)
+        txtInfBWorkedHours.setTextField(fontType: .two,
+                                        fontSize: 18,
+                                        lblText: "N/h",
+                                        textColor: .workGrey,
+                                        alingnment: .rigth,
+                                        alpha: 0.7)
+        ViewInfBody.addSubview(txtInfBWorkedHours)
         
-        txtVCExternalCosts.translatesAutoresizingMaskIntoConstraints = false
-        txtVCExternalCosts.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12 ).isActive = true
-        txtVCExternalCosts.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15).isActive = true
+        txtInfBExternalCosts.frame = CGRect(x: 200, y: 46, width: 87, height: 32)
+        txtInfBExternalCosts.setTextField(fontType: .two,
+                                          fontSize: 18,
+                                          lblText: "$Y",
+                                          textColor: .workGrey,
+                                          alingnment: .rigth,
+                                          alpha: 0.7)
+        ViewInfBody.addSubview(txtInfBExternalCosts)
         
-        txtVCExternalCosts.setTextField(fontSize: 15,
-                                        lblText: "Y h",
-                                        textColor: .workBlue,
-                                        alingnment: .center,
-                                        alpha: 1)
-    }
-    
-    func setViewResultLayout(view : UIView) {
-        view.addSubview(lblVRTotalTitle)
-        view.addSubview(lblVRTotalByHourTitle)
-        view.addSubview(lblVRTotal)
-        view.addSubview(lblVRTotalByHour)
-        
-        lblVRTotalTitle.translatesAutoresizingMaskIntoConstraints = false
-        lblVRTotalTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        lblVRTotalTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
-        
-        lblVRTotalTitle.setLabelWhithConstraints(fontSize: 22,
-                                                       lblText: "TOTAL",
-                                                       textColor: .black,
-                                                       alingnment: .left,
-                                                       alpha: 0.5)
-        
-        lblVRTotalByHourTitle.translatesAutoresizingMaskIntoConstraints = false
-        lblVRTotalByHourTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        lblVRTotalByHourTitle.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
-        
-        lblVRTotalByHourTitle.setLabelWhithConstraints(fontSize: 16,
-                                                         lblText: "TOTAL/HORA",
-                                                         textColor: .black,
-                                                         alingnment: .left,
-                                                         alpha: 0.5)
-        
-        lblVRTotal.translatesAutoresizingMaskIntoConstraints = false
-        lblVRTotal.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12).isActive = true
-        lblVRTotal.topAnchor.constraint(equalTo: view.topAnchor, constant: 28).isActive = true
-        
-        lblVRTotal.setLabelWhithConstraints(fontSize: 22,
-                                            lblText: "R$ xx,xx",
-                                            textColor: .black,
-                                            alingnment: .center,
-                                            alpha: 0.5)
-        
-        lblVRTotalByHour.translatesAutoresizingMaskIntoConstraints = false
-        lblVRTotalByHour.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12 ).isActive = true
-        lblVRTotalByHour.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
-        
-        lblVRTotalByHour.setLabelWhithConstraints(fontSize: 16,
-                                                  lblText: "R$ xx,xx/hora",
-                                                  textColor: .black,
-                                                  alingnment: .center,
-                                                  alpha: 0.5)
         
         
     }
     
-    func setViewProfitLayout(view : UIView) {
-        view.addSubview(lblVPProfitTitle)
-        view.addSubview(lblVPProfitByHourTitle)
-        view.addSubview(txtVPProfit)
-        view.addSubview(lblVPProfitByHour)
+    func setViewResultLayout() {
         
-        lblVPProfitTitle.translatesAutoresizingMaskIntoConstraints = false
-        lblVPProfitTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        lblVPProfitTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         
-        lblVPProfitTitle.setLabelWhithConstraints(fontSize: 13,
-                                                 lblText: "Lucro Pretendido",
-                                                 textColor: .black,
-                                                 alingnment: .left,
-                                                 alpha: 0.5)
+        //Title View
         
-        lblVPProfitByHourTitle.translatesAutoresizingMaskIntoConstraints = false
-        lblVPProfitByHourTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        lblVPProfitByHourTitle.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        imgRTimage.frame = CGRect(x: 4, y: 0, width: 34, height: 34)
+        imgRTimage.setImage(image: UIImage(named: "iconProfile03")!)
+        viewRTitle.addSubview(imgRTimage)
         
-        lblVPProfitByHourTitle.setLabelWhithConstraints(fontSize: 16,
-                                                       lblText: "LUCRO/HORA",
-                                                       textColor: .black,
-                                                       alingnment: .left,
-                                                       alpha: 0.5)
+        lblRTTitle.frame = CGRect(x: 50, y: 10, width: 222, height: 21)
+        lblRTTitle.setLabelWhithConstraints(fontType: .three,
+                                              fontSize: 18,
+                                              lblText: "Informações do projeto",
+                                              textColor: .workBlack,
+                                              alingnment: .left,
+                                              alpha: 0.7)
+        viewRTitle.addSubview(lblRTTitle)
         
-        txtVPProfit.translatesAutoresizingMaskIntoConstraints = false
-        txtVPProfit.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12).isActive = true
-        txtVPProfit.topAnchor.constraint(equalTo: view.topAnchor, constant: 28).isActive = true
+        //Body View
         
-        txtVPProfit.setTextField(fontSize: 15,
-                                lblText: "$Y",
-                                textColor: .workBlue,
-                                alingnment: .center,
-                                alpha: 1)
+        lblRBTotal.frame = CGRect(x: 10, y: 8, width: 116, height: 21)
+        lblRBTotal.setLabelWhithConstraints(fontType: .three,
+                                            fontSize: 18,
+                                            lblText: "Total",
+                                            textColor: .workBlack,
+                                            alingnment: .left,
+                                            alpha: 0.45)
+        viewRBody.addSubview(lblRBTotal)
         
-        lblVPProfitByHour.translatesAutoresizingMaskIntoConstraints = false
-        lblVPProfitByHour.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12 ).isActive = true
-        lblVPProfitByHour.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        lblRBPriceByHour.frame = CGRect(x: 10, y: 50, width: 116, height: 21)
+        lblRBPriceByHour.setLabelWhithConstraints(fontType: .three,
+                                            fontSize: 18,
+                                            lblText: "Preço da Hora",
+                                            textColor: .workBlack,
+                                            alingnment: .left,
+                                            alpha: 0.45)
+        viewRBody.addSubview(lblRBPriceByHour)
         
-        lblVPProfitByHour.setLabelWhithConstraints(fontSize: 16,
-                                                  lblText: "R$ xx,xx/hora",
-                                                  textColor: .black,
-                                                  alingnment: .center,
-                                                  alpha: 0.5)
+        lblRBTotalResult.frame = CGRect(x: 145, y: 8, width: 127, height: 16)
+        lblRBTotalResult.setLabelWhithConstraints(fontType: .three,
+                                            fontSize: 18,
+                                            lblText: "Itens + Extras",
+                                            textColor: .workBlack,
+                                            alingnment: .right,
+                                            alpha: 0.45)
+        viewRBody.addSubview(lblRBTotalResult)
+        
+        lblRBPriceByHourResult.frame = CGRect(x: 145, y: 50, width: 127, height: 16)
+        lblRBPriceByHourResult.setLabelWhithConstraints(fontType: .three,
+                                            fontSize: 18,
+                                            lblText: "total/hora",
+                                            textColor: .workBlack,
+                                            alingnment: .right,
+                                            alpha: 0.45)
+        viewRBody.addSubview(lblRBPriceByHourResult)
+        
+        
         
     }
     
-    func setViewButtonLayout(view : UIView) {
-        view.addSubview(btnVBAddProjects)
+    func setViewButtonLayout() {
         
-        btnVBAddProjects.translatesAutoresizingMaskIntoConstraints = false
-        btnVBAddProjects.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        btnVBAddProjects.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        btnVBAddProjects.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        btnVBAddProjects.widthAnchor.constraint(equalToConstant: 270).isActive = true
-        
+        btnVBAddProjects.frame = CGRect(x: 0, y: 0, width: 275, height: 45)
+        viewButton.addSubview(btnVBAddProjects)
         
         btnVBAddProjects.layer.cornerRadius = 7
         btnVBAddProjects.backgroundColor = .workBlue

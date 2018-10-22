@@ -9,23 +9,38 @@ extension UILabel {
     enum AlignmentText {
         case center, right, left
     }
+    
+    enum FontType {
+        case one, two, three
+    }
     //MARK: set Label
     //Set all label states without affect the constraints
-    func setLabelWhithConstraints(fontSize: Int, lblText: String, textColor: UIColor, alingnment : AlignmentText, alpha: CGFloat) {
+    func setLabelWhithConstraints(fontType: FontType, fontSize: Int, lblText: String, textColor: UIColor, alingnment : AlignmentText, alpha: CGFloat) {
         
         //lblInfomonth.font =  UIFont(name: "", size: 10)
-        //self.font = UIFont.boldSystemFont(ofSize: <#T##CGFloat#>)
-        self.font = self.font.withSize(CGFloat(fontSize))
         self.textColor = textColor.withAlphaComponent(alpha)
         self.text = lblText
         self.lineBreakMode = .byWordWrapping
         self.numberOfLines = 2
+        
+        switch fontType {
+        case .one:
+            self.font = UIFont(name: "SFProText-Regular", size: CGFloat(fontSize))
+            break
+        case .two:
+            self.font = UIFont(name: "SFProText-Medium", size: CGFloat(fontSize))
+            break
+        case .three:
+            self.font = UIFont(name: "SFProText-Bold", size: CGFloat(fontSize))
+            break
+        }
         
         switch alingnment {
         case .center:
             self.textAlignment = .center
             break
         case .right:
+            self.textAlignment = .right
             break
         case .left:
             self.textAlignment = .left
@@ -39,21 +54,49 @@ extension UILabel {
 
 extension UITextField {
     
+    enum FontType {
+        case one, two, three
+    }
+    
     enum AlignmentText {
         case center, rigth, left
     }
     
-    func setTextField(fontSize: Int, lblText: String, textColor: UIColor, alingnment : AlignmentText, alpha: CGFloat) {
+    func setTextField(fontType: FontType ,fontSize: Int, lblText: String, textColor: UIColor, alingnment : AlignmentText, alpha: CGFloat) {
         
-        self.font = self.font?.withSize(CGFloat(fontSize))
+        let image = UIImage(named: "textbox")
+        let scale : CGFloat = 0.0
+        let size = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.bounds.width, height: self.bounds.height), false, scale)
+        image?.draw(in: size)
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        
         self.textColor  = textColor.withAlphaComponent(alpha)
         self.text = lblText
+        self.backgroundColor = UIColor.init(patternImage: scaledImage!)
+        self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
+        self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
+        self.rightViewMode = .always
+        self.leftViewMode = .always
+        
+        switch fontType {
+        case .one:
+            self.font = UIFont(name: "SF-Pro-Text--Regular", size: CGFloat(fontSize))
+            break
+        case .two:
+            self.font = UIFont(name: "SF-Pro-Text-Medium", size: CGFloat(fontSize))
+            break
+        case .three:
+            self.font = UIFont(name: "SF-Pro-Text-Bold", size: CGFloat(fontSize))
+            break
+        }
         
         switch alingnment {
         case .center:
             self.textAlignment = .center
             break
         case .rigth:
+            self.textAlignment = .right
             break
         case .left:
             self.textAlignment = .left
@@ -119,3 +162,14 @@ extension UIColor {
     static let workBlack = UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0)
 }
 
+
+//MARK: UIImage Extension
+
+extension UIImageView {
+    
+    func setImage(image: UIImage) {
+        
+        self.image = UIImage(named: "")
+        
+    }
+}
