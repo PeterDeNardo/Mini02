@@ -113,7 +113,12 @@ class MaterialViewController: UIViewController {
         
         materialView.btnThree.isSelected = true
         
+        if usuario == nil {
+            return
+        }
+        
         materiaisPesquisados.removeAll()
+        
         for material in materiais {
             if material.usuario!["id"] == usuario!["id"] {
                 materiaisPesquisados.append(material)
