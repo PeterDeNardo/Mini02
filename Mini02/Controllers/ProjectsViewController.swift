@@ -20,6 +20,7 @@ class ProjectsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
+        listarTodos()
     }
     
     override func viewDidLoad() {
@@ -51,6 +52,13 @@ class ProjectsViewController: UIViewController {
     }
     
     func listarTodos(){
+        
+        meusProjetos.removeAll()
+        
+        if usuario == nil {
+            projectsView.viewTableViewProjects.reloadData()
+            return
+        }
         
             for projeto in projetos {
                 if projeto.usuario!["id"] == usuario!["id"] {
@@ -110,6 +118,11 @@ extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource{
         let cellReuseIdendifier = "cell"
         self.projectsView.viewTableViewProjects.register(ProjectTableViewCell.self, forCellReuseIdentifier: cellReuseIdendifier)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! ProjectTableViewCell
+        
+        if meusProjetos.count == 0 {
+            return cell
+        }
+        
         let projeto = meusProjetos[indexPath.row]
         
         cell.dropShadow()
