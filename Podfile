@@ -13,5 +13,6 @@ pod 'Firebase/Auth'
 pod 'GoogleSignIn'
 pod 'Firebase/Database'
 pod 'Crashlytics'
+pod 'lottie-ios'
 
 end

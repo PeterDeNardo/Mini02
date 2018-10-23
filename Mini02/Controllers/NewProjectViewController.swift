@@ -1,5 +1,6 @@
 import UIKit
 import FirebaseDatabase
+import Lottie
 
 class NewProjectViewController: UIViewController, UITextFieldDelegate {
     
@@ -164,6 +165,14 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func blur(){
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
+    }
+    
     @objc func salvarProjeto(){
         
         guard let nomeProjeto = newProjectView.txtProjectName.text else {return}
@@ -180,7 +189,21 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
         
         let projectsViewController = ProjectsViewController()
         
-         navigationController?.pushViewController(projectsViewController, animated: true)
+        //animacao
+        let animationView = LOTAnimationView(name: "done")
+        animationView.animationSpeed = CGFloat(1.3)
+        blur()
+        self.view.addSubview(animationView)
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        animationView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        animationView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        animationView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        animationView.play{ (finished) in
+            self.navigationController?.pushViewController(projectsViewController, animated: true)
+        }
+        
+        
         
         
     }

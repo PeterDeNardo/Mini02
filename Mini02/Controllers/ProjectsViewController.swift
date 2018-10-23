@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseDatabase
+import Lottie
 
 class ProjectsViewController: UIViewController {
 
@@ -21,6 +22,34 @@ class ProjectsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
         listarTodos()
+        
+        if usuario == nil {
+            
+            
+            projectsView.viewTableViewProjects.isHidden = true
+            projectsView.viewTableViewProjects.reloadData()
+            
+            if self.view.subviews.count < 3 {
+    
+            let animationView = LOTAnimationView(name: "empty_box")
+            animationView.animationSpeed = CGFloat(1)
+            self.view.addSubview(animationView)
+            self.view.backgroundColor = .white
+
+            animationView.translatesAutoresizingMaskIntoConstraints = false
+            animationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            animationView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+            animationView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+            animationView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+
+            animationView.play()
+            animationView.loopAnimation = true
+                
+            }
+            return
+            
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -35,6 +64,8 @@ class ProjectsViewController: UIViewController {
         
         
         self.view = projectsView.setViewsInLayout()
+        
+        self.navigationItem.hidesBackButton = true
         
         fetchData()
     }
@@ -56,6 +87,7 @@ class ProjectsViewController: UIViewController {
         meusProjetos.removeAll()
         
         if usuario == nil {
+            projectsView.viewTableViewProjects.isHidden = true
             projectsView.viewTableViewProjects.reloadData()
             return
         }
@@ -120,6 +152,8 @@ extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! ProjectTableViewCell
         
         if meusProjetos.count == 0 {
+            projectsView.viewTableViewProjects.isHidden = true
+            projectsView.viewTableViewProjects.reloadData()
             return cell
         }
         

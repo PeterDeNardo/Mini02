@@ -12,6 +12,8 @@
 		944761C9216BF4A300019117 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 944761C8216BF4A300019117 /* GoogleService-Info.plist */; };
 		944761CE216D380300019117 /* Projeto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CD216D380300019117 /* Projeto.swift */; };
 		944761D0216D3A7300019117 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CF216D3A7300019117 /* Material.swift */; };
+		9450C3E6217FAD33002A5E3A /* done.json in Resources */ = {isa = PBXBuildFile; fileRef = 9450C3E5217FAD33002A5E3A /* done.json */; };
+		9450C3E8217FB07C002A5E3A /* empty_box.json in Resources */ = {isa = PBXBuildFile; fileRef = 9450C3E7217FB07C002A5E3A /* empty_box.json */; };
 		94EC26F9217E4AA100902139 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F0217E4AA100902139 /* CalculatorView.swift */; };
 		94EC26FC217E4AA100902139 /* NewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F3217E4AA100902139 /* NewProjectView.swift */; };
 		94EC26FD217E4AA100902139 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F4217E4AA100902139 /* LoginView.swift */; };
@@ -53,6 +55,8 @@
 		944761C8216BF4A300019117 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		944761CD216D380300019117 /* Projeto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projeto.swift; sourceTree = "<group>"; };
 		944761CF216D3A7300019117 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		9450C3E5217FAD33002A5E3A /* done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = done.json; sourceTree = "<group>"; };
+		9450C3E7217FB07C002A5E3A /* empty_box.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty_box.json; sourceTree = "<group>"; };
 		94EC26F0217E4AA100902139 /* CalculatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		94EC26F3217E4AA100902139 /* NewProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectView.swift; sourceTree = "<group>"; };
 		94EC26F4217E4AA100902139 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 		96B02802216546650093396A /* Mini02 */ = {
 			isa = PBXGroup;
 			children = (
+				9450C3E5217FAD33002A5E3A /* done.json */,
+				9450C3E7217FB07C002A5E3A /* empty_box.json */,
 				94EC2706217E4BF500902139 /* Resources */,
 				94E67A2C216FBE840098024E /* Onboard */,
 				944761D3216E816D00019117 /* TableViewCells */,
@@ -298,8 +304,10 @@
 				94EC270C217E4C1300902139 /* SF-Pro-Text-Bold.otf in Resources */,
 				944761C9216BF4A300019117 /* GoogleService-Info.plist in Resources */,
 				96B0280B216546660093396A /* Assets.xcassets in Resources */,
+				9450C3E8217FB07C002A5E3A /* empty_box.json in Resources */,
 				96B02809216546650093396A /* Main.storyboard in Resources */,
 				94EC270B217E4C1300902139 /* SF-Pro-Text-Medium.otf in Resources */,
+				9450C3E6217FAD33002A5E3A /* done.json in Resources */,
 				96C867B9216FD5CF00451161 /* OnboardStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +339,7 @@
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -352,6 +361,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
