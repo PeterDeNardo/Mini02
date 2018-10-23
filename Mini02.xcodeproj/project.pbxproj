@@ -216,9 +216,9 @@
 		96B028162165467B0093396A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */,
 				94EC2715217E52F700902139 /* ProjectTableViewCell.swift */,
 				94EC2716217E52F800902139 /* ProjectTableViewController.swift */,
+				9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */,
 				94EC2713217E52EF00902139 /* ProjectsViewController.swift */,
 				94EC270F217E515100902139 /* TabBarController.swift */,
 				94EC2702217E4B0400902139 /* NewProjectViewController.swift */,
