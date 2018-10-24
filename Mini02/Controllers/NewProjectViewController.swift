@@ -200,7 +200,8 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
         animationView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         animationView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         animationView.play{ (finished) in
-            self.navigationController?.pushViewController(projectsViewController, animated: true)
+        self.navigationController?.pushViewController(projectsViewController, animated: true)
+            
         }
         
         

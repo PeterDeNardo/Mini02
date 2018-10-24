@@ -8,6 +8,8 @@
 import UIKit
 import FirebaseDatabase
 import Lottie
+import FirebaseAuth
+import FBSDKLoginKit
 
 class ProjectsViewController: UIViewController {
 
@@ -17,43 +19,23 @@ class ProjectsViewController: UIViewController {
     var usuario: [String:String]?
     var projetos: [Projeto] = []
     var meusProjetos: [Projeto] = []
+    var loginButton: UIBarButtonItem?
     
-    
+   
+
     override func viewWillAppear(_ animated: Bool) {
+        
         pegarUserDefaults()
         listarTodos()
-        
-        if usuario == nil {
-            
-            
-            projectsView.viewTableViewProjects.isHidden = true
-            projectsView.viewTableViewProjects.reloadData()
-            
-            if self.view.subviews.count < 3 {
-    
-            let animationView = LOTAnimationView(name: "empty_box")
-            animationView.animationSpeed = CGFloat(1)
-            self.view.addSubview(animationView)
-            self.view.backgroundColor = .white
-
-            animationView.translatesAutoresizingMaskIntoConstraints = false
-            animationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-            animationView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-            animationView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-            animationView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-
-            animationView.play()
-            animationView.loopAnimation = true
-                
-            }
-            return
-            
-        }
+        loginButton = UIBarButtonItem(title: "Login", style: .done, target: self, action: #selector(login))
+        self.navigationItem.setRightBarButton((loginButton), animated: true)
+        animacaoSemUsuario()
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pegarUserDefaults()
         self.view = projectsView.setViewsInLayout()
         self.projectsView.viewTableViewProjects.delegate = self
         self.projectsView.viewTableViewProjects.dataSource = self
@@ -62,12 +44,71 @@ class ProjectsViewController: UIViewController {
         self.projectsView.viewTableViewProjects.allowsSelectionDuringEditing = true
         self.projectsView.viewTableViewProjects.backgroundColor = .clear
         
-        
         self.view = projectsView.setViewsInLayout()
         
         self.navigationItem.hidesBackButton = true
         
         fetchData()
+        
+    }
+    
+    func animacaoSemUsuario(){
+        if usuario == nil {
+            loginButton?.title = "Login"
+            
+            projectsView.viewTableViewProjects.isHidden = true
+            projectsView.viewTableViewProjects.reloadData()
+            
+            if self.view.subviews.count < 3 {
+                
+                let animationView = LOTAnimationView(name: "empty_box")
+                animationView.animationSpeed = CGFloat(1)
+                self.view.addSubview(animationView)
+                self.view.backgroundColor = .white
+                
+                animationView.translatesAutoresizingMaskIntoConstraints = false
+                animationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+                animationView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+                animationView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+                animationView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+                
+                animationView.play()
+                animationView.loopAnimation = true
+                
+            }
+            return
+            
+        }else{
+            loginButton?.title = "Logout"
+        }
+    }
+    
+    @objc func login(){
+        
+        if usuario != nil{
+            let defaults = UserDefaults.standard
+            let dictionary = defaults.dictionaryRepresentation()
+            dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+            FBSDKLoginManager.init().logOut()
+            loginButton?.title = "Login"
+            pegarUserDefaults()
+            animacaoSemUsuario()
+            }
+         }
+        else{
+            loginButton?.title = "Logout"
+            goToLoginViewController()
+        }
+
+    }
+    
+    func goToLoginViewController(){
+        
+        let loginVC = LoginViewController()
+        loginVC.VCAnterior = ProjectsViewController()
+       self.navigationController?.pushViewController(loginVC, animated: true)
+        
     }
     
     func pegarUserDefaults(){

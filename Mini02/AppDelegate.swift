@@ -43,9 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             GIDSignIn.sharedInstance()?.delegate = self
             
-            
             FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
-            
             
             let myTabBarController = UITabBarController()
             
@@ -55,8 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let v2 = CalculatorViewController()
             let v3 = LoginViewController()
            
-            
-            
             //let nav = UINavigationController(rootViewController: v2)
             
             let controllers = [v2, v3]

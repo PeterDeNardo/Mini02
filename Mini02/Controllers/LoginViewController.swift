@@ -22,11 +22,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     var profileId: String?
     var profileEmail: String?
     private let viewLogin = LoginView()
+    var VCAnterior: UIViewController? 
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var senhaTextField: UITextField!
-    
-    
-    
+
     override func viewDidLoad() {
         
         viewLogin.setLayoutInView(view: self.view)
@@ -161,7 +160,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
             }
         }
         
-//        irParaTelaChat()
+        let projectsVC = MaterialViewController()
+        self.navigationController?.pushViewController(projectsVC, animated: true)
         
         
     }
