@@ -89,7 +89,7 @@ class MaterialViewController: UIViewController {
     func addButtonsTargets (){
         materialView.btnFour.addTarget(self, action: #selector(listarTodos), for: .touchDown)
     
-        materialView.btnSearch.addTarget(self, action: #selector(listarSelecionados), for: .touchDown)
+       // materialView.btnSearch.addTarget(self, action: #selector(listarSelecionados), for: .touchDown)
         
         materialView.btnAddMaterial.addTarget(self, action: #selector(addMaterial), for: .touchDown)
         
@@ -104,10 +104,11 @@ class MaterialViewController: UIViewController {
     func desativarTodosOsFiltros(){
         materialView.btnFour.isSelected = false
         materialView.btnThree.isSelected = false
-        materialView.btnSearch.isSelected = false
+        //materialView.btnSearch.isSelected = false
     }
     
     @objc func listarMeus(){
+        materialView.viewFolderButtonsFront.image = UIImage(named: "SearchButton3")
         
         desativarTodosOsFiltros()
         
@@ -153,6 +154,8 @@ class MaterialViewController: UIViewController {
     
     @objc func listarTodos(){
         
+        materialView.viewFolderButtonsFront.image = UIImage(named: "SearchButton1")
+        
         desativarTodosOsFiltros()
         
         materialView.btnFour.isSelected = true
@@ -164,7 +167,7 @@ class MaterialViewController: UIViewController {
     }
   
     func criarSearchBar(){
-        let searchBar:UISearchBar = UISearchBar()
+        let searchBar = materialView.searchBar
         searchBar.searchBarStyle = UISearchBar.Style.prominent
         searchBar.placeholder = " Pesquisar..."
         searchBar.sizeToFit()
@@ -269,15 +272,15 @@ class MaterialViewController: UIViewController {
             
         }
             
-        if materialView.btnSearch.isSelected {
-            
-            pesquisarSelecionados()
-            
-            if pesquisaTxt == "" {
-               listarSelecionados()
-            }
-            
-        }
+//        if materialView.btnSearch.isSelected {
+//
+//            pesquisarSelecionados()
+//
+//            if pesquisaTxt == "" {
+//               listarSelecionados()
+//            }
+//
+//        }
         
         if materialView.btnFour.isSelected {
         //pesquisar sem filtros
@@ -358,9 +361,9 @@ class MaterialViewController: UIViewController {
 
             self.materialView.tableView.reloadData()
             
-            if self.materialView.btnSearch.isSelected {
-                self.selecionarTodasAsRows()
-            }
+//            if self.materialView.btnSearch.isSelected {
+//                self.selecionarTodasAsRows()
+//            }
             
         }
         
@@ -456,15 +459,15 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         cell.tipo.text = material.tipo
         cell.marca.text = material.marca
         
-        if !materialView.btnSearch.isSelected {
-            for material in materiaisPreSelecionados {
-
-                if materiaisPesquisados[indexPath.row].chave == material.chave{
-                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
-                }
-
-            }
-        }
+//        if !materialView.btnSearch.isSelected {
+//            for material in materiaisPreSelecionados {
+//
+//                if materiaisPesquisados[indexPath.row].chave == material.chave{
+//                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
+//                }
+//
+//            }
+//        }
         
         return cell
         

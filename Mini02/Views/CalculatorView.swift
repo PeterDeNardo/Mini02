@@ -10,7 +10,8 @@ class CalculatorView {
     
     // setting Views
     
-    let viewNavigationSafeArea = UIView()
+    //let viewNavigationSafeArea = UIView()
+    let viewStatusBar = UIView()
     let viewAplication = UIView()
     let viewItem = UIView()
     let viewInformation = UIView()
@@ -71,25 +72,33 @@ class CalculatorView {
         viewGlobal = UIView(frame: (CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)))
         viewGlobal.backgroundColor = .clear
         
-        viewGlobal.addSubview(viewNavigationSafeArea)
-        viewNavigationSafeArea.translatesAutoresizingMaskIntoConstraints = false
-        viewNavigationSafeArea.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 0).isActive = true
-        viewNavigationSafeArea.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
-        viewNavigationSafeArea.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
-        viewNavigationSafeArea.heightAnchor.constraint(equalToConstant: UIApplication.shared.statusBarFrame.height + 24).isActive = true
-        viewNavigationSafeArea.backgroundColor = .clear
+//        viewGlobal.addSubview(viewNavigationSafeArea)
+//        viewNavigationSafeArea.translatesAutoresizingMaskIntoConstraints = false
+//        viewNavigationSafeArea.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 0).isActive = true
+//        viewNavigationSafeArea.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
+//        viewNavigationSafeArea.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
+//        viewNavigationSafeArea.heightAnchor.constraint(equalToConstant: UIApplication.shared.statusBarFrame.height + 24).isActive = true
+//        viewNavigationSafeArea.backgroundColor = .clear
+        
+        viewGlobal.addSubview(viewStatusBar)
+        viewStatusBar.translatesAutoresizingMaskIntoConstraints = false
+        viewStatusBar.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 0).isActive = true
+        viewStatusBar.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
+        viewStatusBar.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
+        viewStatusBar.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        viewStatusBar.backgroundColor = UIColor.init(patternImage: UIImage(named: "backGroundCalculadora-1")!)
         
         viewGlobal.addSubview(viewAplication)
         viewAplication.translatesAutoresizingMaskIntoConstraints = false
-        viewAplication.topAnchor.constraint(equalTo: viewNavigationSafeArea.bottomAnchor, constant: 0).isActive = true
+        viewAplication.topAnchor.constraint(equalTo: viewStatusBar.bottomAnchor, constant: 0).isActive = true
         viewAplication.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewAplication.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
         viewAplication.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 0).isActive = true
-        viewAplication.backgroundColor = UIColor.init(patternImage: UIImage(named: "backGroundCalculadora")!)
+        viewAplication.backgroundColor = UIColor.init(patternImage: UIImage(named: "backGroundTableView")!)
         
         viewAplication.addSubview(viewItem)
         viewItem.translatesAutoresizingMaskIntoConstraints = false
-        viewItem.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 70).isActive = true
+        viewItem.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 80).isActive = true
         viewItem.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
         viewItem.widthAnchor.constraint(equalToConstant: 300).isActive = true
         viewItem.heightAnchor.constraint(equalToConstant: 92).isActive = true
@@ -97,7 +106,7 @@ class CalculatorView {
         
         viewAplication.addSubview(viewInformation)
         viewInformation.translatesAutoresizingMaskIntoConstraints = false
-        viewInformation.topAnchor.constraint(equalTo: viewItem.bottomAnchor, constant: 10).isActive = true
+        viewInformation.topAnchor.constraint(equalTo: viewItem.bottomAnchor, constant: 30).isActive = true
         viewInformation.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
         viewInformation.widthAnchor.constraint(equalToConstant: 300).isActive = true
         viewInformation.heightAnchor.constraint(equalToConstant: 130).isActive = true
@@ -105,7 +114,7 @@ class CalculatorView {
         
         viewAplication.addSubview(viewResult)
         viewResult.translatesAutoresizingMaskIntoConstraints = false
-        viewResult.topAnchor.constraint(equalTo: viewInformation.bottomAnchor, constant: 10).isActive = true
+        viewResult.topAnchor.constraint(equalTo: viewInformation.bottomAnchor, constant: 30).isActive = true
         viewResult.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
         viewResult.widthAnchor.constraint(equalToConstant: 300).isActive = true
         viewResult.heightAnchor.constraint(equalToConstant: 130).isActive = true
@@ -113,7 +122,7 @@ class CalculatorView {
         
         viewAplication.addSubview(viewButton)
         viewButton.translatesAutoresizingMaskIntoConstraints = false
-        viewButton.topAnchor.constraint(equalTo: viewResult.bottomAnchor, constant: 10).isActive = true
+        viewButton.topAnchor.constraint(equalTo: viewResult.bottomAnchor, constant: 30).isActive = true
         viewButton.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
         viewButton.widthAnchor.constraint(equalToConstant: 275).isActive = true
         viewButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
@@ -195,9 +204,9 @@ class CalculatorView {
         
         //Title View
         
-        imgITimage.frame = CGRect(x: 4, y: 0, width: 34, height: 34)
-        imgITimage.setImage(image: UIImage(named: "iconProfile01")!)
-        viewRTitle.addSubview(imgITimage)
+        imgITimage.frame = CGRect(x: 4, y: 0, width: 44, height: 44)
+        imgITimage.image = UIImage(named: "iconProfile01")
+        viewITitle.addSubview(imgITimage)
         
         lblITTitle.frame = CGRect(x: 50, y: 10, width: 222, height: 21)
         lblITTitle.setLabelWhithConstraints(fontType: .three,
@@ -255,8 +264,8 @@ class CalculatorView {
         
         //Title View
         
-        imgInfTimage.frame = CGRect(x: 4, y: 0, width: 34, height: 34)
-        imgInfTimage.setImage(image: UIImage(named: "iconProfile02")!)
+        imgInfTimage.frame = CGRect(x: 4, y: 0, width: 44, height: 44)
+        imgInfTimage.image = UIImage(named: "iconProfile02")
         viewInfTitle.addSubview(imgInfTimage)
 
         lblInfTTitle.frame = CGRect(x: 50, y: 10, width: 222, height: 21)
@@ -315,8 +324,8 @@ class CalculatorView {
         
         //Title View
         
-        imgRTimage.frame = CGRect(x: 4, y: 0, width: 34, height: 34)
-        imgRTimage.setImage(image: UIImage(named: "iconProfile03")!)
+        imgRTimage.frame = CGRect(x: 4, y: 0, width: 44, height: 44)
+        imgRTimage.image = UIImage(named: "iconProfile03")
         viewRTitle.addSubview(imgRTimage)
         
         lblRTTitle.frame = CGRect(x: 50, y: 10, width: 222, height: 21)
@@ -330,7 +339,7 @@ class CalculatorView {
         
         //Body View
         
-        lblRBTotal.frame = CGRect(x: 10, y: 8, width: 116, height: 21)
+        lblRBTotal.frame = CGRect(x: 10, y: 8, width: 146, height: 21)
         lblRBTotal.setLabelWhithConstraints(fontType: .three,
                                             fontSize: 18,
                                             lblText: "Total",
@@ -339,7 +348,7 @@ class CalculatorView {
                                             alpha: 0.45)
         viewRBody.addSubview(lblRBTotal)
         
-        lblRBPriceByHour.frame = CGRect(x: 10, y: 50, width: 116, height: 21)
+        lblRBPriceByHour.frame = CGRect(x: 10, y: 50, width: 146, height: 21)
         lblRBPriceByHour.setLabelWhithConstraints(fontType: .three,
                                             fontSize: 18,
                                             lblText: "Preço da Hora",
