@@ -182,6 +182,10 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
         guard let horasTrabalhadasFloat = Float(horasTrabalhadasString), horasTrabalhadasFloat > 0 else { return }
         
+        guard let custosExtrasString = viewCalculator.txtInfBExternalCosts.text, horasTrabalhadasString.count > 0 else { return }
+        
+        guard let custosExtrasFloat = Float(custosExtrasString), custosExtrasFloat > 0 else { return }
+        
        
         if materiaisSelecionados.count == 0 {
             return
@@ -194,9 +198,12 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
             }
         
         if usuario == nil {
-             projeto = Projeto(materiais: materiais, lucroPretendido: 0, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
+             projeto = Projeto(materiais: materiais, custosExtras: custosExtrasFloat, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
+            projeto?.setTotal(total: valorItens + custosExtrasFloat)
+            
         }else{
-            projeto = Projeto(usuario: usuario!, materiais: materiais, lucroPretendido: 0, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
+            projeto = Projeto(usuario: usuario!, materiais: materiais, custosExtras: custosExtrasFloat, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
+              projeto?.setTotal(total: valorItens + custosExtrasFloat)
         }
         
         

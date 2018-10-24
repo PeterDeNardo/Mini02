@@ -136,7 +136,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     
     func setUserDefaults(){
         let defaults = UserDefaults.standard
-        
         defaults.set(self.profile!["name"], forKey: "nome")
         defaults.set(self.profile!["email"], forKey: "email")
         defaults.set(self.profile!["id"], forKey: "id")
@@ -155,15 +154,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-            if let error = error {
+            if error != nil {
                 return
             }
         }
-        
-        let projectsVC = MaterialViewController()
-        self.navigationController?.pushViewController(projectsVC, animated: true)
-        
-        
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {

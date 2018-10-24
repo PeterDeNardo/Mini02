@@ -32,7 +32,7 @@ class MaterialViewController: UIViewController {
         
         if materiaisSelecionados.count > 0 {
             desativarTodosOsFiltros()
-            materialView.btnSearch.isSelected = true
+            //materialView.btnSearch.isSelected = true
             esconderBotaoAdd()
             listarSelecionados()
         }
@@ -74,10 +74,11 @@ class MaterialViewController: UIViewController {
     }
     
     func mostrarBotaoAdd(){
-        if !materialView.btnSearch.isSelected {
+//        if !materialView.btnSearch.isSelected {
+//
+//        }
         materialView.btnAddMaterial.isHidden = false
         materialView.btnAddMaterial.isEnabled = true
-        }
     }
     
     func esconderBotaoAdd(){
@@ -130,7 +131,7 @@ class MaterialViewController: UIViewController {
     
     @objc func listarSelecionados(){
         desativarTodosOsFiltros()
-        materialView.btnSearch.isSelected = true
+//        materialView.btnSearch.isSelected = true
         materiaisPesquisados = materiaisSelecionados
         materialView.tableView.reloadData()
         selecionarTodasAsRows()
@@ -330,17 +331,17 @@ class MaterialViewController: UIViewController {
     }
     
     @objc func addMaterial(){
-        
-        if !materialView.btnSearch.isSelected{
-            for material in materiaisPreSelecionados {
-                materiaisSelecionados.append(material)
-            }
+        for material in materiaisPreSelecionados {
+            materiaisSelecionados.append(material)
+        }
         desativarTodosOsFiltros()
-        materialView.btnSearch.isSelected = true
+//        materialView.btnSearch.isSelected = true
         listarSelecionados()
         esconderBotaoAdd()
-
-       }
+//        if !materialView.btnSearch.isSelected{
+//
+//
+//       }
     }
     
     @objc private func fetchData(){
@@ -429,24 +430,24 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
             }
         }
         
-        
-        if materialView.btnSearch.isSelected {
-            var i = 0
-            
-            while i < materiaisSelecionados.count {
-                
-                if materiaisSelecionados[i].chave == materiaisPesquisados[indexPath.row].chave{
-                    materiaisSelecionados.remove(at: i)
-                    materiaisPesquisados.remove(at: indexPath.row)
-                    break
-                }
-                i = i + 1
-                
-            }
-            
-            self.materialView.tableView.reloadData()
-            self.selecionarTodasAsRows()
-        }
+        //listar selecionados
+//        if materialView.btnSearch.isSelected {
+//            var i = 0
+//
+//            while i < materiaisSelecionados.count {
+//
+//                if materiaisSelecionados[i].chave == materiaisPesquisados[indexPath.row].chave{
+//                    materiaisSelecionados.remove(at: i)
+//                    materiaisPesquisados.remove(at: indexPath.row)
+//                    break
+//                }
+//                i = i + 1
+//
+//            }
+//
+//            self.materialView.tableView.reloadData()
+//            self.selecionarTodasAsRows()
+//        }
         
     }
   

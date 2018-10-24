@@ -157,32 +157,32 @@ class MaterialView {
         viewFolderButtons.addSubview(btnThree)
         viewFolderButtons.addSubview(btnFour)
 
-        btnTwo.addSubview(btnVisualOne)
-        btnVisualOne.translatesAutoresizingMaskIntoConstraints = false
-        btnVisualOne.leftAnchor.constraint(equalTo: btnTwo.leftAnchor, constant: 9).isActive = true
-        btnVisualOne.rightAnchor.constraint(equalTo: btnTwo.rightAnchor, constant: -2).isActive = true
-        btnVisualOne.bottomAnchor.constraint(equalTo: btnTwo.bottomAnchor, constant: 0).isActive = true
-        btnVisualOne.topAnchor.constraint(equalTo: btnTwo.topAnchor, constant: 0).isActive = true
-        btnVisualOne.setTitle("Materiais", for: .normal)
-        btnVisualOne.setTitleColor(.workBlack, for: .normal)
-        
-        btnThree.addSubview(btnVisualTwo)
-        btnVisualTwo.translatesAutoresizingMaskIntoConstraints = false
-        btnVisualTwo.leftAnchor.constraint(equalTo: btnThree.leftAnchor, constant: 2).isActive = true
-        btnVisualTwo.rightAnchor.constraint(equalTo: btnThree.rightAnchor, constant: -2).isActive = true
-        btnVisualTwo.bottomAnchor.constraint(equalTo: btnThree.bottomAnchor, constant: 0).isActive = true
-        btnVisualTwo.topAnchor.constraint(equalTo: btnThree.topAnchor, constant: 0).isActive = true
-        btnVisualTwo.setTitle("Meus", for: .normal)
-        btnVisualTwo.setTitleColor(.workBlack, for: .normal)
-        
-        btnFour.addSubview(btnVisualThree)
-        btnVisualThree.translatesAutoresizingMaskIntoConstraints = false
-        btnVisualThree.leftAnchor.constraint(equalTo: btnFour.leftAnchor, constant: 2).isActive = true
-        btnVisualThree.rightAnchor.constraint(equalTo: btnFour.rightAnchor, constant: -9).isActive = true
-        btnVisualThree.bottomAnchor.constraint(equalTo: btnFour.bottomAnchor, constant: 0).isActive = true
-        btnVisualThree.topAnchor.constraint(equalTo: btnFour.topAnchor, constant: 0).isActive = true
-        btnVisualThree.setTitle("Frequent", for: .normal)
-        btnVisualThree.setTitleColor(.workBlack, for: .normal)
+//        btnTwo.addSubview(btnVisualOne)
+//        btnVisualOne.translatesAutoresizingMaskIntoConstraints = false
+//        btnVisualOne.leftAnchor.constraint(equalTo: btnTwo.leftAnchor, constant: 9).isActive = true
+//        btnVisualOne.rightAnchor.constraint(equalTo: btnTwo.rightAnchor, constant: -2).isActive = true
+//        btnVisualOne.bottomAnchor.constraint(equalTo: btnTwo.bottomAnchor, constant: 0).isActive = true
+//        btnVisualOne.topAnchor.constraint(equalTo: btnTwo.topAnchor, constant: 0).isActive = true
+//        btnVisualOne.setTitle("Materiais", for: .normal)
+//        btnVisualOne.setTitleColor(.workBlack, for: .normal)
+//
+//        btnThree.addSubview(btnVisualTwo)
+//        btnVisualTwo.translatesAutoresizingMaskIntoConstraints = false
+//        btnVisualTwo.leftAnchor.constraint(equalTo: btnThree.leftAnchor, constant: 2).isActive = true
+//        btnVisualTwo.rightAnchor.constraint(equalTo: btnThree.rightAnchor, constant: -2).isActive = true
+//        btnVisualTwo.bottomAnchor.constraint(equalTo: btnThree.bottomAnchor, constant: 0).isActive = true
+//        btnVisualTwo.topAnchor.constraint(equalTo: btnThree.topAnchor, constant: 0).isActive = true
+//        btnVisualTwo.setTitle("Meus", for: .normal)
+//        btnVisualTwo.setTitleColor(.workBlack, for: .normal)
+//
+//        btnFour.addSubview(btnVisualThree)
+//        btnVisualThree.translatesAutoresizingMaskIntoConstraints = false
+//        btnVisualThree.leftAnchor.constraint(equalTo: btnFour.leftAnchor, constant: 2).isActive = true
+//        btnVisualThree.rightAnchor.constraint(equalTo: btnFour.rightAnchor, constant: -9).isActive = true
+//        btnVisualThree.bottomAnchor.constraint(equalTo: btnFour.bottomAnchor, constant: 0).isActive = true
+//        btnVisualThree.topAnchor.constraint(equalTo: btnFour.topAnchor, constant: 0).isActive = true
+//        btnVisualThree.setTitle("Frequent", for: .normal)
+//        btnVisualThree.setTitleColor(.workBlack, for: .normal)
         
         
         

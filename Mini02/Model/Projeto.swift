@@ -14,9 +14,9 @@ class Projeto{
     let chave: String?
     var usuario: [String:String]?
     var materiais: [Any]?
-    var total: Float?
+    var total: Float = 0
     var totalHora: Float?
-    var lucroPretendido: Float?
+    var custosExtras: Float?
     var lucroHora: Float?
     var horasTrabalhadas: Float?
     var nome: String?
@@ -24,28 +24,32 @@ class Projeto{
     
     
     //init com usario
-    init(usuario: [String:String], materiais: [Any], lucroPretendido: Float, horasTrabalhadas: Float, chave: String = "", categoria: String, nome: String){
+    init(usuario: [String:String], materiais: [Any], custosExtras: Float, horasTrabalhadas: Float, chave: String = "", categoria: String, nome: String){
         self.ref = nil
         self.chave = chave
-        
         self.usuario = usuario
         self.materiais = materiais
-        self.lucroPretendido = lucroPretendido
+        self.custosExtras = custosExtras
         self.horasTrabalhadas = horasTrabalhadas
         self.nome = nome
         self.categoria = categoria
-        
         //calculo aqui
     }
     
+    func setTotal(total: Float){
+        
+        self.total = total
+        
+    }
+    
     //init sem usuario
-    init(materiais: [Any], lucroPretendido: Float, horasTrabalhadas: Float, chave: String = "", categoria: String, nome: String){
+    init(materiais: [Any], custosExtras: Float, horasTrabalhadas: Float, chave: String = "", categoria: String, nome: String){
         self.ref = nil
         self.chave = chave
         
         self.usuario = nil
         self.materiais = materiais
-        self.lucroPretendido = lucroPretendido
+        self.custosExtras = custosExtras
         self.horasTrabalhadas = horasTrabalhadas
         self.nome = nome
         self.categoria = categoria
@@ -61,22 +65,23 @@ class Projeto{
     let valor = snapshot.value as? [String:AnyObject],
     let materiais = valor["materiais"] as? [Any],
     let usuario = valor["usuario"] as? [String:String],
-    let lucroPretendido = valor["lucroPretendido"] as? Float,
-    let horasTrabalhadas = valor["lucroPretendido"] as? Float,
+    let custosExtras = valor["custosExtras"] as? Float,
+    let horasTrabalhadas = valor["horasTrabalhadas"] as? Float,
     let nome = valor["nome"] as? String,
-    let categoria = valor["categoria"] as? String
+    let categoria = valor["categoria"] as? String,
+    let total = valor["total"] as? Float
         
     else {return nil}
     
     self.chave = snapshot.key
     self.ref = snapshot.ref
-    
     self.materiais = materiais
     self.usuario = usuario
     self.nome = nome
     self.categoria = categoria
     self.horasTrabalhadas = horasTrabalhadas
-    self.lucroPretendido = lucroPretendido
+    self.custosExtras = custosExtras
+    self.total = total
     
     }
     
@@ -84,10 +89,12 @@ class Projeto{
         return[
             "usuario" : usuario ?? "anônimo",
             "materiais" : materiais!,
-            "lucroPretendido" : lucroPretendido!,
+            "custosExtras" : custosExtras!,
             "horasTrabalhadas": horasTrabalhadas!,
+            "total": total,
             "nome": nome!,
-            "categoria": categoria!
+            "categoria": categoria!,
+           
         ]
     }
     

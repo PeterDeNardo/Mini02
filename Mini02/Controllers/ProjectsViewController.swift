@@ -20,12 +20,14 @@ class ProjectsViewController: UIViewController {
     var projetos: [Projeto] = []
     var meusProjetos: [Projeto] = []
     var loginButton: UIBarButtonItem?
+    let animationView = LOTAnimationView(name: "empty_box")
     
    
 
     override func viewWillAppear(_ animated: Bool) {
         
         pegarUserDefaults()
+        print(usuario)
         listarTodos()
         loginButton = UIBarButtonItem(title: "Login", style: .done, target: self, action: #selector(login))
         self.navigationItem.setRightBarButton((loginButton), animated: true)
@@ -53,6 +55,8 @@ class ProjectsViewController: UIViewController {
     }
     
     func animacaoSemUsuario(){
+        //configurando animacao
+        
         if usuario == nil {
             loginButton?.title = "Login"
             
@@ -60,8 +64,6 @@ class ProjectsViewController: UIViewController {
             projectsView.viewTableViewProjects.reloadData()
             
             if self.view.subviews.count < 3 {
-                
-                let animationView = LOTAnimationView(name: "empty_box")
                 animationView.animationSpeed = CGFloat(1)
                 self.view.addSubview(animationView)
                 self.view.backgroundColor = .white
@@ -74,11 +76,14 @@ class ProjectsViewController: UIViewController {
                 
                 animationView.play()
                 animationView.loopAnimation = true
-                
             }
             return
             
         }else{
+            self.view = projectsView.setViewsInLayout()
+            animationView.removeFromSuperview()
+            projectsView.viewTableViewProjects.isHidden = false
+            projectsView.viewTableViewProjects.reloadData()
             loginButton?.title = "Logout"
         }
     }
@@ -86,19 +91,30 @@ class ProjectsViewController: UIViewController {
     @objc func login(){
         
         if usuario != nil{
+            //LOGOUT
+            FBSDKLoginManager.init().logOut()
+            loginButton?.title = "Login"
             let defaults = UserDefaults.standard
             let dictionary = defaults.dictionaryRepresentation()
             dictionary.keys.forEach { key in
             defaults.removeObject(forKey: key)
-            FBSDKLoginManager.init().logOut()
-            loginButton?.title = "Login"
+            }
             pegarUserDefaults()
             animacaoSemUsuario()
-            }
          }
         else{
+            //LOGIN
             loginButton?.title = "Logout"
+           
+            projectsView.viewTableViewProjects.isHidden = false
+            projectsView.viewTableViewProjects.reloadData()
+            navigationController?.popViewController(animated: true)
+            
             goToLoginViewController()
+            
+            viewWillAppear(true)
+            
+            
         }
 
     }
@@ -204,6 +220,7 @@ extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource{
         
         cell.projectName.text = projeto.nome
         cell.projectItens.text = "\(projeto.materiais!.count)"
+        print(projeto.total)
         cell.projectPrice.text = "\(projeto.total)"
         
         return cell
