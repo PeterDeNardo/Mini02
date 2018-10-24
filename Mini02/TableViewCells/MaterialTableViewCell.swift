@@ -11,33 +11,36 @@ import UIKit
 class MaterialTableViewCell: UITableViewCell {
 
     var nome: UILabel = UILabel(frame: CGRect(x: 76, y: 8, width: 80, height: 21))
-    var preco: UILabel = UILabel(frame: CGRect(x: 290, y: 19, width: 60, height: 21))
-    var tipo: UILabel = UILabel(frame: CGRect(x: 225, y: 19, width: 40, height: 21))
+    var preco: UILabel = UILabel(frame: CGRect(x: 289, y: 19, width: 60, height: 21))
+    var tipo: UITextField = UITextField(frame: CGRect(x: 202, y: 14, width: 74, height: 32))
     var marca: UILabel = UILabel(frame: CGRect(x: 76, y: 36, width: 100, height: 16))
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         nome.setLabelWhithConstraints(fontType: .two,
-                                      fontSize: 18,
+                                      fontSize: 14,
                                       lblText: "Material",
                                       textColor: .workGrey,
                                       alingnment: .left,
                                       alpha: 1)
         
-        preco.setLabelWhithConstraints(fontType: .three, fontSize: 18,
+        preco.setLabelWhithConstraints(fontType: .three,
+                                       fontSize: 18,
                                        lblText: "R$000.0",
-                                       textColor: .workBlue,
+                                       textColor: .workGrey,
                                        alingnment: .right,
                                        alpha: 1)
         
-        tipo.setLabelWhithConstraints(fontType: .two, fontSize: 18,
-                                      lblText: "X un",
-                                      textColor: .workBlue,
-                                      alingnment: .left,
-                                      alpha: 1)
+        tipo.setTextField(fontType: .one,
+                          fontSize: 18,
+                          lblText: "1 un",
+                          textColor: .workGrey,
+                          alingnment: .rigth,
+                          alpha: 0.7)
+    
         
-        marca.setLabelWhithConstraints(fontType: .two, fontSize: 14,
+        marca.setLabelWhithConstraints(fontType: .two, fontSize: 11,
                                        lblText: "Marca/Local",
                                        textColor: .workGrey,
                                        alingnment: .left,

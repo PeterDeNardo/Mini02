@@ -36,6 +36,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
         setLabels()
+        self.navigationController?.navigationBar.isTranslucent = true
         
     }
     
@@ -56,7 +57,9 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         addDelegateToTxtFields()
         
         self.navigationItem.hidesBackButton = true
-        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
   
     }
     
@@ -207,6 +210,8 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
     }
     
+
+    
     @objc func abaixarTeclado() {
         viewCalculator.viewGlobal.endEditing(true)
     }
@@ -216,10 +221,8 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         materialsView.materiaisSelecionados = self.materiaisSelecionados
         navigationController?.pushViewController(materialsView, animated: true)
     }
+
     
-    @objc func goToCalculatorPluss() {
-        let calculatorPluss = CalculatorPlussViewController()
-        navigationController?.pushViewController(calculatorPluss, animated: true)
-    }
+
 
 }
