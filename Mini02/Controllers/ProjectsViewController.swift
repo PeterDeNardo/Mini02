@@ -35,6 +35,11 @@ class ProjectsViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
+        viewWillAppear(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pegarUserDefaults()
