@@ -58,11 +58,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         GIDSignIn.sharedInstance()?.uiDelegate = self
     }
     
-    
-    
-    
-    
-    
     func application(_ app: UIApplication, open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
