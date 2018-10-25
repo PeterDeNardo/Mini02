@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91BA5DB62180EA4400D0BAD9 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BA5DB52180EA4400D0BAD9 /* CadastroViewController.swift */; };
 		94119FC22177B8D500771432 /* MaterialTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94119FC12177B8D500771432 /* MaterialTableViewController.swift */; };
 		9444CB2D217E6E4200C09FD3 /* MaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */; };
 		944761C9216BF4A300019117 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 944761C8216BF4A300019117 /* GoogleService-Info.plist */; };
@@ -50,6 +51,7 @@
 		3A64131D7FDE7E394C67F8BA /* Pods-Mini02.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mini02.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mini02/Pods-Mini02.debug.xcconfig"; sourceTree = "<group>"; };
 		5D3460C56B3655FAA31DCED1 /* Pods-Mini02.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mini02.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mini02/Pods-Mini02.release.xcconfig"; sourceTree = "<group>"; };
 		8592BF9331E17B7B56B9CDA9 /* Pods_Mini02.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mini02.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91BA5DB52180EA4400D0BAD9 /* CadastroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
 		94119FC12177B8D500771432 /* MaterialTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTableViewController.swift; sourceTree = "<group>"; };
 		9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
 		944761C8216BF4A300019117 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				96C867B6216FD5CF00451161 /* OnboardStoryboard.storyboard */,
 				96C867B7216FD5CF00451161 /* OnboardViewController.swift */,
 				96C867B8216FD5CF00451161 /* StartButtonViewController.swift */,
+				91BA5DB52180EA4400D0BAD9 /* CadastroViewController.swift */,
 			);
 			name = Onboard;
 			path = ../Onboardaaa;
@@ -445,6 +448,7 @@
 				94EC2705217E4BD100902139 /* help.swift in Sources */,
 				94EC2701217E4AA100902139 /* MaterialView.swift in Sources */,
 				944761CE216D380300019117 /* Projeto.swift in Sources */,
+				91BA5DB62180EA4400D0BAD9 /* CadastroViewController.swift in Sources */,
 				94EC270E217E4FAB00902139 /* MaterialTableViewCell.swift in Sources */,
 				961678D32169DD1D00433E22 /* CalculatorViewController.swift in Sources */,
 				961678E2216BF59200433E22 /* CalculatorPlussViewController.swift in Sources */,

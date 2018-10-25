@@ -15,7 +15,9 @@ import FirebaseAuth
 class StartButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var profile: [String:String]?
-   
+
+
+    
     @IBAction func startButton(_ sender: UIButton) {
         present(TabBarController(), animated: true, completion: nil)
     }
@@ -42,6 +44,8 @@ class StartButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
         verificarDadosPerfilFacebook()
         
         fazerBotaoFacebook()
+        
+        configurarBotaoCadastro()
         
 
         // Do any additional setup after loading the view.
@@ -109,6 +113,32 @@ class StartButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         
     }
+    
+    func configurarBotaoCadastro(){
+        
+        let botaoCadastro = UIButton(frame: CGRect(x: 96, y: 434, width: 184, height: 47))
+        
+        botaoCadastro.layer.cornerRadius = 8
+        botaoCadastro.backgroundColor = .white
+        botaoCadastro.setTitle("Cadastre-se", for: .normal)
+        botaoCadastro.setTitleColor(.black, for: .normal)
+        botaoCadastro.setTitleShadowColor(.black, for: .normal)
+        botaoCadastro.layer.shadowColor = UIColor.black.cgColor
+        botaoCadastro.layer.shadowOffset = CGSize(width: 0, height: 3)
+        botaoCadastro.layer.shadowRadius = 6
+        botaoCadastro.layer.shadowOpacity = 0.3
+        botaoCadastro.addTarget(self, action: #selector(StartButtonViewController.buttonClicked), for: .touchUpInside)
+        
+        self.view.addSubview(botaoCadastro)
+    }
+    
+    @objc func buttonClicked(){
+        let storyBoard = UIStoryboard(name: "OnboardStoryboard", bundle: nil)
+        let novoViewController = storyBoard.instantiateViewController(withIdentifier: "CadastroViewController")
+        present(novoViewController, animated: true, completion: nil)
+    }
+    
+    
     
   
     
