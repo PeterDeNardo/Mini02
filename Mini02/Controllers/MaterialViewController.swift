@@ -28,7 +28,7 @@ class MaterialViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
         desativarTodosOsFiltros()
-        materialView.btnFour.isSelected = true
+        materialView.btnVisualThree.isSelected = true
         
         if materiaisSelecionados.count > 0 {
             desativarTodosOsFiltros()
@@ -88,7 +88,7 @@ class MaterialViewController: UIViewController {
     }
     
     func addButtonsTargets (){
-        materialView.btnFour.addTarget(self, action: #selector(listarTodos), for: .touchDown)
+        materialView.btnVisualThree.addTarget(self, action: #selector(listarTodos), for: .touchDown)
     
        // materialView.btnSearch.addTarget(self, action: #selector(listarSelecionados), for: .touchDown)
         
@@ -96,15 +96,15 @@ class MaterialViewController: UIViewController {
         
         //materialView.btnTwo.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
         
-        materialView.btnThree.addTarget(self, action: #selector(listarMeus), for: .touchDown
+        materialView.btnVisualTwo.addTarget(self, action: #selector(listarMeus), for: .touchDown
         )
         
 
     }
     
     func desativarTodosOsFiltros(){
-        materialView.btnFour.isSelected = false
-        materialView.btnThree.isSelected = false
+        materialView.btnVisualThree.isSelected = false
+        materialView.btnVisualTwo.isSelected = false
         //materialView.btnSearch.isSelected = false
     }
     
@@ -113,7 +113,7 @@ class MaterialViewController: UIViewController {
         
         desativarTodosOsFiltros()
         
-        materialView.btnThree.isSelected = true
+        materialView.btnVisualTwo.isSelected = true
         
         if usuario == nil {
             return
@@ -164,7 +164,7 @@ class MaterialViewController: UIViewController {
         
         desativarTodosOsFiltros()
         
-        materialView.btnFour.isSelected = true
+        materialView.btnVisualThree.isSelected = true
         
         materiaisPesquisados = materiais
         
@@ -181,7 +181,7 @@ class MaterialViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
         
-        self.materialView.viewSearchBar.addSubview(searchBar)
+        self.materialView.viewFolderSearchBar.addSubview(searchBar)
     }
     
     func criarTableView(){
@@ -268,7 +268,7 @@ class MaterialViewController: UIViewController {
         
         pesquisaTxt = pesquisaTxt.uppercased()
         
-        if materialView.btnThree.isSelected {
+        if materialView.btnVisualTwo.isSelected {
             
             pesquisarMeus()
             
@@ -288,7 +288,7 @@ class MaterialViewController: UIViewController {
 //
 //        }
         
-        if materialView.btnFour.isSelected {
+        if materialView.btnVisualThree.isSelected {
         //pesquisar sem filtros
         pesquisarTodos()
             
