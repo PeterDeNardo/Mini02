@@ -21,6 +21,10 @@ class Projeto{
     var horasTrabalhadas: Float?
     var nome: String?
     var categoria: String?
+    let data: String?
+    let formatoData = "dd/MM"
+    let hora: String?
+    let formatoHora = "HH:mm"
     
     
     //init com usario
@@ -33,7 +37,15 @@ class Projeto{
         self.horasTrabalhadas = horasTrabalhadas
         self.nome = nome
         self.categoria = categoria
-        //calculo aqui
+        let data = DateFormatter()
+        data.dateFormat = formatoData
+        let dataFormatada = data.string(from: Date())
+        self.data = dataFormatada
+        
+        let hora = DateFormatter()
+        hora.dateFormat = formatoHora
+        let horaFormatada = hora.string(from: Date())
+        self.hora = horaFormatada
     }
     
     func setTotal(total: Float){
@@ -53,6 +65,15 @@ class Projeto{
         self.horasTrabalhadas = horasTrabalhadas
         self.nome = nome
         self.categoria = categoria
+        let data = DateFormatter()
+        data.dateFormat = formatoData
+        let dataFormatada = data.string(from: Date())
+        self.data = dataFormatada
+        
+        let hora = DateFormatter()
+        hora.dateFormat = formatoHora
+        let horaFormatada = hora.string(from: Date())
+        self.hora = horaFormatada
         
         //calculo aqui
         
@@ -69,7 +90,9 @@ class Projeto{
     let horasTrabalhadas = valor["horasTrabalhadas"] as? Float,
     let nome = valor["nome"] as? String,
     let categoria = valor["categoria"] as? String,
-    let total = valor["total"] as? Float
+    let total = valor["total"] as? Float,
+    let data = valor["data"] as? String,
+    let hora = valor["hora"] as? String
         
     else {return nil}
     
@@ -82,6 +105,9 @@ class Projeto{
     self.horasTrabalhadas = horasTrabalhadas
     self.custosExtras = custosExtras
     self.total = total
+    self.data = data
+    self.hora = hora
+        
     
     }
     
@@ -94,6 +120,8 @@ class Projeto{
             "total": total,
             "nome": nome!,
             "categoria": categoria!,
+            "data": data!,
+            "hora": hora!,
            
         ]
     }

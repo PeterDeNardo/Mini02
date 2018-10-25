@@ -225,8 +225,10 @@ extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource{
         
         cell.projectName.text = projeto.nome
         cell.projectItens.text = "\(projeto.materiais!.count)"
-        print(projeto.total)
         cell.projectPrice.text = "\(projeto.total)"
+        cell.projectDate.text = "\(projeto.data!)"
+        cell.projectHour.text = "\(projeto.hora!)"
+        
         
         return cell
         
