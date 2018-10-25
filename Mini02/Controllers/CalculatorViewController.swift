@@ -110,11 +110,18 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
     
         if textField.text == "" {
-            textField.text = "0"
+            
             
             if textField == viewCalculator.txtInfBWorkedHours{
+                textField.text = "1"
+                horasTrabalhadas = 1
+                setLabels()
                 
-                horasTrabalhadas = 0
+            }
+            
+            if textField == viewCalculator.txtInfBExternalCosts{
+                textField.text = "0"
+                custosExtras = 0
                 setLabels()
                 
             }
@@ -130,6 +137,14 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
             
         }
         
+        if textField == viewCalculator.txtInfBExternalCosts{
+            
+            custosExtras = Float(textField.text!)!
+            setLabels()
+            
+        }
+        
+        
         
         
     }
@@ -138,24 +153,70 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
         
         if textField == viewCalculator.txtInfBWorkedHours{
-            guard let horasTrabalhadasFloat = Float(string), horasTrabalhadasFloat >= 0 else { return true }
             
-            var a = "\(Int(horasTrabalhadas))"
+            //BACKSPACE
+            let char = string.cString(using: String.Encoding.utf8)!
+            
+            let isBackSpace = strcmp(char, "\\b")
+            
+            if (isBackSpace == -92) {
+                var novoTxt = textField.text
+                novoTxt?.popLast()
+                guard let txtFloat = Float(novoTxt!) else {
+                    horasTrabalhadas = 0
+                    return true
+                }
+                guard let float = Float(novoTxt!) else {
+                    horasTrabalhadas = 1
+                    setLabels()
+                    return true
+                }
+                horasTrabalhadas = float
+                setLabels()
+                return true
+            }
+            
+            guard let horasTrabalhadasFloat = Float(string), horasTrabalhadasFloat >= 0 else {return true}
+            
+            let a = "\(Int(horasTrabalhadas))"
             var b = "\(a)\(string)"
             
             if horasTrabalhadas <= 0{
                 b = string
             }
-           
+            
             horasTrabalhadas = Float(Int(b)!)
+            
             setLabels()
             return true
         }
         
         if textField == viewCalculator.txtInfBExternalCosts{
-            guard let horasTrabalhadasFloat = Float(string), horasTrabalhadasFloat >= 0 else { return true }
+            //BACKSPACE
+            let char = string.cString(using: String.Encoding.utf8)!
             
-            var a = "\(Int(custosExtras))"
+            let isBackSpace = strcmp(char, "\\b")
+            
+            if (isBackSpace == -92) {
+                var novoTxt = textField.text
+                novoTxt?.popLast()
+                guard let txtFloat = Float(novoTxt!) else {
+                    custosExtras = 0
+                    setLabels()
+                    return true
+                }
+                guard let float = Float(novoTxt!) else {
+                    custosExtras = 0
+                    setLabels()
+                    return true
+                }
+                custosExtras = float
+                setLabels()
+                return true
+            }
+            guard let custosExtrasFloat = Float(string), custosExtrasFloat >= 0 else { return true }
+            
+            let a = "\(Int(custosExtras))"
             var b = "\(a)\(string)"
             
             if custosExtras <= 0{
