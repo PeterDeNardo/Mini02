@@ -23,7 +23,7 @@ class ProjectsView {
         viewNavigationSafeArea.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewNavigationSafeArea.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
         viewNavigationSafeArea.heightAnchor.constraint(equalToConstant: 68).isActive = true
-        viewNavigationSafeArea.backgroundColor = .clear
+        viewNavigationSafeArea.backgroundColor = .white
         
         viewGlobal.addSubview(viewTableViewProjects)
         viewTableViewProjects.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class ProjectsView {
         viewTableViewProjects.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewTableViewProjects.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
         viewTableViewProjects.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 0).isActive = true
-        viewTableViewProjects.backgroundColor = .clear
+        viewTableViewProjects.backgroundColor = .white
         
         return viewGlobal
     }

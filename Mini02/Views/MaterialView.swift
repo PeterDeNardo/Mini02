@@ -10,9 +10,8 @@ class MaterialView {
     
     //Creating Views
     
-    let viewSearchBar = UIView()
     let viewFolder = UIView()
-    
+    let viewSelectedTableView = UIView()
     
     //Creating SubViews
     
@@ -21,12 +20,14 @@ class MaterialView {
     
     //Creating Folder SubViews
     
+    let viewFolderSearchBar = UIView()
     let viewFolderButtons = UIView()
     let viewFolderButtonsFront = UIImageView()
     let viewFolderButtonsBack = UIImageView()
     let viewFolderTableView = UIView()
-    let viewFolderTabkeViewButton = UIView()
+    let viewFolderTableViewButton = UIView()
     let viewFolderBackGround = UIView()
+
     
     //Creating Objects inside of views
     
@@ -58,18 +59,25 @@ class MaterialView {
         viewGlobal = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
         viewGlobal.backgroundColor = UIColor.init(patternImage: UIImage(named: "backGroundMaterial")!)
         
-        viewGlobal.addSubview(viewSearchBar)
+        viewGlobal.addSubview(viewFolderSearchBar)
         viewGlobal.addSubview(viewFolder)
+        viewGlobal.addSubview(viewSelectedTableView)
         viewFolder.addSubview(viewFolderBackGround)
         viewFolder.addSubview(viewFolderButtons)
         viewFolder.addSubview(viewFolderTableView)
-        viewFolder.addSubview(viewFolderTabkeViewButton)
+        viewFolder.addSubview(viewFolderTableViewButton)
         
         viewFolder.translatesAutoresizingMaskIntoConstraints = false
-        viewFolder.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 85).isActive = true
+        viewFolder.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 75).isActive = true
         viewFolder.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewFolder.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
         viewFolder.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 0).isActive = true
+        
+        viewSelectedTableView.translatesAutoresizingMaskIntoConstraints = false
+        viewSelectedTableView.topAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
+        viewSelectedTableView.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
+        viewSelectedTableView.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
+        viewSelectedTableView.heightAnchor.constraint(equalToConstant: 487).isActive = true
         
         //MARK: SubViews
         //ViewFolder
@@ -99,13 +107,13 @@ class MaterialView {
         
         //setObjectsInViewFolderButtons()
         
-        viewFolder.addSubview(viewSearchBar)
-        viewSearchBar.translatesAutoresizingMaskIntoConstraints = false
-        viewSearchBar.topAnchor.constraint(equalTo: viewFolderButtons.bottomAnchor, constant: 0).isActive = true
-        viewSearchBar.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
-        viewSearchBar.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
-        viewSearchBar.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        viewSearchBar.backgroundColor = .clear
+        viewFolder.addSubview(viewFolderSearchBar)
+        viewFolderSearchBar.translatesAutoresizingMaskIntoConstraints = false
+        viewFolderSearchBar.topAnchor.constraint(equalTo: viewFolderButtons.bottomAnchor, constant: 0).isActive = true
+        viewFolderSearchBar.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
+        viewFolderSearchBar.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
+        viewFolderSearchBar.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        viewFolderSearchBar.backgroundColor = .clear
         
         SetObjectsInViewSearchBar()
         
@@ -118,7 +126,7 @@ class MaterialView {
         
  
         viewFolderTableView.translatesAutoresizingMaskIntoConstraints = false
-        viewFolderTableView.topAnchor.constraint(equalTo: viewSearchBar.bottomAnchor, constant: 0).isActive = true
+        viewFolderTableView.topAnchor.constraint(equalTo: viewFolderSearchBar.bottomAnchor, constant: 0).isActive = true
         viewFolderTableView.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
         viewFolderTableView.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
         viewFolderTableView.bottomAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
@@ -126,11 +134,11 @@ class MaterialView {
         
         setObjectsInViewFoldarTableView()
         
-        viewFolderTabkeViewButton.translatesAutoresizingMaskIntoConstraints = false
-        viewFolderTabkeViewButton.bottomAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
-        viewFolderTabkeViewButton.widthAnchor.constraint(equalToConstant: 218).isActive = true
-        viewFolderTabkeViewButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
-        viewFolderTabkeViewButton.centerXAnchor.constraint(equalTo: viewFolder.centerXAnchor).isActive = true
+        viewFolderTableViewButton.translatesAutoresizingMaskIntoConstraints = false
+        viewFolderTableViewButton.bottomAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
+        viewFolderTableViewButton.widthAnchor.constraint(equalToConstant: 218).isActive = true
+        viewFolderTableViewButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        viewFolderTableViewButton.centerXAnchor.constraint(equalTo: viewFolder.centerXAnchor).isActive = true
         
         setObjectsInViewFolderTableViewButton()
         setObjectsInViewItem()
@@ -151,7 +159,6 @@ class MaterialView {
         posX += btnThree.bounds.width
         
         btnFour = UIButton(frame: CGRect(x: posX, y: 0, width: UIScreen.main.bounds.width / 3, height: 40))
-        
         
         viewFolderButtons.addSubview(btnTwo)
         viewFolderButtons.addSubview(btnThree)
@@ -183,18 +190,22 @@ class MaterialView {
         btnVisualThree.topAnchor.constraint(equalTo: btnFour.topAnchor, constant: 0).isActive = true
         btnVisualThree.setTitle("Frequent", for: .normal)
         btnVisualThree.setTitleColor(.workBlack, for: .normal)
-        
+
+       
         
         
     }
     
     func SetObjectsInViewSearchBar() {
-        viewSearchBar.addSubview(searchBar)
+        viewFolderSearchBar.addSubview(searchBar)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.leftAnchor.constraint(equalTo: viewSearchBar.leftAnchor, constant: 10).isActive = true
-        searchBar.rightAnchor.constraint(equalTo: viewSearchBar.rightAnchor, constant: 10).isActive = true
+        searchBar.leftAnchor.constraint(equalTo: viewFolderSearchBar.leftAnchor, constant: 10).isActive = true
+        searchBar.rightAnchor.constraint(equalTo: viewFolderSearchBar.rightAnchor, constant: -10).isActive = true
         searchBar.heightAnchor.constraint(equalToConstant: 36).isActive = true
-        searchBar.centerYAnchor.constraint(equalTo: viewSearchBar.centerYAnchor, constant: 0).isActive = true
+        searchBar.centerYAnchor.constraint(equalTo: viewFolderSearchBar.centerYAnchor, constant: 0).isActive = true
+        searchBar.layer.cornerRadius = 7
+        searchBar.clipsToBounds = true
+        searchBar.text = "Procurar nos selecionados"
     }
     
     func setObjectsInViewFoldarTableView() {
@@ -207,7 +218,7 @@ class MaterialView {
         btnAddMaterial = UIButton(frame: CGRect(x: 0, y: 0, width: 218, height: 52))
         btnAddMaterial.setButton(titleText: "1 item selecionado",
                                  backgroundColor: .green)
-        viewFolderTabkeViewButton.addSubview(btnAddMaterial)
+        viewFolderTableViewButton.addSubview(btnAddMaterial)
     }
     
 
