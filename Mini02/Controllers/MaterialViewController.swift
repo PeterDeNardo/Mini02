@@ -70,10 +70,51 @@ class MaterialViewController: UIViewController {
         fetchData()
         pegarUserDefaults()
         self.tabBarController?.tabBar.isHidden = true
+        addGesture()
         
     }
     
+    func test(){
+        print(1111)
+    }
+    
+    func addGesture() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(MaterialViewController.activeModal(_:)))
+        materialView.viewSelected.addGestureRecognizer(gesture)
+    }
+    
+    @objc func activeModal(_ sender:UITapGestureRecognizer){
+        if materiaisPreSelecionados.count == 0 {
+            if self.materialView.viewSelected.frame.origin.y > 400{
+                UIView.animate(withDuration: 1, animations: {
+                    self.materialView.viewSelected.frame.origin.y -= 415
+                    self.materialView.viewSelectedBlur.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                    self.materialView.viewSelectedBlur.isUserInteractionEnabled = true
+                }, completion: nil)
+            }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        guard let location = touch?.location(in: materialView.viewSelectedBlur) else { return }
+        if materialView.viewSelectedBlur.frame.contains(location) && materialView.viewSelectedBlur.isUserInteractionEnabled == true {
+            UIView.animate(withDuration: 1, animations: {
+                self.materialView.viewSelected.frame.origin.y += 415
+                self.materialView.viewSelectedBlur.backgroundColor = .clear
+                self.materialView.viewSelectedBlur.isUserInteractionEnabled = false
+            }, completion: nil)
+        } else {
+        }
+    }
+    
     func mostrarBotaoAdd(){
+        if materiaisPreSelecionados.count < 1 {
+            UIView.animate(withDuration: 1, animations: {
+                self.materialView.viewSelected.frame.origin.y -= 26
+            }, completion: nil)
+        }
+
 //        if !materialView.btnSearch.isSelected {
 //
 //        }
@@ -82,6 +123,10 @@ class MaterialViewController: UIViewController {
     }
     
     func esconderBotaoAdd(){
+        UIView.animate(withDuration: 1, animations: {
+            self.materialView.viewSelected.frame.origin.y += 26
+        }, completion: nil)
+     
         materiaisPreSelecionados.removeAll()
         materialView.btnAddMaterial.isHidden = true
         materialView.btnAddMaterial.isEnabled = false
@@ -109,6 +154,8 @@ class MaterialViewController: UIViewController {
     }
     
     @objc func listarMeus(){
+        print(1)
+    
         materialView.viewFolderButtonsFront.image = UIImage(named: "SearchButton3")
         
         desativarTodosOsFiltros()
@@ -334,6 +381,7 @@ class MaterialViewController: UIViewController {
         for material in materiaisPreSelecionados {
             materiaisSelecionados.append(material)
         }
+        print(1111)
         desativarTodosOsFiltros()
 //        materialView.btnSearch.isSelected = true
         listarSelecionados()
