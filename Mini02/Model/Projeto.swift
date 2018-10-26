@@ -24,7 +24,7 @@ class Projeto{
     let data: String?
     let formatoData = "dd/MM"
     let hora: String?
-    let formatoHora = "HH:mm"
+    let formatoHora = "HH"
     
     
     //init com usario

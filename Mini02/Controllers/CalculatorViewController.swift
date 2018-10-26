@@ -72,7 +72,8 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         viewCalculator.lblIBItemsQuantity.text = "\(materiaisSelecionados.count)"
         viewCalculator.lblIBItemsPrice.text = "R$ \(valorItens)"
         viewCalculator.lblRBTotalResult.text = "R$ \(valorItens + custosExtras)"
-        viewCalculator.lblRBPriceByHourResult.text = "R$ \((valorItens + custosExtras)/horasTrabalhadas)"
+        let precoHora = (valorItens + custosExtras) / horasTrabalhadas
+        viewCalculator.lblRBPriceByHourResult.text = "R$ \((String(format: "%.2f", precoHora)))"
     }
     
     func addButtonsTargets() {
@@ -247,12 +248,9 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
         guard let custosExtrasFloat = Float(custosExtrasString), custosExtrasFloat > 0 else { return }
         
-       
         if materiaisSelecionados.count == 0 {
             return
         }
-        
-       
         
             for material in materiaisSelecionados {
                 materiais.append(material.toAnyObject())
@@ -269,12 +267,6 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
         
         goToNewProjectViewController()
-        
-        
-        //AQUI DEVE PASSAR O PROJETO PARA A PROXIMA TELA, ONDE ELE VAI ESCOLHER O NOME DO PROJETO E A CATEGORIA PARA ENTÃO JOGAR NO BANCO COM AS LINHAS ABAIXO!!!
-        
-        
-        
         
     }
     

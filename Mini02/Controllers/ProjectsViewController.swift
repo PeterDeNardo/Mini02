@@ -227,10 +227,10 @@ extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource{
         cell.dropShadow()
         
         cell.projectName.text = projeto.nome
-        cell.projectItens.text = "\(projeto.materiais!.count)"
-        cell.projectPrice.text = "\(projeto.total)"
+        cell.projectItens.text = "\(projeto.materiais!.count) itens"
+        cell.projectPrice.text = "R$ \(projeto.total)"
         cell.projectDate.text = "\(projeto.data!)"
-        cell.projectHour.text = "\(projeto.hora!)"
+        cell.projectHour.text = "\(projeto.hora!) H"
         
         
         return cell

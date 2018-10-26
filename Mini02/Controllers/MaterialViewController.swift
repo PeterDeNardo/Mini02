@@ -187,7 +187,6 @@ class MaterialViewController: UIViewController {
     func criarTableView(){
         
         let tableVC = MaterialTableViewController()
-        
         self.view = self.materialView.setViews()
        // self.materialView.tableView = tableVC.tableView
         self.materialView.tableView.delegate = self
@@ -196,8 +195,6 @@ class MaterialViewController: UIViewController {
         self.materialView.tableView.allowsMultipleSelection = true
         self.materialView.tableView.allowsSelectionDuringEditing = true
         self.materialView.tableView.backgroundColor = .clear
-        
-        
         
     }
     
@@ -212,7 +209,7 @@ class MaterialViewController: UIViewController {
             else if (material.marca?.uppercased().contains(pesquisaTxt))! && usuario!["id"] == material.usuario!["id"]{
                 materiaisPesquisados.append(material)
             }
-                
+
             else if (material.tipo?.uppercased().contains(pesquisaTxt))! && usuario!["id"] == material.usuario!["id"]{
                 materiaisPesquisados.append(material)
             }
@@ -462,7 +459,7 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         
         cell.nome.text = material.nome
         cell.preco.text = "$\(material.preco!)"
-        cell.tipo.text = material.tipo
+        cell.tipo.text = "1"
         cell.marca.text = material.marca
         
 //        if !materialView.btnSearch.isSelected {
