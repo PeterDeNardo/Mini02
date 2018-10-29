@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cXX-9y-haB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cXX-9y-haB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,7 +64,7 @@ Add items to be able to calculate the expenses of your projects!</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="v2X-DD-48I">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01 Onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="v2X-DD-48I">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="steps2" translatesAutoresizingMaskIntoConstraints="NO" id="7fl-Kx-oca">
@@ -103,7 +103,7 @@ Add, select and customize items and materials needed to complete your projects</
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="YSJ-oc-wR5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02 Onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="YSJ-oc-wR5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="steps3" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-mU-zRN">
@@ -142,9 +142,6 @@ View information about the materials you want and manage them</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="06 onboarding copy" translatesAutoresizingMaskIntoConstraints="NO" id="BOU-33-J3O">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1H-7d-NCm">
                                 <rect key="frame" x="98" y="483" width="179" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -158,13 +155,7 @@ View information about the materials you want and manage them</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="BOU-33-J3O" firstAttribute="top" secondItem="DYn-RX-Hu1" secondAttribute="top" id="91D-NA-JOu"/>
-                            <constraint firstItem="BOU-33-J3O" firstAttribute="bottom" secondItem="8KD-aw-HEa" secondAttribute="bottom" id="HsZ-cj-cUX"/>
-                            <constraint firstItem="BOU-33-J3O" firstAttribute="leading" secondItem="8KD-aw-HEa" secondAttribute="leading" id="OfY-D9-fPi"/>
-                            <constraint firstItem="BOU-33-J3O" firstAttribute="trailing" secondItem="8KD-aw-HEa" secondAttribute="trailing" id="S5t-bJ-gLC"/>
-                        </constraints>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <viewLayoutGuide key="safeArea" id="8KD-aw-HEa"/>
                     </view>
                 </viewController>
@@ -181,7 +172,7 @@ View information about the materials you want and manage them</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="04 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="yre-o6-MdN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03 Onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="yre-o6-MdN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="steps4" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-VY-qyT">
@@ -220,7 +211,7 @@ In addition, add extra costs that interfere with your project, such as: light bi
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="05 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="Glo-4d-qKm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="04 Onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="Glo-4d-qKm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="steps5" translatesAutoresizingMaskIntoConstraints="NO" id="lyY-WE-7Hk">
@@ -253,12 +244,11 @@ Finalize and forever have the cost and profit gained through your creations!</st
         </scene>
     </scenes>
     <resources>
+        <image name="01 Onboarding" width="562.5" height="1000.5"/>
         <image name="01 Onboarding Copy" width="562.5" height="1000.5"/>
-        <image name="02 Onboarding Copy" width="562.5" height="1000.5"/>
-        <image name="03 Onboarding Copy" width="562.5" height="1000.5"/>
-        <image name="04 Onboarding Copy" width="562.5" height="1000.5"/>
-        <image name="05 Onboarding Copy" width="562.5" height="1000.5"/>
-        <image name="06 onboarding copy" width="562.5" height="1000.5"/>
+        <image name="02 Onboarding" width="562.5" height="1000.5"/>
+        <image name="03 Onboarding" width="562.5" height="1000.5"/>
+        <image name="04 Onboarding" width="562.5" height="1000.5"/>
         <image name="steps1" width="114" height="25.5"/>
         <image name="steps2" width="114" height="25.5"/>
         <image name="steps3" width="114" height="25.5"/>
