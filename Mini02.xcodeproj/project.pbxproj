@@ -14,6 +14,7 @@
 		944761D0216D3A7300019117 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CF216D3A7300019117 /* Material.swift */; };
 		9450C3E6217FAD33002A5E3A /* done.json in Resources */ = {isa = PBXBuildFile; fileRef = 9450C3E5217FAD33002A5E3A /* done.json */; };
 		9450C3E8217FB07C002A5E3A /* empty_box.json in Resources */ = {isa = PBXBuildFile; fileRef = 9450C3E7217FB07C002A5E3A /* empty_box.json */; };
+		94C905542187787100C71411 /* MateriaisSelecionadosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C905532187787100C71411 /* MateriaisSelecionadosTableViewController.swift */; };
 		94EC26F9217E4AA100902139 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F0217E4AA100902139 /* CalculatorView.swift */; };
 		94EC26FC217E4AA100902139 /* NewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F3217E4AA100902139 /* NewProjectView.swift */; };
 		94EC26FD217E4AA100902139 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F4217E4AA100902139 /* LoginView.swift */; };
@@ -57,6 +58,7 @@
 		944761CF216D3A7300019117 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		9450C3E5217FAD33002A5E3A /* done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = done.json; sourceTree = "<group>"; };
 		9450C3E7217FB07C002A5E3A /* empty_box.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty_box.json; sourceTree = "<group>"; };
+		94C905532187787100C71411 /* MateriaisSelecionadosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MateriaisSelecionadosTableViewController.swift; sourceTree = "<group>"; };
 		94EC26F0217E4AA100902139 /* CalculatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		94EC26F3217E4AA100902139 /* NewProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectView.swift; sourceTree = "<group>"; };
 		94EC26F4217E4AA100902139 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				94EC2715217E52F700902139 /* ProjectTableViewCell.swift */,
+				94C905532187787100C71411 /* MateriaisSelecionadosTableViewController.swift */,
 				94EC2716217E52F800902139 /* ProjectTableViewController.swift */,
 				9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */,
 				94EC2713217E52EF00902139 /* ProjectsViewController.swift */,
@@ -451,6 +454,7 @@
 				94EC2703217E4B0400902139 /* NewProjectViewController.swift in Sources */,
 				94EC26FE217E4AA100902139 /* NewMaterialView.swift in Sources */,
 				961678D52169DDED00433E22 /* AppDelegate.swift in Sources */,
+				94C905542187787100C71411 /* MateriaisSelecionadosTableViewController.swift in Sources */,
 				94EC26FD217E4AA100902139 /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -599,7 +603,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 67ALGZ83W8;
+				DEVELOPMENT_TEAM = F86Y9T6AF3;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -618,7 +622,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 67ALGZ83W8;
+				DEVELOPMENT_TEAM = F86Y9T6AF3;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

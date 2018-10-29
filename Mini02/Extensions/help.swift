@@ -160,6 +160,7 @@ extension UIColor {
     static let workGrey = UIColor(red:0.40, green:0.40, blue:0.40, alpha:1.0)
     static let workSand = UIColor(red:0.90, green:0.88, blue:0.77, alpha:1.0)
     static let workBlack = UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0)
+    static let workGreen = UIColor(red:0.22, green:0.71, blue:0.29, alpha:1.0)
 }
 
 

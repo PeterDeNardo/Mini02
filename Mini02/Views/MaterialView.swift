@@ -11,7 +11,8 @@ class MaterialView {
     //Creating Views
     
     let viewFolder = UIView()
-    let viewSelectedTableView = UIView()
+    let viewSelected = UIView()
+    let viewSelectedBlur = UIView()
     
     //Creating SubViews
     
@@ -28,6 +29,11 @@ class MaterialView {
     let viewFolderTableViewButton = UIView()
     let viewFolderBackGround = UIView()
 
+    //Creating SelectedTableView
+    
+    let viewSelectedCabecalho = UIImageView()
+    let viewSelectedCabecalhoButton = UIView()
+    var viewSelectedTableView = UITableView()
     
     //Creating Objects inside of views
     
@@ -54,6 +60,13 @@ class MaterialView {
     
     var tableView : UITableView!
     
+    //viewSearch Objects
+    
+    let imgBackground = UIImageView()
+    let lblSelectMaterials = UILabel()
+    let btnEdit = UIButton()
+    let btnUndo = UIButton()
+    
     func setViews() -> UIView {
         //MARK: Setting Views
         viewGlobal = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
@@ -61,7 +74,8 @@ class MaterialView {
         
         viewGlobal.addSubview(viewFolderSearchBar)
         viewGlobal.addSubview(viewFolder)
-        viewGlobal.addSubview(viewSelectedTableView)
+        viewGlobal.addSubview(viewSelectedBlur)
+        viewGlobal.addSubview(viewSelected)
         viewFolder.addSubview(viewFolderBackGround)
         viewFolder.addSubview(viewFolderButtons)
         viewFolder.addSubview(viewFolderTableView)
@@ -73,11 +87,21 @@ class MaterialView {
         viewFolder.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
         viewFolder.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 0).isActive = true
         
-        viewSelectedTableView.translatesAutoresizingMaskIntoConstraints = false
-        viewSelectedTableView.topAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
-        viewSelectedTableView.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
-        viewSelectedTableView.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
-        viewSelectedTableView.heightAnchor.constraint(equalToConstant: 487).isActive = true
+        viewSelected.translatesAutoresizingMaskIntoConstraints = false
+        viewSelected.topAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: -64).isActive = true
+        viewSelected.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
+        viewSelected.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
+        viewSelected.heightAnchor.constraint(equalToConstant: 487).isActive = true
+        viewSelected.backgroundColor  = .clear
+        
+        viewSelectedBlur.translatesAutoresizingMaskIntoConstraints = false
+        viewSelectedBlur.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 0).isActive = true
+        viewSelectedBlur.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
+        viewSelectedBlur.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
+        viewSelectedBlur.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 0).isActive = true
+        viewSelectedBlur.isUserInteractionEnabled = false
+        viewSelectedBlur.backgroundColor = .clear
+        
         
         //MARK: SubViews
         //ViewFolder
@@ -140,9 +164,36 @@ class MaterialView {
         viewFolderTableViewButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
         viewFolderTableViewButton.centerXAnchor.constraint(equalTo: viewFolder.centerXAnchor).isActive = true
         
-        setObjectsInViewFolderTableViewButton()
         setObjectsInViewItem()
+        
+        //viewSelectedTableView
+        
+        viewSelected.addSubview(viewSelectedTableView)
+        viewSelectedTableView.translatesAutoresizingMaskIntoConstraints = false
+        viewSelectedTableView.topAnchor.constraint(equalTo: viewSelected.topAnchor, constant: 56).isActive = true
+        viewSelectedTableView.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
+        viewSelectedTableView.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
+        viewSelectedTableView.heightAnchor.constraint(equalToConstant: 450).isActive = true
+
+        
+        viewSelected.addSubview(viewSelectedCabecalho)
+        viewSelectedCabecalho.translatesAutoresizingMaskIntoConstraints = false
+        viewSelectedCabecalho.topAnchor.constraint(equalTo: viewSelected.topAnchor, constant: 0).isActive = true
+        viewSelectedCabecalho.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
+        viewSelectedCabecalho.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
+        viewSelectedCabecalho.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        viewSelectedCabecalho.image = UIImage(named: "modalOpenBackground")
+        
+        viewSelected.addSubview(viewSelectedCabecalhoButton)
+        viewSelectedCabecalhoButton.translatesAutoresizingMaskIntoConstraints = false
+        viewSelectedCabecalhoButton.widthAnchor.constraint(equalToConstant: 257).isActive = true
+        viewSelectedCabecalhoButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        viewSelectedCabecalhoButton.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
+        viewSelectedCabecalhoButton.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 5).isActive = true
    
+        setObjectsInViewFolderTableViewButton()
+        setObjectsInViewSelected()
+        
         return viewGlobal
     }
 
@@ -190,9 +241,6 @@ class MaterialView {
         btnVisualThree.topAnchor.constraint(equalTo: btnFour.topAnchor, constant: 0).isActive = true
         btnVisualThree.setTitle("Frequent", for: .normal)
         btnVisualThree.setTitleColor(.workBlack, for: .normal)
-
-       
-        
         
     }
     
@@ -208,6 +256,29 @@ class MaterialView {
         searchBar.text = "Procurar nos selecionados"
     }
     
+    func setObjectsInViewSelected() {
+//        viewSelectedTableView.addSubview(imgBackground)
+//        imgBackground.topAnchor.constraint(equalTo: viewSelectedTableView.topAnchor, constant: 0).isActive = true
+//        imgBackground.leftAnchor.constraint(equalTo: viewSelectedTableView.leftAnchor, constant: 0).isActive = true
+//        imgBackground.rightAnchor.constraint(equalTo: viewSelectedTableView.rightAnchor, constant: 0).isActive = true
+//        imgBackground.bottomAnchor.constraint(equalTo: viewSelectedTableView.bottomAnchor, constant: 0).isActive = true
+//        imgBackground.image = UIImage(named: "modalOpenBackgroundBranco")
+        
+        viewSelectedCabecalho.addSubview(lblSelectMaterials)
+        lblSelectMaterials.translatesAutoresizingMaskIntoConstraints = false
+        lblSelectMaterials.centerXAnchor.constraint(equalTo: viewSelectedCabecalhoButton.centerXAnchor).isActive = true
+        lblSelectMaterials.topAnchor.constraint(equalTo: viewSelectedCabecalho.topAnchor, constant: 24).isActive = true
+        lblSelectMaterials.heightAnchor.constraint(equalToConstant: 21).isActive = true
+        lblSelectMaterials.widthAnchor.constraint(equalToConstant: 170).isActive = true
+        
+        lblSelectMaterials.setLabelWhithConstraints(fontType: .three,
+                                                    fontSize: 18,
+                                                    lblText: "Itens selecionados",
+                                                    textColor: .white,
+                                                    alingnment: .center,
+                                                    alpha: 1)
+    }
+    
     func setObjectsInViewFoldarTableView() {
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         viewFolderTableView.addSubview(tableView)
@@ -215,10 +286,30 @@ class MaterialView {
     }
     
     func setObjectsInViewFolderTableViewButton() {
-        btnAddMaterial = UIButton(frame: CGRect(x: 0, y: 0, width: 218, height: 52))
-        btnAddMaterial.setButton(titleText: "1 item selecionado",
-                                 backgroundColor: .green)
-        viewFolderTableViewButton.addSubview(btnAddMaterial)
+        btnAddMaterial = UIButton(frame: CGRect(x: 0, y: 0, width: 257, height: 45))
+        btnAddMaterial.setButton(titleText: "Confirmar selecionado",
+                                 backgroundColor: .workGreen)
+        btnAddMaterial.dropShadow()
+        btnAddMaterial.layer.cornerRadius = 7
+        viewSelectedCabecalhoButton.addSubview(btnAddMaterial)
+        
+        viewSelectedCabecalhoButton.addSubview(btnEdit)
+        btnEdit.translatesAutoresizingMaskIntoConstraints = false
+        btnEdit.leftAnchor.constraint(equalTo: viewSelectedCabecalho.leftAnchor, constant: 16).isActive = true
+        btnEdit.topAnchor.constraint(equalTo: viewSelectedCabecalho.topAnchor, constant: 24).isActive = true
+        btnEdit.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        btnEdit.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        btnEdit.setButton(titleText: "Edit",
+                          backgroundColor: .clear)
+        
+        viewSelectedCabecalhoButton.addSubview(btnUndo)
+        btnUndo.translatesAutoresizingMaskIntoConstraints = false
+        btnUndo.rightAnchor.constraint(equalTo: viewSelectedCabecalho.rightAnchor, constant: -17).isActive = true
+        btnUndo.topAnchor.constraint(equalTo: viewSelectedCabecalho.topAnchor, constant: 24).isActive = true
+        btnUndo.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        btnUndo.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        btnUndo.setButton(titleText: "Undo",
+                          backgroundColor: .clear)
     }
     
 
