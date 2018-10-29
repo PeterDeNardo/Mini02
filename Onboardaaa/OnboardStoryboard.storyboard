@@ -17,18 +17,25 @@
             </objects>
             <point key="canvasLocation" x="-7066" y="-1827"/>
         </scene>
-        <!--View Controller-->
+        <!--First Page Onboard View Controller-->
         <scene sceneID="6j4-rn-taj">
             <objects>
-                <viewController storyboardIdentifier="FirstPageViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Mv-cA-xgL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstPageOnboardViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Mv-cA-xgL" customClass="FirstPageOnboardViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dxa-0N-jw4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="01 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="22h-oI-jrk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="01 Onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="22h-oI-jrk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adicione itens para contabilizar o preço e saber o quanto gastou com materiais!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHE-aV-rOF">
+                                <rect key="frame" x="37" y="267" width="322" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="FGW-N7-NKa"/>
@@ -38,18 +45,25 @@
             </objects>
             <point key="canvasLocation" x="-6274.3999999999996" y="-1826.5367316341831"/>
         </scene>
-        <!--View Controller-->
+        <!--Second Page Onboard View Controller-->
         <scene sceneID="ciX-Wp-WYe">
             <objects>
-                <viewController storyboardIdentifier="SecondPageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYY-s0-N6T" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondPageOnboardViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYY-s0-N6T" customClass="SecondPageOnboardViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ASE-W3-fa0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="02 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="v2X-DD-48I">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="02 Onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="v2X-DD-48I">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adicione as horas que gastou nele e os eventuais custos extras, como frete de objetos e mais..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J24-Vi-Uiv">
+                                <rect key="frame" x="49" y="396" width="326" height="95"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ZVF-wm-pgY"/>
@@ -59,18 +73,25 @@
             </objects>
             <point key="canvasLocation" x="-5519.1999999999998" y="-1826.5367316341831"/>
         </scene>
-        <!--View Controller-->
+        <!--Third Page Onboard View Controller-->
         <scene sceneID="sSX-UX-Grq">
             <objects>
-                <viewController storyboardIdentifier="ThirdPageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aMC-gp-6Tl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThirdPageOnboardViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aMC-gp-6Tl" customClass="ThirdPageOnboardViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rys-sV-x7X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="03 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="YSJ-oc-wR5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="03 Onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="YSJ-oc-wR5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edite a quantidade de materiais utilizados como quiser!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZ2-Um-xfk">
+                                <rect key="frame" x="36" y="325" width="323" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.21176470589999999" green="0.79607843140000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="hgn-n1-1Z0"/>
@@ -83,7 +104,7 @@
         <!--Start Button View Controller-->
         <scene sceneID="vXf-55-Cnm">
             <objects>
-                <viewController storyboardIdentifier="SixthPageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q4r-ag-07s" customClass="StartButtonViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartButtonViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q4r-ag-07s" customClass="StartButtonViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DYn-RX-Hu1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,8 +113,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-EP-TY9">
+                                <rect key="frame" x="67" y="114" width="240" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1H-7d-NCm">
-                                <rect key="frame" x="117" y="554" width="141" height="41"/>
+                                <rect key="frame" x="117" y="508" width="141" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Continue sem Login!"/>
                                 <connections>
@@ -101,38 +126,6 @@
                                     <action selector="startButton:" destination="c91-MG-tFn" eventType="touchUpInside" id="ng7-BN-4of"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ynt-kn-whL">
-                                <rect key="frame" x="37" y="106" width="300" height="158"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uO7-n1-1PX">
-                                <rect key="frame" x="49" y="129" width="223" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M7K-Ih-lPM">
-                                <rect key="frame" x="55" y="153" width="181" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Senha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7K-9O-fiJ">
-                                <rect key="frame" x="49" y="194" width="223" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e6O-mP-zSW">
-                                <rect key="frame" x="55" y="218" width="181" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -143,11 +136,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8KD-aw-HEa"/>
                     </view>
-                    <connections>
-                        <outlet property="loginEmailLbl" destination="M7K-Ih-lPM" id="ESB-kc-Ibk"/>
-                        <outlet property="loginImageView" destination="ynt-kn-whL" id="Zvq-WO-yVe"/>
-                        <outlet property="loginSenhaLbl" destination="e6O-mP-zSW" id="6Pq-Qi-6Ga"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ph7-71-nCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="c91-MG-tFn" userLabel="Exit" sceneMemberID="exit"/>
@@ -253,18 +241,25 @@
             </objects>
             <point key="canvasLocation" x="-2047.2" y="-1023.2383808095952"/>
         </scene>
-        <!--View Controller-->
+        <!--Fourth Page Onboard View Controller-->
         <scene sceneID="BfQ-f5-zAv">
             <objects>
-                <viewController storyboardIdentifier="FourthPageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bvc-R9-iCI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FourthPageOnboardViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bvc-R9-iCI" customClass="FourthPageOnboardViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N3U-aD-JWV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="04 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="yre-o6-MdN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="04 Onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="yre-o6-MdN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adicione novos materiais, personalizados especialmente para o seu projeto!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z38-SB-WWT">
+                                <rect key="frame" x="49" y="169" width="277" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="1" blue="0.023826093580641583" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="eBX-ca-cqC"/>
@@ -274,18 +269,25 @@
             </objects>
             <point key="canvasLocation" x="-3826.4000000000001" y="-1827.4362818590705"/>
         </scene>
-        <!--View Controller-->
+        <!--Fifth Page Onboard View Controller-->
         <scene sceneID="Wy5-9f-Azc">
             <objects>
-                <viewController storyboardIdentifier="FifthPageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lMy-om-97j" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FifthPageOnboardViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lMy-om-97j" customClass="FifthPageOnboardViewController" customModule="Mini02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lti-tT-Isg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="05 Onboarding Copy" translatesAutoresizingMaskIntoConstraints="NO" id="Glo-4d-qKm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="05 Onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="Glo-4d-qKm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Salve seus projetos e tenha todo o controle de suas criações em poucos toques!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5q-kc-hUo">
+                                <rect key="frame" x="38" y="328" width="268" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.79009950861075495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="pkf-lR-9MG"/>
@@ -297,11 +299,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="01 Onboarding Copy" width="562.5" height="1000.5"/>
-        <image name="02 Onboarding Copy" width="562.5" height="1000.5"/>
-        <image name="03 Onboarding Copy" width="562.5" height="1000.5"/>
-        <image name="04 Onboarding Copy" width="562.5" height="1000.5"/>
-        <image name="05 Onboarding Copy" width="562.5" height="1000.5"/>
+        <image name="01 Onboarding" width="562.5" height="1000.5"/>
+        <image name="02 Onboarding" width="562.5" height="1000.5"/>
+        <image name="03 Onboarding" width="562.5" height="1000.5"/>
+        <image name="04 Onboarding" width="562.5" height="1000.5"/>
+        <image name="05 Onboarding" width="562.5" height="1000.5"/>
         <image name="BG" width="562.5" height="1000.5"/>
+        <image name="logo" width="189" height="53"/>
     </resources>
 </document>
