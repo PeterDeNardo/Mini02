@@ -303,7 +303,8 @@ class CalculatorView {
                                         lblText: "N/h",
                                         textColor: .workGrey,
                                         alingnment: .rigth,
-                                        alpha: 0.7)
+                                        alpha: 0.7,
+                                        ifHaveImageName: "textbox")
         ViewInfBody.addSubview(txtInfBWorkedHours)
         
         txtInfBExternalCosts.frame = CGRect(x: 200, y: 46, width: 87, height: 32)
@@ -312,7 +313,8 @@ class CalculatorView {
                                           lblText: "$Y",
                                           textColor: .workGrey,
                                           alingnment: .rigth,
-                                          alpha: 0.7)
+                                          alpha: 0.7,
+                                          ifHaveImageName: "textbox")
         ViewInfBody.addSubview(txtInfBExternalCosts)
         
         

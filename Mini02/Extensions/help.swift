@@ -62,22 +62,26 @@ extension UITextField {
         case center, rigth, left
     }
     
-    func setTextField(fontType: FontType ,fontSize: Int, lblText: String, textColor: UIColor, alingnment : AlignmentText, alpha: CGFloat) {
+    func setTextField(fontType: FontType ,fontSize: Int, lblText: String, textColor: UIColor, alingnment : AlignmentText, alpha: CGFloat, ifHaveImageName : String) {
         
-        let image = UIImage(named: "textbox")
-        let scale : CGFloat = 0.0
-        let size = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.bounds.width, height: self.bounds.height), false, scale)
-        image?.draw(in: size)
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+//        let scale : CGFloat = 0.0
+//        let size = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+//        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.bounds.width, height: self.bounds.height), false, scale)
+//        image?.draw(in: size)
+//        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         
         self.textColor  = textColor.withAlphaComponent(alpha)
         self.text = lblText
-        self.backgroundColor = UIColor.init(patternImage: scaledImage!)
+        //self.backgroundColor = UIColor.init(patternImage: scaledImage!)
         self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
         self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
         self.rightViewMode = .always
         self.leftViewMode = .always
+        
+        if ifHaveImageName != "NoHaveImage" {
+            let image = UIImage(named: ifHaveImageName)
+            self.background = image
+        }
         
         switch fontType {
         case .one:
@@ -103,6 +107,16 @@ extension UITextField {
             self.sizeToFit()
             break
         }
+        
+        
+    }
+    
+    func visibleStatusOfBackgroundImage(image : UIImage, hide: Bool ) {
+        if hide{
+            self.background = UIImage()
+        } else {
+            self.background = image
+        }
     }
 }
 
@@ -123,9 +137,15 @@ extension UIView {
 
 extension UIButton {
     
-    func setButton(titleText : String, backgroundColor : UIColor){
-        self.setTitle(titleText, for: .normal)
-        self.backgroundColor = backgroundColor
+    func setButton(titleText : String, backgroundColor : UIColor, backgroundImageIfSelected : UIImage, backgroundImageIfDiselected : UIImage){
+        self.setImage(backgroundImageIfSelected, for: .selected)
+        self.setImage(backgroundImageIfDiselected, for: .normal)
+        self.imageView?.contentMode = .scaleAspectFill
+        
+        if (titleText != "NoUseTitle"){
+            self.setTitle(titleText, for: .normal)
+        } 
+    
     }
 }
 

@@ -32,7 +32,6 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
     
     func addDelegateToTxtFields(){
         newProjectView.txtProjectName.delegate = self
-        
         newProjectView.txtProjectName.delegate = self
     }
     

@@ -32,6 +32,10 @@ class ProjectsViewController: UIViewController {
         loginButton = UIBarButtonItem(title: "Login", style: .done, target: self, action: #selector(login))
         self.navigationItem.setRightBarButton((loginButton), animated: true)
         animacaoSemUsuario()
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
         
     }
     

@@ -37,7 +37,8 @@ class MaterialTableViewCell: UITableViewCell {
                           lblText: "1 un",
                           textColor: .workGrey,
                           alingnment: .rigth,
-                          alpha: 0.7)
+                          alpha: 0.7,
+                          ifHaveImageName: "textbox")
     
         
         marca.setLabelWhithConstraints(fontType: .two, fontSize: 11,
@@ -59,16 +60,20 @@ class MaterialTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.selectionStyle = .none
-        self.contentView.backgroundColor = .clear
+        self.backgroundColor = .clear
         
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if selected == true {
-            self.backgroundColor = UIColor.white
+            self.contentView.backgroundColor = UIColor.white
+            self.tipo.isUserInteractionEnabled = false
+            self.tipo.visibleStatusOfBackgroundImage(image: UIImage(named: "textbox")!, hide: false)
         } else {
-            self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+            self.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
+            self.tipo.isUserInteractionEnabled = true
+            self.tipo.visibleStatusOfBackgroundImage(image: UIImage(named: "textbox")!, hide: true)
         }
     }
 

@@ -32,6 +32,7 @@ class MaterialView {
     //Creating SelectedTableView
     
     let viewSelectedCabecalho = UIImageView()
+    let viewSelectedCabecalhoExtend = UIImageView()
     let viewSelectedCabecalhoButton = UIView()
     let viewSelectedTableView = UITableView()
     
@@ -106,13 +107,6 @@ class MaterialView {
         //MARK: SubViews
         //ViewFolder
         
-        viewFolder.addSubview(viewFolderButtonsFront)
-        viewFolderButtonsFront.translatesAutoresizingMaskIntoConstraints = false
-        viewFolderButtonsFront.topAnchor.constraint(equalTo: viewFolder.topAnchor, constant: 0).isActive = true
-        viewFolderButtonsFront.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
-        viewFolderButtonsFront.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
-        viewFolderButtonsFront.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
         viewFolder.addSubview(viewFolderButtonsBack)
         viewFolderButtonsBack.translatesAutoresizingMaskIntoConstraints = false
         viewFolderButtonsBack.topAnchor.constraint(equalTo: viewFolder.topAnchor, constant: 0).isActive = true
@@ -120,6 +114,13 @@ class MaterialView {
         viewFolderButtonsBack.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
         viewFolderButtonsBack.heightAnchor.constraint(equalToConstant: 40).isActive = true
         viewFolderButtonsBack.image = UIImage(named: "SearchButtonBack")
+        
+        viewFolder.addSubview(viewFolderButtonsFront)
+        viewFolderButtonsFront.translatesAutoresizingMaskIntoConstraints = false
+        viewFolderButtonsFront.topAnchor.constraint(equalTo: viewFolder.topAnchor, constant: 0).isActive = true
+        viewFolderButtonsFront.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
+        viewFolderButtonsFront.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
+        viewFolderButtonsFront.heightAnchor.constraint(equalToConstant: 40).isActive = true
 
         viewFolder.addSubview(viewFolderButtons)
         viewFolderButtons.translatesAutoresizingMaskIntoConstraints = false
@@ -182,7 +183,16 @@ class MaterialView {
         viewSelectedCabecalho.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
         viewSelectedCabecalho.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
         viewSelectedCabecalho.heightAnchor.constraint(equalToConstant: 64).isActive = true
-        viewSelectedCabecalho.image = UIImage(named: "modalOpenBackground")
+        viewSelectedCabecalho.image = UIImage(named: "modalClosed")
+        
+        viewSelected.addSubview(viewSelectedCabecalhoExtend)
+        viewSelectedCabecalhoExtend.translatesAutoresizingMaskIntoConstraints = false
+        viewSelectedCabecalhoExtend.topAnchor.constraint(equalTo: viewSelected.topAnchor, constant: 0).isActive = true
+        viewSelectedCabecalhoExtend.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
+        viewSelectedCabecalhoExtend.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
+        viewSelectedCabecalhoExtend.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        viewSelectedCabecalhoExtend.image = UIImage(named: "modalClosedConfirm")
+        viewSelectedCabecalhoExtend.isHidden = true
         
         viewSelected.addSubview(viewSelectedCabecalhoButton)
         viewSelectedCabecalhoButton.translatesAutoresizingMaskIntoConstraints = false
@@ -253,7 +263,6 @@ class MaterialView {
         searchBar.centerYAnchor.constraint(equalTo: viewFolderSearchBar.centerYAnchor, constant: 0).isActive = true
         searchBar.layer.cornerRadius = 7
         searchBar.clipsToBounds = true
-        searchBar.text = "Procurar nos selecionados"
     }
     
     func setObjectsInViewSelected() {
@@ -288,7 +297,9 @@ class MaterialView {
     func setObjectsInViewFolderTableViewButton() {
         btnAddMaterial = UIButton(frame: CGRect(x: 0, y: 0, width: 257, height: 45))
         btnAddMaterial.setButton(titleText: "Confirmar selecionado",
-                                 backgroundColor: .workGreen)
+                                 backgroundColor: .clear,
+                                 backgroundImageIfSelected: UIImage(),
+                                 backgroundImageIfDiselected: UIImage())
         btnAddMaterial.dropShadow()
         btnAddMaterial.layer.cornerRadius = 7
         viewSelectedCabecalhoButton.addSubview(btnAddMaterial)
@@ -300,7 +311,9 @@ class MaterialView {
         btnEdit.heightAnchor.constraint(equalToConstant: 20).isActive = true
         btnEdit.widthAnchor.constraint(equalToConstant: 40).isActive = true
         btnEdit.setButton(titleText: "Edit",
-                          backgroundColor: .clear)
+                          backgroundColor: .clear,
+                          backgroundImageIfSelected: UIImage(),
+                          backgroundImageIfDiselected: UIImage())
         
         viewSelectedCabecalhoButton.addSubview(btnUndo)
         btnUndo.translatesAutoresizingMaskIntoConstraints = false
@@ -309,11 +322,45 @@ class MaterialView {
         btnUndo.heightAnchor.constraint(equalToConstant: 20).isActive = true
         btnUndo.widthAnchor.constraint(equalToConstant: 45).isActive = true
         btnUndo.setButton(titleText: "Undo",
-                          backgroundColor: .clear)
+                          backgroundColor: .clear,
+                          backgroundImageIfSelected: UIImage(),
+                          backgroundImageIfDiselected: UIImage())
     }
     
-
+    func setLayoutInModalIfCellAreSelected() {
+        UIView.animate(withDuration: 1, animations: {
+            self.viewSelected.frame.origin.y -= 26
+        }, completion: { (finished: Bool) in})
+        viewSelectedCabecalhoExtend.isHidden = false
+   
+    }
     
+    func setLayoutInModalIfIfCellArentSelected() {
+        UIView.animate(withDuration: 1, animations: {
+            self.viewSelected.frame.origin.y += 26
+        }, completion: {(finished: Bool) in
+            self.viewSelectedCabecalho.image = UIImage(named: "modalClosed")
+        })
+        viewSelectedCabecalhoExtend.isHidden = true
+    }
+    
+    func setLayoutInModalIfModalAreOpened() {
+        UIView.animate(withDuration: 1, animations: {
+            self.viewSelected.frame.origin.y -= 415
+            self.viewSelectedBlur.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+            self.viewSelectedBlur.isUserInteractionEnabled = true
+            self.viewSelectedCabecalho.image = UIImage(named: "modalOpenBackground")
+        }, completion: nil)
+    }
+    
+    func setLayoutInModalIfModalAreClosed() {
+        UIView.animate(withDuration: 1, animations: {
+            self.viewSelected.frame.origin.y += 415
+            self.viewSelectedBlur.backgroundColor = .clear
+            self.viewSelectedBlur.isUserInteractionEnabled = false
+            self.viewSelectedCabecalho.image = UIImage(named: "modalClosed")
+        }, completion: nil)
+    }
     
     
 }

@@ -33,12 +33,12 @@ class MaterialViewController: UIViewController {
         if materiaisSelecionados.count > 0 {
             desativarTodosOsFiltros()
             //materialView.btnSearch.isSelected = true
-            esconderBotaoAdd()
+            //esconderBotaoAdd()
             listarSelecionados()
         }
         
         if materiaisSelecionados.count == 0 {
-            esconderBotaoAdd()
+            //esconderBotaoAdd()
             listarTodos()
         }else{
            mostrarBotaoAdd()
@@ -71,11 +71,13 @@ class MaterialViewController: UIViewController {
         pegarUserDefaults()
         self.tabBarController?.tabBar.isHidden = true
         addGesture()
+        setInitialLayout()
         
     }
     
-    func test(){
-        print(1111)
+    func setInitialLayout() {
+        materialView.btnAddMaterial.isHidden = true
+        materialView.btnAddMaterial.isEnabled = false
     }
     
     func addGesture() {
@@ -86,11 +88,7 @@ class MaterialViewController: UIViewController {
     @objc func activeModal(_ sender:UITapGestureRecognizer){
         if materiaisPreSelecionados.count == 0 {
             if self.materialView.viewSelected.frame.origin.y > 400{
-                UIView.animate(withDuration: 1, animations: {
-                    self.materialView.viewSelected.frame.origin.y -= 415
-                    self.materialView.viewSelectedBlur.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-                    self.materialView.viewSelectedBlur.isUserInteractionEnabled = true
-                }, completion: nil)
+                materialView.setLayoutInModalIfModalAreOpened()
             }
         }
     }
@@ -99,20 +97,13 @@ class MaterialViewController: UIViewController {
         let touch = touches.first
         guard let location = touch?.location(in: materialView.viewSelectedBlur) else { return }
         if materialView.viewSelectedBlur.frame.contains(location) && materialView.viewSelectedBlur.isUserInteractionEnabled == true {
-            UIView.animate(withDuration: 1, animations: {
-                self.materialView.viewSelected.frame.origin.y += 415
-                self.materialView.viewSelectedBlur.backgroundColor = .clear
-                self.materialView.viewSelectedBlur.isUserInteractionEnabled = false
-            }, completion: nil)
-        } else {
+            materialView.setLayoutInModalIfModalAreClosed()
         }
     }
     
     func mostrarBotaoAdd(){
         if materiaisPreSelecionados.count < 1 {
-            UIView.animate(withDuration: 1, animations: {
-                self.materialView.viewSelected.frame.origin.y -= 26
-            }, completion: nil)
+            materialView.setLayoutInModalIfCellAreSelected()
         }
 
 //        if !materialView.btnSearch.isSelected {
@@ -123,10 +114,8 @@ class MaterialViewController: UIViewController {
     }
     
     func esconderBotaoAdd(){
-        UIView.animate(withDuration: 1, animations: {
-            self.materialView.viewSelected.frame.origin.y += 26
-        }, completion: nil)
-     
+        materialView.setLayoutInModalIfIfCellArentSelected()
+        
         materiaisPreSelecionados.removeAll()
         materialView.btnAddMaterial.isHidden = true
         materialView.btnAddMaterial.isEnabled = false
@@ -156,7 +145,7 @@ class MaterialViewController: UIViewController {
     @objc func listarMeus(){
         print(1)
     
-        materialView.viewFolderButtonsFront.image = UIImage(named: "SearchButton3")
+        materialView.viewFolderButtonsFront.image = UIImage(named: "SearchButton2")
         
         desativarTodosOsFiltros()
         
@@ -505,8 +494,7 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         self.materialView.tableView.register(MaterialTableViewCell.self, forCellReuseIdentifier: cellReuseIdendifier)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! MaterialTableViewCell
         let material = materiaisPesquisados[indexPath.row]
-        
-        cell.dropShadow()
+
         
         cell.nome.text = material.nome
         cell.preco.text = "$\(material.preco!)"
