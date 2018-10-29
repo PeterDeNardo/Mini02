@@ -30,7 +30,7 @@ class MaterialViewController: UIViewController {
         pegarUserDefaults()
         desativarTodosOsFiltros()
         materialView.btnVisualThree.isSelected = true
-        
+    
         if materiaisSelecionados.count > 0 {
             materialView.lblSelectMaterials.text = "\(materiaisSelecionados.count) itens selecionados"
             desativarTodosOsFiltros()
@@ -92,6 +92,7 @@ class MaterialViewController: UIViewController {
                     self.materialView.viewSelected.frame.origin.y -= 415
                     self.materialView.viewSelectedBlur.backgroundColor = UIColor.black.withAlphaComponent(0.4)
                     self.materialView.viewSelectedBlur.isUserInteractionEnabled = true
+                    self.materialView.btnEdit.isUserInteractionEnabled = true
                 }, completion: nil)
             }
         }
@@ -136,12 +137,8 @@ class MaterialViewController: UIViewController {
     
     func addButtonsTargets (){
         materialView.btnVisualThree.addTarget(self, action: #selector(listarTodos), for: .touchDown)
-    
-       // materialView.btnSearch.addTarget(self, action: #selector(listarSelecionados), for: .touchDown)
         
         materialView.btnAddMaterial.addTarget(self, action: #selector(addMaterial), for: .touchDown)
-        
-        //materialView.btnTwo.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
         
         materialView.btnVisualTwo.addTarget(self, action: #selector(listarMeus), for: .touchDown
         )
@@ -183,13 +180,15 @@ class MaterialViewController: UIViewController {
         
         materialView.viewSelectedTableView.reloadData()
         
+       // materialView.viewSelectedTableView.setEditing(true, animated: false)
+        
     }
     
     func selecionarTodasAsRows(){
         
         var i = 0
-        while i < materiaisPesquisados.count {
-            materialView.tableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: UITableView.ScrollPosition.middle)
+        while i < materiaisSelecionados.count {
+            materialView.viewSelectedTableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: UITableView.ScrollPosition.middle)
             i = i + 1
         }
         
@@ -233,22 +232,18 @@ class MaterialViewController: UIViewController {
     
     func criarTableView(){
         
-        let tableVC = MaterialTableViewController()
         self.view = self.materialView.setViews()
-       // self.materialView.tableView = tableVC.tableView
         self.materialView.tableView.delegate = self
         self.materialView.tableView.dataSource = self
         self.materialView.tableView.rowHeight = 79
         self.materialView.tableView.allowsMultipleSelection = true
-        self.materialView.tableView.allowsSelectionDuringEditing = true
         self.materialView.tableView.backgroundColor = .clear
         self.materialView.tableView.tag = 1
         
         self.materialView.viewSelectedTableView.delegate = self
         self.materialView.viewSelectedTableView.dataSource = self
-        self.materialView.viewSelectedTableView.rowHeight = 79
         self.materialView.viewSelectedTableView.allowsMultipleSelection = true
-        self.materialView.viewSelectedTableView.allowsSelectionDuringEditing = true
+        self.materialView.viewSelectedTableView.rowHeight = 79
         self.materialView.viewSelectedTableView.tag = 2
        
     }
@@ -330,16 +325,6 @@ class MaterialViewController: UIViewController {
             }
             
         }
-            
-//        if materialView.btnSearch.isSelected {
-//
-//            pesquisarSelecionados()
-//
-//            if pesquisaTxt == "" {
-//               listarSelecionados()
-//            }
-//
-//        }
         
         if materialView.btnVisualThree.isSelected {
         //pesquisar sem filtros
@@ -426,9 +411,11 @@ class MaterialViewController: UIViewController {
 extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.tag == 1{
        mostrarBotaoAdd()
        materiaisPreSelecionados.append(materiaisPesquisados[indexPath.row])
         materialView.btnAddMaterial.setTitle("\((materiaisPreSelecionados.count)) itens selecionados", for: .normal)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -441,6 +428,8 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
+        if tableView.tag == 1 {
+        
         if tableView.indexPathsForSelectedRows == nil {
             esconderBotaoAdd()
         }
@@ -452,7 +441,6 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
                 
                 if materiaisPreSelecionados[i].chave == materiaisPesquisados[indexPath.row].chave{
                     materiaisPreSelecionados.remove(at: i)
-//                    materiaisPreSelecionados.remove(at: indexPath.row)
                     materialView.btnAddMaterial.setTitle("\((materiaisPreSelecionados.count)) itens selecionados", for: .normal)
                     break
                 }
@@ -460,25 +448,8 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
                 
             }
         }
+        }
         
-        //listar selecionados
-//        if materialView.btnSearch.isSelected {
-//            var i = 0
-//
-//            while i < materiaisSelecionados.count {
-//
-//                if materiaisSelecionados[i].chave == materiaisPesquisados[indexPath.row].chave{
-//                    materiaisSelecionados.remove(at: i)
-//                    materiaisPesquisados.remove(at: indexPath.row)
-//                    break
-//                }
-//                i = i + 1
-//
-//            }
-//
-//            self.materialView.tableView.reloadData()
-//            self.selecionarTodasAsRows()
-//        }
         
     }
   
@@ -518,6 +489,27 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if tableView.tag == 2{
+         return UITableViewCell.EditingStyle.delete
+        }
+        else {
+            return UITableViewCell.EditingStyle.none
+        }
+    }
+
+   
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+    forRowAt indexPath: IndexPath) {
+        
+    if editingStyle == .delete {
+        materiaisSelecionados.remove(at: indexPath.row)
+        materialView.lblSelectMaterials.text = "\(materiaisSelecionados.count) itens selecionados"
+        self.materialView.viewSelectedTableView.reloadData()
+    }
+
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
@@ -526,7 +518,7 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
     
     
     
-    
+    //SEARCHBAR
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
         self.view.addGestureRecognizer(tap!)

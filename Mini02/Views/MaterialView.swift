@@ -296,7 +296,7 @@ class MaterialView {
         viewSelectedCabecalhoButton.addSubview(btnEdit)
         btnEdit.translatesAutoresizingMaskIntoConstraints = false
         btnEdit.leftAnchor.constraint(equalTo: viewSelectedCabecalho.leftAnchor, constant: 16).isActive = true
-        btnEdit.topAnchor.constraint(equalTo: viewSelectedCabecalho.topAnchor, constant: 24).isActive = true
+        btnEdit.topAnchor.constraint(equalTo: viewSelectedCabecalho.topAnchor, constant: -24).isActive = true
         btnEdit.heightAnchor.constraint(equalToConstant: 20).isActive = true
         btnEdit.widthAnchor.constraint(equalToConstant: 40).isActive = true
         btnEdit.setButton(titleText: "Edit",

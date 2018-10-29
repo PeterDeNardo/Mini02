@@ -98,7 +98,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+                
         guard let text = Int(textField.text!) else{
              textField.text?.removeAll()
             textField.keyboardType = .numberPad
