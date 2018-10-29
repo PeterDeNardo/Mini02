@@ -24,6 +24,7 @@ class MaterialViewController: UIViewController {
     var materiaisPreSelecionados: [Material] = []
     var timer: Timer?
     var tap: UITapGestureRecognizer?
+    let cellReuseIdendifier = "cell"
 
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
@@ -31,17 +32,16 @@ class MaterialViewController: UIViewController {
         materialView.btnVisualThree.isSelected = true
         
         if materiaisSelecionados.count > 0 {
+            materialView.lblSelectMaterials.text = "\(materiaisSelecionados.count) itens selecionados"
             desativarTodosOsFiltros()
-            //materialView.btnSearch.isSelected = true
             esconderBotaoAdd()
             listarSelecionados()
+            listarTodos()
         }
-        
-        if materiaisSelecionados.count == 0 {
+         else {
+            materialView.lblSelectMaterials.text = "Nenhum item selecionado"
             esconderBotaoAdd()
             listarTodos()
-        }else{
-           mostrarBotaoAdd()
         }
         
         
@@ -72,11 +72,13 @@ class MaterialViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         addGesture()
         
+       
+        self.materialView.tableView.register(MaterialTableViewCell.self, forCellReuseIdentifier: cellReuseIdendifier)
+        self.materialView.viewSelectedTableView.register(MaterialTableViewCell.self, forCellReuseIdentifier: cellReuseIdendifier)
+        
     }
     
-    func test(){
-        print(1111)
-    }
+ 
     
     func addGesture() {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(MaterialViewController.activeModal(_:)))
@@ -154,7 +156,6 @@ class MaterialViewController: UIViewController {
     }
     
     @objc func listarMeus(){
-        print(1)
     
         materialView.viewFolderButtonsFront.image = UIImage(named: "SearchButton3")
         
@@ -177,11 +178,10 @@ class MaterialViewController: UIViewController {
     }
     
     @objc func listarSelecionados(){
+        
         desativarTodosOsFiltros()
-//        materialView.btnSearch.isSelected = true
-        materiaisPesquisados = materiaisSelecionados
-        materialView.tableView.reloadData()
-        selecionarTodasAsRows()
+        
+        materialView.viewSelectedTableView.reloadData()
         
     }
     
@@ -233,8 +233,6 @@ class MaterialViewController: UIViewController {
     
     func criarTableView(){
         
-        let tableVC = MaterialTableViewController()
-        
         self.view = self.materialView.setViews()
        // self.materialView.tableView = tableVC.tableView
         self.materialView.tableView.delegate = self
@@ -243,9 +241,15 @@ class MaterialViewController: UIViewController {
         self.materialView.tableView.allowsMultipleSelection = true
         self.materialView.tableView.allowsSelectionDuringEditing = true
         self.materialView.tableView.backgroundColor = .clear
+        self.materialView.tableView.tag = 1
         
-        
-        
+        self.materialView.viewSelectedTableView.delegate = self
+        self.materialView.viewSelectedTableView.dataSource = self
+        self.materialView.viewSelectedTableView.rowHeight = 79
+        self.materialView.viewSelectedTableView.allowsMultipleSelection = true
+        self.materialView.viewSelectedTableView.allowsSelectionDuringEditing = true
+        self.materialView.viewSelectedTableView.tag = 2
+       
     }
     
     func pesquisarMeus(){
@@ -303,7 +307,8 @@ class MaterialViewController: UIViewController {
                 materiaisPesquisados.append(material)
             }
             
-            selecionarTodasAsRows()
+            //selecionarTodasAsRows()
+            materialView.viewSelectedTableView.reloadData()
             
         }
         
@@ -381,15 +386,13 @@ class MaterialViewController: UIViewController {
         for material in materiaisPreSelecionados {
             materiaisSelecionados.append(material)
         }
-        print(1111)
+        materialView.lblSelectMaterials.text = "\(materiaisSelecionados.count) itens selecionados"
         desativarTodosOsFiltros()
-//        materialView.btnSearch.isSelected = true
         listarSelecionados()
+        self.materialView.tableView.reloadData()
         esconderBotaoAdd()
-//        if !materialView.btnSearch.isSelected{
-//
-//
-//       }
+        
+
     }
     
     @objc private func fetchData(){
@@ -412,12 +415,6 @@ class MaterialViewController: UIViewController {
             self.materiais = materiais
             
             self.pesquisar()
-
-            self.materialView.tableView.reloadData()
-            
-//            if self.materialView.btnSearch.isSelected {
-//                self.selecionarTodasAsRows()
-//            }
             
         }
         
@@ -434,26 +431,11 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView.tag == 1 {
         return materiaisPesquisados.count
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
-        self.view.addGestureRecognizer(tap!)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-       abaixarTeclado()
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        timer?.invalidate() //cancels out previous Timers
-        pesquisaTxt =  searchBar.text ?? " "
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fetchData), userInfo: nil, repeats: false)
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        abaixarTeclado()
+        }else{
+            return materiaisSelecionados.count
+        }
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -501,9 +483,13 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellReuseIdendifier = "cell"
-        self.materialView.tableView.register(MaterialTableViewCell.self, forCellReuseIdentifier: cellReuseIdendifier)
+        
+       
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! MaterialTableViewCell
+        
+        
+        if tableView.tag == 1 {
+            
         let material = materiaisPesquisados[indexPath.row]
         
         cell.dropShadow()
@@ -513,17 +499,21 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         cell.tipo.text = material.tipo
         cell.marca.text = material.marca
         
-//        if !materialView.btnSearch.isSelected {
-//            for material in materiaisPreSelecionados {
-//
-//                if materiaisPesquisados[indexPath.row].chave == material.chave{
-//                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
-//                }
-//
-//            }
-//        }
-        
         return cell
+        }
+        else{
+            
+            let material = materiaisSelecionados[indexPath.row]
+            
+            cell.dropShadow()
+            
+            cell.nome.text = material.nome
+            cell.preco.text = "$\(material.preco!)"
+            cell.tipo.text = material.tipo
+            cell.marca.text = material.marca
+            
+            return cell
+        }
         
     }
     
@@ -531,6 +521,28 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         
         return 1
         
+    }
+    
+    
+    
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
+        self.view.addGestureRecognizer(tap!)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        abaixarTeclado()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        timer?.invalidate() //cancels out previous Timers
+        pesquisaTxt =  searchBar.text ?? " "
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fetchData), userInfo: nil, repeats: false)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        abaixarTeclado()
     }
     
 }

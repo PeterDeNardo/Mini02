@@ -33,7 +33,7 @@ class MaterialView {
     
     let viewSelectedCabecalho = UIImageView()
     let viewSelectedCabecalhoButton = UIView()
-    let viewSelectedTableView = UITableView()
+    var viewSelectedTableView = UITableView()
     
     //Creating Objects inside of views
     
