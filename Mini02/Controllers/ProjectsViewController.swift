@@ -25,7 +25,7 @@ class ProjectsViewController: UIViewController {
    
 
     override func viewWillAppear(_ animated: Bool) {
-        
+        print(usuario)
         pegarUserDefaults()
         listarTodos()
         loginButton = UIBarButtonItem(title: "Login", style: .done, target: self, action: #selector(login))
@@ -35,7 +35,7 @@ class ProjectsViewController: UIViewController {
             loginButton?.title = "Logout"
         }
         self.navigationItem.setRightBarButton((loginButton), animated: true)
-        animacaoSemUsuario()
+        fetchData()
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -59,8 +59,6 @@ class ProjectsViewController: UIViewController {
         self.projectsView.viewTableViewProjects.allowsSelectionDuringEditing = true
         self.projectsView.viewTableViewProjects.backgroundColor = .clear
         self.view = projectsView.setViewsInLayout()
-        animacaoSemUsuario()
-        
         fetchData()
         
         self.navigationItem.hidesBackButton = true
@@ -190,6 +188,8 @@ class ProjectsViewController: UIViewController {
             self.projetos = projetos
             
             self.listarTodos()
+            
+            self.animacaoSemUsuario()
             
             self.projectsView.viewTableViewProjects.reloadData()
             

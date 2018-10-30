@@ -134,7 +134,7 @@ class SearchView {
         viewFolderTableView.bottomAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
         viewFolderTableView.backgroundColor = .clear
         
-        //setObjectsInViewFoldarTableView()
+        setObjectsInViewFoldarTableView()
         setObjectsInViewItem()
         
         //setObjectsInViewFolderTableViewButton()

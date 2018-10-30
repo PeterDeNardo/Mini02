@@ -245,7 +245,6 @@
 				94EC2715217E52F700902139 /* ProjectTableViewCell.swift */,
 				94C905532187787100C71411 /* MateriaisSelecionadosTableViewController.swift */,
 				94EC2716217E52F800902139 /* ProjectTableViewController.swift */,
-				9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */,
 				94EC2713217E52EF00902139 /* ProjectsViewController.swift */,
 				94EC270F217E515100902139 /* TabBarController.swift */,
 				94EC2702217E4B0400902139 /* NewProjectViewController.swift */,
@@ -253,6 +252,7 @@
 				961678E1216BF59200433E22 /* CalculatorPlussViewController.swift */,
 				961678DD216BEC8700433E22 /* LoginViewController.swift */,
 				96C867C221707E7000451161 /* NewMaterialViewController.swift */,
+				9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */,
 				96C867C62170A71F00451161 /* SearchViewController.swift */,
 				94119FC12177B8D500771432 /* MaterialTableViewController.swift */,
 			);

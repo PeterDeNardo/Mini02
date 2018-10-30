@@ -82,7 +82,6 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
         btn.isSelected = true
         btn.backgroundColor = .white
         btn.setTitleColor(.black , for: .normal)
-        categoriaEscolhida = btn.titleLabel?.text!
     }
     
     func desmarcarBotao(btn: UIButton){
@@ -104,6 +103,8 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newProjectView.btnPapelaria)
         }else {
             marcarBotao(btn: newProjectView.btnPapelaria)
+            
+            categoriaEscolhida = "papelaria"
         }
     }
     
@@ -112,6 +113,8 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newProjectView.btnSeam)
         }else {
             marcarBotao(btn: newProjectView.btnSeam)
+            categoriaEscolhida = "costura"
+            
         }
     }
     
@@ -120,6 +123,8 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newProjectView.btnOrganization)
         }else {
             marcarBotao(btn: newProjectView.btnOrganization)
+            categoriaEscolhida = "organizacao"
+            
         }
     }
     
@@ -128,6 +133,8 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newProjectView.btnPainting)
         }else {
             marcarBotao(btn: newProjectView.btnPainting)
+            categoriaEscolhida = "pintura"
+            
         }
     }
     
@@ -136,6 +143,8 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newProjectView.btnCraftwork)
         }else {
             marcarBotao(btn: newProjectView.btnCraftwork)
+            categoriaEscolhida = "artesanato"
+            
         }
     }
     
@@ -144,6 +153,8 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newProjectView.btnWoodwork)
         }else {
             marcarBotao(btn: newProjectView.btnWoodwork)
+            categoriaEscolhida = "marcenaria"
+            
         }
     }
     
@@ -152,6 +163,8 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newProjectView.btnDecoration)
         }else {
             marcarBotao(btn: newProjectView.btnDecoration)
+            categoriaEscolhida = "decoracao"
+            
         }
     }
     
@@ -161,6 +174,8 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newProjectView.btnOthers)
         }else {
             marcarBotao(btn: newProjectView.btnOthers)
+            categoriaEscolhida = "decoracao"
+            
         }
     }
     
