@@ -78,7 +78,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        self.title = "Materiais"
+        self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(SearchViewController.addNewMaterial)), animated: true)
+        self.navigationItem.title = "Materiais"
    
     }
     

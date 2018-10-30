@@ -44,7 +44,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
         super.viewDidLoad()
  
-        self.title = "Novo Projetro"
+        self.navigationItem.title = "Novo Projetro"
         
         pegarUserDefaults()
         

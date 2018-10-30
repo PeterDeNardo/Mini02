@@ -28,6 +28,7 @@ class ProjectsViewController: UIViewController {
         print(usuario)
         pegarUserDefaults()
         listarTodos()
+        self.navigationItem.title = "Projetos"
         loginButton = UIBarButtonItem(title: "Login", style: .done, target: self, action: #selector(login))
         if usuario == nil{
             loginButton?.title = "Login"

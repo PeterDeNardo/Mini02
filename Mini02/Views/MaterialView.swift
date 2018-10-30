@@ -66,8 +66,10 @@ class MaterialView {
     
     let imgBackground = UIImageView()
     let lblSelectMaterials = UILabel()
-    let btnEdit = UIButton()
-    let btnUndo = UIButton()
+//    let btnEdit = UIButton()
+//    let btnUndo = UIButton()
+    
+    let btnDoneEdit = UIButton()
     
     let nome = UILabel()
     let preco = UILabel()
@@ -85,11 +87,13 @@ class MaterialView {
         viewGlobal.addSubview(viewFolder)
         viewGlobal.addSubview(viewSelectedBlur)
         viewGlobal.addSubview(viewSelectedBlurCell)
+        viewGlobal.addSubview(btnDoneEdit)
         viewGlobal.addSubview(viewSelected)
         viewFolder.addSubview(viewFolderBackGround)
         viewFolder.addSubview(viewFolderButtons)
         viewFolder.addSubview(viewFolderTableView)
         viewFolder.addSubview(viewFolderTableViewButton)
+ 
         
         viewFolder.translatesAutoresizingMaskIntoConstraints = false
         viewFolder.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 75).isActive = true
@@ -211,13 +215,23 @@ class MaterialView {
         viewSelectedCabecalhoButton.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 5).isActive = true
         
         viewSelectedBlurCell.translatesAutoresizingMaskIntoConstraints = false
-        viewSelectedBlurCell.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: -300).isActive = true
+        viewSelectedBlurCell.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: -350).isActive = true
         viewSelectedBlurCell.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 10).isActive = true
         viewSelectedBlurCell.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: -10).isActive = true
         viewSelectedBlurCell.heightAnchor.constraint(equalToConstant: 64).isActive = true
         viewSelectedBlurCell.backgroundColor = .white
         viewSelectedBlurCell.isHidden = true
-   
+        
+        btnDoneEdit.translatesAutoresizingMaskIntoConstraints = false
+        btnDoneEdit.topAnchor.constraint(equalTo: viewSelectedBlurCell.bottomAnchor, constant: 20).isActive = true
+        btnDoneEdit.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
+        btnDoneEdit.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        btnDoneEdit.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 10).isActive = true
+        btnDoneEdit.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: -10).isActive = true
+        btnDoneEdit.backgroundColor = .workGreen
+        btnDoneEdit.setTitle("Feito", for: .normal)
+        btnDoneEdit.layer.cornerRadius = 7
+        btnDoneEdit.isHidden = true
         setObjectsInViewFolderTableViewButton()
         setObjectsInViewSelected()
         setObjectsInSelectBlurCell()
@@ -324,27 +338,27 @@ class MaterialView {
         btnAddMaterial.layer.cornerRadius = 7
         viewSelectedCabecalhoButton.addSubview(btnAddMaterial)
         
-        viewSelectedCabecalhoButton.addSubview(btnEdit)
-        btnEdit.translatesAutoresizingMaskIntoConstraints = false
-        btnEdit.leftAnchor.constraint(equalTo: viewSelectedCabecalho.leftAnchor, constant: 16).isActive = true
-        btnEdit.topAnchor.constraint(equalTo: viewSelectedCabecalho.topAnchor, constant: -24).isActive = true
-        btnEdit.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        btnEdit.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        btnEdit.setButton(titleText: "Edit",
-                          backgroundColor: .clear,
-                          backgroundImageIfSelected: UIImage(),
-                          backgroundImageIfDiselected: UIImage())
+//        viewSelectedCabecalhoButton.addSubview(btnEdit)
+//        btnEdit.translatesAutoresizingMaskIntoConstraints = false
+//        btnEdit.leftAnchor.constraint(equalTo: viewSelectedCabecalho.leftAnchor, constant: 16).isActive = true
+//        btnEdit.topAnchor.constraint(equalTo: viewSelectedCabecalho.topAnchor, constant: -24).isActive = true
+//        btnEdit.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        btnEdit.widthAnchor.constraint(equalToConstant: 40).isActive = true
+//        btnEdit.setButton(titleText: "Edit",
+//                          backgroundColor: .clear,
+//                          backgroundImageIfSelected: UIImage(),
+//                          backgroundImageIfDiselected: UIImage())
         
-        viewSelectedCabecalhoButton.addSubview(btnUndo)
-        btnUndo.translatesAutoresizingMaskIntoConstraints = false
-        btnUndo.rightAnchor.constraint(equalTo: viewSelectedCabecalho.rightAnchor, constant: -17).isActive = true
-        btnUndo.topAnchor.constraint(equalTo: viewSelectedCabecalho.topAnchor, constant: 24).isActive = true
-        btnUndo.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        btnUndo.widthAnchor.constraint(equalToConstant: 45).isActive = true
-        btnUndo.setButton(titleText: "Undo",
-                          backgroundColor: .clear,
-                          backgroundImageIfSelected: UIImage(),
-                          backgroundImageIfDiselected: UIImage())
+//        viewSelectedCabecalhoButton.addSubview(btnUndo)
+//        btnUndo.translatesAutoresizingMaskIntoConstraints = false
+//        btnUndo.rightAnchor.constraint(equalTo: viewSelectedCabecalho.rightAnchor, constant: -17).isActive = true
+//        btnUndo.topAnchor.constraint(equalTo: viewSelectedCabecalho.topAnchor, constant: 24).isActive = true
+//        btnUndo.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        btnUndo.widthAnchor.constraint(equalToConstant: 45).isActive = true
+//        btnUndo.setButton(titleText: "Undo",
+//                          backgroundColor: .clear,
+//                          backgroundImageIfSelected: UIImage(),
+//                          backgroundImageIfDiselected: UIImage())
     }
     
     func setObjectsInSelectBlurCell() {
@@ -415,6 +429,7 @@ class MaterialView {
         UIView.animate(withDuration: 1, animations: {
             self.viewSelectedBlur.backgroundColor = UIColor.black.withAlphaComponent(0.6)
             self.viewSelectedBlurCell.isHidden = false
+            self.btnDoneEdit.isHidden = false
         }, completion: nil)
         self.viewSelectedBlur.isUserInteractionEnabled = true
     }
@@ -423,6 +438,7 @@ class MaterialView {
         UIView.animate(withDuration: 1, animations: {
             self.viewSelectedBlur.backgroundColor = UIColor.black.withAlphaComponent(0)
             self.viewSelectedBlurCell.isHidden = true
+            self.btnDoneEdit.isHidden = true
         }, completion: nil)
         self.viewSelectedBlur.isUserInteractionEnabled = false
     }
