@@ -147,7 +147,9 @@ class CalculatorView {
         viewIBody.bottomAnchor.constraint(equalTo: viewItem.bottomAnchor, constant: 0).isActive = true
         viewIBody.backgroundColor = .white
         viewIBody.layer.cornerRadius = 7
-        viewIBody.dropShadow()
+        viewIBody.dropShadow(shadowRadius: 1,
+                             shadowOffsetX: 0,
+                             shadowOffsetY: 1)
         
         
         //Setting ViewInformation SubViews
@@ -303,7 +305,9 @@ class CalculatorView {
                                         lblText: "N/h",
                                         textColor: .workGrey,
                                         alingnment: .rigth,
-                                        alpha: 0.7)
+                                        alpha: 0.7,
+                                        ifHaveImageName: "textbox",
+                                        keyboardType: .numberPad)
         ViewInfBody.addSubview(txtInfBWorkedHours)
         
         txtInfBExternalCosts.frame = CGRect(x: 200, y: 46, width: 87, height: 32)
@@ -312,7 +316,9 @@ class CalculatorView {
                                           lblText: "$Y",
                                           textColor: .workGrey,
                                           alingnment: .rigth,
-                                          alpha: 0.7)
+                                          alpha: 0.7,
+                                          ifHaveImageName: "textbox",
+                                          keyboardType: .numberPad)
         ViewInfBody.addSubview(txtInfBExternalCosts)
         
         
@@ -385,7 +391,10 @@ class CalculatorView {
         viewButton.addSubview(btnVBAddProjects)
         
         btnVBAddProjects.layer.cornerRadius = 7
-        btnVBAddProjects.backgroundColor = .workBlue
+        btnVBAddProjects.backgroundColor = .workGreen
+        btnVBAddProjects.dropShadow(shadowRadius: 4,
+                                    shadowOffsetX: 0,
+                                    shadowOffsetY: 4)
         btnVBAddProjects.setTitle("Add to my projects", for: .normal)
     }
     

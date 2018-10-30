@@ -54,6 +54,15 @@ extension UILabel {
 
 extension UITextField {
     
+    open var isSelectedNow : Bool {
+            get {
+                return self.isSelected
+            }
+            set(newValue) {
+                self.isSelected = newValue
+            }
+    }
+    
     enum FontType {
         case one, two, three
     }
@@ -62,22 +71,30 @@ extension UITextField {
         case center, rigth, left
     }
     
-    func setTextField(fontType: FontType ,fontSize: Int, lblText: String, textColor: UIColor, alingnment : AlignmentText, alpha: CGFloat) {
+    enum keyboardType {
+        case mail, URL, phone, numberPad, ignore
+    }
+    
+    func setTextField(fontType: FontType ,fontSize: Int, lblText: String, textColor: UIColor, alingnment : AlignmentText, alpha: CGFloat, ifHaveImageName : String, keyboardType : keyboardType) {
         
-        let image = UIImage(named: "textbox")
-        let scale : CGFloat = 0.0
-        let size = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.bounds.width, height: self.bounds.height), false, scale)
-        image?.draw(in: size)
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+//        let scale : CGFloat = 0.0
+//        let size = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+//        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.bounds.width, height: self.bounds.height), false, scale)
+//        image?.draw(in: size)
+//        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         
         self.textColor  = textColor.withAlphaComponent(alpha)
         self.text = lblText
-        self.backgroundColor = UIColor.init(patternImage: scaledImage!)
+        //self.backgroundColor = UIColor.init(patternImage: scaledImage!)
         self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
         self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
         self.rightViewMode = .always
         self.leftViewMode = .always
+        
+        if ifHaveImageName != "NoHaveImage" {
+            let image = UIImage(named: ifHaveImageName)
+            self.background = image
+        }
         
         switch fontType {
         case .one:
@@ -103,6 +120,34 @@ extension UITextField {
             self.sizeToFit()
             break
         }
+        
+        switch keyboardType {
+        case .mail:
+            self.keyboardType = .emailAddress
+            break
+        case .numberPad:
+            self.keyboardType = .numberPad
+            break
+        case .phone:
+            self.keyboardType = .phonePad
+            break
+        case .URL:
+            self.keyboardType = .URL
+            break
+        case .ignore:
+            self.keyboardType = .default
+            break
+       
+        }
+        
+    }
+    
+    func visibleStatusOfBackgroundImage(image : UIImage, hide: Bool ) {
+        if hide{
+            self.background = UIImage()
+        } else {
+            self.background = image
+        }
     }
 }
 
@@ -110,12 +155,12 @@ extension UITextField {
 
 extension UIView {
     
-    func dropShadow(){
+    func dropShadow(shadowRadius : CGFloat, shadowOffsetX : CGFloat, shadowOffsetY : CGFloat){
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0, height: 1)
-        layer.shadowRadius = 1
+        layer.shadowOffset = CGSize(width: shadowOffsetX, height: shadowOffsetY)
+        layer.shadowRadius = shadowRadius
     }
 }
 
@@ -123,9 +168,15 @@ extension UIView {
 
 extension UIButton {
     
-    func setButton(titleText : String, backgroundColor : UIColor){
-        self.setTitle(titleText, for: .normal)
-        self.backgroundColor = backgroundColor
+    func setButton(titleText : String, backgroundColor : UIColor, backgroundImageIfSelected : UIImage, backgroundImageIfDiselected : UIImage){
+        self.setImage(backgroundImageIfSelected, for: .selected)
+        self.setImage(backgroundImageIfDiselected, for: .normal)
+        self.imageView?.contentMode = .scaleAspectFill
+        
+        if (titleText != "NoUseTitle"){
+            self.setTitle(titleText, for: .normal)
+        } 
+    
     }
 }
 

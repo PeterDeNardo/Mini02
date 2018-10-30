@@ -10,7 +10,6 @@ class NewMaterialView {
     
     //Creating Views
     
-    let viewNavigationSafeArea = UIView()
     let viewMaterialRegister = UIView()
     
     
@@ -48,27 +47,23 @@ class NewMaterialView {
     let btnDecoration = UIButton()
     let btnOthers = UIButton()
     
+    var collectButtons = [UIButton()]
+    
     func setLayoutInView() -> UIView{
         viewGlobal = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         viewGlobal.backgroundColor = UIColor.init(patternImage: UIImage(named: "backGroundTableView")!)
         
-        viewGlobal.addSubview(viewNavigationSafeArea)
-        viewNavigationSafeArea.translatesAutoresizingMaskIntoConstraints = false
-        viewNavigationSafeArea.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 0).isActive = true
-        viewNavigationSafeArea.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 0).isActive = true
-        viewNavigationSafeArea.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: 0).isActive = true
-        viewNavigationSafeArea.heightAnchor.constraint(equalToConstant: UIApplication.shared.statusBarFrame.height + 24).isActive = true
-        viewNavigationSafeArea.backgroundColor = .red
-        
         viewGlobal.addSubview(viewMaterialRegister)
         viewMaterialRegister.translatesAutoresizingMaskIntoConstraints = false
-        viewMaterialRegister.topAnchor.constraint(equalTo: viewNavigationSafeArea.bottomAnchor, constant: 22).isActive = true
-        viewMaterialRegister.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 55).isActive = true
+        viewMaterialRegister.topAnchor.constraint(equalTo: viewGlobal.topAnchor, constant: 75).isActive = true
+        viewMaterialRegister.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: -55).isActive = true
         viewMaterialRegister.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 9).isActive = true
         viewMaterialRegister.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: -9).isActive = true
         viewMaterialRegister.backgroundColor = .white
         viewMaterialRegister.layer.cornerRadius = 7
-        viewMaterialRegister.dropShadow()
+        viewMaterialRegister.dropShadow(shadowRadius: 1,
+                                        shadowOffsetX: 0,
+                                        shadowOffsetY: 1)
         
         //Setting SubViews
         
@@ -145,7 +140,9 @@ class NewMaterialView {
                                      lblText: "|Digite um nome",
                                      textColor: UIColor(red:0.57, green:0.56, blue:0.56, alpha:1.0),
                                      alingnment: .left,
-                                     alpha: 0.7)
+                                     alpha: 0.7,
+                                     ifHaveImageName: "NoHaveImage",
+                                     keyboardType: .ignore)
         viewMRInfos.addSubview(txtMaterialName)
         
         txtMaterialOrigin.frame = CGRect(x: 25, y: 117, width: 155, height: 24)
@@ -154,7 +151,9 @@ class NewMaterialView {
                                        lblText: "|Digite um nome",
                                        textColor: UIColor(red:0.57, green:0.56, blue:0.56, alpha:1.0),
                                        alingnment: .left,
-                                       alpha: 0.7)
+                                       alpha: 0.7,
+                                       ifHaveImageName: "NoHaveImage",
+                                       keyboardType: .ignore)
         viewMRInfos.addSubview(txtMaterialOrigin)
         
         txtMaterialQuantity.frame = CGRect(x: 19, y: 211, width: 39, height: 21)
@@ -163,7 +162,9 @@ class NewMaterialView {
                                          lblText: "X un",
                                          textColor: .workBlue,
                                          alingnment: .left,
-                                         alpha: 1)
+                                         alpha: 1,
+                                         ifHaveImageName: "textbox",
+                                         keyboardType: .ignore)
         viewMRInfos.addSubview(txtMaterialQuantity)
         
         txtPrice.frame = CGRect(x: 205, y: 211, width: 24, height: 21)
@@ -172,7 +173,9 @@ class NewMaterialView {
                               lblText: "$Y",
                               textColor: .workBlue,
                               alingnment: .left,
-                              alpha: 1)
+                              alpha: 1,
+                              ifHaveImageName: "textbox",
+                              keyboardType: .numberPad)
         viewMRInfos.addSubview(txtPrice)
         
         
@@ -191,43 +194,59 @@ class NewMaterialView {
         viewMRCategories.addSubview(lblMRCategoriesTitle)
         
         btnPapelaria.frame = CGRect(x: 20, y: 65, width: 70, height: 70)
-        btnPapelaria.setButton(titleText: "Papelaria",
-                               backgroundColor: .black)
+        btnPapelaria.setButton(titleText: "NoUseTitle",
+                               backgroundColor: .clear,
+                               backgroundImageIfSelected: UIImage(named:"papelariaIconCor")!,
+                               backgroundImageIfDiselected: UIImage(named:"papelariaIconPB")!)
         viewMRCategories.addSubview(btnPapelaria)
-        
+
         btnSeam.frame = CGRect(x: 100, y: 65, width: 70, height: 70)
-        btnSeam.setButton(titleText: "Costura",
-                               backgroundColor: .black)
+        btnSeam.setButton(titleText: "NoUseTitle",
+                          backgroundColor: .clear,
+                          backgroundImageIfSelected: UIImage(named:"costuraIconCor")!,
+                          backgroundImageIfDiselected: UIImage(named:"costuraIconPB")!)
         viewMRCategories.addSubview(btnSeam)
         
         btnOrganization.frame = CGRect(x: 180, y: 65, width: 70, height: 70)
-        btnOrganization.setButton(titleText: "Org",
-                               backgroundColor: .black)
+        btnOrganization.setButton(titleText: "NoUseTitle",
+                                  backgroundColor: .clear,
+                                  backgroundImageIfSelected: UIImage(named:"organizacaoIconCor")!,
+                                  backgroundImageIfDiselected: UIImage(named:"organizacaoIconPB")!)
         viewMRCategories.addSubview(btnOrganization)
         
         btnPainting.frame = CGRect(x: 260, y: 65, width: 70, height: 70)
-        btnPainting.setButton(titleText: "Pintura",
-                               backgroundColor: .black)
+        btnPainting.setButton(titleText: "NoUseTitle",
+                              backgroundColor: .clear,
+                              backgroundImageIfSelected: UIImage(named:"pinturaIconCor")!,
+                              backgroundImageIfDiselected: UIImage(named:"pinturaIconPB")!)
         viewMRCategories.addSubview(btnPainting)
         
         btnCraftwork.frame = CGRect(x: 20, y: 140, width: 70, height: 70)
-        btnCraftwork.setButton(titleText: "Artesanato",
-                               backgroundColor: .black)
+        btnCraftwork.setButton(titleText: "NoUseTitle",
+                               backgroundColor: .clear,
+                               backgroundImageIfSelected: UIImage(named:"cartonagemIconCor")!,
+                               backgroundImageIfDiselected: UIImage(named:"cartonagemIconPB")!)
         viewMRCategories.addSubview(btnCraftwork)
         
         btnWoodwork.frame = CGRect(x: 100, y: 140, width: 70, height: 70)
-        btnWoodwork.setButton(titleText: "Marcenaria",
-                          backgroundColor: .black)
+        btnWoodwork.setButton(titleText: "NoUseTitle",
+                              backgroundColor: .clear,
+                              backgroundImageIfSelected: UIImage(named:"marcenariaIconCor")!,
+                              backgroundImageIfDiselected: UIImage(named:"marcenariaIconPB")!)
         viewMRCategories.addSubview(btnWoodwork)
         
         btnDecoration.frame = CGRect(x: 180, y: 140, width: 70, height: 70)
-        btnDecoration.setButton(titleText: "Decoração",
-                                  backgroundColor: .black)
+        btnDecoration.setButton(titleText: "NoUseTitle",
+                                backgroundColor: .clear,
+                                backgroundImageIfSelected: UIImage(named:"artesanatoIconCor")!,
+                                backgroundImageIfDiselected: UIImage(named:"artesanatoIconPB")!)
         viewMRCategories.addSubview(btnDecoration)
         
         btnOthers.frame = CGRect(x: 260, y: 140, width: 70, height: 70)
-        btnOthers.setButton(titleText: "Outros",
-                              backgroundColor: .black)
+        btnOthers.setButton(titleText: "NoUseTitle",
+                            backgroundColor: .clear,
+                            backgroundImageIfSelected: UIImage(named:"papelariaIconCor")!,
+                            backgroundImageIfDiselected: UIImage(named:"papelariaIconPB")!)
         viewMRCategories.addSubview(btnOthers)
 
     }

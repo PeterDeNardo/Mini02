@@ -87,15 +87,10 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
     func marcarBotao(btn:UIButton){
         desmarcarTodosOsBotoes()
         btn.isSelected = true
-        btn.backgroundColor = .white
-        btn.setTitleColor(.black , for: .normal)
-        categoriaEscolhida = btn.titleLabel?.text!
     }
     
     func desmarcarBotao(btn: UIButton){
         btn.isSelected = false
-        btn.backgroundColor = .black
-        btn.setTitleColor(.white , for: .normal)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

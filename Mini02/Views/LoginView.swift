@@ -41,7 +41,9 @@ class LoginView {
         viewLoginFbButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         viewLoginFbButton.layer.cornerRadius = 10
         viewLoginFbButton.clipsToBounds = true
-        viewLoginFbButton.dropShadow()
+        viewLoginFbButton.dropShadow(shadowRadius: 1,
+                                     shadowOffsetX: 0,
+                                     shadowOffsetY: 1)
         viewLoginFbButton.backgroundColor = .white
         
 
