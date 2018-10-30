@@ -15,7 +15,7 @@ import FirebaseAuth
 class StartButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var profile: [String:String]?
-   
+
     @IBAction func startButton(_ sender: UIButton) {
         present(TabBarController(), animated: true, completion: nil)
     }
@@ -27,7 +27,8 @@ class StartButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         let loginButton = FBSDKLoginButton()
         view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width - 32, height: 50)
+        loginButton.frame = CGRect(x: 16, y: 400, width: view.frame.width - 32, height: 50)
+        loginButton.layer.cornerRadius = 12
         loginButton.readPermissions = ["email","public_profile"]
         loginButton.delegate = self
         
@@ -110,9 +111,60 @@ class StartButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
-  
+//    func configurarBotaoCadastro(){
+//
+//        let botaoCadastro = UIButton(frame: CGRect(x: 96, y: 434, width: 184, height: 47))
+//
+//        botaoCadastro.layer.cornerRadius = 8
+//        botaoCadastro.backgroundColor = .white
+//        botaoCadastro.setTitle("Cadastre-se", for: .normal)
+//        botaoCadastro.setTitleColor(.black, for: .normal)
+//        botaoCadastro.setTitleShadowColor(.black, for: .normal)
+//        botaoCadastro.layer.shadowColor = UIColor.black.cgColor
+//        botaoCadastro.layer.shadowOffset = CGSize(width: 0, height: 3)
+//        botaoCadastro.layer.shadowRadius = 6
+//        botaoCadastro.layer.shadowOpacity = 0.3
+//        botaoCadastro.addTarget(self, action: #selector(StartButtonViewController.buttonClicked), for: .touchUpInside)
+//
+//        self.view.addSubview(botaoCadastro)
+//    }
     
-
+//    @objc func buttonClicked(){
+//        let storyBoard = UIStoryboard(name: "OnboardStoryboard", bundle: nil)
+//        let novoViewController = storyBoard.instantiateViewController(withIdentifier: "CadastroViewController")
+//        present(novoViewController, animated: true, completion: nil)
+//    }
+//
+//    func configurarLoginEmailLbl(){
+//        loginEmailLbl.placeholder = "Digite seu e-mail aqui"
+//        loginEmailLbl.backgroundColor = UIColor.white
+//    }
+//    func configurarLoginSenhaLbl(){
+//        loginSenhaLbl.placeholder = "Digite sua senha aqui"
+//    }
+//
+//    func configurarLoginImageView(){
+//        loginImageView.backgroundColor = UIColor.white
+//        loginImageView.layer.cornerRadius = 8
+//    }
+    
+//    func configurarBotaoEntrar(){
+//        let botaoEntrar = UIButton(frame: CGRect(x: 96, y: 280, width: 184, height: 47))
+//        botaoEntrar.backgroundColor = UIColor.white
+//        botaoEntrar.layer.cornerRadius = 8
+//        botaoEntrar.setTitle("Entrar", for: .normal)
+//        botaoEntrar.setTitleColor(.black, for: .normal)
+//        botaoEntrar.setTitleShadowColor(.black, for: .normal)
+//        botaoEntrar.layer.shadowColor = UIColor.black.cgColor
+//        botaoEntrar.layer.shadowOffset = CGSize(width: 0, height: 3)
+//        botaoEntrar.layer.shadowRadius = 6
+//        botaoEntrar.layer.shadowOpacity = 0.3
+//
+//        self.view.addSubview(botaoEntrar)
+//
+//    }
+    
+    
     /*
     // MARK: - Navigation
 
