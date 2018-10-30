@@ -22,18 +22,17 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         //Setting Tab bar
         let tabOne = CalculatorViewController()
-        tabOne.title = "Novo Projeto"
-        let tabOneBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        let tabOneBarItem = UITabBarItem(title: "", image: UIImage(named: "icon01TabBar"), selectedImage: UIImage(named: "icon01TabBarAzul"))
         
         tabOne.tabBarItem = tabOneBarItem
         
         let tabTwo = SearchViewController()
-        let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        let tabTwoBarItem = UITabBarItem(title: "", image: UIImage(named: "icon02TabBar"), selectedImage: UIImage(named: "icon02TabBarAzul"))
         
         tabTwo.tabBarItem = tabTwoBarItem
         
         let tabThree = ProjectsViewController()
-        let tabThreeBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
+        let tabThreeBarItem = UITabBarItem(title: "", image: UIImage(named: "icon03TabBar"), selectedImage: UIImage(named: "icon03TabBarAzul"))
         
         tabThree.tabBarItem = tabThreeBarItem
         
