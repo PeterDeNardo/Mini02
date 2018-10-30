@@ -35,6 +35,7 @@ class MaterialView {
     let viewSelectedCabecalhoExtend = UIImageView()
     let viewSelectedCabecalhoButton = UIView()
     let viewSelectedTableView = UITableView()
+    let viewSelectedBlurCell = UIView()
     
     //Creating Objects inside of views
     
@@ -68,6 +69,13 @@ class MaterialView {
     let btnEdit = UIButton()
     let btnUndo = UIButton()
     
+    let nome = UILabel()
+    let preco = UILabel()
+    let tipo = UITextField()
+    let marca = UILabel()
+    let imgType = UIImageView()
+    let cellMarker = UIImageView()
+    
     func setViews() -> UIView {
         //MARK: Setting Views
         viewGlobal = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
@@ -76,6 +84,7 @@ class MaterialView {
         viewGlobal.addSubview(viewFolderSearchBar)
         viewGlobal.addSubview(viewFolder)
         viewGlobal.addSubview(viewSelectedBlur)
+        viewGlobal.addSubview(viewSelectedBlurCell)
         viewGlobal.addSubview(viewSelected)
         viewFolder.addSubview(viewFolderBackGround)
         viewFolder.addSubview(viewFolderButtons)
@@ -102,7 +111,7 @@ class MaterialView {
         viewSelectedBlur.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 0).isActive = true
         viewSelectedBlur.isUserInteractionEnabled = false
         viewSelectedBlur.backgroundColor = .clear
-        
+    
         
         //MARK: SubViews
         //ViewFolder
@@ -147,7 +156,7 @@ class MaterialView {
         viewFolderBackGround.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
         viewFolderBackGround.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
         viewFolderBackGround.bottomAnchor.constraint(equalTo: viewFolder.bottomAnchor, constant: 0).isActive = true
-        viewFolderBackGround.backgroundColor = UIColor.init(patternImage: UIImage(named: "backGroundTableView")!)
+        viewFolderBackGround.backgroundColor = UIColor.init(patternImage: UIImage(named: "BGtableviewTextura")!)
         
  
         viewFolderTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -200,9 +209,18 @@ class MaterialView {
         viewSelectedCabecalhoButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         viewSelectedCabecalhoButton.centerXAnchor.constraint(equalTo: viewGlobal.centerXAnchor).isActive = true
         viewSelectedCabecalhoButton.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: 5).isActive = true
+        
+        viewSelectedBlurCell.translatesAutoresizingMaskIntoConstraints = false
+        viewSelectedBlurCell.bottomAnchor.constraint(equalTo: viewGlobal.bottomAnchor, constant: -300).isActive = true
+        viewSelectedBlurCell.leftAnchor.constraint(equalTo: viewGlobal.leftAnchor, constant: 10).isActive = true
+        viewSelectedBlurCell.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: -10).isActive = true
+        viewSelectedBlurCell.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        viewSelectedBlurCell.backgroundColor = .white
+        viewSelectedBlurCell.isHidden = true
    
         setObjectsInViewFolderTableViewButton()
         setObjectsInViewSelected()
+        setObjectsInSelectBlurCell()
         
         return viewGlobal
     }
@@ -300,7 +318,9 @@ class MaterialView {
                                  backgroundColor: .clear,
                                  backgroundImageIfSelected: UIImage(),
                                  backgroundImageIfDiselected: UIImage())
-        btnAddMaterial.dropShadow()
+        btnAddMaterial.dropShadow(shadowRadius: 1,
+                                  shadowOffsetX: 0,
+                                  shadowOffsetY: 1)
         btnAddMaterial.layer.cornerRadius = 7
         viewSelectedCabecalhoButton.addSubview(btnAddMaterial)
         
@@ -327,6 +347,52 @@ class MaterialView {
                           backgroundImageIfDiselected: UIImage())
     }
     
+    func setObjectsInSelectBlurCell() {
+        nome.frame = CGRect(x: 80, y: 8, width: 80, height: 21)
+        preco.frame = CGRect(x: 289, y: 19, width: 60, height: 21)
+        tipo.frame = CGRect(x: 202, y: 14, width: 74, height: 32)
+        marca.frame = CGRect(x: 80, y: 36, width: 100, height: 16)
+        imgType.frame = CGRect(x: 16, y: 8, width: 45, height: 45)
+        cellMarker.frame = CGRect(x: 0, y: 0, width: 8, height: 64)
+        
+        nome.setLabelWhithConstraints(fontType: .two,
+                                      fontSize: 14,
+                                      lblText: "Material",
+                                      textColor: .workGrey,
+                                      alingnment: .left,
+                                      alpha: 1)
+        
+        preco.setLabelWhithConstraints(fontType: .three,
+                                       fontSize: 18,
+                                       lblText: "R$000.0",
+                                       textColor: .workGrey,
+                                       alingnment: .right,
+                                       alpha: 1)
+        
+        tipo.setTextField(fontType: .one,
+                          fontSize: 18,
+                          lblText: "1 un",
+                          textColor: .workGrey,
+                          alingnment: .rigth,
+                          alpha: 0.7,
+                          ifHaveImageName: "textbox",
+                          keyboardType: .numberPad)
+        
+        marca.setLabelWhithConstraints(fontType: .two, fontSize: 11,
+                                       lblText: "Marca/Local",
+                                       textColor: .workGrey,
+                                       alingnment: .left,
+                                       alpha: 1)
+        
+        viewSelectedBlurCell.addSubview(nome)
+        viewSelectedBlurCell.addSubview(preco)
+        viewSelectedBlurCell.addSubview(tipo)
+        viewSelectedBlurCell.addSubview(marca)
+        viewSelectedBlurCell.addSubview(imgType)
+        viewSelectedBlurCell.addSubview(cellMarker)
+        
+    }
+    
     func setLayoutInModalIfCellAreSelected() {
         UIView.animate(withDuration: 1, animations: {
             self.viewSelected.frame.origin.y -= 26
@@ -342,6 +408,23 @@ class MaterialView {
             self.viewSelectedCabecalho.image = UIImage(named: "modalClosed")
         })
         viewSelectedCabecalhoExtend.isHidden = true
+    }
+    
+    
+    func setCellSpotligth() {
+        UIView.animate(withDuration: 1, animations: {
+            self.viewSelectedBlur.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+            self.viewSelectedBlurCell.isHidden = false
+        }, completion: nil)
+        self.viewSelectedBlur.isUserInteractionEnabled = true
+    }
+    
+    func drawCellSpotligth() {
+        UIView.animate(withDuration: 1, animations: {
+            self.viewSelectedBlur.backgroundColor = UIColor.black.withAlphaComponent(0)
+            self.viewSelectedBlurCell.isHidden = true
+        }, completion: nil)
+        self.viewSelectedBlur.isUserInteractionEnabled = false
     }
     
     func setLayoutInModalIfModalAreOpened() {

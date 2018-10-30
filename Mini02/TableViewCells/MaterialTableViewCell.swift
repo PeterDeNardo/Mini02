@@ -10,10 +10,12 @@ import UIKit
 
 class MaterialTableViewCell: UITableViewCell {
 
-    var nome: UILabel = UILabel(frame: CGRect(x: 76, y: 8, width: 80, height: 21))
+    var nome: UILabel = UILabel(frame: CGRect(x: 80, y: 8, width: 80, height: 21))
     var preco: UILabel = UILabel(frame: CGRect(x: 289, y: 19, width: 60, height: 21))
     var tipo: UITextField = UITextField(frame: CGRect(x: 202, y: 14, width: 74, height: 32))
-    var marca: UILabel = UILabel(frame: CGRect(x: 76, y: 36, width: 100, height: 16))
+    var marca: UILabel = UILabel(frame: CGRect(x: 80, y: 36, width: 100, height: 16))
+    var imgType : UIImageView = UIImageView(frame: (CGRect(x: 16, y: 8, width: 45, height: 45)))
+    var cellMarker : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 8, height: 64))
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,19 +40,23 @@ class MaterialTableViewCell: UITableViewCell {
                           textColor: .workGrey,
                           alingnment: .rigth,
                           alpha: 0.7,
-                          ifHaveImageName: "textbox")
+                          ifHaveImageName: "textbox",
+                          keyboardType: .numberPad)
     
-        
         marca.setLabelWhithConstraints(fontType: .two, fontSize: 11,
                                        lblText: "Marca/Local",
                                        textColor: .workGrey,
                                        alingnment: .left,
                                        alpha: 1)
         
+        imgType.backgroundColor = .black
+        
         self.contentView.addSubview(nome)
         self.contentView.addSubview(preco)
         self.contentView.addSubview(marca)
         self.contentView.addSubview(tipo)
+        self.contentView.addSubview(imgType)
+        self.contentView.addSubview(cellMarker)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,12 +74,16 @@ class MaterialTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         if selected == true {
             self.contentView.backgroundColor = UIColor.white
-            self.tipo.isUserInteractionEnabled = false
-            self.tipo.visibleStatusOfBackgroundImage(image: UIImage(named: "textbox")!, hide: false)
+            self.contentView.dropShadow(shadowRadius: 1, shadowOffsetX: 0, shadowOffsetY: 1)
+            tipo.isUserInteractionEnabled = true
+            cellMarker.backgroundColor = .workGreen
+            tipo.visibleStatusOfBackgroundImage(image: UIImage(named: "textbox")!, hide: false)
         } else {
-            self.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
-            self.tipo.isUserInteractionEnabled = true
-            self.tipo.visibleStatusOfBackgroundImage(image: UIImage(named: "textbox")!, hide: true)
+            self.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.4)
+            self.contentView.layer.shadowOpacity = 0.0
+            tipo.isUserInteractionEnabled = false
+            cellMarker.backgroundColor = .clear
+            tipo.visibleStatusOfBackgroundImage(image: UIImage(named: "textbox")!, hide: true)
         }
     }
 
@@ -81,13 +91,6 @@ class MaterialTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
-        
-//        nome.frame = CGRect(x: 76, y: 8, width: 75, height: 21)
-//        preco.frame = CGRect(x: 308, y: 25, width: 24, height: 21)
-//        tipo.frame = CGRect(x: 225, y: 19, width: 39, height: 21)
-//        marca.frame = CGRect(x: 76, y: 36, width: 77, height: 16)
-
         
         contentView.addSubview(nome)
         contentView.addSubview(preco)

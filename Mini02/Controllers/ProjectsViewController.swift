@@ -50,7 +50,7 @@ class ProjectsViewController: UIViewController {
         self.view = projectsView.setViewsInLayout()
         self.projectsView.viewTableViewProjects.delegate = self
         self.projectsView.viewTableViewProjects.dataSource = self
-        self.projectsView.viewTableViewProjects.rowHeight = 150
+        self.projectsView.viewTableViewProjects.rowHeight = 180
         self.projectsView.viewTableViewProjects.allowsMultipleSelection = true
         self.projectsView.viewTableViewProjects.allowsSelectionDuringEditing = true
         self.projectsView.viewTableViewProjects.backgroundColor = .clear
@@ -107,7 +107,7 @@ class ProjectsViewController: UIViewController {
             let dictionary = defaults.dictionaryRepresentation()
             dictionary.keys.forEach { key in
             defaults.removeObject(forKey: key)
-            }
+        }
             pegarUserDefaults()
             animacaoSemUsuario()
          }
@@ -191,12 +191,7 @@ class ProjectsViewController: UIViewController {
             self.projectsView.viewTableViewProjects.reloadData()
             
         }
-        
     }
-    
-   
-    
-
 }
 
 
@@ -224,8 +219,6 @@ extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource{
         }
         
         let projeto = meusProjetos[indexPath.row]
-        
-        cell.dropShadow()
         
         cell.projectName.text = projeto.nome
         cell.projectItens.text = "\(projeto.materiais!.count)"

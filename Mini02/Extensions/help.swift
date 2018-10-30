@@ -54,6 +54,15 @@ extension UILabel {
 
 extension UITextField {
     
+    open var isSelectedNow : Bool {
+            get {
+                return self.isSelected
+            }
+            set(newValue) {
+                self.isSelected = newValue
+            }
+    }
+    
     enum FontType {
         case one, two, three
     }
@@ -62,7 +71,11 @@ extension UITextField {
         case center, rigth, left
     }
     
-    func setTextField(fontType: FontType ,fontSize: Int, lblText: String, textColor: UIColor, alingnment : AlignmentText, alpha: CGFloat, ifHaveImageName : String) {
+    enum keyboardType {
+        case mail, URL, phone, numberPad, ignore
+    }
+    
+    func setTextField(fontType: FontType ,fontSize: Int, lblText: String, textColor: UIColor, alingnment : AlignmentText, alpha: CGFloat, ifHaveImageName : String, keyboardType : keyboardType) {
         
 //        let scale : CGFloat = 0.0
 //        let size = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
@@ -108,6 +121,24 @@ extension UITextField {
             break
         }
         
+        switch keyboardType {
+        case .mail:
+            self.keyboardType = .emailAddress
+            break
+        case .numberPad:
+            self.keyboardType = .numberPad
+            break
+        case .phone:
+            self.keyboardType = .phonePad
+            break
+        case .URL:
+            self.keyboardType = .URL
+            break
+        case .ignore:
+            self.keyboardType = .default
+            break
+       
+        }
         
     }
     
@@ -124,12 +155,12 @@ extension UITextField {
 
 extension UIView {
     
-    func dropShadow(){
+    func dropShadow(shadowRadius : CGFloat, shadowOffsetX : CGFloat, shadowOffsetY : CGFloat){
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0, height: 1)
-        layer.shadowRadius = 1
+        layer.shadowOffset = CGSize(width: shadowOffsetX, height: shadowOffsetY)
+        layer.shadowRadius = shadowRadius
     }
 }
 

@@ -61,7 +61,9 @@ class NewMaterialView {
         viewMaterialRegister.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: -9).isActive = true
         viewMaterialRegister.backgroundColor = .white
         viewMaterialRegister.layer.cornerRadius = 7
-        viewMaterialRegister.dropShadow()
+        viewMaterialRegister.dropShadow(shadowRadius: 1,
+                                        shadowOffsetX: 0,
+                                        shadowOffsetY: 1)
         
         //Setting SubViews
         
@@ -139,7 +141,8 @@ class NewMaterialView {
                                      textColor: UIColor(red:0.57, green:0.56, blue:0.56, alpha:1.0),
                                      alingnment: .left,
                                      alpha: 0.7,
-                                     ifHaveImageName: "NoHaveImage")
+                                     ifHaveImageName: "NoHaveImage",
+                                     keyboardType: .ignore)
         viewMRInfos.addSubview(txtMaterialName)
         
         txtMaterialOrigin.frame = CGRect(x: 25, y: 117, width: 155, height: 24)
@@ -149,7 +152,8 @@ class NewMaterialView {
                                        textColor: UIColor(red:0.57, green:0.56, blue:0.56, alpha:1.0),
                                        alingnment: .left,
                                        alpha: 0.7,
-                                       ifHaveImageName: "NoHaveImage")
+                                       ifHaveImageName: "NoHaveImage",
+                                       keyboardType: .ignore)
         viewMRInfos.addSubview(txtMaterialOrigin)
         
         txtMaterialQuantity.frame = CGRect(x: 19, y: 211, width: 39, height: 21)
@@ -159,7 +163,8 @@ class NewMaterialView {
                                          textColor: .workBlue,
                                          alingnment: .left,
                                          alpha: 1,
-                                         ifHaveImageName: "textbox")
+                                         ifHaveImageName: "textbox",
+                                         keyboardType: .ignore)
         viewMRInfos.addSubview(txtMaterialQuantity)
         
         txtPrice.frame = CGRect(x: 205, y: 211, width: 24, height: 21)
@@ -169,7 +174,8 @@ class NewMaterialView {
                               textColor: .workBlue,
                               alingnment: .left,
                               alpha: 1,
-                              ifHaveImageName: "textbox")
+                              ifHaveImageName: "textbox",
+                              keyboardType: .numberPad)
         viewMRInfos.addSubview(txtPrice)
         
         

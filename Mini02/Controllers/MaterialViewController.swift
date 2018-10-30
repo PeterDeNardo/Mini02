@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import FirebaseDatabase
 
-class MaterialViewController: UIViewController {
+class MaterialViewController: UIViewController, UITextFieldDelegate {
     
     var pesquisaTxt = ""
     let calculatorVC = CalculatorViewController()
@@ -24,7 +24,7 @@ class MaterialViewController: UIViewController {
     var materiaisPreSelecionados: [Material] = []
     var timer: Timer?
     var tap: UITapGestureRecognizer?
-
+    
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
         desativarTodosOsFiltros()
@@ -97,14 +97,19 @@ class MaterialViewController: UIViewController {
         let touch = touches.first
         guard let location = touch?.location(in: materialView.viewSelectedBlur) else { return }
         if materialView.viewSelectedBlur.frame.contains(location) && materialView.viewSelectedBlur.isUserInteractionEnabled == true {
-            materialView.setLayoutInModalIfModalAreClosed()
+            if self.materialView.viewSelected.frame.origin.y < 400{
+                materialView.setLayoutInModalIfModalAreClosed()
+            } else {
+                materialView.tipo.resignFirstResponder()
+                materialView.drawCellSpotligth()
+                populateCell()
+            }
         }
     }
     
     func mostrarBotaoAdd(){
         if materiaisPreSelecionados.count < 1 {
-            materialView.setLayoutInModalIfCellAreSelected()
-        }
+            materialView.setLayoutInModalIfCellAreSelected()        }
 
 //        if !materialView.btnSearch.isSelected {
 //
@@ -130,9 +135,7 @@ class MaterialViewController: UIViewController {
         
         //materialView.btnTwo.addTarget(self, action: #selector(goToNewMaterialView), for: .touchDown)
         
-        materialView.btnVisualTwo.addTarget(self, action: #selector(listarMeus), for: .touchDown
-        )
-        
+        materialView.btnVisualTwo.addTarget(self, action: #selector(listarMeus), for: .touchDown)
 
     }
     
@@ -143,7 +146,6 @@ class MaterialViewController: UIViewController {
     }
     
     @objc func listarMeus(){
-        print(1)
     
         materialView.viewFolderButtonsFront.image = UIImage(named: "SearchButton2")
         
@@ -232,9 +234,6 @@ class MaterialViewController: UIViewController {
         self.materialView.tableView.allowsMultipleSelection = true
         self.materialView.tableView.allowsSelectionDuringEditing = true
         self.materialView.tableView.backgroundColor = .clear
-        
-        
-        
     }
     
     func pesquisarMeus(){
@@ -331,11 +330,7 @@ class MaterialViewController: UIViewController {
             if pesquisaTxt == "" {
                 listarTodos()
             }
-        
         }
-        
-        
-        
     }
     
     func pegarUserDefaults(){
@@ -347,7 +342,6 @@ class MaterialViewController: UIViewController {
             "email" : defaults.string(forKey: "email"),
             "id" : defaults.string(forKey: "id")
             ] as? [String : String]
-        
     }
     
     func calcularTotal () -> Float {
@@ -370,7 +364,6 @@ class MaterialViewController: UIViewController {
         for material in materiaisPreSelecionados {
             materiaisSelecionados.append(material)
         }
-        print(1111)
         desativarTodosOsFiltros()
 //        materialView.btnSearch.isSelected = true
         listarSelecionados()
@@ -412,14 +405,53 @@ class MaterialViewController: UIViewController {
         
     }
     
+    func populateCell() {
+        
+        if let indexPath = self.materialView.tableView.indexPathForSelectedRow {
+            let cell = self.materialView.tableView.cellForRow(at: indexPath) as! MaterialTableViewCell
+           
+                cell.tipo.text = materialView.tipo.text
+           
+        }
+    }
+    
+    //MARK: TextField
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.isSelectedNow = true
+        
+        materialView.setCellSpotligth()
+        
+        if let indexPath = self.materialView.tableView.indexPathForSelectedRow {
+            let cell = self.materialView.tableView.cellForRow(at: indexPath) as! MaterialTableViewCell
+            
+            materialView.nome.text = cell.nome.text
+            materialView.preco.text = cell.preco.text
+            materialView.tipo.text = cell.tipo.text
+            materialView.marca.text = cell.marca.text
+            materialView.imgType.image = cell.imgType.image
+            materialView.cellMarker.backgroundColor = cell.cellMarker.backgroundColor
+            
+            materialView.tipo.text = ""
+            
+            UIView.animate(withDuration: 0.0, animations: {},completion: {(finished: Bool) in
+                self.materialView.tipo.becomeFirstResponder()
+            })
+
+        }
+        
+        
+    }
+    
 }
 
 extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       mostrarBotaoAdd()
-       materiaisPreSelecionados.append(materiaisPesquisados[indexPath.row])
+        mostrarBotaoAdd()
+        materiaisPreSelecionados.append(materiaisPesquisados[indexPath.row])
         materialView.btnAddMaterial.setTitle("\((materiaisPreSelecionados.count)) itens selecionados", for: .normal)
+    
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -495,6 +527,7 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! MaterialTableViewCell
         let material = materiaisPesquisados[indexPath.row]
 
+        cell.tipo.delegate = self
         
         cell.nome.text = material.nome
         cell.preco.text = "$\(material.preco!)"

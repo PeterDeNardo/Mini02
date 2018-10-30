@@ -61,7 +61,9 @@ class NewProjectView {
         viewMaterialRegister.rightAnchor.constraint(equalTo: viewGlobal.rightAnchor, constant: -9).isActive = true
         viewMaterialRegister.backgroundColor = .white
         viewMaterialRegister.layer.cornerRadius = 7
-        viewMaterialRegister.dropShadow()
+        viewMaterialRegister.dropShadow(shadowRadius: 1,
+                                        shadowOffsetX: 0,
+                                        shadowOffsetY: 1)
         
         //Setting SubViews
         
@@ -111,7 +113,8 @@ class NewProjectView {
                                      textColor: UIColor(red:0.57, green:0.56, blue:0.56, alpha:1.0),
                                      alingnment: .left,
                                      alpha: 0.7,
-                                     ifHaveImageName: "textbox")
+                                     ifHaveImageName: "textbox",
+                                     keyboardType: .ignore)
         viewMRInfos.addSubview(txtProjectName)
         
     }
