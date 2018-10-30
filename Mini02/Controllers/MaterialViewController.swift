@@ -499,6 +499,9 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         cell.preco.text = "$\(material.preco!)"
         cell.tipo.text = "1"
         cell.marca.text = material.marca
+        let tipo = material.tipo?.lowercased()
+        cell.imgType.image = UIImage(named: "\(tipo!)IconCor")
+
         
         return cell
         }
@@ -506,12 +509,17 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
             
             let material = materiaisSelecionados[indexPath.row]
             
-            cell.dropShadow()
+            cell.dropShadow(shadowRadius: 1,
+                            shadowOffsetX: 0,
+                            shadowOffsetY: 1)
             
             cell.nome.text = material.nome
             cell.preco.text = "$\(material.preco!)"
             cell.tipo.text = material.tipo
             cell.marca.text = material.marca
+            let tipo = material.tipo?.lowercased()
+            cell.imgType.image = UIImage(named: "\(tipo!)IconCor")
+            
             
             return cell
         }

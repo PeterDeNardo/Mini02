@@ -49,7 +49,7 @@ class MaterialTableViewCell: UITableViewCell {
                                        alingnment: .left,
                                        alpha: 1)
         
-        imgType.backgroundColor = .black
+        imgType.backgroundColor = .clear
         
         self.contentView.addSubview(nome)
         self.contentView.addSubview(preco)

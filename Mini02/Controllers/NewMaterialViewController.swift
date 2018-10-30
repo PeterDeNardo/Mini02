@@ -60,14 +60,14 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addButtonsTargets(){
-        newMaterial.btnPapelaria.addTarget(self, action: #selector(NewMaterialViewController.btnPapelaria), for: .touchDown)
-        newMaterial.btnSeam.addTarget(self, action: #selector(NewMaterialViewController.btnSeam), for:  .touchDown)
-        newMaterial.btnOrganization.addTarget(self, action: #selector(NewMaterialViewController.btnOrganization), for:  .touchDown)
-        newMaterial.btnPainting.addTarget(self, action: #selector(NewMaterialViewController.btnPainting), for:  .touchDown)
-        newMaterial.btnCraftwork.addTarget(self, action: #selector(NewMaterialViewController.btnCraftwork), for:  .touchDown)
-        newMaterial.btnWoodwork.addTarget(self, action: #selector(NewMaterialViewController.btnWoodwork), for:  .touchDown)
-        newMaterial.btnDecoration.addTarget(self, action: #selector(NewMaterialViewController.btnDecoration), for:  .touchDown)
-        newMaterial.btnOthers.addTarget(self, action: #selector(NewMaterialViewController.btnOthers), for:  .touchDown)
+        newMaterial.btnPapelaria.addTarget(self, action: #selector(btnPapelaria), for: .touchDown)
+        newMaterial.btnSeam.addTarget(self, action: #selector(btnSeam), for:  .touchDown)
+        newMaterial.btnOrganization.addTarget(self, action: #selector(btnOrganization), for:  .touchDown)
+        newMaterial.btnPainting.addTarget(self, action: #selector(btnPainting), for:  .touchDown)
+        newMaterial.btnCraftwork.addTarget(self, action: #selector(btnCraftwork), for:  .touchDown)
+        newMaterial.btnWoodwork.addTarget(self, action: #selector(btnWoodwork), for:  .touchDown)
+        newMaterial.btnDecoration.addTarget(self, action: #selector(btnDecoration), for:  .touchDown)
+        newMaterial.btnOthers.addTarget(self, action: #selector(btnOthers), for:  .touchDown)
     }
     
     // MARK: Buttons actions
@@ -90,6 +90,7 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
     }
     
     func desmarcarBotao(btn: UIButton){
+        categoriaEscolhida = nil
         btn.isSelected = false
     }
     
@@ -128,6 +129,8 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
            desmarcarBotao(btn: newMaterial.btnPapelaria)
         }else {
             marcarBotao(btn: newMaterial.btnPapelaria)
+
+            categoriaEscolhida = "papelaria"
         }
     }
     
@@ -136,6 +139,8 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newMaterial.btnSeam)
         }else {
             marcarBotao(btn: newMaterial.btnSeam)
+            categoriaEscolhida = "costura"
+
         }
     }
     
@@ -144,6 +149,8 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newMaterial.btnOrganization)
         }else {
           marcarBotao(btn: newMaterial.btnOrganization)
+            categoriaEscolhida = "organizacao"
+
         }
     }
     
@@ -152,6 +159,8 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newMaterial.btnPainting)
         }else {
             marcarBotao(btn: newMaterial.btnPainting)
+            categoriaEscolhida = "pintura"
+
         }
     }
     
@@ -160,6 +169,8 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newMaterial.btnCraftwork)
         }else {
            marcarBotao(btn: newMaterial.btnCraftwork)
+            categoriaEscolhida = "artesanato"
+
         }
     }
     
@@ -168,6 +179,8 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newMaterial.btnWoodwork)
         }else {
             marcarBotao(btn: newMaterial.btnWoodwork)
+            categoriaEscolhida = "marcenaria"
+
         }
     }
     
@@ -176,6 +189,8 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newMaterial.btnDecoration)
         }else {
             marcarBotao(btn: newMaterial.btnDecoration)
+            categoriaEscolhida = "decoracao"
+
         }
     }
     
@@ -185,6 +200,8 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
             desmarcarBotao(btn: newMaterial.btnOthers)
         }else {
             marcarBotao(btn: newMaterial.btnOthers)
+            categoriaEscolhida = "decoracao"
+
         }
     }
     
