@@ -22,17 +22,20 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         //Setting Tab bar
         let tabOne = CalculatorViewController()
-        let tabOneBarItem = UITabBarItem(title: "", image: UIImage(named: "icon01TabBar"), selectedImage: UIImage(named: "icon01TabBarAzul"))
+        let tabOneBarItem = UITabBarItem(title: nil, image: UIImage(named: "calculadoraItemGrey"), selectedImage: UIImage(named: "calculadoraItemBlue"))
+        //tabOneBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
         
         tabOne.tabBarItem = tabOneBarItem
         
         let tabTwo = SearchViewController()
-        let tabTwoBarItem = UITabBarItem(title: "", image: UIImage(named: "icon02TabBar"), selectedImage: UIImage(named: "icon02TabBarAzul"))
+        let tabTwoBarItem = UITabBarItem(title: nil, image: UIImage(named: "searchItemGrey"), selectedImage: UIImage(named: "searchItemBlue"))
+        //tabTwoBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
         
         tabTwo.tabBarItem = tabTwoBarItem
         
         let tabThree = ProjectsViewController()
-        let tabThreeBarItem = UITabBarItem(title: "", image: UIImage(named: "icon03TabBar"), selectedImage: UIImage(named: "icon03TabBarAzul"))
+        let tabThreeBarItem = UITabBarItem(title: nil, image: UIImage(named: "projectsItemBGrey"), selectedImage: UIImage(named: "projectsItemBlue"))
+        //tabThreeBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
         
         tabThree.tabBarItem = tabThreeBarItem
         

@@ -25,7 +25,7 @@ class SearchViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(SearchViewController.addNewMaterial)), animated: true)
-        self.title = "Materiais"
+        self.navigationItem.title = "Materiais"
    
     }
     

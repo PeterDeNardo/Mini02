@@ -62,7 +62,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Adicionar Itens"
+        self.navigationItem.title = "Adicionar Itens"
         criarTableView()
         criarSearchBar()
         addButtonsTargets()
@@ -104,9 +104,8 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
             if self.materialView.viewSelected.frame.origin.y < 400{
                 materialView.setLayoutInModalIfModalAreClosed()
             } else {
-                materialView.tipo.resignFirstResponder()
                 materialView.drawCellSpotligth()
-                populateCell()
+                materialView.tipo.resignFirstResponder()
             }
         }
     }
@@ -131,14 +130,13 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addButtonsTargets (){
-        materialView.btnVisualThree.addTarget(self, action: #selector(listarTodos), for: .touchDown)
+        materialView.btnVisualOne.addTarget(self, action: #selector(listarTodos), for: .touchDown)
+        
+        materialView.btnVisualTwo.addTarget(self, action: #selector(listarMeus), for: .touchDown)
         
         materialView.btnAddMaterial.addTarget(self, action: #selector(addMaterial), for: .touchDown)
         
-        materialView.btnVisualTwo.addTarget(self, action: #selector(listarMeus), for: .touchDown
-        )
-        
-        materialView.btnVisualTwo.addTarget(self, action: #selector(listarMeus), for: .touchDown)
+        materialView.btnDoneEdit.addTarget(self, action: #selector(editCell), for: .touchDown)
 
     }
     
@@ -146,6 +144,12 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         materialView.btnVisualThree.isSelected = false
         materialView.btnVisualTwo.isSelected = false
         //materialView.btnSearch.isSelected = false
+    }
+    
+    @objc func editCell() {
+        materialView.drawCellSpotligth()
+        materialView.tipo.resignFirstResponder()
+        populateCell()
     }
     
     @objc func listarMeus(){
@@ -433,6 +437,10 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         }
         
         
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.isSelectedNow = false
     }
     
 }
