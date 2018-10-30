@@ -1,5 +1,5 @@
 //
-//  ThirdPageOnboardViewController.swift
+//  FirstPageOnboardViewController.swift
 //  Mini02
 //
 //  Created by Matheus Fracaroli on 29/10/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThirdPageOnboardViewController: UIViewController {
+class FirstPageOnboardViewController: UIViewController {
 
     var onboardViewController: OnboardViewController?
     
@@ -17,26 +17,19 @@ class ThirdPageOnboardViewController: UIViewController {
         
         configurarBotaoSkip()
         
-        configurarBotaoBack()
-        
         configurarBotaoContinuar()
-        
+
         // Do any additional setup after loading the view.
     }
     
     func configurarBotaoSkip(){
-        let botaoSkip = UIButton()
-        self.view.addSubview(botaoSkip)
-        botaoSkip.translatesAutoresizingMaskIntoConstraints = false
-        botaoSkip.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 609).isActive = true
-        botaoSkip.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 300).isActive = true
-        botaoSkip.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        botaoSkip.heightAnchor.constraint(equalToConstant: 23).isActive = true
+        let botaoSkip = UIButton(frame: CGRect(x: 303, y: 611, width: 37, height: 21))
         botaoSkip.setTitle("Skip", for: .normal)
         botaoSkip.setTitleColor(.white, for: .normal)
         botaoSkip.setTitleShadowColor(.black, for: .normal)
-        botaoSkip.addTarget(self, action: #selector(SecondPageOnboardViewController.skipButton), for: .touchUpInside)
+        botaoSkip.addTarget(self, action: #selector(FirstPageOnboardViewController.skipButton), for: .touchUpInside)
         
+        self.view.addSubview(botaoSkip)
         
     }
     
@@ -44,26 +37,6 @@ class ThirdPageOnboardViewController: UIViewController {
         let storyBoard = UIStoryboard(name: "OnboardStoryboard", bundle: nil)
         let novoViewController = storyBoard.instantiateViewController(withIdentifier: "StartButtonViewController")
         present(novoViewController, animated: true, completion: nil)
-    }
-    
-    func configurarBotaoBack(){
-        let botaoBack = UIButton()
-        self.view.addSubview(botaoBack)
-        botaoBack.setTitle("< Back", for: .normal)
-        botaoBack.translatesAutoresizingMaskIntoConstraints = false
-        botaoBack.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 36).isActive = true
-        botaoBack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 15).isActive = true
-        botaoBack.widthAnchor.constraint(equalToConstant: 70).isActive = true
-        botaoBack.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        botaoBack.setTitleColor(.white, for: .normal)
-        botaoBack.setTitleShadowColor(.black, for: .normal)
-        botaoBack.addTarget(self, action: #selector(SecondPageOnboardViewController.buttonBackClicked), for: .touchUpInside)
-        
-    }
-    
-    @objc func buttonBackClicked(){
-        onboardViewController?.goToPreviousPage()
-        
     }
     
     func configurarBotaoContinuar(){
@@ -86,10 +59,15 @@ class ThirdPageOnboardViewController: UIViewController {
         botaoContinuar.addTarget(self, action: #selector(SecondPageOnboardViewController.continuarButton), for: .touchUpInside)
         
     }
+    
     @objc func continuarButton(){
         onboardViewController?.goToLastPage()
     }
+    
 
+    
+
+    
 
     /*
     // MARK: - Navigation
