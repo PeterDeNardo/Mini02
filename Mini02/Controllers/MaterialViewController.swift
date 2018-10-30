@@ -506,7 +506,9 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
             
             let material = materiaisSelecionados[indexPath.row]
             
-            cell.dropShadow()
+            cell.dropShadow(shadowRadius: 1,
+                            shadowOffsetX: 0,
+                            shadowOffsetY: 1)
             
             cell.nome.text = material.nome
             cell.preco.text = "$\(material.preco!)"
