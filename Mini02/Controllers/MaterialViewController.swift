@@ -66,7 +66,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         criarTableView()
         criarSearchBar()
         addButtonsTargets()
-        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(goToNewMaterialView) ), animated: true)
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToNewMaterialView) ), animated: true)
         fetchData()
         pegarUserDefaults()
         self.tabBarController?.tabBar.isHidden = true
@@ -435,10 +435,6 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
             })
 
         }
-        
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
         
     }
     
