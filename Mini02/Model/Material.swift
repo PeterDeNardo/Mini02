@@ -36,6 +36,10 @@ class Material{
         self.total = self.total! + self.preco!
     }
     
+    func atualizarTotal(){
+        self.total = self.total! * Float(self.quantidade ?? 1)
+    }
+    
     init?(snapshot: DataSnapshot){
         
         guard

@@ -150,6 +150,12 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         materialView.drawCellSpotligth()
         materialView.tipo.resignFirstResponder()
         populateCell()
+        if let indexPath = self.materialView.tableView.indexPathForSelectedRow {
+            let cell = self.materialView.tableView.cellForRow(at: indexPath) as! MaterialTableViewCell
+            materiaisPesquisados[indexPath.row].quantidade! = Int(cell.tipo.text!)!
+            materiaisPesquisados[indexPath.row].atualizarTotal()
+            atualizarPreSelecionados(material: materiaisPesquisados[indexPath.row])
+        }
     }
     
     @objc func listarMeus(){
@@ -350,7 +356,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
     func calcularTotal () -> Float {
         var total:Float = 0
         for material in materiaisSelecionados {
-            total = material.preco! + total
+            total = material.total! + total
         }
         return total
     }
@@ -366,6 +372,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
     @objc func addMaterial(){
         for material in materiaisPreSelecionados {
             materiaisSelecionados.append(material)
+            
         }
         materialView.lblSelectMaterials.text = "\(materiaisSelecionados.count) itens selecionados"
         desativarTodosOsFiltros()
@@ -438,7 +445,17 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func atualizarPreSelecionados(material: Material){
+        for m in materiaisPreSelecionados {
+            if material.chave == m.chave {
+                m.quantidade = material.quantidade
+            }
+        }
+        print(materiaisPreSelecionados)
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
+   
         textField.isSelectedNow = false
     }
     
@@ -449,6 +466,7 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.tag == 1{
        mostrarBotaoAdd()
+       let cell = tableView.cellForRow(at: indexPath) as! MaterialTableViewCell
        materiaisPreSelecionados.append(materiaisPesquisados[indexPath.row])
         materialView.btnAddMaterial.setTitle("\((materiaisPreSelecionados.count)) itens selecionados", for: .normal)
         }
@@ -521,7 +539,7 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
                             shadowOffsetY: 1)
             
             cell.nome.text = material.nome
-            cell.preco.text = "$\(material.preco!)"
+            cell.preco.text = "$\(material.total!)"
             cell.tipo.text = material.tipo
             cell.marca.text = material.marca
             let tipo = material.tipo?.lowercased()

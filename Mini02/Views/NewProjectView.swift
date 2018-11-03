@@ -100,7 +100,7 @@ class NewProjectView {
         lblProjectName.frame = CGRect(x: 19, y: 14, width: 244, height: 21)
         lblProjectName.setLabelWhithConstraints(fontType: .two,
                                                  fontSize: 18,
-                                                 lblText: "Nome do material",
+                                                 lblText: "Nome do projeto",
                                                  textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
                                                  alingnment: .left,
                                                  alpha: 1)
