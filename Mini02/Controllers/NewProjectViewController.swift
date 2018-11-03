@@ -86,7 +86,7 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
     
     func desmarcarBotao(btn: UIButton){
         btn.isSelected = false
-        btn.backgroundColor = .black
+        btn.backgroundColor = .clear
         btn.setTitleColor(.white , for: .normal)
     }
     
