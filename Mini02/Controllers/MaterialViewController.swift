@@ -558,7 +558,7 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
             
             cell.nome.text = material.nome
             cell.preco.text = "$\(material.total!)"
-            cell.tipo.text = material.tipo
+            cell.tipo.text = "\(material.quantidade!)"
             cell.marca.text = material.marca
             let tipo = material.tipo?.lowercased()
             cell.imgType.image = UIImage(named: "\(tipo!)IconCor")
