@@ -177,6 +177,9 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
                 materiaisPesquisados.append(material)
             }
         }
+        
+        ordenarMateriais()
+        
         materialView.tableView.reloadData()
     }
     
@@ -186,7 +189,6 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         
         materialView.viewSelectedTableView.reloadData()
         
-       // materialView.viewSelectedTableView.setEditing(true, animated: false)
         
     }
     
@@ -210,6 +212,17 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(newMaterialsView, animated: true)
     }
     
+    func ordenarMateriais() {
+        materiaisPesquisados = materiaisPesquisados.sorted {
+            if $0.tipo! != $1.tipo!{
+                return $0.tipo! < $1.tipo!
+            } else {
+                return $0.nome! < $1.nome!
+            }
+            
+        }
+    }
+    
     @objc func listarTodos(){
         
         materialView.viewFolderButtonsFront.image = UIImage(named: "SearchButton1")
@@ -219,6 +232,8 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         materialView.btnVisualThree.isSelected = true
         
         materiaisPesquisados = materiais
+        
+        ordenarMateriais()
         
         materialView.tableView.reloadData()
         
@@ -287,9 +302,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
                 materiaisPesquisados.append(material)
             }
         }
-        
-        materialView.tableView.reloadData()
-        
+      
     }
 
     func pesquisarSelecionados(){
@@ -340,6 +353,11 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
                 listarTodos()
             }
         }
+        
+        ordenarMateriais()
+        
+        materialView.tableView.reloadData()
+        
     }
     
     func pegarUserDefaults(){

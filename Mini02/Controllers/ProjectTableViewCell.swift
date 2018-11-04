@@ -12,9 +12,9 @@ class ProjectTableViewCell: UITableViewCell {
 
     var projectName: UILabel = UILabel(frame: CGRect(x: 92, y: 33, width: 123, height: 21))
     var projectDate: UILabel = UILabel(frame: CGRect(x: 92, y: 63, width: 123, height: 16))
-    var projectPrice: UILabel = UILabel(frame: CGRect(x: 284, y: 50, width: 48, height: 21))
+    var projectPrice: UILabel = UILabel(frame: CGRect(x: 230, y: 50, width: 100, height: 21))
     var projectItens: UILabel = UILabel(frame: CGRect(x: 36, y: 113, width: 75, height: 21))
-    var projectHour: UILabel = UILabel(frame: CGRect(x: 284, y: 113, width: 38, height: 21))
+    var projectHour: UILabel = UILabel(frame: CGRect(x: 230, y: 113, width: 100, height: 21))
     var projectTypeImg: UIImageView = UIImageView(frame: CGRect(x: 25, y: 33, width: 45, height: 45))
     var viewBackground = UIImageView()
     

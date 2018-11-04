@@ -116,6 +116,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
+        ordenarMateriais()
+        
             searchView.tableView.reloadData()
     
     }
@@ -129,6 +131,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         searchView.btnSearchAct.isSelected = true
         
         materiaisPesquisados = materiais
+        
+        ordenarMateriais()
         
         searchView.tableView.reloadData()
         
@@ -158,7 +162,23 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                 listarTodos()
             }
         }
+        
+        ordenarMateriais()
+        
+         searchView.tableView.reloadData()
     }
+    
+    func ordenarMateriais() {
+        materiaisPesquisados = materiaisPesquisados.sorted {
+            if $0.tipo! != $1.tipo!{
+                return $0.tipo! < $1.tipo!
+            } else {
+                return $0.nome! < $1.nome!
+            }
+            
+        }
+    }
+    
     
     func pesquisarMeus(){
         
@@ -177,7 +197,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        searchView.tableView.reloadData()
+       
     }
     
     func pesquisarTodos(){
@@ -196,7 +216,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        searchView.tableView.reloadData()
         
     }
     
