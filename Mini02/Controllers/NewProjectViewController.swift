@@ -187,6 +187,12 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(blurEffectView)
     }
     
+    func goToProjectsVC(){
+        let calculatorVC = CalculatorViewController()
+        self.navigationController?.pushViewController(calculatorVC, animated: false)
+        self.tabBarController?.selectedIndex = 2
+    }
+    
     @objc func salvarProjeto(){
         
         guard let nomeProjeto = newProjectView.txtProjectName.text else {return}
@@ -214,8 +220,7 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
         animationView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         animationView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         animationView.play{ (finished) in
-        self.navigationController?.pushViewController(projectsViewController, animated: true)
-            
+            self.goToProjectsVC()
         }
         
         
