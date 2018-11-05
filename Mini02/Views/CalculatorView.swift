@@ -302,7 +302,7 @@ class CalculatorView {
         txtInfBWorkedHours.frame = CGRect(x: 200, y: 6, width: 87, height: 32)
         txtInfBWorkedHours.setTextField(fontType: .two,
                                         fontSize: 18,
-                                        lblText: "N/h",
+                                        lblText: "0",
                                         textColor: .workGrey,
                                         alingnment: .rigth,
                                         alpha: 0.7,
@@ -313,7 +313,7 @@ class CalculatorView {
         txtInfBExternalCosts.frame = CGRect(x: 200, y: 46, width: 87, height: 32)
         txtInfBExternalCosts.setTextField(fontType: .two,
                                           fontSize: 18,
-                                          lblText: "$Y",
+                                          lblText: "0",
                                           textColor: .workGrey,
                                           alingnment: .rigth,
                                           alpha: 0.7,

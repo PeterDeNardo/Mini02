@@ -54,7 +54,7 @@ class SearchView {
     
     var btnAddMaterial = UIButton()
     
-    var tableView : UITableView!
+    var tableView = UITableView()
     
     //viewSearch Objects
     
@@ -187,8 +187,12 @@ class SearchView {
     }
     
     func setObjectsInViewFoldarTableView() {
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         viewFolderTableView.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: viewFolderTableView.topAnchor, constant: 0).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: viewFolderTableView.bottomAnchor, constant: 0).isActive = true
+        tableView.leftAnchor.constraint(equalTo: viewFolderTableView.leftAnchor, constant: 0).isActive = true
+        tableView.rightAnchor.constraint(equalTo: viewFolderTableView.rightAnchor, constant: 0).isActive = true
         
     }
     

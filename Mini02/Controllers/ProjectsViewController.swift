@@ -25,7 +25,6 @@ class ProjectsViewController: UIViewController {
    
 
     override func viewWillAppear(_ animated: Bool) {
-        print(usuario)
         pegarUserDefaults()
         listarTodos()
         self.navigationItem.title = "Projetos"

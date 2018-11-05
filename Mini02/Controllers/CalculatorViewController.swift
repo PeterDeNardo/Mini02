@@ -36,6 +36,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
         setLabels()
+        verificarInputs()
         self.navigationController?.navigationBar.isTranslucent = true
         
     }
@@ -108,14 +109,22 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
     }
     
+    func verificarInputs(){
+        if materiaisSelecionados.count > 0 && horasTrabalhadas > 0{
+            viewCalculator.btnVBAddProjects.backgroundColor = .workGreen
+        }else{
+            viewCalculator.btnVBAddProjects.backgroundColor = .gray
+        }
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
     
         if textField.text == "" {
             
             
             if textField == viewCalculator.txtInfBWorkedHours{
-                textField.text = "1"
-                horasTrabalhadas = 1
+                textField.text = "0"
+                horasTrabalhadas = 0
                 setLabels()
                 
             }
@@ -126,8 +135,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
                 setLabels()
                 
             }
-            
-            
+
             return
         }
         
@@ -144,9 +152,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
             setLabels()
             
         }
-        
-        
-        
+
         
     }
     
@@ -173,6 +179,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
                     return true
                 }
                 horasTrabalhadas = float
+                verificarInputs()
                 setLabels()
                 return true
             }
@@ -187,6 +194,8 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
             }
             
             horasTrabalhadas = Float(Int(b)!)
+            
+            verificarInputs()
             
             setLabels()
             return true
@@ -244,9 +253,9 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
         guard let horasTrabalhadasFloat = Float(horasTrabalhadasString), horasTrabalhadasFloat > 0 else { return }
         
-        guard let custosExtrasString = viewCalculator.txtInfBExternalCosts.text, horasTrabalhadasString.count > 0 else { return }
+        guard let custosExtrasString = viewCalculator.txtInfBExternalCosts.text, custosExtrasString.count > 0 else { return }
         
-        guard let custosExtrasFloat = Float(custosExtrasString), custosExtrasFloat > 0 else { return }
+        guard let custosExtrasFloat = Float(custosExtrasString), custosExtrasFloat >= 0 else { return }
         
         if materiaisSelecionados.count == 0 {
             return

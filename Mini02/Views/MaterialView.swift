@@ -60,7 +60,7 @@ class MaterialView {
     
     var btnAddMaterial = UIButton()
     
-    var tableView : UITableView!
+    var tableView = UITableView()
     
     //viewSearch Objects
     
@@ -321,8 +321,14 @@ class MaterialView {
     }
     
     func setObjectsInViewFoldarTableView() {
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+//        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         viewFolderTableView.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: viewFolderTableView.topAnchor, constant: 0).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: viewSelected.topAnchor, constant: 0).isActive = true
+        tableView.leftAnchor.constraint(equalTo: viewFolder.leftAnchor, constant: 0).isActive = true
+        tableView.rightAnchor.constraint(equalTo: viewFolder.rightAnchor, constant: 0).isActive = true
+        
         
     }
     
