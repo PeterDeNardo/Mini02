@@ -159,11 +159,8 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
             var i = 0
             while i < materiaisPreSelecionados.count {
                 if materiaisPreSelecionados[i].chave == materiaisPesquisados[indexPath.row].chave{
-                    print(materiaisPesquisados[indexPath.row].quantidade!)
                     materiaisPreSelecionados[i].quantidade = Int(cell.tipo.text!)!
-                    print(materiaisPreSelecionados[i].quantidade!)
                     materiaisPreSelecionados[i].atualizarTotal()
-                    print(materiaisPesquisados[indexPath.row].quantidade!)
                 }
                 i = i + 1
             }
