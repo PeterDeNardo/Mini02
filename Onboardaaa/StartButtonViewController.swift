@@ -27,9 +27,12 @@ class StartButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         let loginButton = FBSDKLoginButton()
         view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y: 400, width: view.frame.width - 32, height: 50)
-        loginButton.layer.cornerRadius = 12
+        loginButton.frame = CGRect(x: 50, y: 350, width: 275, height: 44)
         loginButton.readPermissions = ["email","public_profile"]
+        loginButton.layer.cornerRadius = 7
+        loginButton.dropShadow(shadowRadius: 4,
+                                    shadowOffsetX: 0,
+                                    shadowOffsetY: 4)
         loginButton.delegate = self
         
       

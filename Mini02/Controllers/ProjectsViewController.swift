@@ -130,10 +130,10 @@ class ProjectsViewController: UIViewController {
     }
     
     func goToLoginViewController(){
-        
-        let loginVC = LoginViewController()
-        loginVC.VCAnterior = ProjectsViewController()
-       self.navigationController?.pushViewController(loginVC, animated: true)
+        let storyBoard = UIStoryboard(name: "OnboardStoryboard", bundle: nil)
+        let novoViewController = storyBoard.instantiateViewController(withIdentifier: "StartButtonViewController")
+        //present(novoViewController, animated: true, completion: nil)
+       self.navigationController?.pushViewController(novoViewController, animated: true)
         
     }
     
@@ -238,7 +238,7 @@ extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource{
         cell.projectItens.text = "\(projeto.materiais!.count) itens"
         cell.projectPrice.text = "R$\(projeto.total)"
         cell.projectDate.text = "\(projeto.data!)"
-        cell.projectHour.text = "\(projeto.hora!) H"
+        cell.projectHour.text = "\(Int(projeto.horasTrabalhadas!))h"
         
         
         return cell
