@@ -150,12 +150,25 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         materialView.drawCellSpotligth()
         materialView.tipo.resignFirstResponder()
         populateCell()
+        atualizarPreSelecionados()
+    }
+    
+    func atualizarPreSelecionados(){
         if let indexPath = self.materialView.tableView.indexPathForSelectedRow {
             let cell = self.materialView.tableView.cellForRow(at: indexPath) as! MaterialTableViewCell
-            materiaisPesquisados[indexPath.row].quantidade! = Int(cell.tipo.text!)!
-            materiaisPesquisados[indexPath.row].atualizarTotal()
-            atualizarPreSelecionados(material: materiaisPesquisados[indexPath.row])
+            var i = 0
+            while i < materiaisPreSelecionados.count {
+                if materiaisPreSelecionados[i].chave == materiaisPesquisados[indexPath.row].chave{
+                    print(materiaisPesquisados[indexPath.row].quantidade!)
+                    materiaisPreSelecionados[i].quantidade = Int(cell.tipo.text!)!
+                    print(materiaisPreSelecionados[i].quantidade!)
+                    materiaisPreSelecionados[i].atualizarTotal()
+                    print(materiaisPesquisados[indexPath.row].quantidade!)
+                }
+                i = i + 1
+            }
         }
+        
     }
     
     @objc func listarMeus(){
@@ -174,7 +187,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         
         for material in materiais {
             if material.usuario!["id"] == usuario!["id"] {
-                materiaisPesquisados.append(material)
+                materiaisPesquisados.insert(material, at: materiaisPesquisados.count)
             }
         }
         
@@ -274,15 +287,15 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         for material in materiais {
             
             if (material.nome?.uppercased().contains(pesquisaTxt))! && usuario!["id"] == material.usuario!["id"]{
-                materiaisPesquisados.append(material)
+                materiaisPesquisados.insert(material, at: materiaisPesquisados.count)
             }
                 
             else if (material.marca?.uppercased().contains(pesquisaTxt))! && usuario!["id"] == material.usuario!["id"]{
-                materiaisPesquisados.append(material)
+                materiaisPesquisados.insert(material, at: materiaisPesquisados.count)
             }
 
             else if (material.tipo?.uppercased().contains(pesquisaTxt))! && usuario!["id"] == material.usuario!["id"]{
-                materiaisPesquisados.append(material)
+                materiaisPesquisados.insert(material, at: materiaisPesquisados.count)
             }
         }
     }
@@ -292,14 +305,14 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         for material in materiais {
             
             if (material.nome?.uppercased().contains(pesquisaTxt))!{
-                materiaisPesquisados.append(material)
+                materiaisPesquisados.insert(material, at: materiaisPesquisados.count)
             }
             else if (material.marca?.uppercased().contains(pesquisaTxt))!{
-                materiaisPesquisados.append(material)
+                materiaisPesquisados.insert(material, at: materiaisPesquisados.count)
             }
                 
             else if (material.tipo?.uppercased().contains(pesquisaTxt))!{
-                materiaisPesquisados.append(material)
+                materiaisPesquisados.insert(material, at: materiaisPesquisados.count)
             }
         }
       
@@ -312,14 +325,14 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         for material in materiaisSelecionados {
             
             if (material.nome?.uppercased().contains(pesquisaTxt))!{
-                materiaisPesquisados.append(material)
+                materiaisPesquisados.insert(material, at: materiaisPesquisados.count)
             }
             else if (material.marca?.uppercased().contains(pesquisaTxt))!{
-                materiaisPesquisados.append(material)
+                materiaisPesquisados.insert(material, at: materiaisPesquisados.count)
             }
                 
             else if (material.tipo?.uppercased().contains(pesquisaTxt))!{
-                materiaisPesquisados.append(material)
+                materiaisPesquisados.insert(material, at: materiaisPesquisados.count)
             }
             
             //selecionarTodasAsRows()
@@ -382,14 +395,28 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
     @objc func done (){
         
         for material in materiaisSelecionados {
-            calculatorVC.materiaisSelecionados.append(material)
+            calculatorVC.materiaisSelecionados.insert(material, at: calculatorVC.materiaisSelecionados.count)
         }
          calculatorVC.valorItens = calcularTotal()
     }
     
     @objc func addMaterial(){
         for material in materiaisPreSelecionados {
-            materiaisSelecionados.append(material)
+            var contem = false
+            for m in materiaisSelecionados {
+                if material.chave == m.chave {
+                    m.quantidade = m.quantidade! + material.quantidade!
+                    m.atualizarTotal()
+                    contem = true
+                }
+            }
+            if contem == false{
+                let novoMaterial = Material(nome: material.nome!, tipo: material.tipo!, preco: material.preco!, marca: material.marca!, chave: material.chave!, usuario: material.usuario!)
+                novoMaterial.quantidade = material.quantidade
+                novoMaterial.atualizarTotal()
+                materiaisSelecionados.insert(novoMaterial, at: materiaisSelecionados.count)
+                
+            }
             
         }
         materialView.lblSelectMaterials.text = "\(materiaisSelecionados.count) itens selecionados"
@@ -414,7 +441,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
             for child in DataSnapshot.children {
                 if let snapshot = child as? DataSnapshot,
                     let material = Material(snapshot: snapshot){
-                    materiais.append(material)
+                    materiais.insert(material, at: materiais.count)
                 }
             }
             
@@ -462,30 +489,24 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
-    func atualizarPreSelecionados(material: Material){
-        for m in materiaisPreSelecionados {
-            if material.chave == m.chave {
-                m.quantidade = material.quantidade
-            }
-        }
-        print(materiaisPreSelecionados)
-    }
+
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-   
-        textField.isSelectedNow = false
+        if let indexPath = self.materialView.tableView.indexPathForSelectedRow {
+            let cell = self.materialView.tableView.cellForRow(at: indexPath) as! MaterialTableViewCell
+            cell.tipo.text = "1"
+            textField.isSelectedNow = false
     }
     
 }
-
+}
 extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.tag == 1{
        mostrarBotaoAdd()
-       let cell = tableView.cellForRow(at: indexPath) as! MaterialTableViewCell
-       materiaisPreSelecionados.append(materiaisPesquisados[indexPath.row])
+       let novoMaterial = Material(nome: materiaisPesquisados[indexPath.row].nome!, tipo: materiaisPesquisados[indexPath.row].tipo!, preco: materiaisPesquisados[indexPath.row].preco!, marca: materiaisPesquisados[indexPath.row].marca!, chave: materiaisPesquisados[indexPath.row].chave!, usuario: materiaisPesquisados[indexPath.row].usuario!)
+       materiaisPreSelecionados.insert(novoMaterial, at: materiaisPreSelecionados.count)
         materialView.btnAddMaterial.setTitle("\((materiaisPreSelecionados.count)) itens selecionados", for: .normal)
         }
     }
