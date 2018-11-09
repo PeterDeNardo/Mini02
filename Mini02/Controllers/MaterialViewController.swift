@@ -29,7 +29,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
         desativarTodosOsFiltros()
-        materialView.btnVisualThree.isSelected = true
+        materialView.btnFrequentes.isSelected = true
     
         if materiaisSelecionados.count > 0 {
             materialView.lblSelectMaterials.text = "\(materiaisSelecionados.count) itens selecionados"
@@ -130,9 +130,11 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addButtonsTargets (){
-        materialView.btnVisualOne.addTarget(self, action: #selector(listarTodos), for: .touchDown)
+        materialView.btnTodos.addTarget(self, action: #selector(listarTodos), for: .touchDown)
         
-        materialView.btnVisualTwo.addTarget(self, action: #selector(listarMeus), for: .touchDown)
+        materialView.btnMeus.addTarget(self, action: #selector(listarMeus), for: .touchDown)
+        
+        materialView.btnFrequentes.addTarget(self, action: #selector(listarFrequentes), for: .touchDown)
         
         materialView.btnAddMaterial.addTarget(self, action: #selector(addMaterial), for: .touchDown)
         
@@ -141,8 +143,8 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
     }
     
     func desativarTodosOsFiltros(){
-        materialView.btnVisualThree.isSelected = false
-        materialView.btnVisualTwo.isSelected = false
+        materialView.btnFrequentes.isSelected = false
+        materialView.btnMeus.isSelected = false
         //materialView.btnSearch.isSelected = false
     }
     
@@ -174,7 +176,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         
         desativarTodosOsFiltros()
         
-        materialView.btnVisualTwo.isSelected = true
+        materialView.btnMeus.isSelected = true
         
         if usuario == nil {
             return
@@ -191,6 +193,24 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         ordenarMateriais()
         
         materialView.tableView.reloadData()
+    }
+    
+    @objc func listarFrequentes(){
+        
+        materialView.viewFolderButtonsFront.image = UIImage(named: "SearchButton3")
+        
+        desativarTodosOsFiltros()
+        
+        materialView.btnFrequentes.isSelected = true
+        
+        if usuario == nil {
+            return
+        }
+        
+        materiaisPesquisados.removeAll()
+        
+        fetchDataFrequentes()
+  
     }
     
     @objc func listarSelecionados(){
@@ -239,7 +259,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         
         desativarTodosOsFiltros()
         
-        materialView.btnVisualThree.isSelected = true
+        materialView.btnFrequentes.isSelected = true
         
         materiaisPesquisados = materiais
         
@@ -345,7 +365,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         
         pesquisaTxt = pesquisaTxt.uppercased()
         
-        if materialView.btnVisualTwo.isSelected {
+        if materialView.btnMeus.isSelected {
             
             pesquisarMeus()
             
@@ -355,7 +375,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
             
         }
         
-        if materialView.btnVisualThree.isSelected {
+        if materialView.btnFrequentes.isSelected {
         //pesquisar sem filtros
         pesquisarTodos()
             
@@ -445,6 +465,69 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
             self.materiais = materiais
             
             self.pesquisar()
+            
+        }
+        
+    }
+    
+    @objc private func fetchDataFrequentes(){
+        
+        let ref2: DatabaseReference? = Database.database().reference(withPath: "Projeto")
+        
+        guard let ref = ref2 else {
+            print(">>")
+            return}
+        
+        ref.observe(.value) { (DataSnapshot) in
+            
+            var projetos: [Projeto] = []
+            
+            for child in DataSnapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let projeto = Projeto(snapshot: snapshot){
+                    projetos.insert(projeto, at: projetos.count)
+                }
+            }
+            
+            let projetosFrequentes = [projetos[projetos.count - 5], projetos[projetos.count - 4], projetos[projetos.count - 3], projetos[projetos.count - 2], projetos[projetos.count - 1]]
+            
+            var materiaisFrequentes: [Material] = []
+            
+            for projeto in projetosFrequentes {
+                
+                for material in projeto.materiais! {
+                    
+                  let materialAny =  material as! [String:Any]
+                    
+                    let materialNovo = Material(nome: materialAny["nome"] as! String, tipo: materialAny["tipo"] as! String, preco: materialAny["preco"] as! Float, marca: materialAny["marca"] as! String, usuario: ["nome": "sussa"])
+                    
+                    if materiaisFrequentes.count == 0 {
+                        materiaisFrequentes.append(materialNovo)
+                    }
+                    else {
+                        var existe = false
+                        for m in materiaisFrequentes {
+                            if m.nome == materialNovo.nome {
+                                existe = true
+                                break
+                            }
+                        }
+                        if !existe {
+                            materiaisFrequentes.append(materialNovo)
+                        }
+                    }
+ 
+                    
+                    
+                }
+                
+            }
+            
+            self.materiaisPesquisados = materiaisFrequentes
+            
+            self.ordenarMateriais()
+            
+            self.materialView.tableView.reloadData()
             
         }
         
