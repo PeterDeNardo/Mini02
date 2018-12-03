@@ -247,7 +247,33 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         navigationController?.pushViewController(newProjectView, animated: true)
     }
     
+    func goToLoginViewController(){
+        
+        let storyBoard = UIStoryboard(name: "OnboardStoryboard", bundle: nil)
+        let novoViewController = storyBoard.instantiateViewController(withIdentifier: "StartButtonViewController")
+        self.navigationController?.pushViewController(novoViewController, animated: true)
+        
+    }
+    
     @objc func addProject(){
+        
+        if usuario == nil {
+            
+            let alert = UIAlertController(title: "Faça login para salvar", message: "Você precisa estar logado para salvar seu projeto", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+            
+            alert.addAction(UIAlertAction(title: "Logar", style: .default, handler: { action in
+               
+               self.goToLoginViewController()
+                
+            }))
+            
+            self.present(alert, animated: true)
+            
+            return
+            
+        }
 
         guard let horasTrabalhadasString = viewCalculator.txtInfBWorkedHours.text, horasTrabalhadasString.count > 0 else { return }
         
@@ -276,7 +302,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         
         
         goToNewProjectViewController()
-        
+    
     }
     
 
@@ -286,6 +312,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     }
     
     @objc func goToMaterialViewController () {
+        
         let materialsView = MaterialViewController()
         materialsView.materiaisSelecionados = self.materiaisSelecionados
         navigationController?.pushViewController(materialsView, animated: true)
