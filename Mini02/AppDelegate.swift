@@ -44,24 +44,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
             
-            let myTabBarController = UITabBarController()
+//            let myTabBarController = UITabBarController()
+//
+//            window = UIWindow(frame: UIScreen.main.bounds)
             
-            window = UIWindow(frame: UIScreen.main.bounds)
-            
-            let v1 = OnboardViewController()
-            let v2 = CalculatorViewController()
-            let v3 = LoginViewController()
+//            let v1 = OnboardViewController()
+//            let v2 = CalculatorViewController()
+//            let v3 = LoginViewController()
            
             //let nav = UINavigationController(rootViewController: v2)
             
-            let controllers = [v2, v3]
-            
-            myTabBarController.viewControllers = controllers
+//            let controllers = [v2, v3]
+//
+//            myTabBarController.viewControllers = controllers
             
             
             //myTabBarController = TabBarController()
-            self.window!.rootViewController = v1
-            self.window!.makeKeyAndVisible()
+//            self.window!.rootViewController = v1
+//            self.window!.makeKeyAndVisible()
             
             return true
     }
