@@ -44,7 +44,6 @@ extension UILabel {
             break
         case .left:
             self.textAlignment = .left
-            self.sizeToFit()
             break
         }
     }
@@ -117,7 +116,6 @@ extension UITextField {
             break
         case .left:
             self.textAlignment = .left
-            self.sizeToFit()
             break
         }
         

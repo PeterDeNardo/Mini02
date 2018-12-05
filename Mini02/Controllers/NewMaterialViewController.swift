@@ -56,7 +56,7 @@ class NewMaterialViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func abaixarTeclado() {
-       newMaterial.viewGlobal.endEditing(true)
+        newMaterial.viewGlobal.endEditing(true)
     }
     
     func addButtonsTargets(){
