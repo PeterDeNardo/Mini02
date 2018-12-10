@@ -8,18 +8,24 @@
 
 import UIKit
 
-class OnboardViewController: UIPageViewController, UIPageViewControllerDelegate {
 
+
+class OnboardViewController: UIPageViewController, UIPageViewControllerDelegate {
+    
+        required init?(coder: NSCoder) {
+            super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dataSource = self
+        delegate = self
         
         if let firstViewController = orderedViewControllers.first{
             
             setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
         }
-        
-        dataSource = self
-        delegate = self
     }
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
@@ -60,12 +66,14 @@ class OnboardViewController: UIPageViewController, UIPageViewControllerDelegate 
     
     // Allows to back to previous page
     func goToPreviousPage(animated: Bool = true) {
+        
         guard let currentViewController = self.viewControllers?.first else { return }
         guard let previousViewController = dataSource?.pageViewController(self, viewControllerBefore: currentViewController) else { return }
         setViewControllers([previousViewController], direction: .reverse, animated: animated, completion: nil)
     }
     
     func goToLastPage(animated: Bool = true){
+        
         guard let currentViewController = self.viewControllers?.last else {return}
         guard let lastViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) else {return}
         setViewControllers([lastViewController], direction: .forward, animated: animated, completion: nil)
@@ -96,6 +104,7 @@ extension OnboardViewController: UIPageViewControllerDataSource {
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else{
             return nil
         }
@@ -108,14 +117,6 @@ extension OnboardViewController: UIPageViewControllerDataSource {
         }
         
         return orderedViewControllers[nextIndex]
-    }
-    
-    func presentationCountForPageViewController(pageViewController: OnboardViewController) -> Int {
-        return 6
-    }
-    
-    func presentationIndexForPageViewController(pageViewController: OnboardViewController) -> Int {
-        return 0
     }
 }
 

@@ -133,6 +133,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		91AD6CB821B8422C00F980AD /* Json's */ = {
+			isa = PBXGroup;
+			children = (
+				9450C3E5217FAD33002A5E3A /* done.json */,
+				9450C3E7217FB07C002A5E3A /* empty_box.json */,
+			);
+			path = "Json's";
+			sourceTree = "<group>";
+		};
 		944761CC216D37EB00019117 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,8 +215,7 @@
 		96B02802216546650093396A /* Mini02 */ = {
 			isa = PBXGroup;
 			children = (
-				9450C3E5217FAD33002A5E3A /* done.json */,
-				9450C3E7217FB07C002A5E3A /* empty_box.json */,
+				91AD6CB821B8422C00F980AD /* Json's */,
 				94EC2706217E4BF500902139 /* Resources */,
 				94E67A2C216FBE840098024E /* Onboard */,
 				944761D3216E816D00019117 /* TableViewCells */,

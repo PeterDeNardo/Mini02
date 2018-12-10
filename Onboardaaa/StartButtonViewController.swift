@@ -15,12 +15,21 @@ import FirebaseAuth
 class StartButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var profile: [String:String]?
+     let defaults = UserDefaults.standard
 
     @IBAction func startButton(_ sender: UIButton) {
+//        if defaults.bool(forKey: "Onboarding") == false{
+//            present(OnboardViewController(), animated: true, completion: nil)
+//            defaults.set(true, forKey: "Onboarding")
+//            print(defaults)
+//        } else {
+//            present(TabBarController(), animated: true, completion: nil)
+//        }
+        
         present(TabBarController(), animated: true, completion: nil)
     }
     
-   
+
     
     func fazerBotaoFacebook(){
         //botao de login facebook
@@ -47,7 +56,6 @@ class StartButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         fazerBotaoFacebook()
         
-
         // Do any additional setup after loading the view.
     }
     
