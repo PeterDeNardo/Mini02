@@ -223,9 +223,6 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate {
             self.goToProjectsVC()
         }
         
-        
-        
-        
     }
     
     

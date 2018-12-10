@@ -80,12 +80,11 @@ class StartButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
-        
-        
         verificarDadosPerfilFacebook()
         
+        guard let token = FBSDKAccessToken.current()?.tokenString else {return}
         
-        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+      let credential = FacebookAuthProvider.credential(withAccessToken: token)
         
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {

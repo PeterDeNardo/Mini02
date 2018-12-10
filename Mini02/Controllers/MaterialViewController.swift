@@ -483,13 +483,32 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
             var projetos: [Projeto] = []
             
             for child in DataSnapshot.children {
+                
                 if let snapshot = child as? DataSnapshot,
                     let projeto = Projeto(snapshot: snapshot){
                     projetos.insert(projeto, at: projetos.count)
                 }
             }
             
-            let projetosFrequentes = [projetos[projetos.count - 5], projetos[projetos.count - 4], projetos[projetos.count - 3], projetos[projetos.count - 2], projetos[projetos.count - 1]]
+            var projetosFrequentes: [Projeto] = []
+            
+            if projetos.count >= 5 {
+                
+                projetosFrequentes.append(projetos[projetos.count - 5])
+                projetosFrequentes.append(projetos[projetos.count - 4])
+                projetosFrequentes.append(projetos[projetos.count - 3])
+                projetosFrequentes.append(projetos[projetos.count - 2])
+                projetosFrequentes.append(projetos[projetos.count - 1])
+                
+                    } else {
+                    
+                      for p in projetos {
+                         projetosFrequentes.append(p)
+                        }
+                    
+                    }
+            
+           
             
             var materiaisFrequentes: [Material] = []
             
