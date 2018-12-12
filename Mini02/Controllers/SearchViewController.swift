@@ -25,18 +25,25 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         pegarUserDefaults()
         desativarTodosOsFiltros()
         searchView.btnSearchAct.isSelected = true
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-        self.title = "Adicionar Itens"
+        self.navigationItem.title = "Adicionar Itens"
         criarTableView()
         criarSearchBar()
         addButtonsTargets()
         fetchData()
         pegarUserDefaults()
         self.searchView.tableView.register(MaterialTableViewCell.self, forCellReuseIdentifier: cellReuseIdendifier)
+        
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
        
     }
     

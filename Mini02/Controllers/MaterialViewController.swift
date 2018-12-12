@@ -592,7 +592,12 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         
         materialView.setCellSpotligth()
         
-        if let indexPath = self.materialView.tableView.indexPathForSelectedRow {
+        if let section = self.materialView.tableView.indexPathForSelectedRow?.section {
+            
+            // Testing the new coding:
+            let indexPathRow = textField.tag
+            let indexPath = IndexPath(row: indexPathRow, section: section)
+            
             let cell = self.materialView.tableView.cellForRow(at: indexPath) as! MaterialTableViewCell
             
             materialView.nome.text = cell.nome.text
@@ -607,7 +612,7 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
             UIView.animate(withDuration: 0.0, animations: {},completion: {(finished: Bool) in
                 self.materialView.tipo.becomeFirstResponder()
             })
-
+            
         }
         
     }
@@ -627,9 +632,9 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.tag == 1{
        mostrarBotaoAdd()
-       let novoMaterial = Material(nome: materiaisPesquisados[indexPath.row].nome!, tipo: materiaisPesquisados[indexPath.row].tipo!, preco: materiaisPesquisados[indexPath.row].preco!, marca: materiaisPesquisados[indexPath.row].marca!, chave: materiaisPesquisados[indexPath.row].chave!, usuario: materiaisPesquisados[indexPath.row].usuario!)
-       materiaisPreSelecionados.insert(novoMaterial, at: materiaisPreSelecionados.count)
-        materialView.btnAddMaterial.setTitle("\((materiaisPreSelecionados.count)) itens selecionados", for: .normal)
+           let novoMaterial = Material(nome: materiaisPesquisados[indexPath.row].nome!, tipo: materiaisPesquisados[indexPath.row].tipo!, preco: materiaisPesquisados[indexPath.row].preco!, marca: materiaisPesquisados[indexPath.row].marca!, chave: materiaisPesquisados[indexPath.row].chave!, usuario: materiaisPesquisados[indexPath.row].usuario!)
+            materiaisPreSelecionados.insert(novoMaterial, at: materiaisPreSelecionados.count)
+            materialView.btnAddMaterial.setTitle("\((materiaisPreSelecionados.count)) itens selecionados", for: .normal)
         }
     }
     
@@ -687,7 +692,9 @@ extension MaterialViewController: UITableViewDelegate, UITableViewDataSource, UI
         cell.marca.text = material.marca
         let tipo = material.tipo?.lowercased()
         cell.imgType.image = UIImage(named: "\(tipo!)IconCor")
-
+            
+        // Setting the tag as row indexPath to the quantity textField.
+        cell.tipo.tag = indexPath.row
         
         return cell
         }

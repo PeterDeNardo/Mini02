@@ -45,6 +45,7 @@ class CalculatorView {
     let lblIBItemsQuantity = UILabel()
     let lblIBItemsSelected = UILabel()
     let lblIBItemsPrice = UILabel()
+    let imgIBArrow = UIImageView()
     
     // set viewInf objects
     let imgInfTimage = UIImageView()
@@ -256,10 +257,9 @@ class CalculatorView {
                                                  alpha: 0.7)
         viewIBody.addSubview(lblIBItemsPrice)
         
-        
-
-        
-        
+        imgIBArrow.frame = CGRect(x: 285, y: 18, width: 8, height: 8)
+        imgIBArrow.image = UIImage(named: "arrow")
+        viewIBody.addSubview(imgIBArrow)
     }
     
     func setViewInformationLayout() {

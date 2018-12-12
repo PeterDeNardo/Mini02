@@ -10,7 +10,7 @@ import UIKit
 
 class MaterialTableViewCell: UITableViewCell {
 
-    var nome: UILabel = UILabel(frame: CGRect(x: 80, y: 8, width: 80, height: 21))
+    var nome: UILabel = UILabel(frame: CGRect(x: 80, y: 8, width: 100, height: 21))
     var preco: UILabel = UILabel(frame: CGRect(x: 289, y: 19, width: 60, height: 21))
     var tipo: UITextField = UITextField(frame: CGRect(x: 202, y: 14, width: 74, height: 32))
     var marca: UILabel = UILabel(frame: CGRect(x: 80, y: 36, width: 100, height: 16))

@@ -123,8 +123,7 @@ class NewMaterialView {
                                              textColor: UIColor(red:0.31, green:0.31, blue:0.31, alpha:1.0),
                                              alingnment: .left,
                                              alpha: 1)
-        viewMRInfos.addSubview(lblQuantity
-        )
+        viewMRInfos.addSubview(lblQuantity)
         lblPrice.frame = CGRect(x: 200, y: 170, width: 126, height: 21)
         lblPrice.setLabelWhithConstraints(fontType: .two,
                                           fontSize: 18,
@@ -156,7 +155,7 @@ class NewMaterialView {
                                        keyboardType: .ignore)
         viewMRInfos.addSubview(txtMaterialOrigin)
         
-        txtMaterialQuantity.frame = CGRect(x: 19, y: 211, width: 39, height: 21)
+        txtMaterialQuantity.frame = CGRect(x: 19, y: 211, width: 74, height: 32)
         txtMaterialQuantity.setTextField(fontType: .one,
                                          fontSize: 18,
                                          lblText: "X un",
@@ -167,9 +166,9 @@ class NewMaterialView {
                                          keyboardType: .ignore)
         viewMRInfos.addSubview(txtMaterialQuantity)
         
-        txtPrice.frame = CGRect(x: 205, y: 211, width: 24, height: 21)
+        txtPrice.frame = CGRect(x: 205, y: 211, width: 74, height: 32)
         txtPrice.setTextField(fontType: .one,
-                              fontSize: 18,
+                              fontSize: 28,
                               lblText: "$Y",
                               textColor: .workBlue,
                               alingnment: .left,
