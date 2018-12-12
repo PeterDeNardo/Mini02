@@ -56,7 +56,6 @@ class Material{
         
         self.chave = snapshot.key
         self.ref = snapshot.ref
-        
         self.preco = preco
         self.tipo = tipo
         self.nome = nome
@@ -77,6 +76,7 @@ class Material{
             "usuario": usuario!,
             "quantidade": quantidade!,
             "total": total!,
+            "chave": chave ?? "nil",
         ]
     }
 

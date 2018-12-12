@@ -129,11 +129,43 @@ class ProjectsViewController: UIViewController {
 
     }
     
+    func goToEditProjectViewController(projeto: Projeto){
+        
+       let editProjectViewController = EditarProjetoViewController()
+        
+        editProjectViewController.projeto = projeto
+
+            for p in (projeto.materiais)! {
+                
+                editProjectViewController.materiaisSelecionados.append(
+                    
+                    Material(nome: (p as AnyObject).value(forKey: "nome") as! String,
+                             tipo: (p as AnyObject).value(forKey: "tipo") as! String,
+                             preco: (p as AnyObject).value(forKey: "preco") as! Float,
+                             marca: (p as AnyObject).value(forKey: "marca") as! String,
+                             chave: "?",
+                             usuario: (p as AnyObject).value(forKey: "usuario") as! [String:String])
+                    
+                )
+                
+                editProjectViewController.valorItens += (p as AnyObject).value(forKey: "preco") as! Float
+                
+            }
+        
+        editProjectViewController.custosExtras = projeto.custosExtras ?? 0
+        editProjectViewController.horasTrabalhadas = projeto.horasTrabalhadas!
+        
+        print(projeto.chave)
+        
+       self.navigationController?.pushViewController(editProjectViewController, animated: true)
+        
+    }
+    
     func goToLoginViewController(){
         let storyBoard = UIStoryboard(name: "OnboardStoryboard", bundle: nil)
         let novoViewController = storyBoard.instantiateViewController(withIdentifier: "StartButtonViewController")
         //present(novoViewController, animated: true, completion: nil)
-       self.navigationController?.pushViewController(novoViewController, animated: true)
+        self.navigationController?.pushViewController(novoViewController, animated: true)
         
     }
     
@@ -218,6 +250,13 @@ extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meusProjetos.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let projeto = meusProjetos[indexPath.row]
+        goToEditProjectViewController(projeto: projeto)
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

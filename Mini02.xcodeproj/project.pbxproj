@@ -20,6 +20,7 @@
 		944761D0216D3A7300019117 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944761CF216D3A7300019117 /* Material.swift */; };
 		9450C3E6217FAD33002A5E3A /* done.json in Resources */ = {isa = PBXBuildFile; fileRef = 9450C3E5217FAD33002A5E3A /* done.json */; };
 		9450C3E8217FB07C002A5E3A /* empty_box.json in Resources */ = {isa = PBXBuildFile; fileRef = 9450C3E7217FB07C002A5E3A /* empty_box.json */; };
+		946939EC21BEEB1C002402D4 /* EditarProjetoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946939EB21BEEB1C002402D4 /* EditarProjetoViewController.swift */; };
 		94C905542187787100C71411 /* MateriaisSelecionadosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C905532187787100C71411 /* MateriaisSelecionadosTableViewController.swift */; };
 		94EC26F9217E4AA100902139 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F0217E4AA100902139 /* CalculatorView.swift */; };
 		94EC26FC217E4AA100902139 /* NewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC26F3217E4AA100902139 /* NewProjectView.swift */; };
@@ -70,6 +71,7 @@
 		944761CF216D3A7300019117 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		9450C3E5217FAD33002A5E3A /* done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = done.json; sourceTree = "<group>"; };
 		9450C3E7217FB07C002A5E3A /* empty_box.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty_box.json; sourceTree = "<group>"; };
+		946939EB21BEEB1C002402D4 /* EditarProjetoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarProjetoViewController.swift; sourceTree = "<group>"; };
 		94C905532187787100C71411 /* MateriaisSelecionadosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MateriaisSelecionadosTableViewController.swift; sourceTree = "<group>"; };
 		94EC26F0217E4AA100902139 /* CalculatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		94EC26F3217E4AA100902139 /* NewProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectView.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				9444CB2C217E6E4200C09FD3 /* MaterialViewController.swift */,
 				96C867C62170A71F00451161 /* SearchViewController.swift */,
 				94119FC12177B8D500771432 /* MaterialTableViewController.swift */,
+				946939EB21BEEB1C002402D4 /* EditarProjetoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				94119FC22177B8D500771432 /* MaterialTableViewController.swift in Sources */,
 				91D40B5D218780BE00765EDA /* FirstPageOnboardViewController.swift in Sources */,
 				94EC2700217E4AA100902139 /* ProjectsView.swift in Sources */,
+				946939EC21BEEB1C002402D4 /* EditarProjetoViewController.swift in Sources */,
 				9444CB2D217E6E4200C09FD3 /* MaterialViewController.swift in Sources */,
 				94EC2710217E515100902139 /* TabBarController.swift in Sources */,
 				94EC26FF217E4AA100902139 /* SearchView.swift in Sources */,

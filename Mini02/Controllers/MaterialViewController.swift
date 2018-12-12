@@ -13,6 +13,7 @@ import FirebaseDatabase
 class MaterialViewController: UIViewController, UITextFieldDelegate {
     
     var pesquisaTxt = ""
+    var editando = false
     let calculatorVC = CalculatorViewController()
     var materialView = MaterialView()
     var ref: DatabaseReference? = Database.database().reference(withPath: "Material")
@@ -25,6 +26,11 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
     var timer: Timer?
     var tap: UITapGestureRecognizer?
     let cellReuseIdendifier = "cell"
+    var projeto: Projeto?
+    var valorItens: Float = 0.00
+    var custosExtras: Float = 0.00
+    var lucroPretendido: Float = 0.00
+    var horasTrabalhadas: Float = 0.00
 
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
@@ -52,8 +58,6 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
         if self.isMovingFromParent{
         
             done()
-            self.tabBarController?.tabBar.isHidden = false
-            navigationController?.pushViewController(calculatorVC, animated: false)
             
         }
         
@@ -411,11 +415,30 @@ class MaterialViewController: UIViewController, UITextFieldDelegate {
     
     @objc func done (){
         
-        for material in materiaisSelecionados {
+        if editando == false {
+            for material in materiaisSelecionados {
             calculatorVC.materiaisSelecionados.insert(material, at: calculatorVC.materiaisSelecionados.count)
+           }
+        
+            calculatorVC.valorItens = calcularTotal()
+            self.tabBarController?.tabBar.isHidden = false
+            navigationController?.pushViewController(calculatorVC, animated: false)
+            
+           } else {
+            let editandoVC = EditarProjetoViewController()
+            for material in materiaisSelecionados {
+                editandoVC.materiaisSelecionados.insert(material, at: editandoVC.materiaisSelecionados.count)
+            }
+            
+            editandoVC.valorItens = calcularTotal()
+            editandoVC.projeto = projeto
+            editandoVC.custosExtras = projeto!.custosExtras ?? 0
+            editandoVC.horasTrabalhadas = projeto!.horasTrabalhadas!
+            navigationController?.pushViewController(editandoVC, animated: false)
         }
-         calculatorVC.valorItens = calcularTotal()
-    }
+            
+        }
+    
     
     @objc func addMaterial(){
         for material in materiaisPreSelecionados {
