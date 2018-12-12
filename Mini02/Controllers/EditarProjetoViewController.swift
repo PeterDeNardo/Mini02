@@ -8,8 +8,9 @@
 
 import UIKit
 import FirebaseDatabase
+import Lottie
 
-class CalculatorViewController: UIViewController, UITextFieldDelegate{
+class EditarProjetoViewController: UIViewController, UITextFieldDelegate{
     
     private let viewCalculator = CalculatorView()
     
@@ -31,36 +32,43 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     
     var horasTrabalhadas: Float = 0.00
     
+    var editando = false
     
-     var projeto: Projeto?
+    var projeto: Projeto?
     
     override func viewWillAppear(_ animated: Bool) {
         pegarUserDefaults()
         setLabels()
+        setInputs()
         verificarInputs()
         self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationItem.title = "\(projeto!.nome!)"
+        viewCalculator.btnVBAddProjects.setTitle("Editar", for: .normal)
         
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
- 
-        self.navigationItem.title = "Novo Projetro"
-       
-        ref = Database.database().reference(withPath: "Projeto")
+        
+        self.tabBarController?.tabBar.isHidden = true
         
         self.view = viewCalculator.setLayoutInView()
         
         addButtonsTargets()
-
+        
         addDelegateToTxtFields()
         
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-  
+        
+    }
+    
+    func setInputs(){
+        viewCalculator.txtInfBWorkedHours.text = "\(projeto!.horasTrabalhadas!)"
+        viewCalculator.txtInfBExternalCosts.text = "\(projeto!.custosExtras!)"
     }
     
     func addDelegateToTxtFields(){
@@ -77,34 +85,54 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
     }
     
     func addButtonsTargets() {
-
-        viewCalculator.btnIBMaterials.addTarget(self, action: #selector(CalculatorViewController.goToMaterialViewController), for: .touchDown)
-        viewCalculator.btnVBAddProjects.addTarget(self, action: #selector(CalculatorViewController.addProject), for: .touchDown)
+        
+        viewCalculator.btnIBMaterials.addTarget(self, action: #selector(goToMaterialViewController), for: .touchDown)
+        viewCalculator.btnVBAddProjects.addTarget(self, action: #selector(updateProject), for: .touchDown)
         
         tap = UITapGestureRecognizer(target: self, action: #selector(abaixarTeclado))
         self.view.addGestureRecognizer(tap!)
+        
+        let backbutton = UIButton(type: .custom)
+        backbutton.setTitle("Voltar", for: .normal)
+        backbutton.setTitleColor(.blue , for: .normal)
+        backbutton.addTarget(self, action: #selector(voltar), for: .touchDown)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
+        
     }
+    
+
     
     func pegarUserDefaults(){
         
         let defaults = UserDefaults.standard
-   
-       usuario = [
+        
+        usuario = [
             "nome" : defaults.string(forKey: "nome"),
             "email" : defaults.string(forKey: "email"),
             "id" : defaults.string(forKey: "id")
-        ] as? [String : String]
+            ] as? [String : String]
         
     }
-
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
-                
+        
         guard let text = Int(textField.text!) else{
-             textField.text?.removeAll()
+            textField.text?.removeAll()
+            if textField == viewCalculator.txtInfBWorkedHours{
+                horasTrabalhadas = 0
+                setLabels()
+                
+            }
+            
+            if textField == viewCalculator.txtInfBExternalCosts{
+                custosExtras = 0
+                setLabels()
+                
+            }
             textField.keyboardType = .numberPad
             return
         }
-       
+        
         
     }
     
@@ -116,9 +144,10 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         }
     }
     
-  
-    func textFieldDidEndEditing(_ textField: UITextField) {
     
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
         if textField.text == "" {
             
             
@@ -135,12 +164,12 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
                 setLabels()
                 
             }
-
+            
             return
         }
         
         if textField == viewCalculator.txtInfBWorkedHours{
-
+            
             horasTrabalhadas = Float(textField.text!)!
             setLabels()
             
@@ -152,7 +181,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
             setLabels()
             
         }
-
+        
         
     }
     
@@ -247,35 +276,15 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
         navigationController?.pushViewController(newProjectView, animated: true)
     }
     
-    func goToLoginViewController(){
-        
-        let storyBoard = UIStoryboard(name: "OnboardStoryboard", bundle: nil)
-        let novoViewController = storyBoard.instantiateViewController(withIdentifier: "StartButtonViewController")
-        self.navigationController?.pushViewController(novoViewController, animated: true)
+    @objc func voltar(){
+        let projectsVC = ProjectsViewController()
+        self.tabBarController?.tabBar.isHidden = false
+        navigationController?.pushViewController(projectsVC, animated: false)
         
     }
     
-    @objc func addProject(){
+    @objc func updateProject(){
         
-        
-        if usuario == nil {
-            
-            let alert = UIAlertController(title: "Faça login para salvar", message: "Você precisa estar logado para salvar seu projeto", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
-            
-            alert.addAction(UIAlertAction(title: "Logar", style: .default, handler: { action in
-               
-               self.goToLoginViewController()
-                
-            }))
-            
-            self.present(alert, animated: true)
-            
-            return
-            
-        }
-
         guard let horasTrabalhadasString = viewCalculator.txtInfBWorkedHours.text, horasTrabalhadasString.count > 0 else { return }
         
         guard let horasTrabalhadasFloat = Float(horasTrabalhadasString), horasTrabalhadasFloat > 0 else { return }
@@ -288,39 +297,75 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate{
             return
         }
         
-            for material in materiaisSelecionados {
-                materiais.append(material.toAnyObject())
-            }
-        
-        if usuario == nil {
-             projeto = Projeto(materiais: materiais, custosExtras: custosExtrasFloat, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
-            projeto?.setTotal(total: valorItens + custosExtrasFloat)
-            
-        }else{
-            projeto = Projeto(usuario: usuario!, materiais: materiais, custosExtras: custosExtrasFloat, horasTrabalhadas: horasTrabalhadasFloat, categoria: "", nome: "" )
-              projeto?.setTotal(total: valorItens + custosExtrasFloat)
+        for material in materiaisSelecionados {
+            materiais.append(material.toAnyObject())
         }
         
         
-        goToNewProjectViewController()
-    
+        let ref = Database.database().reference().child("Projeto").child(projeto!.chave!)
+        
+        ref.updateChildValues(
+            ["custosExtras": custosExtrasFloat,
+             "horasTrabalhadas": horasTrabalhadasFloat,
+             "materiais": materiais,
+             "total": valorItens + custosExtrasFloat,
+            ]
+        )
+        
+        //animacao
+        let animationView = LOTAnimationView(name: "done")
+        animationView.animationSpeed = CGFloat(1.3)
+        blur()
+        self.view.addSubview(animationView)
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        animationView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        animationView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        animationView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        animationView.play{ (finished) in
+            self.goToProjectsViewController()
+        }
+        
+
     }
     
-
+    func goToProjectsViewController(){
+        let projectsVC = ProjectsViewController()
+        self.tabBarController?.tabBar.isHidden = false
+        navigationController?.pushViewController(projectsVC, animated: false)
+    }
+    
+    func blur(){
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
+    }
     
     @objc func abaixarTeclado() {
         viewCalculator.viewGlobal.endEditing(true)
     }
     
     @objc func goToMaterialViewController () {
-
+        
         let materialsView = MaterialViewController()
+        
+        materialsView.projeto = projeto
+        
+        materialsView.custosExtras = projeto!.custosExtras ?? 0
+        
+        materialsView.horasTrabalhadas = projeto!.horasTrabalhadas!
+        
+        materialsView.valorItens = valorItens
+        
+        materialsView.editando = true
         
         materialsView.materiaisSelecionados = self.materiaisSelecionados
         navigationController?.pushViewController(materialsView, animated: true)
     }
-
     
-
-
+    
+    
+    
 }

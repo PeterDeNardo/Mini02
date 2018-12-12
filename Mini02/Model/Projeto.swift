@@ -93,10 +93,11 @@ class Projeto{
     let total = valor["total"] as? Float,
     let data = valor["data"] as? String,
     let hora = valor["hora"] as? String
-        
     else {return nil}
     
+     
     self.chave = snapshot.key
+    print(chave)
     self.ref = snapshot.ref
     self.materiais = materiais
     self.usuario = usuario
@@ -122,6 +123,7 @@ class Projeto{
             "categoria": categoria!,
             "data": data!,
             "hora": hora!,
+            "chave": chave ?? "nil",
            
         ]
     }
